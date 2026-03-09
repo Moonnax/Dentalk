@@ -227,7 +227,8 @@ a:hover {
     }
     .menu-item{
         width: 100%;
-        text-align: center;
+        text-align: right;
+        padding-right: 1rem;
         border-bottom: 0.063rem solid #fd8b08;
     }
     .menu-toggle{
@@ -399,7 +400,8 @@ a:hover {
     }
     .menu-item{
         width: 100%;
-        text-align: center;
+        text-align: right;
+        padding-right: 1.2rem;
         border-bottom: 0.063rem solid #fd8b08;
     }
     .menu-toggle{
