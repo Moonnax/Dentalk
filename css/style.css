@@ -27,6 +27,22 @@ header{
     margin-right: 2rem;
 }
 
+#area-button-f{
+    background-color: #fd8b08;
+    color: whitesmoke;
+    padding: 0.5rem;
+    display: inline-block;
+    border-radius: 10%;
+}
+
+#area-button-v{
+    background-color: #9ac93d;
+    color: whitesmoke;
+    padding: 0.5rem;
+    display: inline-block;
+    border-radius: 10%;
+}
+
 .menu{
     display: flex;
     list-style: none;
@@ -216,15 +232,48 @@ a:hover {
         transform: translateY(0);
         opacity: 1;
     }
+
+    #area-button-f{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    
+    }
+
+    #area-button-v{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    }
+
     .menu{
         display: flex;
         flex-direction: column;
         align-items: center;
         padding:0;
+        padding-bottom: 1REM;
     }
     .menu li{
         width: 100%;
     }
+    /* isso aq vai puxar os botao de login pra cima no mobile, ta basicamente falando q o ultimo li fica na primeira posição(-2) e o penultimo na segunda (-1) */
+    .menu li:last-child{
+    order: -1;
+    }
+
+    .menu li:nth-last-child(2){
+    padding-top: 1rem;
+    order: -2;
+    }
+
     .menu-item{
         width: 100%;
         text-align: right;
@@ -389,6 +438,27 @@ a:hover {
         transform: translateY(0);
         opacity: 1;
     }
+
+    #area-button-f{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    
+    }
+
+    #area-button-v{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    }
     .menu{
         display: flex;
         flex-direction: column;
@@ -397,6 +467,15 @@ a:hover {
     }
     .menu li{
         width: 100%;
+    }
+
+        .menu li:last-child{
+    order: -1;
+    }
+
+    .menu li:nth-last-child(2){
+    padding-top: 1rem;
+    order: -2;
     }
     .menu-item{
         width: 100%;
@@ -521,6 +600,28 @@ a:hover {
         transform: translateY(0);
         opacity: 1;
     }
+
+    #area-button-f{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    
+    }
+
+    #area-button-v{
+        padding: 1rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 0.5rem;
+        border-bottom: none;
+        text-align: center;
+    }
+
     .menu{
         flex-direction: column;
         align-items: center;
@@ -529,6 +630,16 @@ a:hover {
     .menu li{
         width: 100%;
     }
+
+            .menu li:last-child{
+    order: -1;
+    }
+
+    .menu li:nth-last-child(2){
+    padding-top: 1rem;
+    order: -2;
+    }
+    
     .menu-item{
         width: 100%;
         text-align: right;
