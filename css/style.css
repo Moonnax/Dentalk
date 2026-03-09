@@ -17,11 +17,6 @@ header{
 
 .menu-toggle{
     display: none;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-right: 2rem;
 }
 
 #nav{
@@ -201,40 +196,36 @@ a:hover {
  @media (max-width: 37.5rem) {
 
 
-         /* MENU LATERAL - use no extra small tbm! */
-   #nav {
-    position: fixed;
-    display: block;
-    padding: 0.625rem;
-    width: 20%;
-    text-align: right;
-    right: 0;
-    height: 100%;
-    
+
+/* header */
+    #nav{
+        position: absolute;
+        top: 6.25rem;
+        right: 0;
+        width: 100%;
+        background: #010817;
+        display: none;
+        flex-direction: column;
+        margin-right: 0;
     }
 
-
-
-    .menu {
-    display:flex;
-    flex-direction: column;
-    text-align: left;
-    margin: 0;
-    gap: 3.75rem;
-
+    #nav.active{
+        display: flex;
     }
 
-
-    .menu-item {
-    background-color: #010817;
-    padding: 0.3125rem;
-    display: block;
-    text-align: center;
-    font-size: 0.625rem;
-
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
     }
 
-         /* menu lateral acaba nesse de cima */
+    .menu-toggle{
+        display: block;
+        margin-left: auto;
+    }
+
+/* fim */
 
 
 
@@ -242,7 +233,6 @@ a:hover {
         display: flex;
         flex-direction: column;
         min-height: 100vh; /* o vh é Viewrpoint Height > altura da página, n do monitor*/
-        margin-right: 13%;
     }
 
     /* pág. contato */
@@ -349,42 +339,41 @@ a:hover {
 /* small devices - OK*/
  @media (min-width: 37.5rem) and (max-width: 47.9375rem){
     
-
-         /* MENU LATERAL - use no extra small tbm! */
-   #nav {
-    position: fixed;
-    display: block;
-    padding: 0.625rem;
-    width: 18%;
-    text-align: right;
-    right: 0;
-    height: 100%;
+/* header */
+    #nav{
+        position: absolute;
+        top: 6.25rem;
+        right: 0;
+        width: 100%;
+        background: #010817;
+        display: none;
+        flex-direction: column;
+        margin-right: 0;
     }
 
-
-    .menu {
-    display:block;
-    text-align: left;
-    margin: 0;
+    #nav.active{
+        display: flex;
     }
 
-
-    .menu-item {
-    background-color: #010817;
-    padding: 0.9375rem;
-    display: block;
-
-
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
     }
 
-         /* menu lateral acaba nesse de cima */
+    .menu-toggle{
+        display: block;
+        margin-left: auto;
+    }
+
+/* fim */
 
 
     body {
         display: flex;
         flex-direction: column;
         min-height: 100vh; 
-        margin-right: 18%;
     }
     
     .formText {
@@ -446,30 +435,44 @@ a:hover {
 
 /* header */
     #nav{
+        display: none;
         position: absolute;
         top: 6.25rem;
         right: 0;
         width: 100%;
         background: #010817;
-        display: none;
-        flex-direction: column;
+        margin-right: 0;
     }
 
     #nav.active{
-        display: flex;
+        display: block;
     }
-
     .menu{
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
         padding: 1rem 0;
     }
-
+    .menu li{
+        width: 100%;
+    }
+    .menu-item{
+        width: 100%;
+        text-align: center;
+    }
     .menu-toggle{
         display: block;
+        background: none;
+        border: none;
+        color: white;
         margin-left: auto;
+        margin-right: 2rem;
+        cursor: pointer;
     }
+
+    .menu-toggle svg{
+    width: 32px;
+    height: 32px;
+}
 
 /* fim */
 
