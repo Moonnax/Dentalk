@@ -97,7 +97,7 @@ body{
 }
 
 .title{
-    margin-top: 6.25rem;
+    margin-top: 2rem;
     text-align: center;
     font-size: 3.125rem;
 }
@@ -305,10 +305,10 @@ a:hover {
     }
 
     .title{
-    margin-top: 5rem;
+    margin-top: 2rem;
     text-align: center;
-    font-size: 2.625rem;
-    padding-left: 1.25rem;
+    font-size: 2rem;
+    padding-left: 0rem;
     }
 
     .question{
@@ -338,13 +338,6 @@ a:hover {
         width: 80%;
     }
 
-
-    .title{
-    margin-top: 3.75rem;
-    text-align: center;
-    font-size: 2.625rem;
-    padding-left: 0rem;
-    }
 
     /* pág home */
 
@@ -449,7 +442,7 @@ a:hover {
     }
     
     .formText {
-        font-size: 1.875rem;
+        font-size: 1.2rem;
         text-align: justify;
     }
 
@@ -461,11 +454,11 @@ a:hover {
     }
 
     .title{
-    margin-top: 6.25rem;
+    margin-top: 2rem;
     text-align: center;
-    font-size: 3.75rem;
     padding-bottom: 1.25rem;
-}
+    font-size: 2.5rem;
+    }
 
     .doubleside{
     border: 0.125rem solid #010817;
@@ -578,6 +571,12 @@ a:hover {
         margin-top: auto;
     }
 
+     .title{
+    margin-top: 3rem;
+    text-align: center;
+    padding-left: 0rem;
+    }
+
     .formText {
         font-size: 1.875rem;
         text-align: justify;
@@ -623,7 +622,7 @@ a:hover {
 }
 
 
-    .doubleside{
+.doubleside{
   border: 0.125rem solid #010817;
   padding: 1.25rem;
   margin: 0.625rem;
