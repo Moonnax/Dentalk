@@ -1,8 +1,42 @@
+/* Extra Large Device */
+
 *{
     box-sizing: border-box;
     margin: 0rem;
     padding: 0rem;
-    background-color:white  ;
+}
+
+/* HEADER */
+header{
+    background-color:#010817;
+    height: 6.25rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-right: 2rem;
+}
+
+#nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color:#010817;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
+    align-items: center;
 }
 
 .menu-item {
@@ -17,45 +51,30 @@
 
 }
 
-header{
-    background-color:#010817;
-    height: 6.25rem;
-    font-family: Arial, Helvetica, sans-serif;
-    
+.logo{
+    padding: 0 2rem;
 }
 
-   #nav {
-    display: inline-block;
-    vertical-align: top;
-    width: 88%;
-
-    background-color:#010817; 
-    text-align: center;
-   
+.logo a{
+    color: #fd8b08;
+    text-decoration: none;
 }
 
-.menu {
-    text-align: center;
-    background-color:#010817; 
-    margin-left: 15%;
+.logo h1{
+    background-color: transparent;
+    font-size: 1.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
 
-    list-style: none;
+/* FIM */
 
-    }
 
 .block {
     display: block;
 }
-
-
-.logo{
-    background-color: #010817; 
-    color: #fd8b08;
-    padding-left: 0.9375rem;
-    padding-bottom: 1.25rem;
-    text-decoration: none;
-}
-
 .bannermenu{
     height: auto;
     width: auto;
@@ -425,34 +444,39 @@ a:hover {
 /* medium devices - OK */
  @media (min-width: 48rem) and (max-width: 61.9375rem) {
 
-
-   #nav {
-    position: fixed;
-    display: block;
-    padding: 0.625rem;
-    width: 18%;
-    text-align: right;
-    right: 0;
-    height: 100%;
+/* header */
+    #nav{
+        position: absolute;
+        top: 6.25rem;
+        right: 0;
+        width: 100%;
+        background: #010817;
+        display: none;
+        flex-direction: column;
     }
 
-    .menu {
-    display:block;
-    text-align: right;
-    margin: 0;
+    #nav.active{
+        display: flex;
     }
 
-    .menu-item {
-    background-color: #010817;
-    padding: 0.9375rem;
-    display: block;
+    .menu{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0;
     }
+
+    .menu-toggle{
+        display: block;
+        margin-left: auto;
+    }
+
+/* fim */
 
     body {
         display: flex;
         flex-direction: column;
-        min-height: 100vh; 
-        margin-right: 18%;
+        min-height: 100vh;
     }
     
     footer {
@@ -493,18 +517,10 @@ a:hover {
     margin-left: 12%;
     }
 
-    header{
-    height: 6.25rem;
-}
-
-.logo{
-    padding-bottom: 1.5625rem;
-}
-
- 
     .side {
   width: 21.875rem;
 }
+
 
     .doubleside{
   border: 0.125rem solid #010817;
