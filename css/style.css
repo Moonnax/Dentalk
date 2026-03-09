@@ -9,7 +9,7 @@
 /* HEADER */
 header{
     background-color:#010817;
-    height: 6.25rem;
+    height: 6rem;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
@@ -35,13 +35,14 @@ header{
 }
 
 .menu-item {
+    white-space: nowrap;
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1rem; 
     font-weight: 800;
     text-decoration: none;
     background-color: #010817;
     color: whitesmoke;
-    padding: 0.9375rem;
+    padding: 1rem;
     display: inline-block;
 
 }
@@ -195,34 +196,68 @@ a:hover {
 /* extra small devices */
  @media (max-width: 37.5rem) {
 
-
-
 /* header */
     #nav{
+        display: block;
         position: absolute;
-        top: 6.25rem;
+        top: 3.4rem;
         right: 0;
         width: 100%;
         background: #010817;
-        display: none;
-        flex-direction: column;
         margin-right: 0;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     #nav.active{
-        display: flex;
+        pointer-events: auto;
+        transform: translateY(0);
+        opacity: 1;
     }
-
     .menu{
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
+        padding:0;
+    }
+    .menu li{
+        width: 100%;
+    }
+    .menu-item{
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.063rem solid #fd8b08;
+    }
+    .menu-toggle{
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        margin-left: auto;
+        margin-right: 0.5rem;
+        cursor: pointer;
     }
 
     .menu-toggle{
-        display: block;
-        margin-left: auto;
+    display: flex;
+    align-items: center;
+    }
+    .menu-toggle svg{
+    width: 1.7rem;
+    height: 1.7rem;
+    }
+
+    header {
+        height: 3.5rem;
+    }
+    .logo{
+    padding: 0 0.5rem;
+    }
+
+    .logo h1{
+    font-size: 1.5rem;
     }
 
 /* fim */
@@ -341,30 +376,67 @@ a:hover {
     
 /* header */
     #nav{
+        display: block;
         position: absolute;
-        top: 6.25rem;
+        top: 3.9rem;
         right: 0;
-        width: 100%;
+        width: 40%;
+        height: 100%;
         background: #010817;
-        display: none;
-        flex-direction: column;
         margin-right: 0;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     #nav.active{
-        display: flex;
+        pointer-events: auto;
+        transform: translateY(0);
+        opacity: 1;
     }
-
     .menu{
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        padding: 1rem 0;
+        padding:0;
+    }
+    .menu li{
+        width: 100%;
+    }
+    .menu-item{
+        width: 100%;
+        text-align: center;
+        border-bottom: 0.063rem solid #fd8b08;
+    }
+    .menu-toggle{
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        margin-left: auto;
+        margin-right: 0.5rem;
+        cursor: pointer;
     }
 
     .menu-toggle{
-        display: block;
-        margin-left: auto;
+    display: flex;
+    align-items: center;
+    }
+    .menu-toggle svg{
+    width: 2rem;
+    height: 2rem;
+    }
+
+    header {
+        height: 4rem;
+    }
+    .logo{
+    padding: 0 0.5rem;
+    }
+
+    .logo h1{
+    font-size: 1.5rem;
     }
 
 /* fim */
@@ -435,29 +507,39 @@ a:hover {
 
 /* header */
     #nav{
-        display: none;
+        display: block;
         position: absolute;
-        top: 6.25rem;
+        top: 5.4rem;
         right: 0;
-        width: 100%;
+        width: 30%;
+        height: 100%;
         background: #010817;
         margin-right: 0;
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     #nav.active{
-        display: block;
+        pointer-events: auto;
+        transform: translateY(0);
+        opacity: 1;
     }
     .menu{
         flex-direction: column;
         align-items: center;
-        padding: 1rem 0;
+        padding: 0;
     }
     .menu li{
         width: 100%;
     }
     .menu-item{
         width: 100%;
-        text-align: center;
+        text-align: right;
+        padding-right: 2.3125rem;
+        border-bottom: 0.063rem solid #fd8b08;
+
     }
     .menu-toggle{
         display: block;
@@ -469,9 +551,19 @@ a:hover {
         cursor: pointer;
     }
 
+    header {
+        height: 5.5rem;
+    }
+    .menu-toggle{
+    display: flex;
+    align-items: center;
+    }
     .menu-toggle svg{
-    width: 32px;
-    height: 32px;
+    width: 2.5rem;
+    height: 2.5rem;
+    }
+    .logo h1{
+    font-size: 2.2rem;
 }
 
 /* fim */
@@ -509,18 +601,24 @@ a:hover {
 
 /* large device - OK */
  @media (min-width: 62rem) {
-    .menu-item {
-        font-size: 0.9375rem; 
-        padding: 0.4375rem;
 
-    }
+.logo{
+    padding: 0 1.5rem;
+}
+.menu-item {
+    white-space: normal;
+    font-size: 1rem; 
+    padding: 0.5rem;
+
+}
 
 .menu {
     text-align: center; 
     margin-left: 12%;
-    }
+}
 
-    .side {
+
+.side {
   width: 21.875rem;
 }
 
