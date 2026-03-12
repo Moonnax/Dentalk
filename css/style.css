@@ -60,7 +60,15 @@ header{
     color: whitesmoke;
     padding: 1rem;
     display: inline-block;
+}
 
+.menu-item.active { 
+    color: #fd8b08;
+/* esse aq vai funcionar com o router */
+}
+
+.menu-item:hover {
+    color: #fd8b08;
 }
 
 .logo{
@@ -115,20 +123,20 @@ body{
 .title{
     margin-top: 2rem;
     text-align: center;
-    font-size: 3.125rem;
+    font-size: 2.6rem;
 }
 
 .subtitle{
+    margin-top: 1rem;
     text-align: center;
-    font-size: 3.125rem;
+    font-size: 2rem;
+    font-weight: 550;
 }
 
 .imgCenter {
+    display: block;
+    margin: 0 auto;
     padding: 0.625rem;
-    margin-left: 25%;
-    margin-right: 25%;
-  padding-left: 5%;
-
 }
 
 .box {
@@ -136,7 +144,7 @@ body{
   padding: 0.625rem;
   margin: 0 auto;
   background-color: white;
-  width: 80%;
+  width: 90%;
   height: auto;
   text-align: center;
   
@@ -150,9 +158,16 @@ body{
   width: 25rem;
   height: auto;
   display: inline-block;
-
 }
 
+.description{
+    font-size: 1.6rem;
+}
+.contact-title {
+    font-size: 1.75rem; 
+    text-align: center;
+    padding-bottom: 1rem;
+}
 .fotoavatar {
     max-width: 18.75rem;
     width: 100%;
@@ -179,19 +194,18 @@ body{
     text-align: center;
 }
 
+.social-link{
+    font-size: 1.25rem;
+}
+
+
+
 footer {
     background-color: #010817;
     color: white;
     text-align: center;
     padding: 1.25rem 0;
     text-decoration: none;
-}
-
-footer.short-page {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
 }
 
 a {
@@ -208,7 +222,7 @@ a:hover {
 
 
 .question{
-    font-size: 1.375rem;
+    font-size: 1.5rem;
     font-weight: bold;
     color: #fd8b08;
     margin-top:2rem;
@@ -220,6 +234,65 @@ a:hover {
     width: 1.5rem;
     height: 1.5rem;
 }
+
+
+/* missão */
+
+.mission-item{
+display: flex;
+align-items: flex-start;
+gap: 1.5rem;
+margin: 2rem auto;
+text-align: left;
+max-width: 50rem;
+padding-bottom: 1.5rem;
+border-bottom: 1px solid #e5e5e5;
+}
+
+.mission-text{
+max-width: 32rem;
+}
+
+.mission-title{
+font-size: 1.5625rem;
+font-weight: bold;
+margin-bottom: 0.5rem;
+}
+
+.foto-mission{
+max-width: 12rem;
+width: 100%;
+height: auto;
+margin: 0;
+}
+
+
+/* valores */
+
+.value-item{
+display: flex;
+align-items: center;
+gap: 1.5rem;
+margin: 2rem auto;
+max-width: 40rem;
+padding-bottom: 1.5rem;
+border-bottom: 1px solid #e5e5e5;
+}
+
+.value-title{
+font-size: 1.5625rem;
+font-weight: bold;
+text-align: left;
+min-width: 22rem;
+}
+
+.fotovalue{
+width: 10rem;
+height: 10rem;
+object-fit: cover;
+border-radius: 0.4rem;
+}
+
 
 /* extra small devices */
  @media (max-width: 37.5rem) {
@@ -369,7 +442,7 @@ a:hover {
     .title{
     margin-top: 2rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     padding-left: 0rem;
     }
 
@@ -418,11 +491,53 @@ a:hover {
         margin-right: 0.3125rem;
         padding-right: 0rem;
     }
- 
-    #font-xsmall{
-        font-size: 2.5rem;
-    }
 
+
+/* missao */
+.mission-item{
+flex-direction: column;
+align-items: center;
+text-align: center;
+max-width: 90%;
+}
+
+.mission-text{
+max-width: 100%;
+}
+
+.foto-mission{
+max-width: 14rem;
+margin-bottom: 0.8rem;
+}
+
+.description{
+    font-size: 1.1rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+
+
+/* valores */
+
+.value-item{
+flex-direction: column;
+align-items: center;
+text-align: center;
+max-width: 90%;
+margin: 2rem auto;
+}
+
+.value-title{
+font-size: 1.25rem; /* 20px */
+min-width: 0;
+text-align: center;
+}
+
+.fotovalue{
+width: 11rem;
+height: 11rem;
+margin-bottom: 0.5rem;
+}
 }
 
   
@@ -657,6 +772,7 @@ a:hover {
         text-align: right;
         padding-right: 2.3125rem;
         border-bottom: 0.063rem solid #fd8b08;
+        font-size: 0.938rem;
 
     }
     .menu-toggle{
@@ -698,18 +814,14 @@ a:hover {
 
      .title{
     margin-top: 3rem;
+    font-size: 2.125rem;
     text-align: center;
     padding-left: 0rem;
     }
 
     .formText {
-        font-size: 1.875rem;
+        font-size: 1.2rem;
         text-align: justify;
-    }
-
-    .imgCenter {
-        margin: 0;
-        padding: 0.625rem;
     }
 
     .doubleside{
@@ -718,6 +830,10 @@ a:hover {
     margin: 1.25rem;
     height: auto;
         }
+    
+    .description{
+        font-size: 1.5rem;
+    }
 
  }
 
