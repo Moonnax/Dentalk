@@ -164,7 +164,7 @@ body{
 }
 
 .description{
-    font-size: 1.6rem;
+    font-size: 1.4rem;
 }
 .contact-title {
     font-size: 1.75rem; 
@@ -596,7 +596,7 @@ margin-bottom: 0.8rem;
 }
 
 .description{
-    font-size: 1.1rem;
+    font-size: 1rem;
     max-width: 40rem;
     margin: 0 auto;
 }
@@ -754,10 +754,13 @@ white-space: normal;
 /* fim */
     
     .formText {
-        font-size: 1.2rem;
+        font-size: 1rem;
         text-align: justify;
     }
 
+    .subtitle{
+        font-size: 1.375rem;
+    }
     .imgCenter {
         margin: 0;
         padding: 0.625rem;
@@ -769,7 +772,7 @@ white-space: normal;
     margin-top: 2rem;
     text-align: center;
     padding-bottom: 1.25rem;
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     }
 
     .doubleside{
@@ -779,16 +782,13 @@ white-space: normal;
     height: auto;
         }
 
-    .question{
-    font-size: 1.875rem;
-    font-weight: bold;
-    color: #fd8b08;
-    text-align: left;
-    padding-bottom: 1.25rem;
+     .question{
+    font-size: 1.2rem;
+    text-align: center;
     }
 
     .answer {
-        font-size: 1.25rem;
+        font-size: 1rem;
         text-align: left;
     }
 
@@ -804,8 +804,25 @@ white-space: normal;
     .bigger-font{
         font-size: 1.25rem;
     }
- }
 
+    .contact-title{
+        font-size: 1.375rem;;
+    }
+
+    /* missao */
+
+    .description{
+        font-size: 1.25rem;
+    }
+
+    .mission-title{
+        font-size: 1.375rem;
+    }
+    .bigger-font{
+        font-size: 1rem;
+    }
+
+}
 
 /* medium devices - OK */
  @media (min-width: 48rem) and (max-width: 61.9375rem) {
