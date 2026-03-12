@@ -117,8 +117,11 @@ button{
 body{
     font-family: Arial, Helvetica, sans-serif;
     color: #010817;
-
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 
 .title{
     margin-top: 2rem;
@@ -199,24 +202,41 @@ body{
 }
 
 
-
+/* footer */
 footer {
     background-color: #010817;
     color: white;
     text-align: center;
-    padding: 1.25rem 0;
-    text-decoration: none;
+    padding: 2rem 1rem;
+    margin-top: auto;
 }
+
+.footer-logo{
+margin-bottom: 0.8rem;
+}
+
+.footer-slogan{
+font-style: italic;
+margin-bottom: 1rem;
+}
+
+.footer-info{
+max-width: 30rem;
+margin: 0 auto;
+white-space: nowrap;
+}
+
+.fiap-color{
+color: #fd8b08;
+text-decoration: none;
+}
+/* footer fim  */
 
 a {
     color: #587beb;
     text-decoration: none;
 }
 a:hover {
-    color: #fd8b08;
-}
-
-.fiap-color {
     color: #fd8b08;
 }
 
@@ -303,7 +323,7 @@ border-radius: 0.4rem;
 }
 
 .home-main{
-min-height: 80vh;
+min-height: 100vh;
 display: flex;
 align-items: center;
 padding-left: 6rem;
@@ -397,7 +417,7 @@ color: white
     .menu li{
         width: 100%;
     }
-    /* isso aq vai puxar os botao de login pra cima no mobile, ta basicamente falando q o ultimo li fica na primeira posição(-2) e o penultimo na segunda (-1) */
+    /* isso aq vai puxar os botao de login pra cima no mobile, ta basicamente falando q o ultimo li do nav fica na primeira posição(-2, pq quero subir 2 coisas) e o penultimo na segunda (-1) */
     .menu li:last-child{
     order: -1;
     }
@@ -445,13 +465,6 @@ color: white
 
 /* fim */
 
-
-
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* o vh é Viewrpoint Height > altura da página, n do monitor*/
-    }
 
     /* pág. contato */
     .side {
@@ -590,6 +603,32 @@ width: 11rem;
 height: 11rem;
 margin-bottom: 0.5rem;
 }
+
+
+/* footer */
+.footer{
+padding: 1.5rem 1rem;
+}
+
+.footer p{
+margin: 0.4rem 0;
+}
+
+.footer-logo{
+font-size: 1.25rem;
+margin-bottom: 0;
+}
+
+.footer-slogan{
+font-size: 0.9rem;
+}
+
+.footer-info{
+font-size: 0.8rem;
+overflow-x: auto;
+white-space: normal;
+}
+
 }
 
   
@@ -693,13 +732,6 @@ margin-bottom: 0.5rem;
     }
 
 /* fim */
-
-
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; 
-    }
     
     .formText {
         font-size: 1.2rem;
@@ -854,15 +886,6 @@ margin-bottom: 0.5rem;
 
 /* fim */
 
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-    
-    footer {
-        margin-top: auto;
-    }
 
      .title{
     margin-top: 3rem;
