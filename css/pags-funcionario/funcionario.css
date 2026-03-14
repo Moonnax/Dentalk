@@ -14,7 +14,9 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
-
+main{
+    margin: 1rem 2rem;
+}
 
 /* fim style */
 
@@ -99,7 +101,7 @@ header{
     white-space: nowrap;
 }
 
-svg {
+.logout-icon {
     margin-top: 0.275rem;
     width: 1.5rem;
     height: 1.5rem;
@@ -110,6 +112,12 @@ svg {
 
 .bell-icon{
     margin-left: auto;
+    margin-top: 0.275rem;
+    margin-right: 0.735rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    
 }
 
 /* FIM header */
@@ -145,10 +153,92 @@ text-decoration: none;
 /* footer fim  */
 
 
-a {
+li {
     color: #587beb;
     text-decoration: none;
 }
-a:hover {
+li:hover {
     color: #fd8b08;
+}
+
+
+/* HOME */
+
+.dashboard_container {
+    display: flex;
+    padding: 20px 40px;
+}
+
+.coluna_esquerda {
+    width: 450px;
+    padding-right: 40px;
+    
+}
+
+.coluna_esquerda h1 {
+    font-size: 34px;
+padding-bottom: 20px;
+}
+
+.card_funcionario {
+    background-color: #f2f2f2;
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    min-height: 180px;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card_textos h2 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+}
+
+.card_descricao p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.badge {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.badge_gray { 
+    border: 2px dashed #333; 
+}
+.badge_red { 
+    background-color: #ff3b30; 
+    color: white; 
+}
+.badge_green { 
+    background-color: #c9e265; 
+    color: #333; 
+}
+
+.card_acao {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_button_acao {
+    font-weight: 800;
+    cursor: pointer;
+    margin: 0;
 }
