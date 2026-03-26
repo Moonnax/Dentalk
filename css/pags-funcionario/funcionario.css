@@ -250,6 +250,17 @@ padding-bottom: 20px;
     justify-content: flex-end;
 }
 
+.card_acao a{
+    text-decoration: none;
+    color: #000;
+
+}
+
+.card_acao a:hover{
+    color: gray;
+
+}
+
 .card_button_acao {
     font-weight: 800;
     cursor: pointer;
@@ -310,6 +321,16 @@ padding-bottom: 20px;
     font-size: 0.85rem;
 }
 
+.quadro_acoes a{
+    text-decoration: none;
+    color: #000;
+
+}
+
+.quadro_acoes a:hover{
+    color: gray;
+
+}
 
 .tabela_dados {
     display: flex;

@@ -1,0 +1,291 @@
+
+/* style */
+
+
+*{
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #010817;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    margin: 1rem 2rem;
+}
+
+/* fim style */
+
+/* HEADER */
+header{
+    background-color:#010817;
+    height: 6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    
+}
+
+.menu-toggle{
+    display: none;
+}
+
+#nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color:#010817;
+}
+
+#area-button-f{
+    background-color: #fd8b08;
+    color: whitesmoke;
+    padding: 0.735rem;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 0.735rem;
+    font-weight: 550;
+    font-size: 1rem; 
+    text-decoration: none;
+    padding: 0.735rem;
+
+} 
+
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
+}
+
+.menu-item {
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 1rem; 
+    font-weight: 500;
+    text-decoration: none;
+    background-color: #010817;
+    color: whitesmoke;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.menu-item.active { 
+    color: #fd8b08;
+/* esse aq vai funcionar com o router */
+}
+
+.menu-item:hover {
+    color: #fd8b08;
+}
+
+.logo{
+    padding: 0 1.5rem;
+}
+
+.logo a{
+    color: #fd8b08;
+    text-decoration: none;
+}
+
+.logo h1{
+    background-color: transparent;
+    font-size: 1.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.logout-icon {
+    margin-top: 0.275rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    margin-right: 1rem;
+
+}
+
+.bell-icon{
+    margin-left: auto;
+    margin-top: 0.275rem;
+    margin-right: 0.735rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    
+}
+
+/* FIM header */
+
+
+.cadastro_container {
+    padding: 30px 50px;
+    background-color: #fff;
+}
+
+
+.filtros_cadastro {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.filtros_grupo {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.caixa_filtro {
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.simular_busca {
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 5px;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #999;
+}
+
+.botao_laranja {
+    background-color: #ff8c00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;  
+    cursor: pointer;      
+}
+
+.botao_laranja:hover {
+    background-color: #e67e00;
+}
+
+
+.contagem_abas {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.aba {
+    border: 1px solid #eee;
+    padding: 8px 15px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bolinha_numero {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.bolinha_numero.gray { background: #f0f0f0; }
+.bolinha_numero.yellow { background: #fdfd96; }
+.bolinha_numero.blue { background: #bfefff; }
+
+
+.lista_usuarios {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.linha_cabecalho, .linha_usuario {
+    display: flex;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.linha_cabecalho {
+    font-weight: bold;
+    color: #333;
+    background-color: #fcfcfc;
+}
+
+
+.linha_cabecalho span, 
+.linha_usuario span, 
+.linha_usuario a {
+    font-size: 0.95rem;
+    display: block;
+}
+
+/* isso aq ta definindo as distancia por span */
+.linha_cabecalho span:nth-child(1), .linha_usuario span:nth-child(1) { width: 35%; } 
+.linha_cabecalho span:nth-child(2), .linha_usuario span:nth-child(2) { width: 10%; } 
+.linha_cabecalho span:nth-child(3), .linha_usuario span:nth-child(3) { width: 20%; } 
+.linha_cabecalho span:nth-child(4), .linha_usuario span:nth-child(4) { width: 20%; } 
+.linha_cabecalho span:nth-child(5), .linha_usuario a { width: 15%; text-align: right; } 
+
+.destaque {
+    background-color: #f9f9f9;
+}
+
+
+.link_fake {
+    color: #add8e6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link_fake:hover {
+    text-decoration: underline;
+}
+
+.link_fake:link, .link_fake:visited {
+    color: #add8e6;
+}
+
+
+/* footer */
+footer {
+    background-color: #010817;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+.footer-logo{
+margin-bottom: 0.8rem;
+}
+
+.footer-slogan{
+font-style: italic;
+margin-bottom: 1rem;
+}
+
+.footer-info{
+max-width: 30rem;
+margin: 0 auto;
+white-space: nowrap;
+}
+
+.fiap-color{
+color: #fd8b08;
+text-decoration: none;
+}
+/* footer fim  */
