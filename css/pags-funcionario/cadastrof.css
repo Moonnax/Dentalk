@@ -121,23 +121,23 @@ header{
 }
 
 /* FIM header */
-
-
+/* --- LAYOUT DO MIOLO (Main) - PADRONIZAÇÃO TOTAL COM TRIAGEM --- */
 .cadastro_container {
     padding: 30px 50px;
     background-color: #fff;
+    min-height: 70vh;
 }
 
-
+/* Barra de Filtros (Topo) */
 .filtros_cadastro {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 20px; /* Igual à Triagem */
 }
 
 .filtros_grupo {
     display: flex;
-    gap: 15px;
+    gap: 12px; /* Padronizado */
     align-items: center;
 }
 
@@ -150,6 +150,7 @@ header{
     gap: 10px;
     color: #666;
     font-size: 0.9rem;
+    background: white;
 }
 
 .simular_busca {
@@ -160,40 +161,40 @@ header{
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: 14.4px;
     color: #999;
 }
 
+/* Botão Novo Cadastro - Ajustado para altura da busca */
 .botao_laranja {
     background-color: #ff8c00;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 20px; 
     border-radius: 8px;
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;  
-    cursor: pointer;      
+    font-size: 0.9rem;
 }
 
-.botao_laranja:hover {
-    background-color: #e67e00;
-}
-
-
+/* Abas de Contagem - EXATAMENTE IGUAL À TRIAGEM */
 .contagem_abas {
     display: flex;
-    gap: 15px;
+    gap: 10px; /* Reduzido de 15px para 10px */
     margin-bottom: 25px;
 }
 
 .aba {
     border: 1px solid #eee;
-    padding: 8px 15px;
+    padding: 6px 12px; /* Reduzido de 8px para 6px para igualar altura */
     border-radius: 6px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 .bolinha_numero {
@@ -201,64 +202,56 @@ header{
     border-radius: 4px;
     font-weight: bold;
 }
+
+/* Cores das bolinhas (Mantidas as do Cadastro) */
 .bolinha_numero.gray { background: #f0f0f0; }
 .bolinha_numero.yellow { background: #fdfd96; }
 .bolinha_numero.blue { background: #bfefff; }
 
+/* --- TABELA (Distâncias de Linha idênticas) --- */
 
 .lista_usuarios {
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: 8px;
+    overflow: hidden;
     width: 100%;
 }
 
 .linha_cabecalho, .linha_usuario {
     display: flex;
-    padding: 15px 20px;
+    padding: 12px 15px; /* Reduzido de 15px para 12px igual à Triagem */
     border-bottom: 1px solid #eee;
     align-items: center;
 }
 
 .linha_cabecalho {
+    background-color: #fcfcfc;
     font-weight: bold;
     color: #333;
-    background-color: #fcfcfc;
 }
-
-
-.linha_cabecalho span, 
-.linha_usuario span, 
-.linha_usuario a {
-    font-size: 0.95rem;
-    display: block;
-}
-
-/* isso aq ta definindo as distancia por span */
-.linha_cabecalho span:nth-child(1), .linha_usuario span:nth-child(1) { width: 35%; } 
-.linha_cabecalho span:nth-child(2), .linha_usuario span:nth-child(2) { width: 10%; } 
-.linha_cabecalho span:nth-child(3), .linha_usuario span:nth-child(3) { width: 20%; } 
-.linha_cabecalho span:nth-child(4), .linha_usuario span:nth-child(4) { width: 20%; } 
-.linha_cabecalho span:nth-child(5), .linha_usuario a { width: 15%; text-align: right; } 
 
 .destaque {
     background-color: #f9f9f9;
 }
 
+/* Definição de Larguras e Divisórias Verticais */
+.col-nome-c { width: 35%; }
+.col-idade-c { width: 10%; border-left: 1px solid #eee; padding-left: 15px; }
+.col-status-c { width: 20%; border-left: 1px solid #eee; padding-left: 15px; }
+.col-categoria-c { width: 20%; border-left: 1px solid #eee; padding-left: 15px; }
+.col-detalhes-c { 
+    width: 15%; 
+    border-left: 1px solid #eee; 
+    padding-left: 15px; 
+    text-align: right; 
+}
 
 .link_fake {
-    color: #add8e6;
+    color: #4ebde2;
     text-decoration: none;
     font-weight: 500;
+    font-size: 0.95rem;
 }
-
-.link_fake:hover {
-    text-decoration: underline;
-}
-
-.link_fake:link, .link_fake:visited {
-    color: #add8e6;
-}
-
 
 /* footer */
 footer {

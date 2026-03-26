@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🦷 Cadastro </title>
-<link rel="stylesheet" href="../css/pags-funcionario/cadastrof.css">
+    <link rel="stylesheet" href="../css/pags-funcionario/cadastrof.css">
     <script src="https://kit.fontawesome.com/9d04bbea58.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -12,7 +12,7 @@
     <header>
         <div class="logo">
             <a href="areaFuncionario.html">
-            <h1>🦷 DenTalk</h1>
+                <h1>🦷 DenTalk</h1>
             </a>
         </div>
 
@@ -22,146 +22,144 @@
 
         <nav id="nav">
             <ul class="menu">
-                <li><a class="menu-item" href ="../areaFuncionario.html" >Início</a></li>
-                <li><a class="menu-item" href =".\cadastrof.html">Cadastro</a></li>
-                <li><a class="menu-item" href ="">Triagem</a> </li>
-                <li><a class="menu-item" href ="../pags-funcionario/monitoramento.html">Monitoramento</a> </li>
-                <li><a class="menu-item" href ="">Ações Escola</a></li>
+                <li><a class="menu-item" href="../areaFuncionario.html">Início</a></li>
+                <li><a class="menu-item" href=".\cadastrof.html">Cadastro</a></li>
+                <li><a class="menu-item" href=".\triagemf.html">Triagem</a> </li>
+                <li><a class="menu-item" href="../pags-funcionario/monitoramento.html">Monitoramento</a> </li>
+                <li><a class="menu-item" href="">Ações Escola</a></li>
             </ul>
         </nav>
 
-        <a href=".\pags-funcionario\monitoramento.html" class="bell-icon"><i data-lucide="bell"></i></a>
-        <div class="menu-item" id="area-button-f" href ="areaFuncionario.html">funcionário</div>
+        <a href=".\monitoramento.html" class="bell-icon"><i data-lucide="bell"></i></a>
+        <div class="menu-item" id="area-button-f">funcionário</div>
 
         <a href="index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
     </header>
     
-<main class="cadastro_container">
-    <section class="filtros_cadastro">
-        <div class="filtros_grupo">
-            <div class="caixa_filtro">Categoria <i data-lucide="chevron-down"></i></div>
-            <div class="caixa_filtro">Status <i data-lucide="chevron-down"></i></div>
-            <div class="caixa_filtro">Idade <i data-lucide="chevron-down"></i></div>
-            
-            <div class="simular_busca">
-                <i data-lucide="search"></i>
-                <span>Pesquisar cpf ou nome...</span>
+    <main class="cadastro_container">
+        <section class="filtros_cadastro">
+            <div class="filtros_grupo">
+                <div class="caixa_filtro">Categoria <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Status <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Idade <i data-lucide="chevron-down"></i></div>
+                
+                <div class="simular_busca">
+                    <i data-lucide="search"></i>
+                    <span>Pesquisar cpf ou nome...</span>
+                </div>
             </div>
-        </div>
-        
-<a href="#" class="botao_laranja">
-    <i data-lucide="plus"></i> Novo Cadastro
-</a>
-    </section>
+            
+            <a href="#" class="botao_laranja">
+                <i data-lucide="plus"></i> Novo Cadastro
+            </a>
+        </section>
 
-    <section class="contagem_abas">
-        <div class="aba">Todos <span class="bolinha_numero gray">284</span></div>
-        <div class="aba">Voluntário <span class="bolinha_numero yellow">100</span></div>
-        <div class="aba">Paciente <span class="bolinha_numero blue">184</span></div>
-    </section>
+        <section class="contagem_abas">
+            <div class="aba">Todos <span class="bolinha_numero gray">284</span></div>
+            <div class="aba">Voluntário <span class="bolinha_numero yellow">100</span></div>
+            <div class="aba">Paciente <span class="bolinha_numero blue">184</span></div>
+        </section>
 
- <section class="lista_usuarios">
-        <div class="linha_cabecalho">
-            <span>Nome</span>
-            <span>idade</span>
-            <span>Status</span>
-            <span>Categoria</span>
-            <span>Detalhes</span>
-        </div>
+        <section class="lista_usuarios">
+            <div class="linha_cabecalho">
+                <span class="col-nome-c">Nome</span>
+                <span class="col-idade-c">idade</span>
+                <span class="col-status-c">Status</span>
+                <span class="col-categoria-c">Categoria</span>
+                <span class="col-detalhes-c">Detalhes</span>
+            </div>
 
-        <div class="linha_usuario">
-            <span>Rafael Souza Lima</span>
-            <span>31 anos</span>
-            <span>Ativo</span>
-            <span>Funcionario</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario">
+                <span class="col-nome-c">Rafael Souza Lima</span>
+                <span class="col-idade-c">31 anos</span>
+                <span class="col-status-c">Ativo</span>
+                <span class="col-categoria-c">Funcionario</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario destaque">
-            <span>Mariana Costa Fernandes</span>
-            <span>28 anos</span>
-            <span>Encaminhado</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario destaque">
+                <span class="col-nome-c">Mariana Costa Fernandes</span>
+                <span class="col-idade-c">28 anos</span>
+                <span class="col-status-c">Encaminhado</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario">
-            <span>Bruno Henrique Alves</span>
-            <span>39 anos</span>
-            <span>Atendimento</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario">
+                <span class="col-nome-c">Bruno Henrique Alves</span>
+                <span class="col-idade-c">39 anos</span>
+                <span class="col-status-c">Atendimento</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario destaque">
-            <span>Carla Mendes Ribeiro</span>
-            <span>52 anos</span>
-            <span>Ativo</span>
-            <span>Funcionario</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario destaque">
+                <span class="col-nome-c">Carla Mendes Ribeiro</span>
+                <span class="col-idade-c">52 anos</span>
+                <span class="col-status-c">Ativo</span>
+                <span class="col-categoria-c">Funcionario</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario">
-            <span>Juliana Pereira Santos</span>
-            <span>26 anos</span>
-            <span>Encaminhado</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario">
+                <span class="col-nome-c">Juliana Pereira Santos</span>
+                <span class="col-idade-c">26 anos</span>
+                <span class="col-status-c">Encaminhado</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario destaque">
-            <span>Felipe Rocha Martins</span>
-            <span>34 anos</span>
-            <span>Atendimento</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario destaque">
+                <span class="col-nome-c">Felipe Rocha Martins</span>
+                <span class="col-idade-c">34 anos</span>
+                <span class="col-status-c">Atendimento</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario">
-            <span>Patricia Gomes Duarte</span>
-            <span>47 anos</span>
-            <span>Ativo</span>
-            <span>Funcionario</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario">
+                <span class="col-nome-c">Patricia Gomes Duarte</span>
+                <span class="col-idade-c">47 anos</span>
+                <span class="col-status-c">Ativo</span>
+                <span class="col-categoria-c">Funcionario</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario destaque">
-            <span>Lucas Andrade Silva</span>
-            <span>22 anos</span>
-            <span>Encaminhado</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario destaque">
+                <span class="col-nome-c">Lucas Andrade Silva</span>
+                <span class="col-idade-c">22 anos</span>
+                <span class="col-status-c">Encaminhado</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario">
-            <span>Fernanda Lopes Carvalho</span>
-            <span>36 anos</span>
-            <span>Finalizado</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
+            <div class="linha_usuario">
+                <span class="col-nome-c">Fernanda Lopes Carvalho</span>
+                <span class="col-idade-c">36 anos</span>
+                <span class="col-status-c">Finalizado</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
 
-        <div class="linha_usuario destaque">
-            <span>Thiago Barros Nogueira</span>
-            <span>41 anos</span>
-            <span>Atendimento</span>
-            <span>Beneficiário</span>
-            <a href="" class="link_fake">ver mais</a>
-        </div>
-    </section>
-</main>
+            <div class="linha_usuario destaque">
+                <span class="col-nome-c">Thiago Barros Nogueira</span>
+                <span class="col-idade-c">41 anos</span>
+                <span class="col-status-c">Atendimento</span>
+                <span class="col-categoria-c">Beneficiário</span>
+                <a href="" class="col-detalhes-c link_fake">ver mais</a>
+            </div>
+        </section>
+    </main>
 
+    <footer class="footer">
+        <h2 class="footer-logo">DenTalk</h2>
+        <p class="footer-slogan">"Cada sorriso, uma história"</p>
+        <p class="footer-info">
+            Projeto institucional desenvolvido por alunos do Centro Universitário
+            <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
+        </p>
+    </footer>
 
-<footer class="footer">
-    <h2 class="footer-logo">DenTalk</h2>
-    <p class="footer-slogan">
-        "Cada sorriso, uma história"
-    </p>
-    <p class="footer-info">
-        Projeto institucional desenvolvido por alunos do Centro Universitário
-        <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
-    </p>
-</footer>
     <script src="js/menuToggle.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>lucide.createIcons();</script>

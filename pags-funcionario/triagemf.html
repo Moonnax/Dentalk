@@ -4,34 +4,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🦷 Triagem </title>
-<link rel="stylesheet" href="../css/pags-funcionario/cadastrof.css">
+    <link rel="stylesheet" href="../css/pags-funcionario/triagemf.css">
     <script src="https://kit.fontawesome.com/9d04bbea58.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
     <header>
         <div class="logo">
-            <a href="areaFuncionario.html">
-            <h1>🦷 DenTalk</h1>
-            </a>
+            <a href="areaFuncionario.html"><h1>🦷 DenTalk</h1></a>
         </div>
-
-        <button id="menuToggle" class="menu-toggle">
-            <i id="menuIcon" data-lucide="menu"></i>
-        </button>
-
+        <button id="menuToggle" class="menu-toggle"><i id="menuIcon" data-lucide="menu"></i></button>
         <nav id="nav">
             <ul class="menu">
-                <li><a class="menu-item" href ="../areaFuncionario.html" >Início</a></li>
-                <li><a class="menu-item" href =".\cadastrof.html">Cadastro</a></li>
-                <li><a class="menu-item" href ="">Triagem</a> </li>
-                <li><a class="menu-item" href ="../pags-funcionario/monitoramento.html">Monitoramento</a> </li>
-                <li><a class="menu-item" href ="">Ações Escola</a></li>
+                <li><a class="menu-item" href="../areaFuncionario.html">Início</a></li>
+                <li><a class="menu-item" href=".\cadastrof.html">Cadastro</a></li>
+                <li><a class="menu-item" href=".\triagemf.html">Triagem</a> </li>
+                <li><a class="menu-item" href="../pags-funcionario/monitoramento.html">Monitoramento</a> </li>
+                <li><a class="menu-item" href="">Ações Escola</a></li>
             </ul>
         </nav>
-
-        <a href=".\pags-funcionario\monitoramento.html" class="bell-icon"><i data-lucide="bell"></i></a>
-        <div class="menu-item" id="area-button-f" href ="areaFuncionario.html">funcionário</div>
-
+        <a href=".\monitoramento.html" class="bell-icon"><i data-lucide="bell"></i></a>
+        <div class="menu-item" id="area-button-f">funcionário</div>
         <a href="index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
     </header>
+
+    <main class="cadastro_container">
+        <section class="filtros_cadastro">
+            <div class="filtros_grupo">
+                <div class="caixa_filtro">Prioridade <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Região <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Canal <i data-lucide="chevron-down"></i></div>
+                <div class="simular_busca">
+                    <i data-lucide="search"></i>
+                    <span>filtrar solicitações...</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="contagem_abas">
+            <div class="aba">Solicitações <span class="bolinha_solicitacoes">197</span></div>
+            <div class="aba">Encaminhados <span class="bolinha_encaminhados">821</span></div>
+            <div class="aba">Rejeitados <span class="bolinha_rejeitados">46</span></div>
+        </section>
+
+        <section class="lista_usuarios">
+            <div class="linha_cabecalho">
+                <span class="col-nome-t">Nome</span>
+                <span class="col-regiao-t">Região</span>
+                <span class="col-prioridade-t">Prioridade</span>
+                <span class="col-canal-t">Canal</span>
+                <span class="col-acoes-t">Ações</span>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-nome-t">Rafael Souza Lima</span>
+                <span class="col-regiao-t">São Paulo - ZN</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Média <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Ação Esc.</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-nome-t">Mariana Costa Fernandes</span>
+                <span class="col-regiao-t">Rio de Janeiro - ZS</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Baixa <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Instagram</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-nome-t">Bruno Henrique Alves</span>
+                <span class="col-regiao-t">Belo Horizonte - Centro</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Alta <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Site</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-nome-t">Carla Mendes Ribeiro</span>
+                <span class="col-regiao-t">Curitiba - Batel</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Alta <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Ação Esc.</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-nome-t">Felipe Rocha Martins</span>
+                <span class="col-regiao-t">Porto Alegre - Sul</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Média <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">WhatsApp</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-nome-t">Juliana Pereira Santos</span>
+                <span class="col-regiao-t">Salvador - Centro</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Baixa <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Instagram</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-nome-t">Lucas Andrade Silva</span>
+                <span class="col-regiao-t">Recife - Boa Viagem</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Alta <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Site</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-nome-t">Beatriz Oliveira Vaz</span>
+                <span class="col-regiao-t">Manaus - Ponta Negra</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Média <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Instagram</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-nome-t">Thiago Barros Nogueira</span>
+                <span class="col-regiao-t">Fortaleza - Aldeota</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Alta <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">WhatsApp</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-nome-t">Fernanda Lopes Carvalho</span>
+                <span class="col-regiao-t">Brasília - Asa Sul</span>
+                <div class="col-prioridade-t"><div class="caixa_mini_filtro">Baixa <i data-lucide="chevron-down"></i></div></div>
+                <span class="col-canal-t">Site</span>
+                <div class="col-acoes-t"><a href="#" class="btn-contato">Contato ></a><a href="#" class="btn-rejeitar">X Rejeitar</a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <h2 class="footer-logo">DenTalk</h2>
+        <p class="footer-slogan">"Cada sorriso, uma história"</p>
+        <p class="footer-info">
+            Projeto institucional desenvolvido por alunos do Centro Universitário
+            <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
+        </p>
+    </footer>
+
+    <script src="js/menuToggle.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
