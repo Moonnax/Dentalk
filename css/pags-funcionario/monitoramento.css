@@ -151,3 +151,234 @@ color: #fd8b08;
 text-decoration: none;
 }
 /* footer fim  */
+
+.container_monitoramento {
+    display: flex;
+    height: calc(100vh - 6rem);
+    background: #f4f7f6;
+}
+
+.coluna_ocorrencias,
+.coluna_chat,
+.coluna_perfil_detalhe {
+    background: #fff;
+}
+
+.coluna_ocorrencias {
+    width: 25%;
+    padding: 1.5rem;
+    border-right: 1px solid #ddd;
+}
+
+.coluna_chat {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.coluna_perfil_detalhe {
+    width: 25%;
+    padding: 1.5rem;
+    border-left: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.avatar_p {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar_g {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo_sessao {
+    margin-bottom: 10px;
+    font-size: 34px;
+}
+
+.tabs_filtros {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0 20px 0;
+}
+
+.tab_item {
+    padding: 6px 12px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+.tab_item.active {
+    background: #010817;
+    color: #fff;
+}
+
+.lista_cards_scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card_ocorrencia {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.card_ocorrencia.active {
+    background: #f0f0f0;
+}
+
+.status_dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.vermelho { background: red; }
+.amarelo { background: orange; }
+
+.previa {
+    font-size: 13px;
+    color: gray;
+}
+
+.header_chat {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.area_mensagens_scroll {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.balao_texto {
+    padding: 12px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+.msg_recebida {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.msg_recebida .balao_texto {
+    background: #eee;
+}
+
+.msg_enviada {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.msg_enviada .balao_texto {
+    background: #7ba4a8;
+    color: #fff;
+    max-width: 55%;
+}
+
+.footer_input_chat {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.campo_input {
+    background: #eee;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.btn_enviar {
+    background: #c4d600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.card_perfil_topo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.secao_pacientes_atuais {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.paciente_item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.paciente_item p {
+    font-size: 13px;
+    color: #666;
+}
+
+.acoes_finais {
+    margin-top: auto;
+}
+
+.btn_finalizar {
+    background: #c4d600;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.btn_sec {
+    background: #eee;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.acoes_rapidas_chat {
+    display: flex;
+    gap: 10px;
+}
+
+.btn_ghost {
+    background: #eee;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+}

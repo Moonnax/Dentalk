@@ -36,8 +36,153 @@
         <a href="..\index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
     </header>
 
+<main class="container_monitoramento">
+    
+    <!-- ESQUERDA -->
+    <section class="coluna_ocorrencias">
+        <h2 class="titulo_sessao">Ocorrências</h2>
+
+        <div class="tabs_filtros">
+            <span class="tab_item active">Pendentes</span>
+            <span class="tab_item">Respondidas</span>
+        </div>
+
+        <div class="lista_cards_scroll">
+
+            <div class="card_ocorrencia active">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>Dr. Felipe Oliveira</strong></p>
+                    <p>Sair da Rede</p>
+                    <p class="previa">Preciso reencaminhar meus pacientes...</p>
+                </div>
+                <span class="status_dot vermelho"></span>
+            </div>
+
+            <div class="card_ocorrencia">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>Dra. Leticia Mendes</strong></p>
+                    <p>Reportando Agora</p>
+                    <p class="previa">Paciente apresentou quadro alérgico...</p>
+                </div>
+                <span class="status_dot amarelo"></span>
+            </div>
+
+            <div class="card_ocorrencia">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>Dr. Ricardo Santos</strong></p>
+                    <p>Locação de Consultório</p>
+                    <p class="previa">Cadeira disponível para uso...</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 
+    <!-- CHAT -->
+    <section class="coluna_chat">
+
+        <div class="header_chat">
+            <div class="avatar_p">👤</div>
+            <strong>Dr. Felipe Oliveira</strong>
+        </div>
+
+        <div class="area_mensagens_scroll">
+
+            <div class="msg_recebida">
+                <div class="avatar_p">👤</div>
+                <div class="balao_texto">
+                    <p>Preciso sair da rede por questões pessoais.</p>
+                    <span>20 min atrás</span>
+                </div>
+            </div>
+
+            <div class="msg_enviada">
+                <div class="balao_texto">
+                    <p>Entendido! Você pode nos informar os pacientes ativos?</p>
+                    <span>22 min atrás</span>
+                </div>
+            </div>
+
+            <div class="msg_recebida">
+                <div class="avatar_p">👤</div>
+                <div class="balao_texto">
+                    <p>Tenho 5 pacientes em tratamento.</p>
+                    <span>20 min atrás</span>
+                </div>
+            </div>
+
+            <div class="acoes_rapidas_chat">
+                <span class="btn_ghost">Confirmar recebimento</span>
+                <span class="btn_ghost">Solicitar lista</span>
+                <span class="btn_ghost">Encaminhar</span>
+            </div>
+
+        </div>
+
+        <div class="footer_input_chat">
+            <p class="campo_input">Digite sua resposta...</p>
+            <div class="btn_enviar">Enviar</div>
+        </div>
+
+    </section>
+
+
+    <!-- DIREITA -->
+    <section class="coluna_perfil_detalhe">
+
+        <div class="card_perfil_topo">
+            <div class="avatar_g">👤</div>
+            <h3>Dr. Felipe Oliveira</h3>
+            <p>Dentista Voluntário</p>
+            <p>CRO/SP 65231</p>
+        </div>
+
+        <div>
+            <p>📧 felipe.oliveira@email.com</p>
+            <p>📞 (11) 96785-4321</p>
+        </div>
+
+        <div class="secao_pacientes_atuais">
+            <h4>Atuais pacientes</h4>
+
+            <div class="paciente_item">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>Ana Pereira</strong></p>
+                    <p>Tratamento de Cárie</p>
+                </div>
+            </div>
+
+            <div class="paciente_item">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>João Almeida</strong></p>
+                    <p>Tratamento de Cárie</p>
+                </div>
+            </div>
+
+            <div class="paciente_item">
+                <div class="avatar_p">👤</div>
+                <div>
+                    <p><strong>Mariana Silva</strong></p>
+                    <p>Tratamento de Cárie</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="acoes_finais">
+            <div class="btn_finalizar">Finalizar Ocorrência</div>
+            <div class="btn_sec">Reencaminhar Paciente</div>
+        </div>
+
+    </section>
+
+</main>
 
     <footer class="footer">
         <h2 class="footer-logo">DenTalk</h2>
