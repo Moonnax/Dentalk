@@ -167,8 +167,19 @@ header{
 }
 
 
+
+
+.bolinha_aencaminhar { 
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
 .bolinha_solicitacoes { 
-    background: #f0f0f0; 
+    background: #c9e265;
+     
     padding: 2px 8px;
     border-radius: 4px;
     font-weight: bold;
