@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦷 Voluntário </title>
+    <link rel="stylesheet" href="..\css\pags-voluntario\meuspacientes.css">
+    <script src="https://kit.fontawesome.com/9d04bbea58.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="areaVoluntario.html">
+                <h1>🦷 DenTalk</h1>
+            </a>
+        </div>
+
+        <button id="menuToggle" class="menu-toggle">
+            <i id="menuIcon" data-lucide="menu"></i>
+        </button>
+
+        <nav id="nav">
+            <ul class="menu">
+                <li><a class="menu-item" href="../areaVoluntario.html">Início</a></li>
+                <li><a class="menu-item" href=".\meuspacientes.html">Meus Pacientes</a></li>
+                <li><a class="menu-item" href=".\agenda.html">Agenda</a> </li>
+                <li><a class="menu-item" href=".\atendimentos.html">Atendimentos</a> </li>
+                <li><a class="menu-item" href=".\prontuarios.html">Prontuários</a></li>
+            </ul>
+        </nav>
+
+        <a href=".\pags-voluntario\agenda.html" class="bell-icon"><i data-lucide="bell"></i></a>
+        <a href="areaVoluntario.html" class="menu-item" id="area-button-v">Voluntário</a>
+
+        <a href="..\index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
+    </header>
+<main class="dashboard_container">
+    <div class="layout_grid_fixo">
+        
+        <section class="coluna_pacientes">
+            <h1>Meus Pacientes</h1>
+            
+                <div class="simular_busca">
+                    <i data-lucide="search"></i>
+                    <span>Pesquisar cpf ou nome...</span>
+                </div>
+            
+
+            <div class="area_filtros">
+                <button class="btn_filtro ativo">Todos</button>
+                <button class="btn_filtro">Aguardando Retorno</button>
+                <button class="btn_filtro">Agendado</button>
+            </div>
+
+            <div class="tabela_pacientes_lista">
+                
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Ana Beatriz Silva,</span> <span class="p_idade">08 anos</span>
+                        <p class="p_cpf">CPF: 455.123.789-11</p>
+                        <p class="p_atendimento">último atendimento em: 15/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo" title="Adicionar"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo" title="Prontuário"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo" title="Agenda"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Lucas Oliveira,</span> <span class="p_idade">12 anos</span>
+                        <p class="p_cpf">CPF: 332.987.456-00</p>
+                        <p class="p_atendimento">último atendimento em: 10/02/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Mariana Costa,</span> <span class="p_idade">07 anos</span>
+                        <p class="p_cpf">CPF: 111.222.333-44</p>
+                        <p class="p_atendimento">último atendimento em: 01/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">João Pedro Santos,</span> <span class="p_idade">10 anos</span>
+                        <p class="p_cpf">CPF: 222.333.444-55</p>
+                        <p class="p_atendimento">último atendimento em: 20/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Beatriz Souza,</span> <span class="p_idade">09 anos</span>
+                        <p class="p_cpf">CPF: 999.888.777-66</p>
+                        <p class="p_atendimento">último atendimento em: 05/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Enzo Lima,</span> <span class="p_idade">11 anos</span>
+                        <p class="p_cpf">CPF: 777.666.555-44</p>
+                        <p class="p_atendimento">último atendimento em: 18/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Clara Mendes,</span> <span class="p_idade">13 anos</span>
+                        <p class="p_cpf">CPF: 555.444.333-22</p>
+                        <p class="p_atendimento">último atendimento em: 12/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Gustavo Rocha,</span> <span class="p_idade">06 anos</span>
+                        <p class="p_cpf">CPF: 888.777.111-00</p>
+                        <p class="p_atendimento">último atendimento em: 22/02/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Valentina Silva,</span> <span class="p_idade">07 anos</span>
+                        <p class="p_cpf">CPF: 333.444.999-88</p>
+                        <p class="p_atendimento">último atendimento em: 14/03/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+                <div class="linha_paciente">
+                    <div class="info_paciente_bloco">
+                        <span class="p_nome">Felipe Augusto,</span> <span class="p_idade">14 anos</span>
+                        <p class="p_cpf">CPF: 121.232.343-45</p>
+                        <p class="p_atendimento">último atendimento em: 01/02/26</p>
+                    </div>
+                    <div class="acoes_paciente_bloco">
+                        <button class="btn_acao_circulo"><i data-lucide="plus"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="file-text"></i></button>
+                        <button class="btn_acao_circulo"><i data-lucide="calendar"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <aside class="coluna_encaminhados">
+            <h1>Encaminhados</h1>
+
+            <div class="card_encaminhado_p">
+                <div class="borda_lateral"></div>
+                <div class="conteudo_card_p">
+                    <h3>Enzo Gabriel</h3>
+                    <p><strong>Idade:</strong> 09 anos &nbsp; <strong>gênero:</strong> masculino</p>
+                    <p><strong>Endereço:</strong> Av. Paulista, 1000 - SP</p>
+                    <p><strong>Laudo:</strong> Limpeza e avaliação de canal.</p>
+                    <div class="botoes_card_p">
+                        <button class="btn-amarelo-p">Aceitar e Agendar</button>
+                        <button class="btn-cinza-p">Ver mais</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_encaminhado_p">
+                <div class="borda_lateral"></div>
+                <div class="conteudo_card_p">
+                    <h3>Sophia Martins</h3>
+                    <p><strong>Idade:</strong> 11 anos &nbsp; <strong>gênero:</strong> feminino</p>
+                    <p><strong>Endereço:</strong> Rua Augusta, 450 - SP</p>
+                    <p><strong>Laudo:</strong> Dor aguda no molar inferior.</p>
+                    <div class="botoes_card_p">
+                        <button class="btn-amarelo-p">Aceitar e Agendar</button>
+                        <button class="btn-cinza-p">Ver mais</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_encaminhado_p">
+                <div class="borda_lateral"></div>
+                <div class="conteudo_card_p">
+                    <h3>Thiago Ferreira</h3>
+                    <p><strong>Idade:</strong> 13 anos &nbsp; <strong>gênero:</strong> masculino</p>
+                    <p><strong>Endereço:</strong> Rua das Flores, 12 - Osasco</p>
+                    <p><strong>Laudo:</strong> Avaliação para aparelho ortodôntico.</p>
+                    <div class="botoes_card_p">
+                        <button class="btn-amarelo-p">Aceitar e Agendar</button>
+                        <button class="btn-cinza-p">Ver mais</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_encaminhado_p">
+                <div class="borda_lateral"></div>
+                <div class="conteudo_card_p">
+                    <h3>Larissa Manoela</h3>
+                    <p><strong>Idade:</strong> 06 anos &nbsp; <strong>gênero:</strong> feminino</p>
+                    <p><strong>Endereço:</strong> Al. Santos, 200 - SP</p>
+                    <p><strong>Laudo:</strong> Extração de dente de leite.</p>
+                    <div class="botoes_card_p">
+                        <button class="btn-amarelo-p">Aceitar e Agendar</button>
+                        <button class="btn-cinza-p">Ver mais</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card_encaminhado_p">
+                <div class="borda_lateral"></div>
+                <div class="conteudo_card_p">
+                    <h3>Murilo Benício</h3>
+                    <p><strong>Idade:</strong> 10 anos &nbsp; <strong>gênero:</strong> masculino</p>
+                    <p><strong>Endereço:</strong> Rua Vergueiro, 900 - SP</p>
+                    <p><strong>Laudo:</strong> Tratamento de cáries múltiplas.</p>
+                    <div class="botoes_card_p">
+                        <button class="btn-amarelo-p">Aceitar e Agendar</button>
+                        <button class="btn-cinza-p">Ver mais</button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+</main>
+
+    <footer class="footer">
+        <h2 class="footer-logo">DenTalk</h2>
+        <p class="footer-slogan">"Cada sorriso, uma história"</p>
+        <p class="footer-info">
+            Projeto institucional desenvolvido por alunos do Centro Universitário
+            <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
+        </p>
+    </footer>
+
+    <script src="js/menuToggle.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
