@@ -122,6 +122,7 @@ header{
 
 /* FIM header */
 
+
 .cadastro_container {
     padding: 30px 50px;
     background-color: #fff;
@@ -166,28 +167,13 @@ header{
     color: #555;
 }
 
-
-.bolinha_solicitacoes { 
-    background: #f0f0f0; 
+.bolinha_numero {
     padding: 2px 8px;
     border-radius: 4px;
     font-weight: bold;
     font-size: 0.85rem;
 }
-.bolinha_rejeitados { 
-    background: #ff7675; 
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.85rem;
-}
-.bolinha_encaminhados { 
-    background: #bfefff; 
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.85rem;
-}
+.bolinha_numero.gray { background: #f0f0f0; }
 
 .lista_usuarios {
     border: 1px solid #eee;
@@ -208,79 +194,94 @@ header{
     background-color: #fcfcfc; 
     font-weight: bold; 
     color: #333; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.destaque { 
-    background-color: #f9f9f9; 
-}
 
-.col-nome-t, .col-regiao-t, .col-prioridade-t, .col-canal-t, .col-acoes-t {
+}
+.destaque { background-color: #f9f9f9; }
+
+
+.col-instituicao, .col-data, .col-alunos, .col-coordenador, .col-infra, .col-situacao {
     height: 60px; 
+    font-size: 1rem;
     display: flex;
     align-items: center;
     padding-left: 15px;
+    font-size: 1rem;
 }
 
-.col-nome-t { 
-    width: 25%; 
-    font-size: 1rem; 
-}
-.col-regiao-t { 
-    width: 25%; 
-    border-left: 1px solid #eee; 
-    font-size: 1rem;  
-}
-
-.col-prioridade-t { 
+.col-instituicao { 
+    width: 30%; 
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+ }
+.col-data { 
     width: 15%; 
     border-left: 1px solid #eee; 
-    display: flex;    
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+}
+.col-alunos { 
+    width: 10%; 
+    border-left: 1px solid #eee; 
     justify-content: center; 
-    align-items: center;
-    padding-left: 0;
 }
-.col-canal-t { 
+.col-coordenador { 
+    width: 20%; 
+    border-left: 1px solid #eee;
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+ }
+.col-infra { 
     width: 15%; 
     border-left: 1px solid #eee; 
-    font-size: 1rem; 
-     }
-
-.col-acoes-t { 
-    width: 20%; 
+    justify-content: center; 
+}
+.col-situacao { 
+    width: 10%; 
     border-left: 1px solid #eee; 
-    justify-content: flex-end; 
+    justify-content: center; 
     padding-right: 15px; 
-    gap: 8px;
 }
 
-.caixa_mini_filtro {
-    border: 1px solid #ddd;
-    padding: 4px 8px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: white;
+.col-instituicao, .col-data, .col-coordenador {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.btn-contato, .btn-rejeitar {
+.sub-info {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+.col-alunos, .col-infra { display: flex; align-items: center; }
+
+.btn-aprovar {
+    background-color: #c9e265; 
+    color: #333;
     text-decoration: none;
     font-size: 0.7rem;
-    padding: 6px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
     font-weight: bold;
     white-space: nowrap;
 }
-.btn-contato { 
-    background-color: #c9e265; 
-    color: #333; 
-}
-.btn-rejeitar { 
-    background-color: #ff7675; 
-    color: white; 
+
+.mini-caixa.gray {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #666;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 

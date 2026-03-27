@@ -121,23 +121,24 @@ header{
 }
 
 /* FIM header */
-/* --- LAYOUT DO MIOLO (Main) - PADRONIZAÇÃO TOTAL COM TRIAGEM --- */
+
+
+
 .cadastro_container {
     padding: 30px 50px;
     background-color: #fff;
     min-height: 70vh;
 }
 
-/* Barra de Filtros (Topo) */
 .filtros_cadastro {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px; /* Igual à Triagem */
+    margin-bottom: 20px;
 }
 
 .filtros_grupo {
     display: flex;
-    gap: 12px; /* Padronizado */
+    gap: 12px; 
     align-items: center;
 }
 
@@ -165,7 +166,6 @@ header{
     color: #999;
 }
 
-/* Botão Novo Cadastro - Ajustado para altura da busca */
 .botao_laranja {
     background-color: #ff8c00;
     color: white;
@@ -179,16 +179,16 @@ header{
     font-size: 0.9rem;
 }
 
-/* Abas de Contagem - EXATAMENTE IGUAL À TRIAGEM */
+
 .contagem_abas {
     display: flex;
-    gap: 10px; /* Reduzido de 15px para 10px */
+    gap: 10px; 
     margin-bottom: 25px;
 }
 
 .aba {
     border: 1px solid #eee;
-    padding: 6px 12px; /* Reduzido de 8px para 6px para igualar altura */
+    padding: 6px 12px; 
     border-radius: 6px;
     display: flex;
     align-items: center;
@@ -197,18 +197,27 @@ header{
     color: #555;
 }
 
-.bolinha_numero {
+.bolinha_todos {
+    background: #f0f0f0;
     padding: 2px 8px;
     border-radius: 4px;
     font-weight: bold;
 }
 
-/* Cores das bolinhas (Mantidas as do Cadastro) */
-.bolinha_numero.gray { background: #f0f0f0; }
-.bolinha_numero.yellow { background: #fdfd96; }
-.bolinha_numero.blue { background: #bfefff; }
+.bolinha_voluntario {
+    background: #fdfd96;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
 
-/* --- TABELA (Distâncias de Linha idênticas) --- */
+.bolinha_beneficiario {
+    background: #bfefff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
 
 .lista_usuarios {
     border: 1px solid #eee;
@@ -219,7 +228,7 @@ header{
 
 .linha_cabecalho, .linha_usuario {
     display: flex;
-    padding: 12px 15px; /* Reduzido de 15px para 12px igual à Triagem */
+    padding: 12px 15px; 
     border-bottom: 1px solid #eee;
     align-items: center;
 }
@@ -234,7 +243,6 @@ header{
     background-color: #f9f9f9;
 }
 
-/* Definição de Larguras e Divisórias Verticais */
 .col-nome-c { width: 35%; }
 .col-idade-c { width: 10%; border-left: 1px solid #eee; padding-left: 15px; }
 .col-status-c { width: 20%; border-left: 1px solid #eee; padding-left: 15px; }
@@ -252,6 +260,8 @@ header{
     font-weight: 500;
     font-size: 0.95rem;
 }
+
+
 
 /* footer */
 footer {

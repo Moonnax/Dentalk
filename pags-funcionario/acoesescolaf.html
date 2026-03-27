@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦷 Cadastro </title>
+    <link rel="stylesheet" href="../css/pags-funcionario/acoesescolaf.css">
+    <script src="https://kit.fontawesome.com/9d04bbea58.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="areaFuncionario.html">
+                <h1>🦷 DenTalk</h1>
+            </a>
+        </div>
+
+        <button id="menuToggle" class="menu-toggle">
+            <i id="menuIcon" data-lucide="menu"></i>
+        </button>
+
+        <nav id="nav">
+            <ul class="menu">
+                <li><a class="menu-item" href ="..\areaFuncionario.html" >Início</a></li>
+                <li><a class="menu-item" href =".\cadastrof.html">Cadastro</a></li>
+                <li><a class="menu-item" href =".\triagemf.html">Triagem</a> </li>
+                <li><a class="menu-item" href =".\monitoramento.html">Monitoramento</a> </li>
+                <li><a class="menu-item" href =".\acoesescolaf.html">Ações Escola</a></li>
+            </ul>
+        </nav>
+
+        <a href=".\monitoramento.html" class="bell-icon"><i data-lucide="bell"></i></a>
+        <div class="menu-item" id="area-button-f">funcionário</div>
+
+        <a href="..\index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
+    </header>
+
+    <main class="cadastro_container">
+        <section class="filtros_cadastro">
+            <div class="filtros_grupo">
+                <div class="caixa_filtro">Situação <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Data <i data-lucide="chevron-down"></i></div>
+                <div class="caixa_filtro">Canal <i data-lucide="chevron-down"></i></div>
+                <div class="simular_busca">
+                    <i data-lucide="search"></i>
+                    <span>filtrar solicitações...</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="contagem_abas">
+            <div class="aba">Todas <span class="bolinha_numero gray">197</span></div>
+            <div class="aba">concluídas <span class="bolinha_numero gray">46</span></div>
+            <div class="aba">Aprovar <span class="bolinha_numero gray">15</span></div>
+        </section>
+
+        <section class="lista_usuarios">
+            <div class="linha_cabecalho">
+                <span class="col-instituicao">Instituição</span>
+                <span class="col-data">Data</span>
+                <span class="col-alunos">qtd. Alunos</span>
+                <span class="col-coordenador">Coordenador</span>
+                <span class="col-infra">Infraestrutura</span>
+                <span class="col-situacao">Situação</span>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-instituicao">Emef Valquiria Mendes<span class="sub-info">Rio de Janeiro - Zona Sul</span></span>
+                <span class="col-data">04/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Diana Souza Brito<span class="sub-info">(11) 44556-8989</span></span>
+                <span class="col-infra">Pendente</span>
+                <div class="col-situacao"><div class="mini-caixa gray">Pendente</div></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><div class="mini-caixa gray">Confirmada</div></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/03/2026<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><div class="mini-caixa gray">Concluída</div></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">10/05/2024<span class="sub-info">9:00</span></span>
+                <span class="col-alunos">120</span>
+                <span class="col-coordenador">Ana Beatriz Oliveira<span class="sub-info">(11) 94586-5867</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-instituicao">Lar Esperança<span class="sub-info">São Paulo - Zona Norte</span></span>
+                <span class="col-data">12/05/2024<span class="sub-info">10:00</span></span>
+                <span class="col-alunos">80</span>
+                <span class="col-coordenador">Ricardo Alves<span class="sub-info">(11) 98888-7777</span></span>
+                <span class="col-infra">Pendente</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+
+            <div class="linha_usuario">
+                <span class="col-instituicao">Colégio Objetivo<span class="sub-info">São Paulo - Centro</span></span>
+                <span class="col-data">15/06/2024<span class="sub-info">14:00</span></span>
+                <span class="col-alunos">200</span>
+                <span class="col-coordenador">Paula Souza<span class="sub-info">(11) 97777-6666</span></span>
+                <span class="col-infra">Completa</span>
+                <div class="col-situacao"><div class="mini-caixa gray">Confirmada</div></div>
+            </div>
+
+            <div class="linha_usuario destaque">
+                <span class="col-instituicao">Escola Estadual Z<span class="sub-info">São Paulo - ZL</span></span>
+                <span class="col-data">20/06/2024<span class="sub-info">08:00</span></span>
+                <span class="col-alunos">150</span>
+                <span class="col-coordenador">Marcos Lima<span class="sub-info">(11) 96666-5555</span></span>
+                <span class="col-infra">Pendente</span>
+                <div class="col-situacao"><a href="#" class="btn-aprovar">Aprovar</a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <h2 class="footer-logo">DenTalk</h2>
+        <p class="footer-slogan">"Cada sorriso, uma história"</p>
+        <p class="footer-info">
+            Projeto institucional desenvolvido por alunos do Centro Universitário
+            <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
+        </p>
+    </footer>
+
+    <script src="js/menuToggle.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
