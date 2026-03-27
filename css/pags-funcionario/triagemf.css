@@ -76,7 +76,7 @@ header{
 
 .menu-item.active { 
     color: #fd8b08;
-/* esse aq vai funcionar com o router */
+    border-bottom: 3px solid #fd8b08;
 }
 
 .menu-item:hover {

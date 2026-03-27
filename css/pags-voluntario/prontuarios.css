@@ -1,0 +1,257 @@
+/* style */
+
+
+*{
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #010817;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    margin: 1rem 2rem;
+}
+
+/* fim style */
+
+
+/* HEADER */
+header{
+    background-color:#010817;
+    height: 6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+}
+
+.menu-toggle{
+    display: none;
+}
+
+#nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color:#010817;
+}
+
+
+#area-button-v{
+    background-color: #9ac93d;
+    color: whitesmoke;
+    padding: 0.735rem;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 0.735rem;
+    font-weight: 550;
+    font-size: 1rem; 
+    text-decoration: none;
+    padding: 0.735rem;
+}
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
+    height: 6rem;
+    align-items: center;
+}
+
+.menu-item {
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 1rem; 
+    font-weight: 500;
+    text-decoration: none;
+    background-color: #010817;
+    color: whitesmoke;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.menu-item.active { 
+    color: #fd8b08;
+    border-bottom: 3px solid #fd8b08;
+}
+
+.menu-item:hover {
+    color: #fd8b08;
+        
+
+}
+
+.logo{
+    padding: 0 1.5rem;
+}
+
+.logo a{
+    color: #fd8b08;
+    text-decoration: none;
+}
+
+.logo h1{
+    background-color: transparent;
+    font-size: 1.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.logout-icon {
+    margin-top: 0.275rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    margin-right: 1rem;
+
+}
+
+.bell-icon{
+    margin-left: auto;
+    margin-top: 0.275rem;
+    margin-right: 0.735rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    
+}
+
+/* FIM header */
+
+/* footer */
+footer {
+    background-color: #010817;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+.footer-logo{
+margin-bottom: 0.8rem;
+}
+
+.footer-slogan{
+font-style: italic;
+margin-bottom: 1rem;
+}
+
+.footer-info{
+max-width: 30rem;
+margin: 0 auto;
+white-space: nowrap;
+}
+
+.fiap-color{
+color: #fd8b08;
+text-decoration: none;
+}
+/* footer fim  */
+
+/* CONTAINER E BUSCA */
+.container_prontuarios {
+    margin: 2rem 3rem;
+}
+
+.barra_pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #eee;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #999;
+    width: 100%; /* Ocupa a largura total como no print */
+    max-width: 600px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.filtros_flex {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filtro_item {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid #eee;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.filtro_item:hover {
+    border-color: #f1c40f;
+}
+
+/* LISTA ESTILO CARD */
+.card_lista_prontuarios {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.linha_prontuario {
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background 0.2s;
+}
+
+/* Colunas Alinhadas */
+.col_paciente { width: 30%; font-weight: 500; }
+.col_cpf      { width: 20%; color: #555; }
+.col_idade    { width: 10%; color: #555; }
+.col_ultimo   { width: 20%; color: #555; }
+.col_situacao { width: 20%; display: flex; justify-content: flex-end; }
+
+/* Header e Zebra */
+.header_prontuario {
+    background-color: #fafafa;
+    border-bottom: 2px solid #eee;
+}
+
+.header_prontuario span {
+    font-weight: 700;
+    color: #000;
+}
+
+.linha_prontuario:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+.linha_prontuario:hover {
+    background-color: #fffdf5;
+}
+
+/* BOTÃO VERDE DO PRINT */
+.btn_prontuario {
+    background-color: #c4d600; /* Verde limão */
+    color: #000;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn_prontuario:hover {
+    background-color: #f1c40f; /* Amarelo no hover */
+}
