@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦷 Atendimentos </title>
+    <link rel="stylesheet" href="..\css\pags-voluntario\atendimentos.css">
+    <script src="https://kit.fontawesome.com/9d04bbea58.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="areaVoluntario.html">
+                <h1>🦷 DenTalk</h1>
+            </a>
+        </div>
+
+        <button id="menuToggle" class="menu-toggle">
+            <i id="menuIcon" data-lucide="menu"></i>
+        </button>
+
+        <nav id="nav">
+            <ul class="menu">
+                <li><a class="menu-item" href="../areaVoluntario.html">Início</a></li>
+                <li><a class="menu-item" href=".\meuspacientes.html">Meus Pacientes</a></li>
+                <li><a class="menu-item" href=".\agenda.html">Agenda</a> </li>
+                <li><a class="menu-item" href=".\atendimentos.html">Atendimentos</a> </li>
+                <li><a class="menu-item" href=".\prontuarios.html">Prontuários</a></li>
+            </ul>
+        </nav>
+
+        <a href=".\pags-voluntario\agenda.html" class="bell-icon"><i data-lucide="bell"></i></a>
+        <a href="areaVoluntario.html" class="menu-item" id="area-button-v">Voluntário</a>
+
+        <a href="..\index.html" class="logout-icon"><i data-lucide="log-out"></i></a>
+    </header>
+
+<main class="container_atendimentos">
+
+    <section class="registro_atendimento">
+        <h2 class="titulo_sessao">Registrar Atendimento</h2>
+        <div class="divisor_linha"></div>
+
+        <div class="box_registro_flex">
+            <div class="col_inputs_fixos">
+                <div class="campo_grupo">
+                    <span>*ID Consulta:</span>
+                    <div class="input_fake" tabindex="0"></div>
+                </div>
+                <div class="campo_grupo">
+                    <span>Paciente:</span>
+                    <div class="input_fake" tabindex="0"></div>
+                </div>
+                <div class="campo_grupo">
+                    <span>Data:</span>
+                    <div class="input_fake" tabindex="0"></div>
+                </div>
+                <div class="campo_grupo">
+                    <span>Anexo:</span>
+                    <div class="upload_area_fake" tabindex="0">
+                        <i class="fa-solid fa-upload"></i>
+                        <p>Faça o upload</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col_textos_amplos">
+                <div class="linha_superior_flex">
+                    <div class="flex_70">
+                        <span>*Procedimentos:</span>
+                        <div class="textarea_fake_alto" tabindex="0"></div>
+                    </div>
+
+                    <div class="flex_25 checklist_container">
+                        <span class="label_presenca">*Paciente Presente?</span>
+                        <div class="opcao_check" tabindex="0">
+                            <span>sim</span>
+                            <div class="quadradinho_check"></div>
+                        </div>
+                        <div class="opcao_check" tabindex="0">
+                            <span>não</span>
+                            <div class="quadradinho_check"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="linha_inferior_flex">
+                    <div class="flex_70">
+                        <span>Observações:</span>
+                        <div class="textarea_fake_baixo" tabindex="0"></div>
+                    </div>
+                    
+                   
+                </div>
+              <div class="btn_wrapper">
+                        <div class="btn_acao_salvar" tabindex="0">Salvar</div>
+                    </div>   
+            </div>
+        </div>
+    </section>
+
+    <section class="historico_secao">
+        <h2 class="titulo_sessao">Histórico</h2>
+        <div class="divisor_linha"></div>
+
+        <div class="tabela_responsiva_flex">
+            <div class="linha_tabela header_tabela">
+                <span class="celula">ID consulta</span>
+                <span class="celula">Paciente</span>
+                <span class="celula">Data</span>
+                <span class="celula">Presença</span>
+                <span class="celula">Procedimentos</span>
+                <span class="celula">anexo</span>
+                <span class="celula">detalhes</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1021</span>
+                <span class="celula">Ana Beatriz Silva</span>
+                <span class="celula">12/03/26 09h00-09h30</span>
+                <span class="celula">sim</span>
+                <span class="celula">Limpeza e profilaxia</span>
+                <span class="celula">não</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1022</span>
+                <span class="celula">Lucas Oliveira</span>
+                <span class="celula">14/03/26 10h15-10h45</span>
+                <span class="celula">não</span>
+                <span class="celula">Consulta inicial</span>
+                <span class="celula">não</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1023</span>
+                <span class="celula">Mariana Costa</span>
+                <span class="celula">15/03/26 13h00-13h40</span>
+                <span class="celula">sim</span>
+                <span class="celula">Restauração dentária</span>
+                <span class="celula">sim</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1024</span>
+                <span class="celula">João Pedro Santos</span>
+                <span class="celula">18/03/26 08h30-09h00</span>
+                <span class="celula">sim</span>
+                <span class="celula">Avaliação ortodôntica</span>
+                <span class="celula">não</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1025</span>
+                <span class="celula">Beatriz Souza</span>
+                <span class="celula">20/03/26 15h10-15h40</span>
+                <span class="celula">não</span>
+                <span class="celula">Falta do paciente</span>
+                <span class="celula">não</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+
+            <div class="linha_tabela">
+                <span class="celula">1026</span>
+                <span class="celula">Enzo Lima</span>
+                <span class="celula">22/03/26 11h00-11h30</span>
+                <span class="celula">sim</span>
+                <span class="celula">Tratamento de cárie</span>
+                <span class="celula">sim</span>
+                <span class="celula link_detalhe">ver mais</span>
+            </div>
+        </div>
+    </section>
+</main>
+    
+<footer class="footer">
+    <h2 class="footer-logo">DenTalk</h2>
+    <p class="footer-slogan">
+        "Cada sorriso, uma história"
+    </p>
+    <p class="footer-info">
+        Projeto institucional desenvolvido por alunos do Centro Universitário
+        <a class="fiap-color" href="https://www.fiap.com.br/" target="_blank">FIAP</a>
+    </p>
+</footer>
+    <script src="js/menuToggle.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
