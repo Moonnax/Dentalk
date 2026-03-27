@@ -338,6 +338,12 @@ padding-bottom: 20px;
     width: 100%;
 }
 
+.linha_separadora {
+    width: 150px;       
+    border-bottom: 2px solid #333; 
+    margin: 10px 0 20px 0;
+}
+
 
 .linha_cabecalho{
     display: flex;
