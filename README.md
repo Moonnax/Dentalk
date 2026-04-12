@@ -45,6 +45,6 @@ Font awesome: https://kit.fontawesome.com/9d04bbea58.js
 
 ## Link do Repositório
 
-Link do projeto no GitHub: https://github.com/Moonnax/Sprint-1-Front-End/tree/Sprint2
+Link do projeto no GitHub: https://github.com/Moonnax/Sprint-1-Front-End/tree/Sprint3
 
 Link do projeto no GitHub Pages (site online): https://moonnax.github.io/Sprint-1-Front-End/
