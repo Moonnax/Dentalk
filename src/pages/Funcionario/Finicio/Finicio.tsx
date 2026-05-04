@@ -15,7 +15,7 @@ function Finicio() {
             <section className="card_funcionario">
               <div className="card_top">
                 <div className="card_textos">
-                  <h2>Aguardando encaminhamento</h2>
+                  <h2>Aguardando encaminhamentos</h2>
                   <p className="card_descricao">
                     Encaminhe pacientes aprovados para os voluntários compatíveis
                   </p>
