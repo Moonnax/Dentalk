@@ -1,0 +1,33 @@
+.title {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+.box {
+  padding: 0.625rem;
+  margin: 0 auto;
+  background-color: white;
+  width: 90%;
+  height: auto;
+  text-align: center;
+}
+
+.fotosobre {
+  max-width: 43.75rem;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.25rem auto;
+}
+
+.centralize {
+  text-align: center;
+}
+
+.subtitle {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 550;
+}

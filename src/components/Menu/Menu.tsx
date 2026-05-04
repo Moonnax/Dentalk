@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface MenuProps {
   open: boolean;
 }
@@ -6,23 +8,23 @@ function Menu({ open }: MenuProps) {
   return (
     <nav className={`nav ${open ? "active" : ""}`}>
       <ul className="menu">
-        <li><a className="menu-item" href="/">Home</a></li>
-        <li><a className="menu-item" href="/">Sobre</a></li>
-        <li><a className="menu-item" href="/faq">FAQ</a></li>
-        <li><a className="menu-item" href="/contato">Contato</a></li>
-        <li><a className="menu-item" href="/quemSomos">Quem Somos</a></li>
-        <li><a className="menu-item" href="/TurmadoBem">Turma Do Bem</a></li>
-        <li><a className="menu-item" href="/missao">Missão</a></li>
-        <li><a className="menu-item" href="/nossosValores">Nossos valores</a></li>
+        <li><Link className="menu-item" to="/">Home</Link></li>
+        <li><Link className="menu-item" to="/sobre">Sobre</Link></li>
+        <li><Link className="menu-item" to="/faq">FAQ</Link></li>
+        <li><Link className="menu-item" to="/contato">Contato</Link></li>
+        <li><Link className="menu-item" to="/quemSomos">Quem Somos</Link></li>
+        <li><Link className="menu-item" to="/TurmadoBem">Turma Do Bem</Link></li>
+        <li><Link className="menu-item" to="/missao">Missão</Link></li>
+        <li><Link className="menu-item" to="/nossosValores">Nossos valores</Link></li>
         <li>
-          <a className="menu-item" id="area-button-v" href="/areaVoluntario">
+          <Link className="menu-item" id="area-button-v" to="/areaVoluntario">
             Login voluntário
-          </a>
+          </Link>
         </li>
         <li>
-          <a className="menu-item" id="area-button-f" href="/areaFuncionario">
+          <Link className="menu-item" id="area-button-f" to="/areaFuncionario">
             Login funcionário
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
