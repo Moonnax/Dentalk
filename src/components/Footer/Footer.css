@@ -1,0 +1,31 @@
+.footer {
+    background-color: #010817;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+.footer-logo{
+    margin-bottom: 0.8rem;
+}
+
+.footer-slogan{
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.footer-info{
+    max-width: 30rem;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+
+.fiap-color{
+    color: #fd8b08;
+    text-decoration: none;
+}
+
+.fiap-color:hover {
+    color: #fd8b08;
+}
