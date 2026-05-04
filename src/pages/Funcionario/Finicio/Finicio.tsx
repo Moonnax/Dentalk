@@ -1,11 +1,11 @@
-import Header from "../../../components/Header/Header";
+import HeaderFincionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 import "./Finicio.css";
 
 function Finicio() {
   return (
     <>
-      <Header />
+      <HeaderFincionario />
 
       <main className="dashboard_container">
         <aside className="coluna_esquerda">
