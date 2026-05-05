@@ -3,6 +3,7 @@ import Home from './pages/Home/Home'
 import Sobre from './pages/Sobre/Sobre'
 import Faq from './pages/Faq/Faq'
 import QuemSomos from './pages/QuemSomos/QuemSomos'
+import Tdb from './pages/Tdb/Tdb'
 import Missao from './pages/Missao/Missao'
 import Valores from './pages/Valores/Valores'
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/faq" element={<Faq/>} />
         <Route path="/quemsomos" element={<QuemSomos/>} />
+        <Route path="/tdb" element={<Tdb/>} />
         <Route path="/missao" element={<Missao/>} />
         <Route path="/valores" element={<Valores/>} />
       </Routes>

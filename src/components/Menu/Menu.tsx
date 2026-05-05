@@ -13,7 +13,7 @@ function Menu({ open }: MenuProps) {
         <li><Link className="menu-item" to="/faq">FAQ</Link></li>
         <li><Link className="menu-item" to="/contato">Contato</Link></li>
         <li><Link className="menu-item" to="/quemSomos">Quem Somos</Link></li>
-        <li><Link className="menu-item" to="/TurmadoBem">Turma Do Bem</Link></li>
+        <li><Link className="menu-item" to="/Tdb">Turma Do Bem</Link></li>
         <li><Link className="menu-item" to="/missao">Missão</Link></li>
         <li><Link className="menu-item" to="/valores">Nossos valores</Link></li>
         <li>
