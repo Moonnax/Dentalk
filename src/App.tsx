@@ -1,7 +1,15 @@
-import Home from './pages/Home/Home'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Vinicio from './pages/Voluntario/Vinicio/Vinicio'
 
 function App() {
-  return <Home />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/Vinicio" element={<Vinicio />} />
+
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
