@@ -4,6 +4,7 @@ import Finicio from './pages/Funcionario/Finicio/Finicio'
 import Fcadastro from './pages/Funcionario/Fcadastro/Fcadastro'
 import Ftriagem from './pages/Funcionario/Ftriagem/Ftriagem'
 import Fmonitoramento from './pages/Funcionario/Fmonitoramento/Fmonitoramento'
+import FacoesEscola from './pages/Funcionario/FacoesEscola/FacoesEscola'
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/cadastrof" element={<Fcadastro />} />
         <Route path="/triagemf" element={<Ftriagem />} />
         <Route path="/monitoramento" element={<Fmonitoramento />} />
-        <Route path="/acoesescolaf" element={<Finicio />} />
+        <Route path="/acoesescolaf" element={<FacoesEscola />} />
       </Routes>
     </BrowserRouter>
   )
