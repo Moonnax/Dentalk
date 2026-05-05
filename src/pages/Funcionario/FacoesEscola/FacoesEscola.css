@@ -1,0 +1,315 @@
+/* style */
+
+
+*{
+    box-sizing: border-box;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #010817;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main{
+    margin: 1rem 2rem;
+}
+
+/* fim style */
+
+/* HEADER */
+header{
+    background-color:#010817;
+    height: 6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    
+}
+
+.menu-toggle{
+    display: none;
+}
+
+#nav{
+    display: flex;
+    justify-content: flex-end;
+    background-color:#010817;
+}
+
+#area-button-f{
+    background-color: #fd8b08;
+    color: whitesmoke;
+    padding: 0.735rem;
+    display: inline-block;
+    border-radius: 10px;
+    margin-right: 0.735rem;
+    font-weight: 550;
+    font-size: 1rem; 
+    text-decoration: none;
+    padding: 0.735rem;
+
+} 
+
+
+.menu{
+    display: flex;
+    list-style: none;
+    gap: 0.8rem;
+}
+
+.menu-item {
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 1rem; 
+    font-weight: 500;
+    text-decoration: none;
+    background-color: #010817;
+    color: whitesmoke;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.menu-item.active { 
+    color: #fd8b08;
+    border-bottom: 3px solid #fd8b08;
+}
+
+.menu-item:hover {
+    color: #fd8b08;
+}
+
+.logo{
+    padding: 0 1.5rem;
+}
+
+.logo a{
+    color: #fd8b08;
+    text-decoration: none;
+}
+
+.logo h1{
+    background-color: transparent;
+    font-size: 1.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+}
+
+.logout-icon {
+    margin-top: 0.275rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    margin-right: 1rem;
+
+}
+
+.bell-icon{
+    margin-left: auto;
+    margin-top: 0.275rem;
+    margin-right: 0.735rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+    
+}
+
+/* FIM header */
+
+
+.cadastro_container {
+    padding: 30px 50px;
+    background-color: #fff;
+    min-height: 70vh;
+}
+
+.filtros_cadastro {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filtros_grupo { display: flex; gap: 12px; align-items: center; }
+
+.caixa_filtro, .simular_busca {
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #666;
+    background: white;
+}
+.simular_busca { width: 350px; color: #999; }
+
+.contagem_abas {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.aba {
+    border: 1px solid #eee;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.bolinha_numero {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+.bolinha_numero.gray { background: #f0f0f0; }
+
+.lista_usuarios {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.linha_cabecalho, .linha_usuario {
+    display: flex;
+    padding: 0; 
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    min-height: 60px; 
+}
+
+.linha_cabecalho { 
+    background-color: #fcfcfc; 
+    font-weight: bold; 
+    color: #333; 
+
+}
+.destaque { background-color: #f9f9f9; }
+
+
+.col-instituicao, .col-data, .col-alunos, .col-coordenador, .col-infra, .col-situacao {
+    height: 60px; 
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-size: 1rem;
+}
+
+.col-instituicao { 
+    width: 30%; 
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+ }
+.col-data { 
+    width: 15%; 
+    border-left: 1px solid #eee; 
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+}
+.col-alunos { 
+    width: 10%; 
+    border-left: 1px solid #eee; 
+    justify-content: center; 
+}
+.col-coordenador { 
+    width: 20%; 
+    border-left: 1px solid #eee;
+    justify-content: flex-start; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    justify-content: center;
+ }
+.col-infra { 
+    width: 15%; 
+    border-left: 1px solid #eee; 
+    justify-content: center; 
+}
+.col-situacao { 
+    width: 10%; 
+    border-left: 1px solid #eee; 
+    justify-content: center; 
+    padding-right: 15px; 
+}
+
+.col-instituicao, .col-data, .col-coordenador {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.sub-info {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+.col-alunos, .col-infra { display: flex; align-items: center; }
+
+.btn-aprovar {
+    background-color: #c9e265; 
+    color: #333;
+    text-decoration: none;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.mini-caixa.gray {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #666;
+    font-size: 0.7rem;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/* footer */
+footer {
+    background-color: #010817;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+}
+
+.footer-logo{
+margin-bottom: 0.8rem;
+}
+
+.footer-slogan{
+font-style: italic;
+margin-bottom: 1rem;
+}
+
+.footer-info{
+max-width: 30rem;
+margin: 0 auto;
+white-space: nowrap;
+}
+
+.fiap-color{
+color: #fd8b08;
+text-decoration: none;
+}
+/* footer fim  */

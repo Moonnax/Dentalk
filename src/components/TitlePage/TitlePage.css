@@ -1,0 +1,17 @@
+.page-header {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.page-header-titulo {
+  font-size: 2.6rem;
+  color: #010817;
+}
+
+.page-header-subtitulo {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 42rem;
+  margin: 0.5rem auto 0;
+  line-height: 1.6;
+}
