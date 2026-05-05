@@ -7,7 +7,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Finicio" element={<Finicio />} />
+        <Route path="/areaFuncionario" element={<Finicio />} />
+        <Route path="/cadastrof" element={<Finicio />} />
+        <Route path="/triagemf" element={<Finicio />} />
+        <Route path="/monitoramento" element={<Finicio />} />
+        <Route path="/acoesescolaf" element={<Finicio />} />
       </Routes>
     </BrowserRouter>
   )
