@@ -1,6 +1,7 @@
 import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../../components/Footer/Footer";
 import "./Vatendimentos.css";
+import { Upload } from "lucide-react";
 
 function Vatendimentos() {
   return (
@@ -34,9 +35,9 @@ function Vatendimentos() {
               <div className="campo_grupo">
                 <span>Anexo:</span>
                 <div className="upload_area_fake" tabIndex={0}>
-                  <i className="fa-solid fa-upload"></i>
-                  <p>Faça o upload</p>
-                </div>
+                    <Upload size={28} />
+                    <p>Faça o upload</p>
+                    </div>
               </div>
 
             </div>
