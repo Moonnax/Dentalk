@@ -15,7 +15,7 @@ function Menu({ open }: MenuProps) {
         <li><Link className="menu-item" to="/quemSomos">Quem Somos</Link></li>
         <li><Link className="menu-item" to="/TurmadoBem">Turma Do Bem</Link></li>
         <li><Link className="menu-item" to="/missao">Missão</Link></li>
-        <li><Link className="menu-item" to="/nossosValores">Nossos valores</Link></li>
+        <li><Link className="menu-item" to="/valores">Nossos valores</Link></li>
         <li>
           <Link className="menu-item" id="area-button-v" to="/areaVoluntario">
             Login voluntário

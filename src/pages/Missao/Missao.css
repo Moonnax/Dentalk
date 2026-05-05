@@ -1,0 +1,22 @@
+.missao-main {
+  min-height: 80vh;
+  padding: 2rem 1rem 4rem;
+  background-color: #f7f7f7;
+}
+
+.missao-intro {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 42rem;
+  margin: 0.5rem auto 2.5rem;
+  line-height: 1.6;
+}
+
+.missao-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 52rem;
+  margin: 0 auto;
+}
