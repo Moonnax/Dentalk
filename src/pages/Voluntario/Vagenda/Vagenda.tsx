@@ -1,35 +1,13 @@
 import { Bell, LogOut, Menu, ChevronLeft, ChevronRight } from "lucide-react";
+import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
+import Footer from '../../../components/Footer/Footer';
+
 import "./Vagenda.css";
 
 export default function VAgenda() {
   return (
     <>
-      <header>
-        <div className="logo">
-          <a href="#">
-            <h1>🦷 DenTalk</h1>
-          </a>
-        </div>
-
-        <button className="menu-toggle">
-          <Menu />
-        </button>
-
-        <nav id="nav">
-          <ul className="menu">
-            <li><a className="menu-item" href="#">Início</a></li>
-            <li><a className="menu-item" href="#">Meus Pacientes</a></li>
-            <li><a className="menu-item active" href="#">Agenda</a></li>
-            <li><a className="menu-item" href="#">Atendimentos</a></li>
-            <li><a className="menu-item" href="#">Prontuários</a></li>
-          </ul>
-        </nav>
-
-        <a href="#" className="bell-icon"><Bell /></a>
-        <a href="#" className="menu-item" id="area-button-v">Voluntário</a>
-        <a href="#" className="logout-icon"><LogOut /></a>
-      </header>
-
+      <HeaderVoluntario />
       <main className="dashboard_container">
         <div className="layout_grid_fixo">
 
@@ -136,16 +114,8 @@ export default function VAgenda() {
         </div>
       </main>
 
-      <footer className="footer">
-        <h2 className="footer-logo">DenTalk</h2>
-        <p className="footer-slogan">"Cada sorriso, uma história"</p>
-        <p className="footer-info">
-          Projeto institucional desenvolvido por alunos do Centro Universitário{" "}
-          <a className="fiap-color" href="https://www.fiap.com.br/" target="_blank">
-            FIAP
-          </a>
-        </p>
-      </footer>
+      <Footer />
+
     </>
   );
 }
