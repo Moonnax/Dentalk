@@ -1,6 +1,6 @@
 import HeaderVoluntario from '../../../components/HeaderVoluntario/HeaderVoluntario';
 import Footer from '../../../components/Footer/Footer';
-import CarrosselPacientes from '../../../components/NavbarVoluntario/NavbarVoluntario';
+import CarrosselPacientes from '../../../components/Carrossel/Carrossel';
 import {TriangleAlert } from "lucide-react";
 import "./Vinicio.css";
 
