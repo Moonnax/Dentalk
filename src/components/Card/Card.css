@@ -1,19 +1,4 @@
-.valores-main {
-  min-height: 80vh;
-  padding: 2rem 1rem 4rem;
-  background-color: #f7f7f7;
-}
-
-.valores-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  max-width: 52rem;
-  margin: 0 auto;
-}
-
-/* CARD */
-.valor-card {
+.info-card {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -25,25 +10,24 @@
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.valor-card:hover {
+.info-card:hover {
   box-shadow: 0 6px 20px rgba(253, 139, 8, 0.15);
   transform: translateY(-2px);
 }
 
-/* IMAGEM */
-.valor-img-wrap {
+.info-card-img-wrap {
   position: relative;
   flex-shrink: 0;
 }
 
-.fotovalue {
+.info-card-img {
   width: 10rem;
   height: 10rem;
   object-fit: cover;
   display: block;
 }
 
-.valor-number {
+.info-card-number {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
@@ -56,42 +40,36 @@
   letter-spacing: 0.05em;
 }
 
-/* TEXTO */
-.valor-info {
+.info-card-body {
   padding: 1.25rem 1.5rem 1.25rem 0;
   text-align: left;
 }
 
-.value-title {
+.info-card-title {
   font-size: 1.3rem;
   font-weight: 800;
   color: #010817;
   margin-bottom: 0.4rem;
 }
 
-.valor-desc {
+.info-card-desc {
   font-size: 0.95rem;
   color: #555;
   line-height: 1.6;
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
-  .valor-card {
+  .info-card {
     flex-direction: column;
     gap: 0;
   }
 
-  .fotovalue {
+  .info-card-img {
     width: 100%;
     height: 12rem;
   }
 
-  .valor-info {
+  .info-card-body {
     padding: 1rem;
-  }
-
-  .valor-number {
-    font-size: 0.85rem;
   }
 }
