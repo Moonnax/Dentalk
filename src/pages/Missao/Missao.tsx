@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
 import './Missao.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 const missoes = [
   {
@@ -26,11 +27,10 @@ function Missao() {
     <div>
       <Header />
       <main className="missao-main">
-        <h1 className="title">Missão</h1>
-        <p className="missao-intro">
-          Nossa missão é potencializar o impacto da Turma do Bem, garantindo que cada sorriso
-          seja cuidado com atenção e dignidade, por meio de:
-        </p>
+      <TitlePage
+        titulo="Missão"
+        subtitulo="Nossa missão é potencializar o impacto da Turma do Bem, garantindo que cada sorriso seja cuidado com atenção e dignidade, por meio de:"
+      />
         <div className="missao-grid">
           {missoes.map((m, i) => (
             <Card
