@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Finicio from './pages/Funcionario/Finicio/Finicio'
+import Fcadastro from './pages/Funcionario/Fcadastro/Fcadastro'
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/areaFuncionario" element={<Finicio />} />
-        <Route path="/cadastrof" element={<Finicio />} />
+        <Route path="/cadastrof" element={<Fcadastro />} />
         <Route path="/triagemf" element={<Finicio />} />
         <Route path="/monitoramento" element={<Finicio />} />
         <Route path="/acoesescolaf" element={<Finicio />} />
