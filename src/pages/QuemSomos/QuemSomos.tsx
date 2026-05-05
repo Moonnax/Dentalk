@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import logo from '../../assets/logo.png'
 import './QuemSomos.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 const integrantes = [
   {
@@ -41,7 +42,7 @@ function QuemSomos() {
     <div>
       <Header />
       <main>
-        <h1 className="title">Quem Somos</h1>
+        <TitlePage titulo="Quem somos"/>
         <img src={logo} alt="logo Dentalk" className="imgCenter" />
 
         <div className="box">

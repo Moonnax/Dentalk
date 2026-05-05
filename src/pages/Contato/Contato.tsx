@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
 import './Contato.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 interface ContatoForm {
   nome: string
@@ -48,7 +49,7 @@ function Contato() {
       <Header />
       <main className="contato-main">
         <div className="centralize">
-          <h1 className="title">Entre em Contato!</h1>
+        <TitlePage titulo="Entre em contato"/>
 
           <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className="field">

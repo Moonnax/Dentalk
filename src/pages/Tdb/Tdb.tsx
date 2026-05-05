@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
 import './Tdb.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 const programas = [
   {
@@ -27,6 +28,7 @@ function Tdb() {
             alt="Turma do Bem"
             className="tdb-logo"
           />
+          <TitlePage titulo="Turma do Bem" />
           <p className="formText">
             A Turma do Bem é uma organização social dedicada à saúde bucal e ao voluntariado
             especializado, gerenciando a maior rede de dentistas voluntários do mundo, com mais de

@@ -2,6 +2,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
 import './Valores.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 const valores = [
   {
@@ -31,8 +32,10 @@ function Valores() {
     <div>
       <Header />
       <main className="valores-main">
-        <h1 className="title">Nossos Valores</h1>
-        <p className="valores-intro">Os princípios que guiam cada decisão do projeto Dentalk.</p>
+        <TitlePage
+        titulo="Nossos valores"
+        subtitulo="Os princípios que guiam cada decisão do projeto Dentalk"
+        />
         <div className="valores-grid">
           {valores.map((v, i) => (
             <Card

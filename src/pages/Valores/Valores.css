@@ -4,14 +4,6 @@
   background-color: #f7f7f7;
 }
 
-.valores-intro {
-  text-align: center;
-  color: #666;
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
-}
-
 .valores-grid {
   display: flex;
   flex-direction: column;

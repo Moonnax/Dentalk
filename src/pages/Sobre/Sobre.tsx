@@ -5,13 +5,14 @@ import crono2 from '../../assets/crono2.png'
 import crono3 from '../../assets/crono3.jpeg'
 import crono4 from '../../assets/crono4.jpeg'
 import './Sobre.css'
+import TitlePage from '../../components/TitlePage/TitlePage'
 
 function Sobre() {
   return (
     <div>
       <Header />
       <main>
-        <h1 className="title">Sobre</h1>
+        <TitlePage titulo="Sobre"/>
         <div className="box">
           <p className="formText">
             A ONG Turma do Bem oferece serviços odontológicos voluntários para jovens de

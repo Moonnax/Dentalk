@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./FAQ.css";
+import TitlePage from "../../components/TitlePage/TitlePage";
 
 const faqs = [
   {
@@ -42,7 +43,7 @@ function FAQ() {
     <div>
       <Header />
       <main className="faq-main">
-        <h1 className="title">Perguntas Frequentes</h1>
+        <TitlePage titulo="Perguntas frequentes"/>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div
