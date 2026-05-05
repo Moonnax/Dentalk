@@ -32,3 +32,4 @@ function Menu({ open }: MenuProps) {
 }
 
 export default Menu;
+
