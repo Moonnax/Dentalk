@@ -3,6 +3,7 @@ import Vinicio from './pages/Voluntario/Vinicio/Vinicio'
 import VMeusPacientes from './pages/Voluntario/Vmeuspacientes/Vmeuspacientes'
 import Vagenda from './pages/Voluntario/Vagenda/Vagenda'
 import Vatendimentos from './pages/Voluntario/Vatendimentos/Vatendimentos'
+import VProntuario from './pages/Voluntario/Vprontuarios/Vprontuarios'
 
 import Finicio from './pages/Funcionario/Finicio/Finicio'
 import Fcadastro from './pages/Funcionario/Fcadastro/Fcadastro'
@@ -27,7 +28,7 @@ function App() {
         <Route path="/meus-pacientes" element={<VMeusPacientes />} />
         <Route path="/agenda" element={<Vagenda />} />
         <Route path="/atendimentos" element={<Vatendimentos />} />
-        <Route path="/prontuarios" element={<Vinicio />} />
+        <Route path="/prontuarios" element={<VProntuario />} />
         
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
