@@ -1,11 +1,9 @@
-/* HEADER */
 header{
     background-color:#010817;
     height: 6rem;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
-    
 }
 
 .menu-toggle{
@@ -14,7 +12,7 @@ header{
 
 #nav{
     display: flex;
-    justify-content: flex-end;
+    margin-left: 2rem;
     background-color:#010817;
 }
 
@@ -28,20 +26,18 @@ header{
     font-weight: 550;
     font-size: 1rem; 
     text-decoration: none;
-    padding: 0.735rem;
-
-} 
-
+}
 
 .menu{
     display: flex;
     list-style: none;
     gap: 0.8rem;
+    height: 6rem;
+    align-items: center;
 }
 
 .menu-item {
     white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif; 
     font-size: 1rem; 
     font-weight: 500;
     text-decoration: none;
@@ -70,7 +66,6 @@ header{
 }
 
 .logo h1{
-    background-color: transparent;
     font-size: 1.875rem;
     display: flex;
     align-items: center;
@@ -84,7 +79,6 @@ header{
     height: 1.5rem;
     color: white;
     margin-right: 1rem;
-
 }
 
 .bell-icon{
@@ -94,7 +88,4 @@ header{
     width: 1.5rem;
     height: 1.5rem;
     color: white;
-    
 }
-
-/* FIM header */

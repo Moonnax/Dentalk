@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Menu, Bell, LogOut } from "lucide-react";
 import "./HeaderVoluntario.css";
+
 
 function HeaderVoluntario() {
   const [open, setOpen] = useState(false);
@@ -14,39 +16,34 @@ function HeaderVoluntario() {
         </Link>
       </div>
 
-      {/* GRUPO DIREITA */}
-      <div className="header-right">
+      <button
+        className="menu-toggle"
+        onClick={() => setOpen(!open)}
+      >
+        <Menu size={24} />
+      </button>
 
-        <button
-          className="menu-toggle"
-          onClick={() => setOpen(!open)}
-        >
-          <Menu size={24} />
-        </button>
+      <nav id="nav" className={open ? "active" : ""}>
+        <ul className="menu">
+          <li><NavLink to="/areaVoluntario" end className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Início</NavLink></li>
+          <li><NavLink to="/meus-pacientes" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Meus Pacientes</NavLink></li>
+          <li><NavLink to="/agenda" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Agenda</NavLink></li>
+          <li><NavLink to="/atendimentos" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Atendimentos</NavLink></li>
+          <li><NavLink to="/prontuarios" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Prontuários</NavLink></li>
+        </ul>
+      </nav>
 
-        <nav id="nav" className={open ? "active" : ""}>
-          <ul className="menu">
-            <li><Link className="menu-item active" to="/areaVoluntario">Início</Link></li>
-            <li><Link className="menu-item" to="/meus-pacientes">Meus Pacientes</Link></li>
-            <li><Link className="menu-item" to="/agenda">Agenda</Link></li>
-            <li><Link className="menu-item" to="/atendimentos">Atendimentos</Link></li>
-            <li><Link className="menu-item" to="/prontuarios">Prontuários</Link></li>
-          </ul>
-        </nav>
+      <Link to="/agenda" className="bell-icon">
+        <Bell size={22} />
+      </Link>
 
-        <Link to="/agenda" className="bell-icon">
-          <Bell size={22} />
-        </Link>
+      <Link to="/areaVoluntario" className="menu-item" id="area-button-v">
+        Voluntário
+      </Link>
 
-        <Link to="/areaVoluntario" className="menu-item" id="area-button-v">
-          Voluntário
-        </Link>
-
-        <Link to="/" className="logout-icon">
-          <LogOut size={22} />
-        </Link>
-
-      </div>
+      <Link to="/" className="logout-icon">
+        <LogOut size={22} />
+      </Link>
     </header>
   );
 }
