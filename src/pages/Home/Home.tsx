@@ -2,6 +2,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import logo from "../../assets/logo.png";
 import background from "../../assets/home-background.png";
+import SaibaMais from "../../components/SaibaMaisBotao/SaibaMaisBotao";
 
 function Home() {
   return (
@@ -63,30 +64,10 @@ function Home() {
             Turma do Bem a transformar vidas através da saúde bucal.
           </p>
 
-          <a
+          <SaibaMais
             href="/sobre"
-            className="
-              inline-flex
-              items-center
-              justify-center
-              bg-[#fd8b08]
-              text-white
-              px-8
-              py-3
-              rounded-full
-              no-underline
-              font-bold
-              text-base
-              transition-all
-              duration-200
-              hover:bg-[#b36103]
-              max-[768px]:text-[0.9rem]
-              max-[768px]:px-6
-              max-[768px]:py-[0.7rem]
-            "
-          >
-            Saiba mais sobre
-          </a>
+            texto="Saiba mais sobre"
+          />
         </div>
       </main>
 
