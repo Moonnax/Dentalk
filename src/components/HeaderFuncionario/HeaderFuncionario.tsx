@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Menu, Bell, LogOut } from "lucide-react";
 import "./HeaderFuncionario.css";
 
@@ -14,20 +14,17 @@ function HeaderFuncionario() {
         </Link>
       </div>
 
-      <button
-        className="menu-toggle"
-        onClick={() => setOpen(!open)}
-      >
+      <button className="menu-toggle" onClick={() => setOpen(!open)}>
         <Menu size={24} />
       </button>
 
       <nav id="nav" className={open ? "active" : ""}>
         <ul className="menu">
-          <li><Link className="menu-item active" to="/areaFuncionario">Início</Link></li>
-          <li><Link className="menu-item" to="/cadastrof">Cadastro</Link></li>
-          <li><Link className="menu-item" to="/triagemf">Triagem</Link></li>
-          <li><Link className="menu-item" to="/monitoramento">Monitoramento</Link></li>
-          <li><Link className="menu-item" to="/acoesescolaf">Ações Escola</Link></li>
+          <li><NavLink to="/areaFuncionario" end className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Início</NavLink></li>
+          <li><NavLink to="/cadastrof" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Cadastro</NavLink></li>
+          <li><NavLink to="/triagemf" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Triagem</NavLink></li>
+          <li><NavLink to="/monitoramento" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Monitoramento</NavLink></li>
+          <li><NavLink to="/acoesescolaf" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Ações Escola</NavLink></li>
         </ul>
       </nav>
 
