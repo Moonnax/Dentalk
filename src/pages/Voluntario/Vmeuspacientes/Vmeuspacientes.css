@@ -1,5 +1,4 @@
-/* style */
-
+/* GERAL */
 
 *{
     box-sizing: border-box;
@@ -14,143 +13,13 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+
 main{
     margin: 1rem 2rem;
 }
 
-/* fim style */
 
-
-/* HEADER */
-header{
-    background-color:#010817;
-    height: 6rem;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    
-}
-
-.menu-toggle{
-    display: none;
-}
-
-#nav{
-    display: flex;
-    justify-content: flex-end;
-    background-color:#010817;
-}
-
-
-#area-button-v{
-    background-color: #9ac93d;
-    color: whitesmoke;
-    padding: 0.735rem;
-    display: inline-block;
-    border-radius: 10px;
-    margin-right: 0.735rem;
-    font-weight: 550;
-    font-size: 1rem; 
-    text-decoration: none;
-    padding: 0.735rem;
-}
-
-.menu{
-    display: flex;
-    list-style: none;
-    gap: 0.8rem;
-}
-
-.menu-item {
-    white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 1rem; 
-    font-weight: 500;
-    text-decoration: none;
-    background-color: #010817;
-    color: whitesmoke;
-    padding: 0.5rem;
-    display: inline-block;
-}
-
-.menu-item.active { 
-    color: #fd8b08;
-    border-bottom: 3px solid #fd8b08;
-}
-
-.menu-item:hover {
-    color: #fd8b08;
-}
-
-.logo{
-    padding: 0 1.5rem;
-}
-
-.logo a{
-    color: #fd8b08;
-    text-decoration: none;
-}
-
-.logo h1{
-    background-color: transparent;
-    font-size: 1.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    white-space: nowrap;
-}
-
-.logout-icon {
-    margin-top: 0.275rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
-    margin-right: 1rem;
-
-}
-
-.bell-icon{
-    margin-left: auto;
-    margin-top: 0.275rem;
-    margin-right: 0.735rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
-    
-}
-
-/* FIM header */
-
-/* footer */
-footer {
-    background-color: #010817;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: auto;
-}
-
-.footer-logo{
-margin-bottom: 0.8rem;
-}
-
-.footer-slogan{
-font-style: italic;
-margin-bottom: 1rem;
-}
-
-.footer-info{
-max-width: 30rem;
-margin: 0 auto;
-white-space: nowrap;
-}
-
-.fiap-color{
-color: #fd8b08;
-text-decoration: none;
-}
-/* footer fim  */
-
+/* DASHBOARD */
 
 .dashboard_container {
     padding: 20px 40px;
@@ -169,8 +38,12 @@ text-decoration: none;
     gap: 135px;
 }
 
+
+/* COLUNAS */
+
 .coluna_pacientes {
-    width: 65%; 
+    width: 65%;
+    min-width: 0;
 }
 
 .coluna_encaminhados {
@@ -185,20 +58,25 @@ text-decoration: none;
     border: 1px solid #ddd;
     padding: 8px 15px;
     border-radius: 5px;
-    width: 71rem;
+
+    width: 100%;
+
     display: flex;
     align-items: center;
     gap: 10px;
+
     font-size: 14.4px;
     color: #999;
-    background-color: #fff; 
+    background-color: #fff;
+
     margin-bottom: 20px;
-    cursor: default; 
+    cursor: default;
 }
 
-.simular_busca i {
+.simular_busca svg {
     width: 18px;
     height: 18px;
+
     display: flex;
     align-items: center;
 }
@@ -208,12 +86,7 @@ text-decoration: none;
 }
 
 
-.btn_acao_circulo i {
-    width: 20px;
-    height: 20px;
-}
-
-
+/* FILTROS */
 
 .area_filtros {
     display: flex;
@@ -224,21 +97,29 @@ text-decoration: none;
 .btn_filtro {
     background-color: #f2f2f2;
     border: 1px solid #e0e0e0;
+
     padding: 10px 20px;
-    border-radius: 20px; 
+    border-radius: 20px;
+
     cursor: pointer;
+
     font-size: 0.9rem;
     font-weight: 500;
     color: #333;
+
     transition: 0.2s;
 }
 
-.btn_filtro:hover, .btn_filtro.ativo {
+.btn_filtro:hover,
+.btn_filtro.ativo {
     background-color: #fff;
     border-color: #f1c40f;
     color: #000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
+
+/* LISTA PACIENTES */
 
 .tabela_pacientes_lista {
     display: flex;
@@ -249,6 +130,10 @@ text-decoration: none;
 .linha_paciente {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
     padding: 20px 0;
     border-bottom: 1px solid #eee;
 }
@@ -285,6 +170,9 @@ text-decoration: none;
     margin-top: 5px;
 }
 
+
+/* AÇÕES PACIENTE */
+
 .acoes_paciente_bloco {
     display: flex;
     gap: 12px;
@@ -294,14 +182,18 @@ text-decoration: none;
 .btn_acao_circulo {
     width: 45px;
     height: 45px;
+
     background-color: #f2f2f2;
     border: 1px solid #e0e0e0;
-    border-radius: 8px; 
+    border-radius: 8px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
     color: #333;
+
     transition: 0.2s;
 }
 
@@ -311,14 +203,25 @@ text-decoration: none;
     color: #000;
 }
 
+.btn_acao_circulo svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* CARDS ENCAMINHADOS */
 
 .card_encaminhado_p {
     display: flex;
+
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    min-height: 220px; 
+
+    min-height: 220px;
+
     box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+
     margin-bottom: 20px;
 }
 
@@ -330,8 +233,10 @@ text-decoration: none;
 
 .conteudo_card_p {
     padding: 20px;
+
     display: flex;
     flex-direction: column;
+
     width: 100%;
 }
 
@@ -343,6 +248,7 @@ text-decoration: none;
 .conteudo_card_p p {
     font-size: 0.85rem;
     margin-bottom: 8px;
+
     color: #444;
     line-height: 1.3;
 }
@@ -351,8 +257,12 @@ text-decoration: none;
     color: #000;
 }
 
+
+/* BOTÕES CARD */
+
 .botoes_card_p {
     margin-top: auto;
+
     display: flex;
     justify-content: flex-start;
     gap: 10px;
@@ -361,10 +271,13 @@ text-decoration: none;
 .btn-amarelo-p {
     background-color: #f1c40f;
     border: none;
+
     padding: 8px 15px;
     border-radius: 15px;
+
     font-weight: bold;
     cursor: pointer;
+
     font-size: 0.8rem;
     color: #000;
 }
@@ -372,9 +285,12 @@ text-decoration: none;
 .btn-cinza-p {
     background-color: #f2f2f2;
     border: none;
+
     padding: 8px 15px;
     border-radius: 15px;
+
     cursor: pointer;
+
     font-size: 0.8rem;
     color: #333;
 }
