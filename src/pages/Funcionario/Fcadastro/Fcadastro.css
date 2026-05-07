@@ -107,13 +107,11 @@ main{
 /* BOTÃO */
 
 .btn_novo_cadastro{
-    background: #fd8b08;
+    background-color: #fd8b08;
 
     color: white;
 
     border: none;
-
-    outline: none;
 
     padding: 12px 20px;
 
@@ -121,6 +119,7 @@ main{
 
     display: flex;
     align-items: center;
+
     gap: 10px;
 
     font-size: 0.9rem;
@@ -131,14 +130,11 @@ main{
     white-space: nowrap;
 
     transition: 0.2s;
-
-    appearance: none;
 }
 
 .btn_novo_cadastro:hover{
-    background: #e57d05;
+    background-color: #e57d05;
 }
-
 
 /* ABAS */
 
@@ -192,7 +188,7 @@ main{
 }
 
 .badge_beneficiario{
-    background-color: #e9f7ff;
+    background-color: #dff3ff;
     color: #006494;
 }
 
@@ -214,11 +210,6 @@ main{
 /* HEADER */
 
 .header_usuario{
-    display: flex;
-    align-items: center;
-
-    padding: 15px 25px;
-
     background-color: #fafafa;
 
     border-bottom: 2px solid #eee;
@@ -227,31 +218,4 @@ main{
 .header_usuario span{
     font-weight: 700;
     color: #000;
-}
-
-
-
-.col_nome{
-    width: 35%;
-}
-
-.col_idade{
-    width: 15%;
-}
-
-.col_status{
-    width: 20%;
-}
-
-.col_categoria{
-    width: 15%;
-}
-
-.col_detalhes{
-    width: 15%;
-    display: flex; 
-    text-align: right;
-    padding-right: 18px;
-    justify-content: center;
-
 }

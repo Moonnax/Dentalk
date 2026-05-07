@@ -13,14 +13,21 @@ export default function CardUsuarioFuncionario({
   status,
   categoria,
 }: CardUsuarioProps) {
+
   return (
+
     <div className="linha_usuario">
 
-      <span className="col_nome">{nome}</span>
+      <span className="col_nome">
+        {nome}
+      </span>
 
-      <span className="col_idade">{idade}</span>
+      <span className="col_idade">
+        {idade}
+      </span>
 
       <span className="col_status">
+
         <div
           className={`
             status_badge
@@ -32,16 +39,22 @@ export default function CardUsuarioFuncionario({
         >
           {status}
         </div>
+
       </span>
 
-      <span className="col_categoria">{categoria}</span>
+      <span className="col_categoria">
+        {categoria}
+      </span>
 
       <div className="col_detalhes">
+
         <button className="btn_ver_mais">
           Ver Mais
         </button>
+
       </div>
 
     </div>
+
   );
 }

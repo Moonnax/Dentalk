@@ -47,6 +47,7 @@ export default function CadastroF() {
   ];
 
   return (
+
     <div className="page-container">
 
       <HeaderFuncionario />
@@ -91,6 +92,7 @@ export default function CadastroF() {
 
         </section>
 
+        {/* ABAS */}
         <section className="contagem_abas">
 
           <div className="aba_item">
@@ -110,21 +112,32 @@ export default function CadastroF() {
 
         </section>
 
+        {/* TABELA */}
         <section className="lista_usuarios_secao">
 
           <div className="card_lista_usuarios">
 
             <div className="linha_usuario header_usuario">
 
-              <span className="col_nome">Nome</span>
+              <span className="col_nome">
+                Nome
+              </span>
 
-              <span className="col_idade">Idade</span>
+              <span className="col_idade">
+                Idade
+              </span>
 
-              <span className="col_status">Status</span>
+              <span className="col_status">
+                Status
+              </span>
 
-              <span className="col_categoria">Categoria</span>
+              <span className="col_categoria">
+                Categoria
+              </span>
 
-              <span className="col_detalhes">Detalhes</span>
+              <span className="col_detalhes">
+                Detalhes
+              </span>
 
             </div>
 
@@ -147,5 +160,6 @@ export default function CadastroF() {
       <Footer />
 
     </div>
+
   );
 }
