@@ -61,10 +61,12 @@ function Contato() {
         <div className="text-center">
           <TitlePage titulo="Entre em contato" />
 
+        <div className='flex justify-center'>
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
             className="
+              justify-center
               flex-col
               gap-[0.25rem]
               w-[90%]
@@ -392,7 +394,7 @@ function Contato() {
               Enviar
             </button>
           </form>
-
+        </div>
           <div
             className="
               flex
