@@ -1,0 +1,104 @@
+.detalhe-main {
+  min-height: 80vh;
+  padding: 2rem 1rem 4rem;
+  background-color: #f7f7f7;
+}
+
+.detalhe-loading {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.detalhe-not-found {
+  text-align: center;
+  padding: 2rem;
+}
+
+.detalhe-card {
+  display: flex;
+  gap: 2.5rem;
+  max-width: 52rem;
+  margin: 2rem auto 0;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.detalhe-foto {
+  width: 14rem;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  flex-shrink: 0;
+}
+
+.detalhe-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.detalhe-bio {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.75;
+}
+
+.detalhe-dados {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.detalhe-dados span {
+  font-weight: 700;
+  color: #010817;
+}
+
+.detalhe-dados a {
+  color: #587beb;
+  text-decoration: none;
+}
+
+.detalhe-dados a:hover {
+  color: #fd8b08;
+}
+
+.detalhe-btn-voltar {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: none;
+  border: 2px solid #010817;
+  color: #010817;
+  padding: 0.6rem 1.25rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.detalhe-btn-voltar:hover {
+  background-color: #010817;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .detalhe-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .detalhe-foto {
+    width: 10rem;
+    height: 10rem;
+  }
+}
