@@ -2,12 +2,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Vinicio from './pages/Voluntario/Vinicio/Vinicio'
 import VMeusPacientes from './pages/Voluntario/Vmeuspacientes/Vmeuspacientes'
 import Vagenda from './pages/Voluntario/Vagenda/Vagenda'
-import Home from './pages/Home/Home'
+import Vatendimentos from './pages/Voluntario/Vatendimentos/Vatendimentos'
+import VProntuario from './pages/Voluntario/Vprontuarios/Vprontuarios'
+
 import Finicio from './pages/Funcionario/Finicio/Finicio'
 import Fcadastro from './pages/Funcionario/Fcadastro/Fcadastro'
 import Ftriagem from './pages/Funcionario/Ftriagem/Ftriagem'
 import Fmonitoramento from './pages/Funcionario/Fmonitoramento/Fmonitoramento'
 import FacoesEscola from './pages/Funcionario/FacoesEscola/FacoesEscola'
+
+import Home from './pages/Home/Home'
 import Sobre from './pages/Sobre/Sobre'
 import Faq from './pages/Faq/Faq'
 import Contato from './pages/Contato/Contato'
@@ -23,8 +27,8 @@ function App() {
         <Route path="/areaVoluntario" element={<Vinicio />} />
         <Route path="/meus-pacientes" element={<VMeusPacientes />} />
         <Route path="/agenda" element={<Vagenda />} />
-        <Route path="/atendimentos" element={<Vinicio />} />
-        <Route path="/prontuarios" element={<Vinicio />} />
+        <Route path="/atendimentos" element={<Vatendimentos />} />
+        <Route path="/prontuarios" element={<VProntuario />} />
         
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
