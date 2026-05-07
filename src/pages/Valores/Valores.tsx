@@ -1,29 +1,32 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
-import './Valores.css'
 import TitlePage from '../../components/TitlePage/TitlePage'
 
 const valores = [
   {
     titulo: 'Humanização',
     img: 'https://biblioteca.cofen.gov.br/wp-content/uploads/2021/08/Humanizacao.jpg',
-    descricao: 'Colocamos as pessoas no centro de tudo. Cada paciente é tratado com dignidade, empatia e respeito.',
+    descricao:
+      'Colocamos as pessoas no centro de tudo. Cada paciente é tratado com dignidade, empatia e respeito.',
   },
   {
     titulo: 'Impacto Social',
     img: 'https://fia.com.br/wp-content/uploads/2022/09/impacto-social-de-uma-empresa.jpg',
-    descricao: 'Acreditamos que tecnologia deve servir à sociedade, gerando transformação real na vida de quem mais precisa.',
+    descricao:
+      'Acreditamos que tecnologia deve servir à sociedade, gerando transformação real na vida de quem mais precisa.',
   },
   {
     titulo: 'Acessibilidade e Inclusão',
     img: 'https://porvir.org/especial/participacao/wp-content/themes/Inketa/images/internas-case/colegio-jose.jpg',
-    descricao: 'Desenvolvemos soluções intuitivas e inclusivas, garantindo que todos possam acessar e utilizar o sistema.',
+    descricao:
+      'Desenvolvemos soluções intuitivas e inclusivas, garantindo que todos possam acessar e utilizar o sistema.',
   },
   {
     titulo: 'Eficiência e Simplicidade',
     img: 'https://portalcelulose.com.br/wp-content/uploads/2025/03/Eficiencia-eficacia-e-efetividade-no-ambiente-organizacional-na-busca-da-excelencia-operacional.jpg',
-    descricao: 'Simplicidade é poder. Criamos processos ágeis e claros para que o foco permaneça no atendimento.',
+    descricao:
+      'Simplicidade é poder. Criamos processos ágeis e claros para que o foco permaneça no atendimento.',
   },
 ]
 
@@ -31,12 +34,35 @@ function Valores() {
   return (
     <div>
       <Header />
-      <main className="valores-main">
+
+      <main
+        className="
+          min-h-[80vh]
+          py-[2rem]
+          px-[1rem]
+          pb-[4rem]
+          bg-[#f7f7f7]
+        "
+      >
         <TitlePage
-        titulo="Nossos valores"
-        subtitulo="Os princípios que guiam cada decisão do projeto Dentalk"
+          titulo="Nossos valores"
+          subtitulo="Os princípios que guiam cada decisão do projeto Dentalk"
         />
-        <div className="valores-grid">
+
+      <div className="
+            flex
+            justify-center  
+          "
+        >
+        <div
+          className="
+            flex
+            flex-col
+            gap-[1.25rem]
+            max-w-[52rem]
+            mx-auto
+          "
+        >
           {valores.map((v, i) => (
             <Card
               key={i}
@@ -48,7 +74,9 @@ function Valores() {
             />
           ))}
         </div>
+      </div>
       </main>
+
       <Footer />
     </div>
   )
