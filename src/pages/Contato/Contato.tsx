@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
-import './Contato.css'
 import TitlePage from '../../components/TitlePage/TitlePage'
 
 interface ContatoForm {
@@ -47,33 +46,135 @@ function Contato() {
   return (
     <div>
       <Header />
-      <main className="contato-main">
-        <div className="centralize">
-        <TitlePage titulo="Entre em contato"/>
 
-          <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
-            <div className="field">
-              <label htmlFor="nome">Nome*</label>
+      <main
+        className="
+          min-h-screen
+          flex
+          items-center
+          justify-center
+          py-[4rem]
+          px-[1rem]
+          bg-[#f7f7f7]
+        "
+      >
+        <div className="text-center">
+          <TitlePage titulo="Entre em contato" />
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            noValidate
+            className="
+              flex-col
+              gap-[0.25rem]
+              w-[90%]
+              max-w-[36rem]
+              mx-auto
+              mt-[1.5rem]
+              bg-white
+              p-[2rem]
+              rounded-[1rem]
+              shadow-[0_2px_10px_rgba(0,0,0,0.08)]
+              max-[768px]:w-[95%]
+              max-[768px]:p-[1.25rem]
+            "
+          >
+            {/* NOME */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-[0.3rem]
+                mb-[0.75rem]
+                text-left
+              "
+            >
+              <label
+                htmlFor="nome"
+                className="
+                  font-bold
+                  text-[0.95rem]
+                  text-[#010817]
+                "
+              >
+                Nome*
+              </label>
+
               <input
                 id="nome"
                 type="text"
                 placeholder="Seu nome completo"
-                className={errors.nome ? 'input-error' : ''}
+                className={`
+                  p-[0.7rem_1rem]
+                  border-[1.5px]
+                  rounded-[0.5rem]
+                  text-[0.95rem]
+                  font-inherit
+                  text-[#333]
+                  outline-none
+                  transition-all
+                  ${
+                    errors.nome
+                      ? 'border-[#e53e3e]'
+                      : 'border-[#ddd] focus:border-[#fd8b08]'
+                  }
+                `}
                 {...register('nome', {
                   required: 'Nome é obrigatório',
-                  minLength: { value: 3, message: 'Mínimo de 3 caracteres' },
+                  minLength: {
+                    value: 3,
+                    message: 'Mínimo de 3 caracteres',
+                  },
                 })}
               />
-              {errors.nome && <span className="error-msg">{errors.nome.message}</span>}
+
+              {errors.nome && (
+                <span className="text-[#e53e3e] text-[0.8rem]">
+                  {errors.nome.message}
+                </span>
+              )}
             </div>
 
-            <div className="field">
-              <label htmlFor="email">E-mail*</label>
+            {/* EMAIL */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-[0.3rem]
+                mb-[0.75rem]
+                text-left
+              "
+            >
+              <label
+                htmlFor="email"
+                className="
+                  font-bold
+                  text-[0.95rem]
+                  text-[#010817]
+                "
+              >
+                E-mail*
+              </label>
+
               <input
                 id="email"
                 type="email"
                 placeholder="seuemail@exemplo.com"
-                className={errors.email ? 'input-error' : ''}
+                className={`
+                  p-[0.7rem_1rem]
+                  border-[1.5px]
+                  rounded-[0.5rem]
+                  text-[0.95rem]
+                  font-inherit
+                  text-[#333]
+                  outline-none
+                  transition-all
+                  ${
+                    errors.email
+                      ? 'border-[#e53e3e]'
+                      : 'border-[#ddd] focus:border-[#fd8b08]'
+                  }
+                `}
                 {...register('email', {
                   required: 'E-mail é obrigatório',
                   pattern: {
@@ -82,16 +183,54 @@ function Contato() {
                   },
                 })}
               />
-              {errors.email && <span className="error-msg">{errors.email.message}</span>}
+
+              {errors.email && (
+                <span className="text-[#e53e3e] text-[0.8rem]">
+                  {errors.email.message}
+                </span>
+              )}
             </div>
 
-            <div className="field">
-              <label htmlFor="telefone">Telefone / WhatsApp*</label>
+            {/* TELEFONE */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-[0.3rem]
+                mb-[0.75rem]
+                text-left
+              "
+            >
+              <label
+                htmlFor="telefone"
+                className="
+                  font-bold
+                  text-[0.95rem]
+                  text-[#010817]
+                "
+              >
+                Telefone / WhatsApp*
+              </label>
+
               <input
                 id="telefone"
                 type="text"
                 placeholder="(11) 99999-9999"
-                className={errors.telefone ? 'input-error' : ''}
+                className={`
+                  p-[0.7rem_1rem]
+                  border-[1.5px]
+                  rounded-[0.5rem]
+                  text-[0.95rem]
+                  font-inherit
+                  text-[#333]
+                  outline-none
+                  transition-all
+                  ${
+                    errors.telefone
+                      ? 'border-[#e53e3e]'
+                      : 'border-[#ddd] focus:border-[#fd8b08]'
+                  }
+                `}
                 {...register('telefone', {
                   required: 'Telefone é obrigatório',
                   pattern: {
@@ -100,72 +239,227 @@ function Contato() {
                   },
                 })}
               />
-              {errors.telefone && <span className="error-msg">{errors.telefone.message}</span>}
+
+              {errors.telefone && (
+                <span className="text-[#e53e3e] text-[0.8rem]">
+                  {errors.telefone.message}
+                </span>
+              )}
             </div>
 
-            <div className="field">
-              <label htmlFor="assunto">Assunto*</label>
+            {/* ASSUNTO */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-[0.3rem]
+                mb-[0.75rem]
+                text-left
+              "
+            >
+              <label
+                htmlFor="assunto"
+                className="
+                  font-bold
+                  text-[0.95rem]
+                  text-[#010817]
+                "
+              >
+                Assunto*
+              </label>
+
               <input
                 id="assunto"
                 type="text"
                 placeholder="Assunto da mensagem"
-                className={errors.assunto ? 'input-error' : ''}
+                className={`
+                  p-[0.7rem_1rem]
+                  border-[1.5px]
+                  rounded-[0.5rem]
+                  text-[0.95rem]
+                  font-inherit
+                  text-[#333]
+                  outline-none
+                  transition-all
+                  ${
+                    errors.assunto
+                      ? 'border-[#e53e3e]'
+                      : 'border-[#ddd] focus:border-[#fd8b08]'
+                  }
+                `}
                 {...register('assunto', {
                   required: 'Assunto é obrigatório',
-                  minLength: { value: 3, message: 'Mínimo de 3 caracteres' },
+                  minLength: {
+                    value: 3,
+                    message: 'Mínimo de 3 caracteres',
+                  },
                 })}
               />
-              {errors.assunto && <span className="error-msg">{errors.assunto.message}</span>}
+
+              {errors.assunto && (
+                <span className="text-[#e53e3e] text-[0.8rem]">
+                  {errors.assunto.message}
+                </span>
+              )}
             </div>
 
-            <div className="field">
-              <label htmlFor="mensagem">Mensagem*</label>
+            {/* MENSAGEM */}
+            <div
+              className="
+                flex
+                flex-col
+                gap-[0.3rem]
+                mb-[0.75rem]
+                text-left
+              "
+            >
+              <label
+                htmlFor="mensagem"
+                className="
+                  font-bold
+                  text-[0.95rem]
+                  text-[#010817]
+                "
+              >
+                Mensagem*
+              </label>
+
               <textarea
                 id="mensagem"
                 rows={5}
                 placeholder="Escreva sua mensagem aqui..."
-                className={errors.mensagem ? 'input-error' : ''}
+                className={`
+                  p-[0.7rem_1rem]
+                  border-[1.5px]
+                  rounded-[0.5rem]
+                  text-[0.95rem]
+                  font-inherit
+                  text-[#333]
+                  outline-none
+                  resize-y
+                  transition-all
+                  ${
+                    errors.mensagem
+                      ? 'border-[#e53e3e]'
+                      : 'border-[#ddd] focus:border-[#fd8b08]'
+                  }
+                `}
                 {...register('mensagem', {
                   required: 'Mensagem é obrigatória',
-                  minLength: { value: 10, message: 'Mínimo de 10 caracteres' },
+                  minLength: {
+                    value: 10,
+                    message: 'Mínimo de 10 caracteres',
+                  },
                 })}
               />
-              {errors.mensagem && <span className="error-msg">{errors.mensagem.message}</span>}
+
+              {errors.mensagem && (
+                <span className="text-[#e53e3e] text-[0.8rem]">
+                  {errors.mensagem.message}
+                </span>
+              )}
             </div>
 
             {isSubmitSuccessful && (
-              <p className="success-msg">✅ Mensagem enviada com sucesso!</p>
+              <p
+                className="
+                  text-[#2f855a]
+                  text-[0.95rem]
+                  font-semibold
+                  text-center
+                "
+              >
+                ✅ Mensagem enviada com sucesso!
+              </p>
             )}
 
-            <button type="submit" className="form-btn">Enviar</button>
+            <button
+              type="submit"
+              className="
+                mt-[0.5rem]
+                bg-[#fd8b08]
+                text-white
+                border-none
+                p-[0.8rem]
+                rounded-[0.5rem]
+                text-[1rem]
+                font-bold
+                cursor-pointer
+                transition-all
+                hover:bg-[#b36103]
+              "
+            >
+              Enviar
+            </button>
           </form>
 
-          <div className="contato-acoes">
+          <div
+            className="
+              flex
+              flex-wrap
+              justify-center
+              gap-[1.5rem]
+              mt-[2.5rem]
+              max-[768px]:flex-col
+              max-[768px]:items-center
+            "
+          >
             {acoesContato.map((a) => (
-              <ProgramaCard key={a.nome} nome={a.nome} img={a.img} link={a.link} />
+              <ProgramaCard
+                key={a.nome}
+                nome={a.nome}
+                img={a.img}
+                link={a.link}
+              />
             ))}
           </div>
 
-          <div className="contato-social">
+          <div
+            className="
+              flex
+              justify-center
+              gap-[2rem]
+              mt-[2rem]
+              max-[768px]:flex-col
+              max-[768px]:items-center
+              max-[768px]:gap-[1rem]
+            "
+          >
             <a
               href="https://www.linkedin.com/company/turma-do-bem/posts/?feedView=all"
               target="_blank"
               rel="noreferrer"
-              className="social-link"
+              className="
+                text-[1.1rem]
+                font-semibold
+                text-[#587beb]
+                no-underline
+                transition-all
+                hover:text-[#fd8b08]
+              "
             >
               🔗 LinkedIn
             </a>
+
             <a
               href="https://www.facebook.com/turmadobem"
               target="_blank"
               rel="noreferrer"
-              className="social-link"
+              className="
+                text-[1.1rem]
+                font-semibold
+                text-[#587beb]
+                no-underline
+                transition-all
+                hover:text-[#fd8b08]
+              "
             >
               📘 Facebook
             </a>
           </div>
         </div>
       </main>
+
       <Footer />
     </div>
   )
