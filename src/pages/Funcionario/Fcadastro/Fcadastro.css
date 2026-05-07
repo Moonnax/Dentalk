@@ -229,10 +229,7 @@ main{
     color: #000;
 }
 
-.header_usuario{
-    justify-content: flex-end;
-}
-/* COLUNAS */
+
 
 .col_nome{
     width: 35%;

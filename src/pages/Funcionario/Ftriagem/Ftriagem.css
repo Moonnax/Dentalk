@@ -160,8 +160,8 @@ main{
 }
 
 .badge_encaminhados{
-    background-color: #e9f7ff;
-    color: #006494;
+  background-color: #fff4cc;
+    color: #8a6d00;
 }
 
 .badge_rejeitados{
@@ -216,7 +216,7 @@ main{
 }
 
 .linha_triagem:hover{
-    background-color: #f8f8f8;
+    background-color: #fffdf5
 }
 
 /* COLUNAS */
@@ -290,10 +290,6 @@ main{
 .btn_contato{
     background-color: #c4d600;
     color: #000;
-}
-
-.btn_contato:hover{
-    opacity: 0.9;
 }
 
 .btn_rejeitar{
