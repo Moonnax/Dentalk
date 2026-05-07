@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import "./FAQ.css";
 import TitlePage from "../../components/TitlePage/TitlePage";
 
 const faqs = [
@@ -42,25 +41,124 @@ function FAQ() {
   return (
     <div>
       <Header />
-      <main className="faq-main">
-        <TitlePage titulo="Perguntas frequentes"/>
-        <div className="faq-list">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`faq-item ${openIndex === index ? "faq-open" : ""}`}
-            >
-              <button className="faq-question" onClick={() => toggle(index)}>
-                <span>{faq.question}</span>
-                <span className="faq-icon">{openIndex === index ? "−" : "+"}</span>
-              </button>
-              <div className="faq-answer">
-                <p>{faq.answer}</p>
+
+      <main
+        className="
+          min-h-[80vh]
+          py-[2rem]
+          px-[1rem]
+          pb-[4rem]
+          bg-[#f7f7f7]
+        "
+      >
+        <TitlePage titulo="Perguntas frequentes" />
+
+      <div className="flex justify-center">
+        <div
+          className="
+            max-w-[48rem]
+            mt-[2rem]
+            mx-auto
+            flex
+            flex-col
+            gap-[0.75rem]
+          "
+        >
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={index}
+                className={`
+                  bg-white
+                  rounded-[0.75rem]
+                  border
+                  overflow-hidden
+                  transition-all
+                  duration-200
+                  shadow-[0_2px_6px_rgba(0,0,0,0.05)]
+                  hover:shadow-[0_4px_14px_rgba(0,0,0,0.1)]
+                  ${
+                    isOpen
+                      ? "border-[#fd8b08] shadow-[0_4px_14px_rgba(253,139,8,0.15)]"
+                      : "border-[#e8e8e8]"
+                  }
+                `}
+              >
+                <button
+                  onClick={() => toggle(index)}
+                  className={`
+                    w-full
+                    bg-transparent
+                    border-none
+                    px-[1.5rem]
+                    py-[1.25rem]
+                    flex
+                    justify-between
+                    items-center
+                    gap-[1rem]
+                    cursor-pointer
+                    text-left
+                    text-[1.05rem]
+                    font-[700]
+                    transition-colors
+                    duration-200
+                    max-[768px]:text-[0.95rem]
+                    max-[768px]:px-[1.1rem]
+                    max-[768px]:py-[1rem]
+                    ${
+                      isOpen ? "text-[#fd8b08]" : "text-[#010817]"
+                    }
+                  `}
+                >
+                  <span>{faq.question}</span>
+
+                  <span
+                    className="
+                      text-[1.5rem]
+                      font-[300]
+                      text-[#fd8b08]
+                      shrink-0
+                      leading-none
+                    "
+                  >
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                <div
+                  className={`
+                    overflow-hidden
+                    transition-all
+                    duration-300
+                    ${
+                      isOpen
+                        ? "max-h-[20rem] px-[1.5rem] pb-[1.25rem] max-[768px]:px-[1.1rem] max-[768px]:pb-[1rem]"
+                        : "max-h-0 px-[1.5rem] max-[768px]:px-[1.1rem]"
+                    }
+                  `}
+                >
+                  <p
+                    className="
+                      text-[0.97rem]
+                      text-[#444]
+                      leading-[1.7]
+                      border-t
+                      border-[#f0f0f0]
+                      pt-[1rem]
+                    "
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+      </div>
       </main>
+
       <Footer />
     </div>
   );
