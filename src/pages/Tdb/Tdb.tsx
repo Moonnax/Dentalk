@@ -1,7 +1,6 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
-import './Tdb.css'
 import TitlePage from '../../components/TitlePage/TitlePage'
 
 const programas = [
@@ -21,15 +20,66 @@ function Tdb() {
   return (
     <div>
       <Header />
-      <main className="tdb-main">
-        <div className="tdb-box">
+
+      <main
+        className="
+          min-h-[80vh]
+          py-[3rem]
+          px-[1rem]
+          pb-[4rem]
+          bg-[#f7f7f7]
+        "
+      >
+      <div className="
+            flex
+            justify-center  
+          "
+        >
+        <div
+          className="
+          p-[1.5rem]
+          mx-auto
+          my-0
+          bg-white
+          w-[90%]
+          max-w-[52rem]
+          rounded-[1rem]
+          shadow-[0_2px_8px_rgba(0,0,0,0.06)]
+          text-center
+          flex
+          flex-col
+          items-center
+          justify-center
+          max-[768px]:w-[95%]
+        "
+        >
           <img
             src="https://i.pinimg.com/1200x/92/d2/84/92d284efe84c4a4e8674537aa05aff82.jpg"
             alt="Turma do Bem"
-            className="tdb-logo"
+            className="
+              w-[300px]
+              h-[300px]
+              object-cover
+              block
+              mx-auto
+              mb-[1.5rem]
+              rounded-[0.75rem]
+              max-[768px]:w-[200px]
+              max-[768px]:h-[200px]
+            "
           />
+
           <TitlePage titulo="Turma do Bem" />
-          <p className="formText">
+
+          <p
+            className="
+              text-[1rem]
+              leading-[1.75]
+              text-[#333]
+              text-left
+              mb-[1.5rem]
+            "
+          >
             A Turma do Bem é uma organização social dedicada à saúde bucal e ao voluntariado
             especializado, gerenciando a maior rede de dentistas voluntários do mundo, com mais de
             18 mil profissionais atuando em 12 países. Desde sua fundação, a ONG oferece
@@ -46,15 +96,40 @@ function Tdb() {
             fortalecem comunidades.
           </p>
         </div>
+      </div>
+        <h2
+          className="
+            text-center
+            text-[2rem]
+            font-[550]
+            mt-[2.5rem]
+          "
+        >
+          Conheça os programas
+        </h2>
 
-        <h2 className="subtitle">Conheça os programas</h2>
-
-        <div className="tdb-programas">
+        <div
+          className="
+            flex
+            justify-center
+            flex-wrap
+            gap-[2rem]
+            mt-[2.5rem]
+            max-[768px]:flex-col
+            max-[768px]:items-center
+          "
+        >
           {programas.map((p) => (
-            <ProgramaCard key={p.nome} nome={p.nome} img={p.img} link={p.link} />
+            <ProgramaCard
+              key={p.nome}
+              nome={p.nome}
+              img={p.img}
+              link={p.link}
+            />
           ))}
         </div>
       </main>
+
       <Footer />
     </div>
   )
