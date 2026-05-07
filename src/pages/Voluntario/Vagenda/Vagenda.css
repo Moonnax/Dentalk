@@ -1,6 +1,5 @@
 /* style */
 
-
 *{
     box-sizing: border-box;
     margin: 0rem;
@@ -14,6 +13,7 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+
 main{
     margin: 1rem 2rem;
 }
@@ -22,13 +22,13 @@ main{
 
 
 /* HEADER */
+
 header{
     background-color:#010817;
     height: 6rem;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
-    
 }
 
 .menu-toggle{
@@ -41,7 +41,6 @@ header{
     background-color:#010817;
 }
 
-
 #area-button-v{
     background-color: #9ac93d;
     color: whitesmoke;
@@ -50,7 +49,7 @@ header{
     border-radius: 10px;
     margin-right: 0.735rem;
     font-weight: 550;
-    font-size: 1rem; 
+    font-size: 1rem;
     text-decoration: none;
     padding: 0.735rem;
 }
@@ -63,8 +62,8 @@ header{
 
 .menu-item {
     white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 1rem; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     background-color: #010817;
@@ -73,7 +72,7 @@ header{
     display: inline-block;
 }
 
-.menu-item.active { 
+.menu-item.active {
     color: #fd8b08;
     border-bottom: 3px solid #fd8b08;
 }
@@ -106,7 +105,6 @@ header{
     height: 1.5rem;
     color: white;
     margin-right: 1rem;
-
 }
 
 .bell-icon{
@@ -116,12 +114,13 @@ header{
     width: 1.5rem;
     height: 1.5rem;
     color: white;
-    
 }
 
 /* FIM header */
 
+
 /* footer */
+
 footer {
     background-color: #010817;
     color: white;
@@ -131,25 +130,27 @@ footer {
 }
 
 .footer-logo{
-margin-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .footer-slogan{
-font-style: italic;
-margin-bottom: 1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
 }
 
 .footer-info{
-max-width: 30rem;
-margin: 0 auto;
-white-space: nowrap;
+    max-width: 30rem;
+    margin: 0 auto;
+    white-space: nowrap;
 }
 
 .fiap-color{
-color: #fd8b08;
-text-decoration: none;
+    color: #fd8b08;
+    text-decoration: none;
 }
-/* footer fim  */
+
+/* footer fim */
+
 
 .dashboard_container {
     padding: 20px 40px;
@@ -163,8 +164,13 @@ text-decoration: none;
     width: 100%;
 }
 
-.coluna_calendario { width: 55%; }
-.coluna_detalhes_agenda { width: 43%; }
+.coluna_calendario {
+    width: 55%;
+}
+
+.coluna_detalhes_agenda {
+    width: 43%;
+}
 
 .card_calendario_full {
     background-color: #fffdf5;
@@ -182,10 +188,13 @@ text-decoration: none;
     margin-bottom: 30px;
 }
 
-.header_calendario h2 { font-size: 1.8rem; color: #000; }
+.header_calendario h2 {
+    font-size: 1.8rem;
+    color: #000;
+}
 
 .grade_dias_semana {
-    display: flex; 
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
     text-align: center;
@@ -200,37 +209,8 @@ text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
     padding: 10px 0;
-}
-.grade_dias_semana span { 
-    color: #999; 
-    font-size: 0.9rem; 
-    font-weight: 500; 
-}
-
-.grade_dias_semana {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.grade_dias_semana span {
-    display: block;
-    width: 14.285%; 
-    color: #999;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 10px 0;
     box-sizing: border-box;
 }
-
-.dia_selecionado {
-    background-color: #fcebb6;
-    border-radius: 12px;
-    font-weight: 700;
-}
-
 
 .grade_calendario_corpo {
     display: flex;
@@ -240,29 +220,36 @@ text-decoration: none;
     align-content: stretch;
 }
 
-.dia_clicavel, 
+.dia_clicavel,
 .dia_fora {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 14.285%; 
-    height: 20%; 
+    width: 14.285%;
+    height: 20%;
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     cursor: pointer;
     position: relative;
     font-size: 1.1rem;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     outline: none;
     transition: background 0.2s;
+
+    background: transparent;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.dia_clicavel:hover {
+    background-color: #fcebb6;
+    border-radius: 12px;
 }
 
 .dia_fora {
     color: #ccc;
     cursor: default;
 }
-
-
-
 
 .badge_notificacao {
     background-color: #f1c40f;
@@ -279,7 +266,7 @@ text-decoration: none;
 }
 
 .card_info_paciente {
-    background-color: #fff; 
+    background-color: #fff;
     border: 1px solid #eee;
     border-radius: 15px;
     padding: 30px;
@@ -289,7 +276,11 @@ text-decoration: none;
     flex-direction: column;
 }
 
-.card_info_paciente h3 { font-size: 1.5rem; color: #000; margin-bottom: 5px; }
+.card_info_paciente h3 {
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 5px;
+}
 
 .instrucao_topo {
     font-size: 0.85rem;
@@ -306,37 +297,40 @@ text-decoration: none;
 }
 
 .barra_vertical {
-    width: 8px; 
+    width: 8px;
     background-color: #f1c40f;
     border-radius: 10px;
 }
 
-.nome_destaque { 
-    font-size: 1.4rem; 
-    font-weight: 700; 
+.nome_destaque {
+    font-size: 1.4rem;
+    font-weight: 700;
     margin-bottom: 15px;
- }
-.id_consulta { 
-    font-size: 1rem; 
-    color: #666; 
-    font-weight: 400; 
-    margin-left: 10px; 
-}
-.label_item { 
-    font-weight: 700; 
-    color: #000; 
-}
-.conteudo_texto p { 
-    margin-bottom: 8px; 
-    font-size: 0.95rem; 
-    color: #333; 
 }
 
+.id_consulta {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+    margin-left: 10px;
+}
 
-.acoes_agenda { 
-    display: flex; 
+.label_item {
+    font-weight: 700;
+    color: #000;
+}
+
+.conteudo_texto p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.acoes_agenda {
+    display: flex;
     gap: 15px;
-     margin-top: 20px; }
+    margin-top: 20px;
+}
 
 .btn_fake_amarelo {
     background-color: #f1c40f;
@@ -344,6 +338,8 @@ text-decoration: none;
     border-radius: 10px;
     font-weight: 700;
     cursor: pointer;
+
+    border: none;
 }
 
 .btn_fake_cinza {
@@ -352,16 +348,19 @@ text-decoration: none;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
+
+    border: none;
 }
 
 .aviso_footer {
     font-size: 0.7rem;
     color: #aaa;
     margin-top: 12px;
-    padding-left: 33px; /* Alinha com o texto acima */
+    padding-left: 33px;
 }
 
-/* LISTA DE CONSULTAS (VERTICAL) */
+/* LISTA DE CONSULTAS */
+
 .card_lista_horarios {
     background-color: #fff;
     border: 1px solid #eee;
@@ -370,20 +369,37 @@ text-decoration: none;
     height: 28vh;
 }
 
-.lista_vertical { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.lista_vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
 
 .slot_hora {
     padding: 15px;
     background-color: #f9f9f9;
     border-radius: 10px;
     font-size: 0.9rem;
+
+    border: none;
+    text-align: left;
+    cursor: pointer;
 }
 
-.slot_hora.selecionado {
+.slot_hora:hover {
     background-color: #fff8e1;
     border-left: 5px solid #f1c40f;
     font-weight: 600;
 }
 
-/* SETAS CLICÁVEIS */
-.setas_nav a { color: #333; text-decoration: none; padding: 5px; }
+/* SETAS */
+
+.setas_nav button {
+    color: #333;
+    text-decoration: none;
+    padding: 5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
