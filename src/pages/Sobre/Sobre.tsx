@@ -48,7 +48,8 @@ function Sobre() {
             encontrá-las de forma intuitiva e gerar métricas sempre que
             necessário.
           </p>
-
+        
+        <div className="flex justify-center">
           <img
             src="https://blog.escallo.com.br/wp-content/uploads/2022/04/Blog-Escallo-4-fatos-de-um-atendimento-Omnichannel.png"
             alt="imagem ilustrativa de diversos canais de comunicação"
@@ -59,8 +60,10 @@ function Sobre() {
               block
               my-[1.25rem]
               mx-auto
+              
             "
           />
+        </div>
 
           <p className="formText">
             Nossa solução conecta todos os canais de comunicação em um único
@@ -74,6 +77,7 @@ function Sobre() {
             inclusivo e agilizado para quem mais precisa.
           </p>
 
+        <div className="flex justify-center">
           <img
             src="https://img.freepik.com/free-vector/big-isolated-employee-working-office-workplace-flat-illustration_1150-41780.jpg?semt=ais_hybrid&w=740&q=80"
             alt="imagem ilustrativa de diversos dashboards"
@@ -86,6 +90,7 @@ function Sobre() {
               mx-auto
             "
           />
+        </div>
         </div>
 
         <div className="text-center">
