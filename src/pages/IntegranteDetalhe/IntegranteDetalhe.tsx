@@ -38,7 +38,7 @@ const integrantes: Integrante[] = [
     linkedin: 'https://www.linkedin.com/in/mateus-ribeiro-azevedo-a39a13269',
     linkedinNome: 'Mateus Ribeiro Azevedo',
     github: 'https://github.com/mateus-ribeiro-dev',
-    githubNome: 'mateus ribeiro dev',
+    githubNome: 'mateus-ribeiro-dev',
     rm: '566630',
     turma: '1TDSPR-2025',
     bio: 'Desenvolvedor focado em back-end e arquitetura de sistemas. Responsável pela estrutura de dados e integração do projeto Dentalk.',
