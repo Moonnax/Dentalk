@@ -16,6 +16,7 @@ import Sobre from './pages/Sobre/Sobre'
 import Faq from './pages/Faq/Faq'
 import Contato from './pages/Contato/Contato'
 import QuemSomos from './pages/QuemSomos/QuemSomos'
+import IntegranteDetalhe from './pages/IntegranteDetalhe/IntegranteDetalhe'
 import Tdb from './pages/Tdb/Tdb'
 import Missao from './pages/Missao/Missao'
 import Valores from './pages/Valores/Valores'
@@ -35,6 +36,7 @@ function App() {
         <Route path="/faq" element={<Faq/>} />
         <Route path="/contato" element={<Contato/>} />
         <Route path="/quemsomos" element={<QuemSomos/>} />
+        <Route path="/quemSomos/:id" element={<IntegranteDetalhe />} />
         <Route path="/tdb" element={<Tdb/>} />
         <Route path="/missao" element={<Missao/>} />
         <Route path="/valores" element={<Valores/>} />
