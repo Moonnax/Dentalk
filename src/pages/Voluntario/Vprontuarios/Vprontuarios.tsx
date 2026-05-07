@@ -38,7 +38,8 @@ export default function VProntuario() {
   ];
 
   return (
-    <>
+    <div className="page-container">
+
       <HeaderVoluntario />
 
       <main className="container_prontuarios">
@@ -89,9 +90,11 @@ export default function VProntuario() {
 
           </div>
         </section>
+
       </main>
 
       <Footer />
-    </>
+
+    </div>
   );
 }
