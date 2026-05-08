@@ -29,7 +29,7 @@ const integrantes: Integrante[] = [
     githubNome: 'ismrqs',
     rm: '566663',
     turma: '1TDSPR-2025',
-    bio: 'Estudante de tecnologia apaixonada por desenvolvimento web e soluções com impacto social. Contribuiu com o front-end e a identidade visual do projeto Dentalk.',
+    bio: 'Atuei no desenvolvimento do projeto DenTalk, sendo responsável pela estruturação, modelagem e implementação do banco de dados da aplicação, garantindo a organização, integridade e eficiência no armazenamento das informações do sistema. Também participei ativamente do desenvolvimento front-end utilizando React, contribuindo para a criação de interfaces funcionais, integração das funcionalidades da plataforma e melhoria da experiência do usuário.',
   },
   {
     id: 'mateus',
@@ -41,7 +41,7 @@ const integrantes: Integrante[] = [
     githubNome: 'mateus-ribeiro-dev',
     rm: '566630',
     turma: '1TDSPR-2025',
-    bio: 'Desenvolvedor focado em back-end e arquitetura de sistemas. Responsável pela estrutura de dados e integração do projeto Dentalk.',
+    bio: 'Atuei no desenvolvimento back-end do projeto, sendo responsável pela construção e integração das APIs utilizando Python e Java. Desenvolvi a lógica de negócio da aplicação, implementei endpoints RESTful, integração com banco de dados e tratamento de dados para garantir performance e escalabilidade do sistema. Também participei da estruturação da arquitetura da aplicação, focando em segurança, organização do código e comunicação eficiente entre os serviços.',
   },
   {
     id: 'luana',
@@ -53,7 +53,7 @@ const integrantes: Integrante[] = [
     githubNome: 'Moonnax',
     rm: '566621',
     turma: '1TDSPR-2025',
-    bio: 'Desenvolvedora criativa com foco em UX e acessibilidade. Contribuiu com o design das interfaces e a experiência do usuário no projeto Dentalk.',
+    bio: 'Liderei a organização estratégica do projeto Dentalk, atuando no planejamento, visão de mercado e direcionamento da plataforma. Também fui responsável pela criação e treinamento da inteligência artificial do sistema, desenvolvendo um chatbot capaz de identificar solicitações de ajuda automaticamente. Além disso, desenvolvi o layout base do front-end, definindo a identidade visual e a experiência principal da aplicação.',
   },
 ]
 
