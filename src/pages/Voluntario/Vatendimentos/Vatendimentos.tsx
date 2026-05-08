@@ -2,10 +2,12 @@ import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVolunta
 import Footer from "../../../components/Footer/Footer";
 import "./Vatendimentos.css";
 import { Upload } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Vatendimentos() {
   return (
-    <>
+    <div className="page-container">
+
       <HeaderVoluntario />
 
       <main className="container_atendimentos">
@@ -35,9 +37,9 @@ function Vatendimentos() {
               <div className="campo_grupo">
                 <span>Anexo:</span>
                 <div className="upload_area_fake" tabIndex={0}>
-                    <Upload size={28} />
-                    <p>Faça o upload</p>
-                    </div>
+                  <Upload size={28} />
+                  <p>Faça o upload</p>
+                </div>
               </div>
 
             </div>
@@ -115,8 +117,8 @@ function Vatendimentos() {
                 <span className="celula">{item[3]}</span>
                 <span className="celula">{item[4]}</span>
                 <span className="celula">{item[5]}</span>
-                <span className="celula link_detalhe">ver mais</span>
-              </div>
+                <Link className="celula" to="/detalhes">ver mais</Link>
+                </div>
             ))}
 
           </div>
@@ -125,7 +127,8 @@ function Vatendimentos() {
       </main>
 
       <Footer />
-    </>
+
+    </div>
   );
 }
 

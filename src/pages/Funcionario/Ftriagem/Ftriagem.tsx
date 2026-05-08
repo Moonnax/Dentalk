@@ -1,292 +1,177 @@
-import HeaderFincionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
+import {
+  ChevronDown,
+  Search,
+} from "lucide-react";
+
+import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
+
 import "./Ftriagem.css";
 
-function Ftriagem() {
+export default function TriagemF() {
+
+  const solicitacoes = [
+    {
+      nome: "Rafael Souza Lima",
+      regiao: "São Paulo - ZN",
+      prioridade: "Média",
+      canal: "Ação Esc.",
+    },
+    {
+      nome: "Mariana Costa Fernandes",
+      regiao: "Rio de Janeiro - ZS",
+      prioridade: "Baixa",
+      canal: "Instagram",
+    },
+    {
+      nome: "Bruno Henrique Alves",
+      regiao: "Belo Horizonte - Centro",
+      prioridade: "Alta",
+      canal: "Site",
+    },
+    {
+      nome: "Carla Mendes Ribeiro",
+      regiao: "Curitiba - Batel",
+      prioridade: "Alta",
+      canal: "Ação Esc.",
+    },
+    {
+      nome: "Felipe Rocha Martins",
+      regiao: "Porto Alegre - Sul",
+      prioridade: "Média",
+      canal: "WhatsApp",
+    },
+    {
+      nome: "Juliana Pereira Santos",
+      regiao: "Salvador - Centro",
+      prioridade: "Baixa",
+      canal: "Instagram",
+    },
+  ];
+
   return (
-    <>
-      <HeaderFincionario />
+    <div className="page-container">
 
-      <main className="cadastro_container">
-        <section className="filtros_cadastro">
-          <div className="filtros_grupo">
-            <div className="caixa_filtro">
-              Prioridade <span>⌄</span>
+      <HeaderFuncionario />
+
+      <main className="container_triagem">
+
+        {/* TOPO */}
+        <section className="topo_triagem">
+
+          <div className="lado_esquerdo_topo">
+
+            <div className="barra_pesquisa">
+              <Search size={18} />
+              <p>Filtrar solicitações...</p>
             </div>
 
-            <div className="caixa_filtro">
-              Região <span>⌄</span>
+            <div className="filtros_flex">
+
+              <div className="filtro_item">
+                <span>Prioridade</span>
+                <ChevronDown size={18} />
+              </div>
+
+              <div className="filtro_item">
+                <span>Região</span>
+                <ChevronDown size={18} />
+              </div>
+
+              <div className="filtro_item">
+                <span>Canal</span>
+                <ChevronDown size={18} />
+              </div>
+
             </div>
 
-            <div className="caixa_filtro">
-              Canal <span>⌄</span>
-            </div>
-
-            <div className="simular_busca">
-              🔍 <span>filtrar solicitações...</span>
-            </div>
           </div>
+
         </section>
 
+        {/* ABAS */}
         <section className="contagem_abas">
-          <div className="aba">
-            Solicitações{" "}
-            <span className="bolinha_solicitacoes">197</span>
+
+          <div className="aba_item">
+            Solicitações
+            <span className="badge_solicitacoes">197</span>
           </div>
 
-          <div className="aba">
-            A encaminhar{" "}
-            <span className="bolinha_aencaminhar">51</span>
+          <div className="aba_item">
+            A encaminhar
+            <span className="badge_encaminhar">51</span>
           </div>
 
-          <div className="aba">
-            Encaminhados{" "}
-            <span className="bolinha_encaminhados">821</span>
+          <div className="aba_item">
+            Encaminhados
+            <span className="badge_encaminhados">821</span>
           </div>
 
-          <div className="aba">
-            Rejeitados{" "}
-            <span className="bolinha_rejeitados">46</span>
+          <div className="aba_item">
+            Rejeitados
+            <span className="badge_rejeitados">46</span>
           </div>
+
         </section>
 
-        <section className="lista_usuarios">
-            <div className="linha_cabecalho">
-                <div className="col-nome-t">Nome</div>
-                <div className="col-regiao-t">Região</div>
-                <div className="col-prioridade-t">Prioridade</div>
-                <div className="col-canal-t">Canal</div>
-                <div className="col-acoes-t">Ações</div>
+        {/* TABELA */}
+        <section className="lista_triagem_secao">
+
+          <div className="card_lista_triagem">
+
+            <div className="linha_triagem header_triagem">
+
+              <span className="col_nome">Nome</span>
+
+              <span className="col_regiao">Região</span>
+
+              <span className="col_prioridade">Prioridade</span>
+
+              <span className="col_canal">Canal</span>
+
+              <span className="col_acoes">Ações</span>
+
             </div>
 
-          {/* LINHAS */}
-          <div className="linha_usuario">
-            <span className="col-nome-t">Rafael Souza Lima</span>
-            <span className="col-regiao-t">São Paulo - ZN</span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Média <span>⌄</span>
+            {solicitacoes.map((item, index) => (
+              <div className="linha_triagem" key={index}>
+
+                <span className="col_nome">{item.nome}</span>
+
+                <span className="col_regiao">{item.regiao}</span>
+
+                <div className="col_prioridade">
+                  <div className="mini_filtro">
+                    {item.prioridade}
+                    <ChevronDown size={15} />
+                  </div>
+                </div>
+
+                <span className="col_canal">{item.canal}</span>
+
+                <div className="col_acoes">
+
+                  <button className="btn_contato">
+                    Contato
+                  </button>
+
+                  <button className="btn_rejeitar">
+                    Rejeitar
+                  </button>
+
+                </div>
+
               </div>
-            </div>
-            <span className="col-canal-t">Ação Esc.</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
+            ))}
+
           </div>
 
-          <div className="linha_usuario destaque">
-            <span className="col-nome-t">
-              Mariana Costa Fernandes
-            </span>
-            <span className="col-regiao-t">Rio de Janeiro - ZS</span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Baixa <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Instagram</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario">
-            <span className="col-nome-t">
-              Bruno Henrique Alves
-            </span>
-            <span className="col-regiao-t">
-              Belo Horizonte - Centro
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Alta <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Site</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario destaque">
-            <span className="col-nome-t">
-              Carla Mendes Ribeiro
-            </span>
-            <span className="col-regiao-t">Curitiba - Batel</span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Alta <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Ação Esc.</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario">
-            <span className="col-nome-t">
-              Felipe Rocha Martins
-            </span>
-            <span className="col-regiao-t">
-              Porto Alegre - Sul
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Média <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">WhatsApp</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario destaque">
-            <span className="col-nome-t">
-              Juliana Pereira Santos
-            </span>
-            <span className="col-regiao-t">
-              Salvador - Centro
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Baixa <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Instagram</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario">
-            <span className="col-nome-t">
-              Lucas Andrade Silva
-            </span>
-            <span className="col-regiao-t">
-              Recife - Boa Viagem
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Alta <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Site</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario destaque">
-            <span className="col-nome-t">
-              Beatriz Oliveira Vaz
-            </span>
-            <span className="col-regiao-t">
-              Manaus - Ponta Negra
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Média <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Instagram</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario">
-            <span className="col-nome-t">
-              Thiago Barros Nogueira
-            </span>
-            <span className="col-regiao-t">
-              Fortaleza - Aldeota
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Alta <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">WhatsApp</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
-
-          <div className="linha_usuario destaque">
-            <span className="col-nome-t">
-              Fernanda Lopes Carvalho
-            </span>
-            <span className="col-regiao-t">
-              Brasília - Asa Sul
-            </span>
-            <div className="col-prioridade-t">
-              <div className="caixa_mini_filtro">
-                Baixa <span>⌄</span>
-              </div>
-            </div>
-            <span className="col-canal-t">Site</span>
-            <div className="col-acoes-t">
-              <a href="#" className="btn-contato">
-                Contato &gt;
-              </a>
-              <a href="#" className="btn-rejeitar">
-                X Rejeitar
-              </a>
-            </div>
-          </div>
         </section>
+
       </main>
 
       <Footer />
-    </>
+
+    </div>
   );
 }
-
-export default Ftriagem;

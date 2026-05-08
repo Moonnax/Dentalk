@@ -1,4 +1,4 @@
-import { Bell, LogOut, Menu, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from '../../../components/Footer/Footer';
 
@@ -11,15 +11,21 @@ export default function VAgenda() {
       <main className="dashboard_container">
         <div className="layout_grid_fixo">
 
-          {/* CALENDÁRIO */}
+          {/* tentando fazer um calendario */}
           <section className="coluna_calendario">
             <div className="card_calendario_full">
 
               <div className="header_calendario">
                 <h2>Março 2026</h2>
+
                 <div className="setas_nav">
-                  <a href="#"><ChevronLeft /></a>
-                  <a href="#"><ChevronRight /></a>
+                  <button>
+                    <ChevronLeft />
+                  </button>
+
+                  <button>
+                    <ChevronRight />
+                  </button>
                 </div>
               </div>
 
@@ -28,46 +34,42 @@ export default function VAgenda() {
                   <span key={d}>{d}</span>
                 ))}
               </div>
-
               <div className="grade_calendario_corpo">
                 {[
                   "1","2","3","4*","5","6","7",
-                  "8","9*","10","11","12S","13","14",
+                  "8","9*","10","11","12","13","14",
                   "15","16","17*","18","19","20","21*",
                   "22","23","24","25","26","27","28",
                   "29","30","31","x","x","x","x"
                 ].map((dia, i) => {
                   const isFora = dia === "x";
-                  const isSelecionado = dia.includes("S");
                   const isMarcado = dia.includes("*");
 
                   return (
-                    <div
+                    <button
                       key={i}
-                      className={`${
-                        isFora
-                          ? "dia_fora"
-                          : "dia_clicavel"
-                      } ${isSelecionado ? "dia_selecionado" : ""}`}
+                      className={isFora ? "dia_fora" : "dia_clicavel"}
                     >
-                      {!isFora && dia.replace("*", "").replace("S", "")}
+                      {!isFora && dia.replace("*", "")}
 
                       {isMarcado && !isFora && (
-                        <span className="badge_notificacao">2</span>
+                        <span className="badge_notificacao">
+                          2
+                        </span>
                       )}
-                    </div>
+                    </button>
                   );
                 })}
               </div>
-
             </div>
           </section>
-
-          {/* DETALHES */}
-          <aside className="coluna_detalhes_agenda">
+    
+    
+    <aside className="coluna_detalhes_agenda">
 
             <div className="card_info_paciente">
               <h3>Informações do Paciente</h3>
+
               <p className="instrucao_topo">
                 Selecione uma consulta na lista abaixo ou no calendário
               </p>
@@ -77,9 +79,11 @@ export default function VAgenda() {
 
                 <div className="conteudo_texto">
                   <p className="nome_destaque">
-                    Carlos Vicente <span className="id_consulta">ID Consulta: 1234</span>
+                    João Souza
+                    <span className="id_consulta">
+                      ID Consulta: 1234
+                    </span>
                   </p>
-
                   <p><span className="label_item">CPF:</span> 123.456.789-00</p>
                   <p><span className="label_item">Endereço:</span> Rua das F, 123 - SP</p>
                   <p><span className="label_item">Laudo:</span> Cárie e dor no dente</p>
@@ -89,33 +93,40 @@ export default function VAgenda() {
               </div>
 
               <div className="acoes_agenda">
-                <p className="btn_fake_amarelo">Concluir</p>
-                <p className="btn_fake_cinza">Remarcar</p>
+                <button className="btn_fake_amarelo">
+                  Concluir
+                </button>
+                <button className="btn_fake_cinza">
+                  Remarcar
+                </button>
               </div>
-
               <p className="aviso_footer">
                 Remarcações são permitidas somente com 7 dias de antecedência
               </p>
             </div>
 
             <div className="card_lista_horarios">
-              <h3>Próximas Consultas - Quinta-Feira</h3>
-
+              <h3>Próximas Consultas de Hoje</h3>
               <div className="lista_vertical">
-                <div className="slot_hora">09:00 - João Souza</div>
-                <div className="slot_hora">10:30 - Ana Almeida</div>
-                <div className="slot_hora selecionado">14:00 - Carlos Vicente</div>
-                <div className="slot_hora">15:30 - Maria Lima</div>
+                <button className="slot_hora">
+                  09:00 - João Souza
+                </button>
+                <button className="slot_hora">
+                  10:30 - Ana Almeida
+                </button>
+                <button className="slot_hora">
+                  14:00 - Carlos Vicente
+                </button>
+                <button className="slot_hora">
+                  15:30 - Maria Lima
+                </button>
               </div>
             </div>
-
           </aside>
-
         </div>
       </main>
 
       <Footer />
-
     </>
   );
 }

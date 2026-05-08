@@ -21,138 +21,6 @@ main{
 /* fim style */
 
 
-/* HEADER */
-header{
-    background-color:#010817;
-    height: 6rem;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    align-items: center;
-    
-}
-
-.menu-toggle{
-    display: none;
-}
-
-#nav{
-    display: flex;
-    justify-content: flex-end;
-    background-color:#010817;
-}
-
-#area-button-f{
-    background-color: #fd8b08;
-    color: whitesmoke;
-    padding: 0.735rem;
-    display: inline-block;
-    border-radius: 10px;
-    margin-right: 0.735rem;
-    font-weight: 550;
-    font-size: 1rem; 
-    text-decoration: none;
-    padding: 0.735rem;
-
-} 
-
-
-.menu{
-    display: flex;
-    list-style: none;
-    gap: 0.8rem;
-}
-
-.menu-item {
-    white-space: nowrap;
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 1rem; 
-    font-weight: 500;
-    text-decoration: none;
-    background-color: #010817;
-    color: whitesmoke;
-    padding: 0.5rem;
-    display: inline-block;
-}
-
-.menu-item.active { 
-    color: #fd8b08;
-    border-bottom: 3px solid #fd8b08;
-}
-
-.menu-item:hover {
-    color: #fd8b08;
-}
-
-.logo{
-    padding: 0 1.5rem;
-}
-
-.logo a{
-    color: #fd8b08;
-    text-decoration: none;
-}
-
-.logo h1{
-    background-color: transparent;
-    font-size: 1.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    white-space: nowrap;
-}
-
-.logout-icon {
-    margin-top: 0.275rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
-    margin-right: 1rem;
-
-}
-
-.bell-icon{
-    margin-left: auto;
-    margin-top: 0.275rem;
-    margin-right: 0.735rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: white;
-    
-}
-
-/* FIM header */
-
-/* footer */
-footer {
-    background-color: #010817;
-    color: white;
-    text-align: center;
-    padding: 2rem 1rem;
-    margin-top: auto;
-}
-
-.footer-logo{
-margin-bottom: 0.8rem;
-}
-
-.footer-slogan{
-font-style: italic;
-margin-bottom: 1rem;
-}
-
-.footer-info{
-max-width: 30rem;
-margin: 0 auto;
-white-space: nowrap;
-}
-
-.fiap-color{
-color: #fd8b08;
-text-decoration: none;
-}
-/* footer fim  */
-
-
 li {
     color: #587beb;
     text-decoration: none;
@@ -209,8 +77,9 @@ padding-bottom: 20px;
     color: #555;
 }
 
-.badge_gray { 
-    border: 2px dashed #333; 
+.badge { 
+    background-color: #f1c40f; /* amarelo padrão da agenda */
+    color: #000;
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -219,32 +88,8 @@ padding-bottom: 20px;
     justify-content: center;
     font-weight: bold;
     flex-shrink: 0;
+    border: none;
 }
-.badge_red { 
-    background-color: #ff3b30; 
-    color: white; 
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-.badge_green { 
-    background-color: #c9e265; 
-    color: #333; 
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-}
-
 .card_acao {
     display: flex;
     justify-content: flex-end;

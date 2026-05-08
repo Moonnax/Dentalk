@@ -1,6 +1,7 @@
 import HeaderFincionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 import "./Finicio.css";
+import { Link } from "react-router-dom";
 
 function Finicio() {
   return (
@@ -20,13 +21,13 @@ function Finicio() {
                     Encaminhe pacientes aprovados para os voluntários compatíveis
                   </p>
                 </div>
-                <span className="badge_gray">51</span>
+                <span className="badge">51</span>
               </div>
 
               <div className="card_acao">
-                <a href="/triagemf">
+                <Link to="/triagemf">
                   <p className="card_button_acao">Ir para Fila</p>
-                </a>
+                </Link>
               </div>
             </section>
 
@@ -38,13 +39,13 @@ function Finicio() {
                     6 pedidos de consultório e 2 desligamentos
                   </p>
                 </div>
-                <span className="badge_red">8</span>
+                <span className="badge">8</span>
               </div>
 
               <div className="card_acao">
-                <a href="/monitoramento">
+                <Link to="/monitoramento">
                   <p className="card_button_acao">Responder agora</p>
-                </a>
+                </Link>
               </div>
             </section>
 
@@ -58,13 +59,13 @@ function Finicio() {
                     <p>Whatsapp: 30</p>
                   </div>
                 </div>
-                <span className="badge_green">197</span>
+                <span className="badge">197</span>
               </div>
 
               <div className="card_acao">
-                <a href="/triagemf">
+                <Link to="/triagemf">
                   <p className="card_button_acao">Ver solicitações</p>
-                </a>
+                </Link>
               </div>
             </section>
           </div>
@@ -115,10 +116,10 @@ function Finicio() {
 
             <div className="quadro_acoes">
               <span>
-                <a href="#">[ Contatar Funcionário ]</a>
+                <Link to="#">[ Contatar Funcionário ]</Link>
               </span>
               <span>
-                <a href="#">[ Reencaminhar paciente ]</a>
+                <Link to="#">[ Reencaminhar paciente ]</Link>
               </span>
             </div>
           </section>
@@ -151,10 +152,10 @@ function Finicio() {
 
             <div className="quadro_acoes">
               <span>
-                <a href="#">[ Ver tudo ]</a>
+                <Link to="#">[ Ver tudo ]</Link>
               </span>
               <span>
-                <a href="#">[ Nova Solicitação de ação ]</a>
+                <Link to="#">[ Nova Solicitação de ação ]</Link>
               </span>
             </div>
           </section>

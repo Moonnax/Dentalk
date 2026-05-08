@@ -1,66 +1,46 @@
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { Menu, Bell, LogOut } from "lucide-react";
 import "./HeaderFuncionario.css";
 
-function HeaderFincionario() {
+function HeaderFuncionario() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header>
       <div className="logo">
-        <a href="/areaFuncionario">
+        <Link to="/areaFuncionario">
           <h1>🦷 DenTalk</h1>
-        </a>
+        </Link>
       </div>
 
-      <button id="menuToggle" className="menu-toggle">
-        {/* ícone placeholder (lucide depois) */}
-        <span>☰</span>
+      <button className="menu-toggle" onClick={() => setOpen(!open)}>
+        <Menu size={24} />
       </button>
 
-      <nav id="nav">
+      <nav id="nav" className={open ? "active" : ""}>
         <ul className="menu">
-          <li>
-            <a className="menu-item active" href="/areaFuncionario">
-              Início
-            </a>
-          </li>
-
-          <li>
-            <a className="menu-item" href="/cadastrof">
-              Cadastro
-            </a>
-          </li>
-
-          <li>
-            <a className="menu-item" href="/triagemf">
-              Triagem
-            </a>
-          </li>
-
-          <li>
-            <a className="menu-item" href="/monitoramento">
-              Monitoramento
-            </a>
-          </li>
-
-          <li>
-            <a className="menu-item" href="/acoesescolaf">
-              Ações Escola
-            </a>
-          </li>
+          <li><NavLink to="/areaFuncionario" end className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Início</NavLink></li>
+          <li><NavLink to="/cadastrof" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Cadastro</NavLink></li>
+          <li><NavLink to="/triagemf" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Triagem</NavLink></li>
+          <li><NavLink to="/monitoramento" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Monitoramento</NavLink></li>
+          <li><NavLink to="/acoesescolaf" className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>Ações Escola</NavLink></li>
         </ul>
       </nav>
 
-      <a href="/monitoramento" className="bell-icon">
-        🔔
-      </a>
+      <Link to="/monitoramento" className="bell-icon">
+        <Bell size={22} />
+      </Link>
 
-      <div className="menu-item" id="area-button-f">
+      <Link to="/areaFuncionario" className="menu-item" id="area-button-f">
         Funcionário
-      </div>
+      </Link>
 
-      <a href="/" className="logout-icon">
-        ⎋
-      </a>
+      <Link to="/" className="logout-icon">
+        <LogOut size={22} />
+      </Link>
     </header>
   );
 }
 
-export default HeaderFincionario;
+export default HeaderFuncionario;

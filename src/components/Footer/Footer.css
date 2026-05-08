@@ -3,25 +3,25 @@
     color: white;
     text-align: center;
     padding: 2rem 1rem;
-    margin-top: auto;
+    margin-top: 3rem;
 }
 
-.footer-logo{
+.footer-logo {
     margin-bottom: 0.8rem;
 }
 
-.footer-slogan{
+.footer-slogan {
     font-style: italic;
     margin-bottom: 1rem;
 }
 
-.footer-info{
+.footer-info {
     max-width: 30rem;
     margin: 0 auto;
     white-space: nowrap;
 }
 
-.fiap-color{
+.fiap-color {
     color: #fd8b08;
     text-decoration: none;
 }

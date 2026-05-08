@@ -1,140 +1,278 @@
+import {
+  ChevronDown,
+  Search,
+} from "lucide-react";
+
 import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
+
 import "./FacoesEscola.css";
 
 function FacoesEscola() {
+
   return (
-    <>
+    <div className="page-container">
+
       <HeaderFuncionario />
 
-      <main className="cadastro_container">
-        <section className="filtros_cadastro">
-          <div className="filtros_grupo">
-            <div className="caixa_filtro">
-              Situação <span>⌄</span>
-            </div>
-            <div className="caixa_filtro">
-              Data <span>⌄</span>
-            </div>
-            <div className="caixa_filtro">
-              Canal <span>⌄</span>
+      <main className="container_acoes">
+
+        {/* TOPO */}
+        <section className="topo_acoes">
+
+          <div className="lado_esquerdo_topo">
+
+            <div className="barra_pesquisa">
+              <Search size={18} />
+              <p>Filtrar solicitações...</p>
             </div>
 
-            <div className="simular_busca">
-              🔍 <span>filtrar solicitações...</span>
+            <div className="filtros_flex">
+
+              <div className="filtro_item">
+                <span>Situação</span>
+                <ChevronDown size={18} />
+              </div>
+
+              <div className="filtro_item">
+                <span>Data</span>
+                <ChevronDown size={18} />
+              </div>
+
+              <div className="filtro_item">
+                <span>Canal</span>
+                <ChevronDown size={18} />
+              </div>
+
             </div>
+
           </div>
+
         </section>
 
+        {/* ABAS */}
         <section className="contagem_abas">
-          <div className="aba">
-            Todas <span className="bolinha_numero gray">197</span>
+
+          <div className="aba_item">
+            Todas
+            <span className="badge_todos">197</span>
           </div>
-          <div className="aba">
-            Concluídas <span className="bolinha_numero gray">46</span>
+
+          <div className="aba_item">
+            Concluídas
+            <span className="badge_concluido">46</span>
           </div>
-          <div className="aba">
-            Aprovar <span className="bolinha_numero gray">15</span>
+
+          <div className="aba_item">
+            Aprovar
+            <span className="badge_aprovar">15</span>
           </div>
+
         </section>
 
-        <section className="lista_usuarios">
-          <div className="linha_cabecalho">
-            <span className="col-instituicao">Instituição</span>
-            <span className="col-data">Data</span>
-            <span className="col-alunos">qtd. Alunos</span>
-            <span className="col-coordenador">Coordenador</span>
-            <span className="col-infra">Infraestrutura</span>
-            <span className="col-situacao">Situação</span>
-          </div>
+        {/* TABELA */}
+        <section className="lista_acoes_secao">
 
-          {/* LINHAS */}
-          <div className="linha_usuario">
-            <span className="col-instituicao">
-              Instituto Vida Nova
-              <span className="sub-info">São Paulo - Zona Sul</span>
-            </span>
-            <span className="col-data">
-              11/04/2026
-              <span className="sub-info">08:30</span>
-            </span>
-            <span className="col-alunos">95</span>
-            <span className="col-coordenador">
-              Juliana Martins
-              <span className="sub-info">(11) 91234-5678</span>
-            </span>
-            <span className="col-infra">Completa</span>
-            <div className="col-situacao">
-              <a href="#" className="btn-aprovar">Aprovar</a>
+          <div className="card_lista_acoes">
+
+            {/* HEADER */}
+            <div className="linha_acao header_acao">
+
+              <span className="col_instituicao">
+                Instituição
+              </span>
+
+              <span className="col_data">
+                Data
+              </span>
+
+              <span className="col_alunos">
+                Qtd. Alunos
+              </span>
+
+              <span className="col_coordenador">
+                Coordenador
+              </span>
+
+              <span className="col_infra">
+                Infraestrutura
+              </span>
+
+              <span className="col_situacao_header">
+                Situação
+              </span>
+
             </div>
-          </div>
 
-          <div className="linha_usuario destaque">
-            <span className="col-instituicao">
-              Escola Caminho do Saber
-              <span className="sub-info">Guarulhos - Centro</span>
-            </span>
-            <span className="col-data">
-              09/04/2026
-              <span className="sub-info">10:00</span>
-            </span>
-            <span className="col-alunos">140</span>
-            <span className="col-coordenador">
-              Roberto Nunes
-              <span className="sub-info">(11) 93456-7890</span>
-            </span>
-            <span className="col-infra">Pendente</span>
-            <div className="col-situacao">
-              <div className="mini-caixa gray">Pendente</div>
+            {/* LINHA */}
+            <div className="linha_acao">
+
+              <div className="col_instituicao">
+                Instituto Vida Nova
+                <span className="sub_info">
+                  São Paulo - Zona Sul
+                </span>
+              </div>
+
+              <div className="col_data">
+                11/04/2026
+                <span className="sub_info">
+                  08:30
+                </span>
+              </div>
+
+              <div className="col_alunos">
+                95
+              </div>
+
+              <div className="col_coordenador">
+                Juliana Martins
+                <span className="sub_info">
+                  (11) 91234-5678
+                </span>
+              </div>
+
+              <div className="col_infra">
+                Completa
+              </div>
+
+              <div className="col_situacao">
+                <div className="status_badge status_aprovar">
+                  Aprovar
+                </div>
+              </div>
+
             </div>
-          </div>
 
-          <div className="linha_usuario">
-            <span className="col-instituicao">
-              Centro Educacional Horizonte
-              <span className="sub-info">Osasco - Zona Oeste</span>
-            </span>
-            <span className="col-data">
-              15/04/2026
-              <span className="sub-info">13:00</span>
-            </span>
-            <span className="col-alunos">180</span>
-            <span className="col-coordenador">
-              Fernanda Lopes
-              <span className="sub-info">(11) 99876-5432</span>
-            </span>
-            <span className="col-infra">Completa</span>
-            <div className="col-situacao">
-              <div className="mini-caixa gray">Confirmada</div>
+            {/* LINHA */}
+            <div className="linha_acao">
+
+              <div className="col_instituicao">
+                Escola Caminho do Saber
+                <span className="sub_info">
+                  Guarulhos - Centro
+                </span>
+              </div>
+
+              <div className="col_data">
+                09/04/2026
+                <span className="sub_info">
+                  10:00
+                </span>
+              </div>
+
+              <div className="col_alunos">
+                140
+              </div>
+
+              <div className="col_coordenador">
+                Roberto Nunes
+                <span className="sub_info">
+                  (11) 93456-7890
+                </span>
+              </div>
+
+              <div className="col_infra">
+                Pendente
+              </div>
+
+              <div className="col_situacao">
+                <div className="status_badge status_pendente">
+                  Pendente
+                </div>
+              </div>
+
             </div>
-          </div>
 
-          <div className="linha_usuario destaque">
-            <span className="col-instituicao">
-              Projeto Jovem Futuro
-              <span className="sub-info">São Paulo - Zona Leste</span>
-            </span>
-            <span className="col-data">
-              20/03/2026
-              <span className="sub-info">09:30</span>
-            </span>
-            <span className="col-alunos">110</span>
-            <span className="col-coordenador">
-              Carlos Eduardo
-              <span className="sub-info">(11) 95555-2222</span>
-            </span>
-            <span className="col-infra">Completa</span>
-            <div className="col-situacao">
-              <div className="mini-caixa gray">Concluída</div>
+            {/* LINHA */}
+            <div className="linha_acao">
+
+              <div className="col_instituicao">
+                Centro Educacional Horizonte
+                <span className="sub_info">
+                  Osasco - Zona Oeste
+                </span>
+              </div>
+
+              <div className="col_data">
+                15/04/2026
+                <span className="sub_info">
+                  13:00
+                </span>
+              </div>
+
+              <div className="col_alunos">
+                180
+              </div>
+
+              <div className="col_coordenador">
+                Fernanda Lopes
+                <span className="sub_info">
+                  (11) 99876-5432
+                </span>
+              </div>
+
+              <div className="col_infra">
+                Completa
+              </div>
+
+              <div className="col_situacao">
+                <div className="status_badge status_confirmada">
+                  Confirmada
+                </div>
+              </div>
+
             </div>
+
+            {/* LINHA */}
+            <div className="linha_acao">
+
+              <div className="col_instituicao">
+                Projeto Jovem Futuro
+                <span className="sub_info">
+                  São Paulo - Zona Leste
+                </span>
+              </div>
+
+              <div className="col_data">
+                20/03/2026
+                <span className="sub_info">
+                  09:30
+                </span>
+              </div>
+
+              <div className="col_alunos">
+                110
+              </div>
+
+              <div className="col_coordenador">
+                Carlos Eduardo
+                <span className="sub_info">
+                  (11) 95555-2222
+                </span>
+              </div>
+
+              <div className="col_infra">
+                Completa
+              </div>
+
+              <div className="col_situacao">
+                <div className="status_badge status_concluida">
+                  Concluída
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
-          {/* você pode continuar adicionando os outros itens igual */}
         </section>
+
       </main>
 
       <Footer />
-    </>
+
+    </div>
   );
 }
 
