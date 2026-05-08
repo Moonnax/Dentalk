@@ -92,7 +92,7 @@ export default function CadastroF() {
 
         </section>
 
-        {/* ABAS */}
+
         <section className="contagem_abas">
 
           <div className="aba_item">

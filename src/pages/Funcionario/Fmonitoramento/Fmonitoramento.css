@@ -352,23 +352,31 @@ text-decoration: none;
     color: #666;
 }
 
-.acoes_finais {
+.acoes_finais{
     margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
 }
 
-.btn_finalizar {
+.btn_finalizar{
     background: #c4d600;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
     text-align: center;
-    border-radius: 5px;
+    font-weight: 600;
+    border: none;
 }
 
-.btn_sec {
-    background: #eee;
-    padding: 10px;
+.btn_sec{
+    background: #f3f3f3;
+    padding: 12px;
+    border-radius: 8px;
     text-align: center;
-    border-radius: 5px;
+    font-weight: 600;
+    border: 1px solid #e5e5e5;
 }
 
 .acoes_rapidas_chat {
@@ -381,4 +389,94 @@ text-decoration: none;
     padding: 6px 10px;
     border-radius: 5px;
     font-size: 13px;
+}
+
+/* HOVERS */
+
+.card_ocorrencia{
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 10px;
+}
+
+.card_ocorrencia:hover{
+    background-color: #fffdf5;
+    transform: translateY(-2px);
+}
+
+.card_ocorrencia.active{
+    background-color: #fff4cc;
+}
+
+.status_dot{
+    animation: pulse 1.5s infinite;
+}
+
+
+.balao_texto{
+    transition: 0.2s;
+}
+
+.balao_texto:hover{
+    transform: scale(1.01);
+}
+
+
+.online_status{
+    font-size: 0.8rem;
+    color: #7bbf5e;
+}
+
+
+.campo_input{
+    border: none;
+    outline: none;
+
+    background: #f3f3f3;
+
+    padding: 12px;
+
+    width: 100%;
+
+    border-radius: 8px;
+
+    transition: 0.2s;
+}
+
+.campo_input:focus{
+    background: #ebebeb;
+}
+
+/* BOTÕES */
+
+.btn_enviar,
+.btn_finalizar,
+.btn_sec,
+.btn_ghost{
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn_enviar:hover,
+.btn_finalizar:hover{
+    transform: translateY(-2px);
+    filter: brightness(0.97);
+}
+
+.btn_sec:hover,
+.btn_ghost:hover{
+    background-color: #e8e8e8;
+}
+
+/* SCROLL */
+
+.lista_cards_scroll::-webkit-scrollbar,
+.area_mensagens_scroll::-webkit-scrollbar{
+    width: 6px;
+}
+
+.lista_cards_scroll::-webkit-scrollbar-thumb,
+.area_mensagens_scroll::-webkit-scrollbar-thumb{
+    background: #d8d8d8;
+    border-radius: 10px;
 }
