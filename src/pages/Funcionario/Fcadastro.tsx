@@ -1,6 +1,6 @@
 import { ChevronDown, Plus, Search } from "lucide-react";
-import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../../components/Footer/Footer";
+import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
+import Footer from "../../components/Footer/Footer";
 
 export default function CadastroF() {
   const usuarios = [
