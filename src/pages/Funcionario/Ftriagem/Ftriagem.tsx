@@ -1,87 +1,46 @@
-import {
-  ChevronDown,
-  Search,
-} from "lucide-react";
-
+import { ChevronDown, Search } from "lucide-react";
 import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 
-import "./Ftriagem.css";
-
 export default function TriagemF() {
-
   const solicitacoes = [
-    {
-      nome: "Rafael Souza Lima",
-      regiao: "São Paulo - ZN",
-      prioridade: "Média",
-      canal: "Ação Esc.",
-    },
-    {
-      nome: "Mariana Costa Fernandes",
-      regiao: "Rio de Janeiro - ZS",
-      prioridade: "Baixa",
-      canal: "Instagram",
-    },
-    {
-      nome: "Bruno Henrique Alves",
-      regiao: "Belo Horizonte - Centro",
-      prioridade: "Alta",
-      canal: "Site",
-    },
-    {
-      nome: "Carla Mendes Ribeiro",
-      regiao: "Curitiba - Batel",
-      prioridade: "Alta",
-      canal: "Ação Esc.",
-    },
-    {
-      nome: "Felipe Rocha Martins",
-      regiao: "Porto Alegre - Sul",
-      prioridade: "Média",
-      canal: "WhatsApp",
-    },
-    {
-      nome: "Juliana Pereira Santos",
-      regiao: "Salvador - Centro",
-      prioridade: "Baixa",
-      canal: "Instagram",
-    },
+    { nome: "Rafael Souza Lima", regiao: "São Paulo - ZN", prioridade: "Média", canal: "Ação Esc." },
+    { nome: "Mariana Costa Fernandes", regiao: "Rio de Janeiro - ZS", prioridade: "Baixa", canal: "Instagram" },
+    { nome: "Bruno Henrique Alves", regiao: "Belo Horizonte - Centro", prioridade: "Alta", canal: "Site" },
+    { nome: "Carla Mendes Ribeiro", regiao: "Curitiba - Batel", prioridade: "Alta", canal: "Ação Esc." },
+    { nome: "Felipe Rocha Martins", regiao: "Porto Alegre - Sul", prioridade: "Média", canal: "WhatsApp" },
+    { nome: "Juliana Pereira Santos", regiao: "Salvador - Centro", prioridade: "Baixa", canal: "Instagram" },
   ];
 
+
+
   return (
-    <div className="page-container">
+    <div className="flex min-h-screen flex-col font-sans text-[#010817]">
 
       <HeaderFuncionario />
 
-      <main className="container_triagem">
+      <main className="flex-1 mx-[3rem] my-[2rem]">
 
-        {/* TOPO */}
-        <section className="topo_triagem">
+        <section className="mb-[30px] flex items-start justify-between gap-5">
 
-          <div className="lado_esquerdo_topo">
+          <div className="w-full">
 
-            <div className="barra_pesquisa">
+            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] max-w-[600px] mb-5 bg-white">
               <Search size={18} />
               <p>Filtrar solicitações...</p>
             </div>
 
-            <div className="filtros_flex">
+            <div className="flex flex-wrap gap-[15px]">
 
-              <div className="filtro_item">
-                <span>Prioridade</span>
-                <ChevronDown size={18} />
-              </div>
-
-              <div className="filtro_item">
-                <span>Região</span>
-                <ChevronDown size={18} />
-              </div>
-
-              <div className="filtro_item">
-                <span>Canal</span>
-                <ChevronDown size={18} />
-              </div>
+              {["Prioridade", "Região", "Canal"].map((item) => (
+                <div
+                  key={item}
+                  className="flex cursor-pointer items-center gap-[40px] rounded-lg border border-[#eee] bg-white px-4 py-2 text-[#010817] transition hover:border-[#c4d600]"
+                >
+                  <span>{item}</span>
+                  <ChevronDown size={18} />
+                </div>
+              ))}
 
             </div>
 
@@ -89,73 +48,77 @@ export default function TriagemF() {
 
         </section>
 
-        {/* ABAS */}
-        <section className="contagem_abas">
+        <section className="mb-[25px] flex flex-wrap gap-3">
 
-          <div className="aba_item">
+          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
             Solicitações
-            <span className="badge_solicitacoes">197</span>
+            <span className="rounded bg-[#c4d600] px-2 py-1 text-xs font-bold text-black">
+              197
+            </span>
           </div>
 
-          <div className="aba_item">
+          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
             A encaminhar
-            <span className="badge_encaminhar">51</span>
+            <span className="rounded bg-[#f2f2f2] px-2 py-1 text-xs font-bold text-[#555]">
+              51
+            </span>
           </div>
 
-          <div className="aba_item">
+          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
             Encaminhados
-            <span className="badge_encaminhados">821</span>
+            <span className="rounded bg-[#fff4cc] px-2 py-1 text-xs font-bold text-[#8a6d00]">
+              821
+            </span>
           </div>
 
-          <div className="aba_item">
+          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
             Rejeitados
-            <span className="badge_rejeitados">46</span>
+            <span className="rounded bg-[#ffe5e5] px-2 py-1 text-xs font-bold text-[#b85b5b]">
+              46
+            </span>
           </div>
 
         </section>
 
-        {/* TABELA */}
-        <section className="lista_triagem_secao">
+        <section>
 
-          <div className="card_lista_triagem">
+          <div className="flex flex-col overflow-hidden rounded-xl border border-[#eee] bg-white">
 
-            <div className="linha_triagem header_triagem">
+            <div className="flex border-b-2 border-[#eee] bg-[#fafafa] px-6 py-4 font-bold text-[#010817]">
 
-              <span className="col_nome">Nome</span>
-
-              <span className="col_regiao">Região</span>
-
-              <span className="col_prioridade">Prioridade</span>
-
-              <span className="col_canal">Canal</span>
-
-              <span className="col_acoes">Ações</span>
+              <span className="w-[25%]">Nome</span>
+              <span className="w-[25%]">Região</span>
+              <span className="w-[15%]">Prioridade</span>
+              <span className="w-[15%]">Canal</span>
+              <span className="w-[20%] text-right">Ações</span>
 
             </div>
 
             {solicitacoes.map((item, index) => (
-              <div className="linha_triagem" key={index}>
+              <div
+                key={index}
+                className="flex items-center border-b border-[#eee] px-6 py-4 transition hover:bg-[#fffdf5]"
+              >
 
-                <span className="col_nome">{item.nome}</span>
+                <span className="w-[25%] text-[#010817]">{item.nome}</span>
+                <span className="w-[25%] text-[#010817]">{item.regiao}</span>
 
-                <span className="col_regiao">{item.regiao}</span>
-
-                <div className="col_prioridade">
-                  <div className="mini_filtro">
+                <div className="w-[15%] flex justify-center">
+                  <button className="flex items-center gap-1 rounded border border-[#ddd] bg-white px-2 py-1 text-xs text-[#010817] hover:border-[#c4d600] transition">
                     {item.prioridade}
-                    <ChevronDown size={15} />
-                  </div>
+                    <ChevronDown size={14} />
+                  </button>
                 </div>
 
-                <span className="col_canal">{item.canal}</span>
+                <span className="w-[15%] text-[#010817]">{item.canal}</span>
 
-                <div className="col_acoes">
+                <div className="flex w-[20%] justify-end gap-2">
 
-                  <button className="btn_contato">
+                  <button className="rounded bg-[#c4d600] px-3 py-2 text-xs font-bold text-black hover:bg-[#f1c40f] transition">
                     Contato
                   </button>
 
-                  <button className="btn_rejeitar">
+                  <button className="rounded bg-[#ffe5e5] px-3 py-2 text-xs font-bold text-[#b85b5b] hover:bg-[#ffd6d6] transition">
                     Rejeitar
                   </button>
 
