@@ -47,36 +47,35 @@ export default function TriagemF() {
           </div>
 
         </section>
+        <section className="mb-[25px] flex flex-wrap gap-[15px]">
 
-        <section className="mb-[25px] flex flex-wrap gap-3">
-
-          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
+          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:text-black hover:shadow-sm">
             Solicitações
-            <span className="rounded bg-[#c4d600] px-2 py-1 text-xs font-bold text-black">
+            <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
               197
             </span>
-          </div>
+          </button>
 
-          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
+          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:text-black hover:shadow-sm">
             A encaminhar
-            <span className="rounded bg-[#f2f2f2] px-2 py-1 text-xs font-bold text-[#555]">
+            <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
               51
             </span>
-          </div>
+          </button>
 
-          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
+          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:text-black hover:shadow-sm">
             Encaminhados
-            <span className="rounded bg-[#fff4cc] px-2 py-1 text-xs font-bold text-[#8a6d00]">
+            <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
               821
             </span>
-          </div>
+          </button>
 
-          <div className="flex items-center gap-2 rounded-lg border border-[#eee] bg-white px-3 py-2 text-[#555]">
+          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:text-black hover:shadow-sm">
             Rejeitados
-            <span className="rounded bg-[#ffe5e5] px-2 py-1 text-xs font-bold text-[#b85b5b]">
+            <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
               46
             </span>
-          </div>
+          </button>
 
         </section>
 
