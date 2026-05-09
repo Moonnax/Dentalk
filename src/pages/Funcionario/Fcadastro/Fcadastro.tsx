@@ -40,7 +40,7 @@ export default function CadastroF() {
     <div className="page-container">
       <HeaderFuncionario />
 
-      <main className="mx-12 my-4 font-[Arial] text-[#010817]">
+      <main className="mx-12 my-[2rem] font-[Arial] text-[#010817]">
 
         <section className="flex justify-between gap-5 mb-[30px]">
 
