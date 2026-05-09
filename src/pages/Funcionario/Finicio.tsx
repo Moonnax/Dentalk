@@ -1,11 +1,11 @@
-import HeaderFincionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../../components/Footer/Footer";
+import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 
 function Finicio() {
   return (
     <>
-      <HeaderFincionario />
+      <HeaderFuncionario />
 
       <main className="mx-12 my-4 flex font-[Arial] text-[#010817]">
         

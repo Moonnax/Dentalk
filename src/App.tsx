@@ -5,11 +5,11 @@ import Vagenda from './pages/Voluntario/Vagenda/Vagenda'
 import Vatendimentos from './pages/Voluntario/Vatendimentos/Vatendimentos'
 import VProntuario from './pages/Voluntario/Vprontuarios/Vprontuarios'
 
-import Finicio from './pages/Funcionario/Finicio/Finicio'
-import Fcadastro from './pages/Funcionario/Fcadastro/Fcadastro'
-import Ftriagem from './pages/Funcionario/Ftriagem/Ftriagem'
-import Fmonitoramento from './pages/Funcionario/Fmonitoramento/Fmonitoramento'
-import FacoesEscola from './pages/Funcionario/FacoesEscola/FacoesEscola'
+import Finicio from './pages/Funcionario/Finicio.tsx'
+import Fcadastro from './pages/Funcionario/Fcadastro.tsx'
+import Ftriagem from './pages/Funcionario/Ftriagem.tsx'
+import Fmonitoramento from './pages/Funcionario/Fmonitoramento.tsx'
+import FacoesEscola from './pages/Funcionario/FacoesEscola.tsx'
 
 import Home from './pages/Home/Home'
 import Sobre from './pages/Sobre/Sobre'
@@ -43,7 +43,6 @@ function App() {
         <Route path="/missao" element={<Missao/>} />
         <Route path="/valores" element={<Valores/>} />
         
-        <Route path="/" element={<Home />} />
         <Route path="/areaFuncionario" element={<Finicio />} />
         <Route path="/cadastrof" element={<Fcadastro />} />
         <Route path="/triagemf" element={<Ftriagem />} />
