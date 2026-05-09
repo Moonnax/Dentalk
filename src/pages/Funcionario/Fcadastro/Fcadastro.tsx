@@ -1,18 +1,9 @@
-import {
-  ChevronDown,
-  Plus,
-  Search,
-} from "lucide-react";
+import {ChevronDown,Plus,Search} from "lucide-react";
 
 import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 
-import CardUsuarioFuncionario from "../../../components/CardUsuarioFuncionario/CardUsuarioFuncionario";
-
-import "./FCadastro.css";
-
 export default function CadastroF() {
-
   const usuarios = [
     {
       nome: "Amanda Ribeiro Costa",
@@ -47,108 +38,112 @@ export default function CadastroF() {
   ];
 
   return (
-
     <div className="page-container">
 
       <HeaderFuncionario />
 
       <main className="container_cadastro">
 
-        {/* TOPO */}
-        <section className="topo_cadastro">
+        <section className="flex justify-between gap-5 mb-[30px]">
 
-          <div className="lado_esquerdo_topo">
+          <div className="w-full">
 
-            <div className="barra_pesquisa">
+            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] max-w-[600px] mb-5 bg-white">
               <Search size={18} />
               <p>Pesquisar cpf ou nome...</p>
             </div>
 
-            <div className="filtros_flex">
+          <div className="flex flex-wrap gap-[15px] mb-[20px]">
+            
+            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
+              <span>Categoria</span>
+              <ChevronDown size={18} />
+            </div>
 
-              <div className="filtro_item">
-                <span>Categoria</span>
-                <ChevronDown size={18} />
-              </div>
+            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
+              <span>Status</span>
+              <ChevronDown size={18} />
+            </div>
 
-              <div className="filtro_item">
-                <span>Status</span>
-                <ChevronDown size={18} />
-              </div>
-
-              <div className="filtro_item">
-                <span>Idade</span>
-                <ChevronDown size={18} />
-              </div>
-
+            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
+              <span>Idade</span>
+              <ChevronDown size={18} />
             </div>
 
           </div>
 
-          <button className="btn_novo_cadastro">
-            <Plus size={18} />
-            Novo Cadastro
+          </div>
+
+          <button className="flex h-[50px] cursor-pointer items-center gap-[10px] whitespace-nowrap rounded-lg bg-[var(--laranja)] px-6 text-[0.95rem] font-bold text-white transition duration-200 hover:bg-[#e57d05]">
+            <Plus size={18} />Novo Cadastro
           </button>
 
         </section>
 
+        
+        <section className="flex gap-3 mb-[25px] flex-wrap">
 
-        <section className="contagem_abas">
-
-          <div className="aba_item">
+          <button className="flex items-center gap-2 border border-[#eee] px-3 py-2 rounded-lg bg-white text-[#555] cursor-pointer">
             Todos
-            <span className="badge_todos">284</span>
-          </div>
+            <span className="px-2 py-1 rounded bg-[#f2f2f2] text-xs font-bold">284</span>
+          </button>
 
-          <div className="aba_item">
+          <button className="flex items-center gap-2 border border-[#eee] px-3 py-2 rounded-lg bg-white text-[#555] cursor-pointer">
             Voluntários
-            <span className="badge_voluntario">100</span>
-          </div>
+            <span className="px-2 py-1 rounded bg-[#c4d600] text-black text-xs font-bold">100</span>
+          </button>
 
-          <div className="aba_item">
+          <button className="flex items-center gap-2 border border-[#eee] px-3 py-2 rounded-lg bg-white text-[#555] cursor-pointer">
             Beneficiários
-            <span className="badge_beneficiario">184</span>
-          </div>
+            <span className="px-2 py-1 rounded bg-[#dff3ff] text-[#006494] text-xs font-bold">184</span>
+          </button>
 
         </section>
 
-        {/* TABELA */}
-        <section className="lista_usuarios_secao">
+        <section>
 
-          <div className="card_lista_usuarios">
+          <div className="border border-[#eee] rounded-xl overflow-hidden flex flex-col">
 
-            <div className="linha_usuario header_usuario">
+        
+            <div className="flex items-center px-6 py-4 bg-[#fafafa] border-b-2 border-[#eee]">
 
-              <span className="col_nome">
-                Nome
-              </span>
-
-              <span className="col_idade">
-                Idade
-              </span>
-
-              <span className="col_status">
-                Status
-              </span>
-
-              <span className="col_categoria">
-                Categoria
-              </span>
-
-              <span className="col_detalhes">
-                Detalhes
-              </span>
+              <span className="w-[30%] font-bold text-black">Nome</span>
+              <span className="w-[20%] font-bold text-black">Idade</span>
+              <span className="w-[20%] font-bold text-black">Status</span>
+              <span className="w-[20%] font-bold text-black">Categoria</span>
+              <span className="w-[10%] font-bold text-black">Detalhes</span>
 
             </div>
 
             {usuarios.map((usuario, index) => (
-              <CardUsuarioFuncionario
+              <div
                 key={index}
-                nome={usuario.nome}
-                idade={usuario.idade}
-                status={usuario.status}
-                categoria={usuario.categoria}
-              />
+                className="flex items-center px-6 py-4 border-b border-[#f5f5f5] hover:bg-[#fffdf5]"
+              >
+
+                <span className="w-[30%] text-[#555]">
+                  {usuario.nome}
+                </span>
+
+                <span className="w-[20%] text-[#555]">
+                  {usuario.idade}
+                </span>
+
+                <span className="w-[20%] text-[#555]">
+                  {usuario.status}
+                </span>
+
+                <span className="w-[20%] text-[#555]">
+                  {usuario.categoria}
+                </span>
+
+                <span className="w-[10%] flex justify-center mb-[10px]">
+                  <button className="mr text-blue-400 px-3 py-1 rounded text-sm font-bold mr-[100px] hover:text-blue-700">
+                    Abrir
+                  </button>
+                </span>
+
+              </div>
             ))}
 
           </div>
@@ -160,6 +155,5 @@ export default function CadastroF() {
       <Footer />
 
     </div>
-
   );
 }
