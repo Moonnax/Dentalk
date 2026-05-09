@@ -20,6 +20,8 @@ import Tdb from './pages/Tdb/Tdb'
 import Missao from './pages/Missao/Missao'
 import Valores from './pages/Valores/Valores'
 
+import './app.css'
+
 function App() {
   return (
     <BrowserRouter>
