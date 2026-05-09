@@ -1,5 +1,4 @@
-import {ChevronDown,Plus,Search} from "lucide-react";
-
+import { ChevronDown, Plus, Search } from "lucide-react";
 import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 
@@ -39,10 +38,9 @@ export default function CadastroF() {
 
   return (
     <div className="page-container">
-
       <HeaderFuncionario />
 
-      <main className="container_cadastro">
+      <main className="mx-12 my-4 font-[Arial] text-[#010817]">
 
         <section className="flex justify-between gap-5 mb-[30px]">
 
@@ -53,34 +51,33 @@ export default function CadastroF() {
               <p>Pesquisar cpf ou nome...</p>
             </div>
 
-          <div className="flex flex-wrap gap-[15px] mb-[20px]">
-            
-            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
-              <span>Categoria</span>
-              <ChevronDown size={18} />
-            </div>
+            <div className="flex flex-wrap gap-[15px] mb-[20px]">
 
-            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
-              <span>Status</span>
-              <ChevronDown size={18} />
-            </div>
+              <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white hover:border-[#c4d600]">
+                <span>Categoria</span>
+                <ChevronDown size={18} />
+              </div>
 
-            <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white  hover:border-[#c4d600]">
-              <span>Idade</span>
-              <ChevronDown size={18} />
+              <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white hover:border-[#c4d600]">
+                <span>Status</span>
+                <ChevronDown size={18} />
+              </div>
+
+              <div className="flex items-center gap-[40px] border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white hover:border-[#c4d600]">
+                <span>Idade</span>
+                <ChevronDown size={18} />
+              </div>
+
             </div>
 
           </div>
 
-          </div>
-
-          <button className="flex h-[50px] cursor-pointer items-center gap-[10px] whitespace-nowrap rounded-lg bg-[var(--laranja)] px-6 text-[0.95rem] font-bold text-white transition duration-200 hover:bg-[#e57d05]">
+          <button className="flex h-[50px] cursor-pointer items-center gap-[10px] whitespace-nowrap rounded-lg bg-[var(--laranja)] px-6 text-[0.95rem] font-bold text-white hover:bg-[#e57d05]">
             <Plus size={18} />Novo Cadastro
           </button>
 
         </section>
 
-        
         <section className="flex gap-3 mb-[25px] flex-wrap">
 
           <button className="flex items-center gap-2 border border-[#eee] px-3 py-2 rounded-lg bg-white text-[#555] cursor-pointer">
@@ -104,7 +101,6 @@ export default function CadastroF() {
 
           <div className="border border-[#eee] rounded-xl overflow-hidden flex flex-col">
 
-        
             <div className="flex items-center px-6 py-4 bg-[#fafafa] border-b-2 border-[#eee]">
 
               <span className="w-[30%] font-bold text-black">Nome</span>
@@ -137,8 +133,8 @@ export default function CadastroF() {
                   {usuario.categoria}
                 </span>
 
-                <span className="w-[10%] flex justify-center mb-[10px]">
-                  <button className="mr text-blue-400 px-3 py-1 rounded text-sm font-bold mr-[100px] hover:text-blue-700">
+                <span className="w-[10%] flex justify-center">
+                  <button className="text-blue-400 px-3 py-1 rounded text-sm font-bold hover:text-blue-700 mr-[115px]">
                     Abrir
                   </button>
                 </span>
@@ -153,7 +149,6 @@ export default function CadastroF() {
       </main>
 
       <Footer />
-
     </div>
   );
 }
