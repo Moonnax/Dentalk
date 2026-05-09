@@ -1,3 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*variaveis de cores */
+:root{
+  --laranja: #fd8b08;
+  --verde-lima: #9ac93d;
+  --amarelo-claro: #fff4cc;
+  --amarelo-marrom:#8a6d00;
+  --amarelo-escuro: #f1c40f;
+  --cinza-claro: #666;
+  --azul-claro: #dff3ff;
+  --azul-escuro:#006494;
+  --vermelho-claro:#ffe5e5;
+  --vermelho-escuro:#b85b5b;
+  --preto: #000000;
+  --font-cinza-normal:#555;
+  --font-cinza-claro:#999;
+}
+
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

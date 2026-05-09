@@ -20,16 +20,6 @@ main{
 
 /* fim style */
 
-
-li {
-    color: #587beb;
-    text-decoration: none;
-}
-li:hover {
-    color: #fd8b08;
-}
-
-
 /* HOME */
 
 .dashboard_container {
