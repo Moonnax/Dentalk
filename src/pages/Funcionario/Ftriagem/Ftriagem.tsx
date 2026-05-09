@@ -63,7 +63,7 @@ export default function TriagemF() {
             </span>
           </button>
 
-          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:text-black hover:shadow-sm">
+          <button className="flex items-center gap-2 rounded-full border border-[#e0e0e0] bg-[#f2f2f2] px-5 py-2 text-sm font-medium text-[#333] transition hover:border-[#f1c40f] hover:bg-white hover:shadow-sm">
             Encaminhados
             <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
               821
@@ -102,7 +102,7 @@ export default function TriagemF() {
                 <span className="w-[25%] text-[#010817]">{item.nome}</span>
                 <span className="w-[25%] text-[#010817]">{item.regiao}</span>
 
-                <div className="w-[15%] flex justify-center">
+                <div className="w-[15%] flex justify-start">
                   <button className="flex items-center gap-1 rounded border border-[#ddd] bg-white px-2 py-1 text-xs text-[#010817] hover:border-[#c4d600] transition">
                     {item.prioridade}
                     <ChevronDown size={14} />
