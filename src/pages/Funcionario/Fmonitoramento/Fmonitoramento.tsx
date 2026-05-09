@@ -1,12 +1,8 @@
 import { useState } from "react";
-
 import HeaderFuncionario from "../../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../../components/Footer/Footer";
 
-import "./Fmonitoramento.css";
-
-function Fmonitoramento() {
-
+export default function Fmonitoramento() {
   const [ativo, setAtivo] = useState(0);
 
   const ocorrencias = [
@@ -30,170 +26,147 @@ function Fmonitoramento() {
     },
   ];
 
-  return (
+  const statusColor = (status: string) => {
+    switch (status) {
+      case "vermelho":
+        return "bg-red-500";
+      case "amarelo":
+        return "bg-orange-400";
+      default:
+        return "bg-transparent";
+    }
+  };
 
-    <div className="page-container">
+  return (
+    <div className="flex min-h-screen flex-col font-sans text-[#010817]">
 
       <HeaderFuncionario />
 
-      <main className="container_monitoramento">
+      <main className="flex h-[calc(100vh-6rem)] bg-[#f4f7f6]">
 
-        {/* OCORRÊNCIAS */}
-        <section className="coluna_ocorrencias">
+        <section className="w-[25%] bg-white p-6 border-r border-[#ddd]">
 
-          <h2 className="titulo_sessao">
+          <h2 className="mb-3 text-[28px] font-semibold">
             Ocorrências
           </h2>
 
-          <div className="tabs_filtros">
-
-            <span className="tab_item active">
+          <div className="flex gap-2 mb-5">
+            <span className="rounded bg-[#010817] px-3 py-1 text-sm text-white">
               Pendentes
             </span>
-
-            <span className="tab_item">
+            <span className="rounded bg-[#eee] px-3 py-1 text-sm">
               Respondidas
             </span>
-
           </div>
 
-          <div className="lista_cards_scroll">
+          <div className="flex flex-col gap-3 overflow-y-auto">
 
             {ocorrencias.map((item, index) => (
-
               <div
                 key={index}
-                className={`card_ocorrencia ${ativo === index ? "active" : ""}`}
                 onClick={() => setAtivo(index)}
+                className={`flex gap-3 p-3 border-b border-[#eee] cursor-pointer rounded-lg transition hover:bg-[#fffdf5] ${
+                  ativo === index ? "bg-[#f0f0f0]" : ""
+                }`}
               >
 
-                <div className="avatar_p">
+                <div className="h-10 w-10 rounded-full bg-[#ddd] flex items-center justify-center">
                   👤
                 </div>
 
-                <div className="conteudo_card">
+                <div className="flex flex-col flex-1">
 
-                  <p>
-                    <strong>{item.nome}</strong>
-                  </p>
+                  <strong className="text-sm">
+                    {item.nome}
+                  </strong>
 
-                  <p>{item.titulo}</p>
+                  <span className="text-sm">
+                    {item.titulo}
+                  </span>
 
-                  <p className="previa">
+                  <span className="text-xs text-gray-500">
                     {item.previa}
-                  </p>
+                  </span>
 
                 </div>
 
-                {item.status && (
-                  <span className={`status_dot ${item.status}`}></span>
-                )}
+                <span className={`h-2.5 w-2.5 rounded-full mt-2 ${statusColor(item.status)}`} />
 
               </div>
-
             ))}
 
           </div>
 
         </section>
 
-        {/* CHAT */}
-        <section className="coluna_chat">
+        <section className="w-[50%] flex flex-col bg-white">
 
-          <div className="header_chat">
+          <div className="flex items-center gap-3 border-b border-[#eee] p-4">
 
-            <div className="avatar_p">
+            <div className="h-10 w-10 rounded-full bg-[#ddd] flex items-center justify-center">
               👤
             </div>
 
             <div>
-
-              <strong>
-                Dr. Felipe Oliveira
-              </strong>
-
-              <p className="online_status">
-                online agora
-              </p>
-
+              <strong>Dr. Felipe Oliveira</strong>
+              <p className="text-xs text-green-600">online agora</p>
             </div>
 
           </div>
 
-          <div className="area_mensagens_scroll">
+          <div className="flex flex-col gap-6 flex-1 overflow-y-auto p-6">
 
-            <div className="msg_recebida">
-
-              <div className="avatar_p">
+            <div className="flex gap-3">
+              <div className="h-10 w-10 rounded-full bg-[#ddd] flex items-center justify-center">
                 👤
               </div>
 
-              <div className="balao_texto">
-
-                <p>
-                  Preciso sair da rede por questões pessoais.
-                </p>
-
-                <span>
-                  20 min atrás
-                </span>
-
+              <div className="bg-[#eee] p-3 rounded-lg max-w-[60%]">
+                <p>Preciso sair da rede por questões pessoais.</p>
+                <span className="text-xs text-gray-500">20 min atrás</span>
               </div>
-
             </div>
 
-            <div className="msg_enviada">
-
-              <div className="balao_texto">
-
-                <p>
-                  Entendido! Você pode nos informar os pacientes ativos?
-                </p>
-
-                <span>
-                  22 min atrás
-                </span>
-
+            <div className="flex justify-end">
+              <div className="bg-[#7ba4a8] text-white p-3 rounded-lg max-w-[55%]">
+                <p>Entendido! Você pode nos informar os pacientes ativos?</p>
+                <span className="text-xs">22 min atrás</span>
               </div>
-
             </div>
 
-            <div className="msg_recebida">
-
-              <div className="avatar_p">
+            <div className="flex gap-3">
+              <div className="h-10 w-10 rounded-full bg-[#ddd] flex items-center justify-center">
                 👤
               </div>
 
-              <div className="balao_texto">
+              <div className="bg-[#eee] p-3 rounded-lg max-w-[60%]">
                 <p>Tenho 5 pacientes em tratamento.</p>
-                <span>
-                  20 min atrás
-                </span>
+                <span className="text-xs text-gray-500">20 min atrás</span>
               </div>
             </div>
 
-            <div className="acoes_rapidas_chat">
-
-              <button className="btn_ghost">
-                Confirmar recebimento
+            <div className="flex gap-2 mt-2">
+              <button className="bg-[#eee] px-3 py-1 rounded text-sm">
+                Confirmar
               </button>
-              <button className="btn_ghost">
+              <button className="bg-[#eee] px-3 py-1 rounded text-sm">
                 Solicitar lista
               </button>
-              <button className="btn_ghost">
+              <button className="bg-[#eee] px-3 py-1 rounded text-sm">
                 Encaminhar
               </button>
             </div>
+
           </div>
 
-          <div className="footer_input_chat">
+          <div className="flex gap-2 border-t border-[#ddd] p-3">
+
             <input
-              type="text"
+              className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none"
               placeholder="Digite sua resposta..."
-              className="campo_input"
             />
 
-            <button className="btn_enviar">
+            <button className="bg-[#c4d600] px-4 rounded font-semibold">
               Enviar
             </button>
 
@@ -201,76 +174,70 @@ function Fmonitoramento() {
 
         </section>
 
-        {/* PERFIL */}
-        <section className="coluna_perfil_detalhe">
+        <section className="w-[25%] bg-white p-6 border-l border-[#ddd] flex flex-col gap-5">
 
-          <div className="card_perfil_topo">
+          <div className="flex flex-col items-center text-center">
 
-            <div className="avatar_g">
+            <div className="h-20 w-20 rounded-full bg-[#ddd] flex items-center justify-center">
               👤
             </div>
 
-            <h3>
+            <h3 className="mt-2 font-semibold">
               Dr. Felipe Oliveira
             </h3>
 
-            <p>
-              Dentista Voluntário
-            </p>
-            <p>
-              CRO/SP 65231
-            </p>
+            <p className="text-sm">Dentista Voluntário</p>
+            <p className="text-sm">CRO/SP 65231</p>
+
           </div>
 
-          <div className="infos_contato">
-            <p>📧 felipe.oliveira@email.com</p>
-            <p>📞 (11) 96785-4321</p>
+          <div className="text-sm">
+            <p>📧 email@email.com</p>
+            <p>📞 (11) 99999-9999</p>
           </div>
 
-          <div className="secao_pacientes_atuais">
+          <div className="flex flex-col gap-3">
 
-            <h4>
-              Atuais pacientes
+            <h4 className="font-semibold">
+              Pacientes atuais
             </h4>
 
-            <div className="paciente_item">
-              <div className="avatar_p">
-                👤
-              </div>
+            <div className="flex gap-3">
+              <div className="h-10 w-10 rounded-full bg-[#ddd]" />
               <div>
-                <p>
-                  <strong>Ana Pereira</strong>
-                </p>
-                <p>
-                  Tratamento de Cárie
-                </p>
+                <p className="font-semibold text-sm">Ana Pereira</p>
+                <p className="text-xs text-gray-500">Tratamento de Cárie</p>
               </div>
-
             </div>
 
-            <div className="paciente_item">
-              <div className="avatar_p">👤</div>
+            <div className="flex gap-3">
+              <div className="h-10 w-10 rounded-full bg-[#ddd]" />
               <div>
-                <p><strong>João Almeida</strong></p>
-                <p>Tratamento de Cárie</p>
+                <p className="font-semibold text-sm">João Almeida</p>
+                <p className="text-xs text-gray-500">Tratamento de Cárie</p>
               </div>
             </div>
+
           </div>
 
-          <div className="acoes_finais">
-            <button className="btn_finalizar">
+          <div className="mt-auto flex flex-col gap-2">
+
+            <button className="bg-[#c4d600] p-3 rounded font-semibold">
               Finalizar Ocorrência
             </button>
-            <button className="btn_sec">
-              Reencaminhar Paciente
-            </button>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
 
+            <button className="bg-[#f3f3f3] p-3 rounded border">
+              Reencaminhar
+            </button>
+
+          </div>
+
+        </section>
+
+      </main>
+
+      <Footer />
+
+    </div>
   );
 }
-
-export default Fmonitoramento;
