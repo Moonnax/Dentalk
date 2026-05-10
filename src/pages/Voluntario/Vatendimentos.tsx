@@ -1,5 +1,5 @@
-import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
+import Footer from "../../components/Footer/Footer";
 import { Upload } from "lucide-react";
 import { Link } from "react-router-dom";
 
