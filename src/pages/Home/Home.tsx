@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import logoImg from '../../assets/logo.png';
+import bgHome from '../../assets/home-background.png';
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -8,7 +9,7 @@ function Home() {
     <div
       className="font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen"
       style={{
-        backgroundImage: "url('src/assets//home-background.png')",
+        backgroundImage: `url(${bgHome})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -25,7 +26,7 @@ function Home() {
       >
         <div className="max-w-[32rem]">
           <img
-            src="src/assets/logo.png"
+            src={logoImg}
             alt="Dentalk"
             className="mb-4 block w-96 max-[480px]:w-56 min-[481px]:max-[991px]:w-64"
           />
