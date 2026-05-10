@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import TitlePage from '../../components/TitlePage/TitlePage'
-import './IntegranteDetalhe.css'
 
 interface Integrante {
   id: string
@@ -57,95 +56,144 @@ const integrantes: Integrante[] = [
   },
 ]
 
+const wrapperClass = "font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen bg-white"
+
 function IntegranteDetalhe() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [carregando, setCarregando] = useState(true)
-
   const integrante = integrantes.find((i) => i.id === id)
 
   useEffect(() => {
     window.scrollTo(0, 0)
-
     const timer = setTimeout(() => setCarregando(false), 400)
     return () => clearTimeout(timer)
   }, [id])
 
   useEffect(() => {
-    if (integrante) {
-      document.title = `${integrante.nome} — Dentalk`
-    }
-    return () => {
-      document.title = 'Dentalk'
-    }
+    if (integrante) document.title = `${integrante.nome} — Dentalk`
+    return () => { document.title = 'Dentalk' }
   }, [integrante])
 
   if (carregando) {
     return (
-      <div>
+      <div className={wrapperClass}>
         <Header />
-        <main className="detalhe-main">
-          <p className="detalhe-loading">Carregando...</p>
+        <main className="flex-1 min-h-[80vh] px-4 md:px-6 py-8 pb-16">
+          <p className="text-center pt-16 text-[#666] text-[1.1rem]">Carregando...</p>
         </main>
-        <Footer />
+        <div className="hidden [@media(min-width:992px)]:block"><Footer /></div>
       </div>
     )
   }
 
   if (!integrante) {
     return (
-      <div>
+      <div className={wrapperClass}>
         <Header />
-        <main className="detalhe-main">
+        <main className="flex-1 min-h-[80vh] px-4 md:px-6 py-8 pb-16">
           <TitlePage titulo="Integrante não encontrado" />
-          <div className="detalhe-not-found">
-            <p>O integrante que você procura não existe.</p>
-            <button className="detalhe-btn-voltar" onClick={() => navigate('/quemSomos')}>
+          <div className="text-center pt-8">
+            <p className="text-[#555] mb-6">O integrante que você procura não existe.</p>
+            <button
+              onClick={() => navigate('/quemSomos')}
+              className="bg-transparent border-2 border-[#010817] text-[#010817] px-5 py-[0.6rem] rounded-[2rem] text-[0.9rem] font-bold cursor-pointer transition-all duration-200 hover:bg-[#010817] hover:text-white"
+            >
               ← Voltar para Quem Somos
             </button>
           </div>
         </main>
-        <Footer />
+        <div className="hidden [@media(min-width:992px)]:block"><Footer /></div>
       </div>
     )
   }
 
   return (
-    <div>
+    <div className={wrapperClass}>
       <Header />
-      <main className="detalhe-main">
+
+      <main className="flex-1 min-h-[80vh] px-4 md:px-6 py-8 pb-16">
+
         <TitlePage titulo={integrante.nome} subtitulo={integrante.turma} />
 
-        <div className="detalhe-card">
-          <img src={integrante.foto} alt={`Foto de ${integrante.nome}`} className="detalhe-foto" />
+        <div className="
+          max-w-[52rem] mx-auto mt-8
+          bg-white rounded-[1rem] overflow-hidden
+          shadow-[0_2px_10px_rgba(0,0,0,0.08)]
+          p-5 [@media(min-width:992px)]:p-8
 
-          <div className="detalhe-info">
-            <p className="detalhe-bio">{integrante.bio}</p>
+          flex flex-col items-center text-center gap-6
+          [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:items-start [@media(min-width:992px)]:text-left [@media(min-width:992px)]:gap-10
+        ">
 
-            <div className="detalhe-dados">
-              <p><span>RM:</span> {integrante.rm}</p>
-              <p><span>Turma:</span> {integrante.turma}</p>
+          <img
+            src={integrante.foto}
+            alt={`Foto de ${integrante.nome}`}
+            className="
+              object-cover rounded-[0.75rem] flex-shrink-0
+              w-[10rem] h-[10rem]
+              [@media(min-width:992px)]:w-[14rem] [@media(min-width:992px)]:h-[14rem]
+            "
+          />
+
+          <div className="flex flex-col gap-5 w-full">
+
+            <p className="text-[1rem] text-[#444] leading-[1.75]">{integrante.bio}</p>
+
+            <div className="flex flex-col gap-[0.4rem] text-[0.95rem] text-[#555]">
               <p>
-                <span>LinkedIn:</span>{' '}
-                <a href={integrante.linkedin} target="_blank" rel="noreferrer">
+                <span className="font-bold text-[#010817]">RM:</span> {integrante.rm}
+              </p>
+              <p>
+                <span className="font-bold text-[#010817]">Turma:</span> {integrante.turma}
+              </p>
+              <p>
+                <span className="font-bold text-[#010817]">LinkedIn:</span>{' '}
+                <a
+                  href={integrante.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#587beb] no-underline hover:text-[#fd8b08] transition-colors duration-200"
+                >
                   {integrante.linkedinNome}
                 </a>
               </p>
               <p>
-                <span>GitHub:</span>{' '}
-                <a href={integrante.github} target="_blank" rel="noreferrer">
+                <span className="font-bold text-[#010817]">GitHub:</span>{' '}
+                <a
+                  href={integrante.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#587beb] no-underline hover:text-[#fd8b08] transition-colors duration-200"
+                >
                   {integrante.githubNome}
                 </a>
               </p>
             </div>
 
-            <button className="detalhe-btn-voltar" onClick={() => navigate('/quemSomos')}>
-              ← Voltar para Quem Somos
-            </button>
+            <div className="flex justify-center [@media(min-width:992px)]:justify-start">
+              <button
+                onClick={() => navigate('/quemSomos')}
+                className="
+                  mt-2 bg-transparent border-2 border-[#010817] text-[#010817]
+                  px-5 py-[0.6rem] rounded-[2rem]
+                  text-[0.9rem] font-bold cursor-pointer
+                  transition-all duration-200
+                  hover:bg-[#010817] hover:text-white
+                "
+              >
+                ← Voltar para Quem Somos
+              </button>
+            </div>
+
           </div>
         </div>
+
       </main>
-      <Footer />
+
+      <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   )
 }
