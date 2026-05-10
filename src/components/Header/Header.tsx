@@ -1,9 +1,12 @@
-import { useState } from "react";
 import "./Header.css";
 import Menu from "../Menu/Menu";
 
-function Header() {
-  const [open, setOpen] = useState(false);
+type HeaderProps = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Header({ open, setOpen }: HeaderProps) {
   return (
     <header>
       <div className="logo">
@@ -11,12 +14,14 @@ function Header() {
           <h1>🦷 DenTalk</h1>
         </a>
       </div>
+
       <button
         className="menu-toggle"
         onClick={() => setOpen(!open)}
       >
         ☰
       </button>
+
       <Menu open={open} />
     </header>
   );
