@@ -56,29 +56,6 @@ export default function Prontuario() {
 
   const temFiltro = filtroUltimo || filtroIdade;
 
-  // ── Linha vazia para mobile e desktop ──
-  const LinhaVazia = () => (
-    <div className="py-8 px-6 text-center text-[#999] text-sm">
-      <p className="font-semibold text-[#ccc] text-lg mb-1">Nenhum resultado encontrado</p>
-      <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-[#ddd] mt-4 max-w-xs mx-auto text-left">
-        <div><span className="text-xs text-[#ddd] block">CPF</span>—</div>
-        <div><span className="text-xs text-[#ddd] block">Idade</span>—</div>
-        <div className="col-span-2"><span className="text-xs text-[#ddd] block">Último atendimento</span>—</div>
-      </div>
-    </div>
-  );
-
-  // Linha vazia desktop (dentro da tabela com colunas)
-  const LinhaVaziaDesktop = () => (
-    <div className="flex items-center px-6 py-8 bg-white">
-      <span className="w-[30%] text-[#ccc] font-semibold">Nenhum resultado encontrado</span>
-      <span className="w-[22%] text-[#ddd]">—</span>
-      <span className="w-[10%] text-[#ddd]">—</span>
-      <span className="w-[18%] text-[#ddd]">—</span>
-      <span className="w-[20%]" />
-    </div>
-  );
-
   return (
     <div className="font-[Arial] text-[#010817] flex flex-col min-h-screen">
       <HeaderVoluntario />
