@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #010817;
+  height: 6rem;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  padding: 0 2rem;
+}
+
+.logo a {
+  color: #fd8b08;
+  text-decoration: none;
+}
+
+.logo h1 {
+  font-size: 1.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem; 
+}
+
+/* MENU */
+#nav {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #010817;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.menu-item {
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 0.5rem;
+  display: inline-block;
+}
+
+.menu-item.active {
+  color: #fd8b08;
+}
+
+.menu-item:hover {
+  color: #fd8b08;
+}
+
+#area-button-v {
+  background-color: #9ac93d;
+  color: whitesmoke;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+#area-button-f {
+  background-color: #fd8b08;
+  color: whitesmoke;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+/* TOGGLE */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* EXTRA SMALL */
+@media (max-width: 37.5rem) {
+
+  header {
+    height: 3.5rem;
+  }
+
+  .logo {
+    padding: 0 0.5rem;
+  }
+
+  .logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0.5rem;
+  }
+
+  #nav {
+    display: block;
+    position: absolute;
+    top: 3.4rem;
+    right: 0;
+    width: 100%;
+    background: #010817;
+
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  #nav.active {
+    pointer-events: auto;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+
+  .menu li {
+    width: 100%;
+  }
+
+  .menu-item {
+    width: 100%;
+    text-align: right;
+    padding-right: 1rem;
+    border-bottom: 1px solid #fd8b08;
+  }
+
+  #area-button-v,
+  #area-button-f {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+}
