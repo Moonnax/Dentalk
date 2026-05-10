@@ -38,8 +38,9 @@ export default function VMeusPacientes() {
 
   return (
     <>
-      <HeaderVoluntario />
+    <div className="min-h-screen flex flex-col font-[Arial] text-[#010817]">
 
+      <HeaderVoluntario />
       <main
         className="
           font-[Arial] text-[#010817]
@@ -156,6 +157,7 @@ export default function VMeusPacientes() {
       <div className="hidden [@media(min-width:992px)]:block">
         <Footer />
       </div>
+    </div>
     </>
   );
 }
