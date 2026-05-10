@@ -1,6 +1,6 @@
 import { ChevronDown, Search } from "lucide-react";
-import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
+import Footer from "../../components/Footer/Footer";
 
 export default function Prontuario() {
   const pacientes = [
