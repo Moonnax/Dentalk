@@ -521,7 +521,8 @@ export default function Fmonitoramento() {
 
 
   return (
-    <div className="flex min-h-screen flex-col font-sans text-[#010817]">
+    
+    <div className="flex min-h-screen flex-col font-[Arial] text-[#010817]]">
       <HeaderFuncionario />
 
       {modalAberto && (

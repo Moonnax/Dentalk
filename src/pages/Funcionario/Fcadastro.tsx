@@ -35,7 +35,8 @@ export default function CadastroF() {
   });
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col font-[Arial] text-[#010817]">
+
       <HeaderFuncionario />
 
       <main className="font-[Arial] text-[#010817] px-4 py-6 md:px-6 md:py-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-[2rem] [@media(min-width:992px)]:px-0">

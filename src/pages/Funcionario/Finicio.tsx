@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 function Finicio() {
   return (
     <>
+    <div className="min-h-screen flex flex-col font-[Arial] text-[#010817]">
+
       <HeaderFuncionario />
 
       <main
@@ -195,6 +197,7 @@ function Finicio() {
       <div className="hidden [@media(min-width:992px)]:block">
         <Footer />
       </div>
+    </div>
     </>
   );
 }
