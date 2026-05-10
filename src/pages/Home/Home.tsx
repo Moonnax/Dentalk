@@ -1,21 +1,9 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 992) setMenuOpen(false);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
     <div
       className="font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen"
@@ -26,7 +14,7 @@ function Home() {
         backgroundAttachment: "fixed",
       }}
     >
-    <Header open={menuOpen} setOpen={setMenuOpen} />
+    <Header />
       <main
         className="
           flex-1 flex items-center min-h-screen
@@ -55,7 +43,9 @@ function Home() {
         </div>
       </main>
 
-      <Footer />
+      <div className="hidden min-[992px]:block">
+  <Footer />
+</div>
     </div>
   );
 }
