@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import TitlePage from '../../components/TitlePage/TitlePage'
-import logo from '../../assets/logo.png'
 
 interface Integrante {
   id: string
@@ -53,7 +52,7 @@ function QuemSomos() {
         />
 
         <img
-          src={logo}
+          src="/logo.png"
           alt="logo Dentalk"
           className="block mx-auto p-[0.625rem]"
         />
