@@ -35,37 +35,47 @@ export default function FacoesEscola() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col font-sans text-[#010817]">
+    <div>
       <HeaderFuncionario />
 
-      <main className="flex-1 mx-[3rem] my-[2rem]">
+      <main className="font-[Arial] text-[#010817] px-4 py-6 md:px-6 md:py-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-[2rem] [@media(min-width:992px)]:px-0">
 
-        <section className="mb-[30px] flex items-start justify-between gap-5">
+        <section className="flex flex-col [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:justify-between gap-4 mb-[30px]">
           <div className="w-full">
-            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] max-w-[600px] mb-5 bg-white">
+
+            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
               <Search size={18} />
               <input
                 type="text"
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
                 placeholder="Filtrar por instituição ou coordenador..."
-                className="w-full bg-transparent outline-none text-[#333] placeholder-[#999]"
+                className="w-full bg-transparent outline-none text-[#333] placeholder-[#999] text-sm [@media(min-width:992px)]:text-base"
               />
             </div>
 
-            <div className="flex flex-wrap gap-[15px]">
+            <div className="flex flex-wrap gap-3">
+
               <div className="relative">
-                <select value={filtroData} onChange={(e) => setFiltroData(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white px-4 py-2 pr-10 text-[#010817] outline-none hover:border-[#c4d600]">
+                <select
+                  value={filtroData}
+                  onChange={(e) => setFiltroData(e.target.value)}
+                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
+                >
                   <option value="">Data</option>
-                  {[...new Set(dados.map(d => d.data))].map(d => <option key={d} value={d}>{d}</option>)}
+                  {[...new Set(dados.map((d) => d.data))].map((d) => (
+                    <option key={d} value={d}>{d}</option>
+                  ))}
                 </select>
                 <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
 
               <div className="relative">
-                <select value={filtroInfra} onChange={(e) => setFiltroInfra(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white px-4 py-2 pr-10 text-[#010817] outline-none hover:border-[#c4d600]">
+                <select
+                  value={filtroInfra}
+                  onChange={(e) => setFiltroInfra(e.target.value)}
+                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
+                >
                   <option value="">Infra</option>
                   <option value="Completa">Completa</option>
                   <option value="Pendente">Pendente</option>
@@ -74,8 +84,11 @@ export default function FacoesEscola() {
               </div>
 
               <div className="relative">
-                <select value={filtroStatus} onChange={(e) => setFiltroStatus(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white px-4 py-2 pr-10 text-[#010817] outline-none hover:border-[#c4d600]">
+                <select
+                  value={filtroStatus}
+                  onChange={(e) => setFiltroStatus(e.target.value)}
+                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
+                >
                   <option value="">Situação</option>
                   <option value="Aprovar">Aprovar</option>
                   <option value="Pendente">Pendente</option>
@@ -84,6 +97,7 @@ export default function FacoesEscola() {
                 </select>
                 <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
+
             </div>
           </div>
         </section>
@@ -94,56 +108,76 @@ export default function FacoesEscola() {
             { label: "Concluídas", valor: "Concluída" },
             { label: "Aprovar", valor: "Aprovar" },
           ].map((item) => (
-            <button key={item.label}
+            <button
+              key={item.label}
               onClick={() => setFiltroStatus(item.valor)}
-              className={`flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition hover:shadow-sm ${filtroStatus === item.valor ? "border-[#f1c40f] bg-white text-black shadow-sm" : "border-[#e0e0e0] bg-[#f2f2f2] text-[#333] hover:border-[#f1c40f] hover:bg-white hover:text-black"}`}>
+              className={`flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition hover:shadow-sm ${
+                filtroStatus === item.valor
+                  ? "border-[#f1c40f] bg-white text-black shadow-sm"
+                  : "border-[#e0e0e0] bg-[#f2f2f2] text-[#333] hover:border-[#f1c40f] hover:bg-white hover:text-black"
+              }`}
+            >
               {item.label}
               <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">
-                {item.valor === "" ? dados.length : dados.filter(d => d.status === item.valor).length}
+                {item.valor === "" ? dados.length : dados.filter((d) => d.status === item.valor).length}
               </span>
             </button>
           ))}
         </section>
 
         <section>
-          <div className="flex flex-col overflow-hidden rounded-xl border border-[#eee] bg-white">
-            <div className="flex border-b-2 border-[#eee] bg-[#fafafa] px-6 py-4 font-bold text-[#010817]">
-              <span className="w-[30%]">Instituição</span>
-              <span className="w-[15%]">Data</span>
-              <span className="w-[10%]">Alunos</span>
-              <span className="w-[20%]">Coordenador</span>
-              <span className="w-[15%]">Infra</span>
-              <span className="w-[10%] text-right">Situação</span>
-            </div>
+          <div className="border border-[#eee] rounded-xl overflow-hidden flex flex-col">
+            <div className="overflow-x-auto">
+              <div className="min-w-[980px]">
 
-            {filtrados.length > 0 ? filtrados.map((item, index) => (
-              <div key={index} className="flex items-center border-b border-[#eee] px-6 py-4 hover:bg-[#fffdf5]">
-                <div className="w-[30%] flex flex-col">
-                  <span className="text-[#000]">{item.instituicao}</span>
-                  <span className="text-xs text-[#000]">{item.local}</span>
+                <div className="flex items-center px-4 [@media(min-width:992px)]:px-6 py-4 bg-[#fafafa] border-b-2 border-[#eee]">
+                  <span className="w-[30%] font-bold text-black text-sm [@media(min-width:992px)]:text-base">Instituição</span>
+                  <span className="w-[15%] font-bold text-black text-sm [@media(min-width:992px)]:text-base">Data</span>
+                  <span className="w-[10%] font-bold text-black text-sm [@media(min-width:992px)]:text-base">Alunos</span>
+                  <span className="w-[20%] font-bold text-black text-sm [@media(min-width:992px)]:text-base">Coordenador</span>
+                  <span className="w-[15%] font-bold text-black text-sm [@media(min-width:992px)]:text-base">Infra</span>
+                  <span className="w-[10%] text-right font-bold text-black text-sm [@media(min-width:992px)]:text-base">Situação</span>
                 </div>
-                <div className="w-[15%] flex flex-col text-[#000]">
-                  {item.data}
-                  <span className="text-xs text-[#555]">{item.hora}</span>
-                </div>
-                <span className="w-[10%] text-[#000]">{item.alunos}</span>
-                <div className="w-[20%] flex flex-col">
-                  <span>{item.coordenador}</span>
-                  <span className="text-xs text-[#000]">{item.contato}</span>
-                </div>
-                <span className="w-[15%] text-[#000]">{item.infra}</span>
-                <div className="w-[10%] flex justify-end">
-                  <span className={`px-3 py-1 rounded text-xs font-bold ${statusStyle(item.status)}`}>{item.status}</span>
-                </div>
+
+                {filtrados.length > 0 ? filtrados.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center px-4 [@media(min-width:992px)]:px-6 py-4 border-b border-[#f5f5f5] hover:bg-[#fffdf5]"
+                  >
+                    <div className="w-[30%] flex flex-col">
+                      <span className="text-[#000] text-sm [@media(min-width:992px)]:text-base">{item.instituicao}</span>
+                      <span className="text-xs text-[#555]">{item.local}</span>
+                    </div>
+                    <div className="w-[15%] flex flex-col text-[#000] text-sm [@media(min-width:992px)]:text-base">
+                      {item.data}
+                      <span className="text-xs text-[#555]">{item.hora}</span>
+                    </div>
+                    <span className="w-[10%] text-[#000] text-sm [@media(min-width:992px)]:text-base">{item.alunos}</span>
+                    <div className="w-[20%] flex flex-col">
+                      <span className="text-sm [@media(min-width:992px)]:text-base">{item.coordenador}</span>
+                      <span className="text-xs text-[#555]">{item.contato}</span>
+                    </div>
+                    <span className="w-[15%] text-[#000] text-sm [@media(min-width:992px)]:text-base">{item.infra}</span>
+                    <div className="w-[10%] flex justify-end">
+                      <span className={`px-3 py-1 rounded text-xs font-bold whitespace-nowrap ${statusStyle(item.status)}`}>
+                        {item.status}
+                      </span>
+                    </div>
+                  </div>
+                )) : (
+                  <p className="text-center text-[#999] py-8 text-sm">Nenhum resultado encontrado.</p>
+                )}
+
               </div>
-            )) : (
-              <p className="text-center text-[#999] py-8 text-sm">Nenhum resultado encontrado.</p>
-            )}
+            </div>
           </div>
         </section>
 
       </main>
-      <Footer />
+
+      <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   );
 }
