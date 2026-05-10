@@ -53,7 +53,6 @@ export default function VMeusPacientes() {
         "
       >
 
-        {/* ── COLUNA ESQUERDA: lista de pacientes ── */}
         <section
           className="
             w-full mb-6
@@ -66,7 +65,6 @@ export default function VMeusPacientes() {
             Meus Pacientes
           </h1>
 
-          {/* Busca */}
           <div className="flex items-center gap-2 bg-[#f2f2f2] rounded-lg px-3 py-2 mb-4">
             <Search size={18} className="text-[#999] shrink-0" />
             <input
@@ -78,7 +76,6 @@ export default function VMeusPacientes() {
             />
           </div>
 
-          {/* Filtros */}
           <div className="flex gap-2 flex-wrap mb-4">
             {filtros.map((f) => (
               <button
@@ -95,7 +92,6 @@ export default function VMeusPacientes() {
             ))}
           </div>
 
-          {/* Lista */}
           <div className="w-full rounded-[15px] bg-[#fdfdf5] p-4 [@media(min-width:992px)]:p-[25px]">
             <h3 className="text-[1.2rem] [@media(min-width:992px)]:text-[1.4rem] font-bold">
               Pacientes
@@ -112,7 +108,6 @@ export default function VMeusPacientes() {
           </div>
         </section>
 
-        {/* ── COLUNA DIREITA: encaminhados ── */}
         <aside
           className="
             w-full flex flex-col gap-4
@@ -129,7 +124,6 @@ export default function VMeusPacientes() {
 
           {encaminhados.map((p) => (
             <div key={p.nome} className="flex rounded-xl border border-[#e0e0e0] bg-white shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
-              {/* Borda lateral amarela */}
               <div className="w-[6px] rounded-l-xl bg-[#f1c40f] shrink-0" />
 
               <div className="flex flex-col gap-2 p-4 w-full">
