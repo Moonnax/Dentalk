@@ -1,7 +1,6 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
-import './Valores.css'
 import TitlePage from '../../components/TitlePage/TitlePage'
 
 const valores = [
@@ -29,14 +28,17 @@ const valores = [
 
 function Valores() {
   return (
-    <div>
+    <div className="font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen bg-white">
       <Header />
-      <main className="valores-main">
+
+      <main className="flex-1 min-h-[80vh] px-4 md:px-6 py-8 pb-16">
+
         <TitlePage
-        titulo="Nossos valores"
-        subtitulo="Os princípios que guiam cada decisão do projeto Dentalk"
+          titulo="Nossos valores"
+          subtitulo="Os princípios que guiam cada decisão do projeto Dentalk"
         />
-        <div className="valores-grid">
+
+        <div className="flex flex-col gap-5 max-w-[52rem] mx-auto mt-8">
           {valores.map((v, i) => (
             <Card
               key={i}
@@ -48,8 +50,12 @@ function Valores() {
             />
           ))}
         </div>
+
       </main>
-      <Footer />
+
+      <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   )
 }
