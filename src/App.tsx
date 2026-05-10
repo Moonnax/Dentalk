@@ -21,7 +21,7 @@ import Tdb from './pages/Tdb/Tdb'
 import Missao from './pages/Missao/Missao'
 import Valores from './pages/Valores/Valores'
 
-import './teste.css'
+import './App.css'
 
 function App() {
   return (
