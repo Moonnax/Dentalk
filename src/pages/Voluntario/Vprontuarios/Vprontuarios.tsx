@@ -1,110 +1,114 @@
-import { useState } from "react";
-import { Search, ChevronDown } from "lucide-react";
+import { ChevronDown, Search } from "lucide-react";
 import HeaderVoluntario from "../../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../../components/Footer/Footer";
-import './Vprontuarios.css';
 
-export default function VProntuario() {
-  const [busca, setBusca] = useState("");
-  const [filtroUltimo, setFiltroUltimo] = useState("");
-  const [filtroIdade, setFiltroIdade] = useState("");
-
+export default function Prontuario() {
   const pacientes = [
-    { nome: "João Silva", cpf: "468.895.568-33", idade: "32 anos", ultimo: "23/08/25" },
-    { nome: "Caroline Ferreira Pereira", cpf: "123.456.789-00", idade: "28 anos", ultimo: "20/08/25" },
-    { nome: "Marcos Oliveira", cpf: "987.654.321-11", idade: "45 anos", ultimo: "15/08/25" },
-    { nome: "Ana Beatriz Santos", cpf: "456.123.789-55", idade: "19 anos", ultimo: "10/08/25" },
-    { nome: "Roberto Cavalcante", cpf: "333.222.111-99", idade: "50 anos", ultimo: "05/08/25" },
+    { nome: "João Silva", cpf: "468.895.568-33", idade: "32 anos", ultimoAtendimento: "23/08/25" },
+    { nome: "Caroline Ferreira Pereira", cpf: "123.456.789-00", idade: "28 anos", ultimoAtendimento: "20/08/25" },
+    { nome: "Marcos Oliveira", cpf: "987.654.321-11", idade: "45 anos", ultimoAtendimento: "15/08/25" },
+    { nome: "Ana Beatriz Santos", cpf: "456.123.789-55", idade: "19 anos", ultimoAtendimento: "10/08/25" },
+    { nome: "Roberto Cavalcante", cpf: "333.222.111-99", idade: "50 anos", ultimoAtendimento: "05/08/25" },
   ];
 
-  const getIdadeFaixa = (idadeStr: string) => {
-    const n = parseInt(idadeStr);
-    if (n <= 20) return "Até 20";
-    if (n <= 30) return "21-30";
-    if (n <= 40) return "31-40";
-    return "41+";
-  };
-
-  const filtrados = pacientes.filter((p) => {
-    const termo = busca.toLowerCase();
-    const matchBusca = !busca || p.nome.toLowerCase().includes(termo) || p.cpf.includes(busca);
-    const matchUltimo = !filtroUltimo || p.ultimo === filtroUltimo;
-    const matchIdade = !filtroIdade || getIdadeFaixa(p.idade) === filtroIdade;
-    return matchBusca && matchUltimo && matchIdade;
-  });
-
   return (
-    <div className="page-container">
+    <div className="font-[Arial] text-[#010817] flex flex-col min-h-screen">
       <HeaderVoluntario />
 
-      <main className="container_prontuarios">
+      <main className="flex-1 mx-4 my-4 sm:mx-8 sm:my-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-8">
 
-        <section className="busca_prontuario">
-          <div className="barra_pesquisa">
-            <Search />
-            <input
-              type="text"
-              value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-              placeholder="Pesquisar cpf ou nome..."
-              className="w-full bg-transparent outline-none text-[#333] placeholder-[#999]"
-            />
+        <section className="mb-[30px]">
+          <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
+            <Search size={18} />
+            <p className="text-sm [@media(min-width:992px)]:text-base">Pesquisar cpf ou nome...</p>
           </div>
 
-          <div className="filtros_flex">
-            <div className="filtro_item relative">
-              <select value={filtroUltimo} onChange={(e) => setFiltroUltimo(e.target.value)}
-                className="appearance-none w-full bg-transparent outline-none cursor-pointer pr-6 text-[#010817]">
-                <option value="">Último Atendimento</option>
-                {[...new Set(pacientes.map(p => p.ultimo))].map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
-              <ChevronDown size={16} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="flex flex-wrap gap-3">
+            <div className="flex items-center gap-6 [@media(min-width:480px)]:gap-10 border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white hover:border-[#f1c40f]">
+              <span className="text-sm [@media(min-width:992px)]:text-base">Último Atendimento</span>
+              <ChevronDown size={18} />
             </div>
-
-            <div className="filtro_item relative">
-              <select value={filtroIdade} onChange={(e) => setFiltroIdade(e.target.value)}
-                className="appearance-none w-full bg-transparent outline-none cursor-pointer pr-6 text-[#010817]">
-                <option value="">Idade</option>
-                <option value="Até 20">Até 20 anos</option>
-                <option value="21-30">21–30 anos</option>
-                <option value="31-40">31–40 anos</option>
-                <option value="41+">41+ anos</option>
-              </select>
-              <ChevronDown size={16} className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <div className="flex items-center gap-6 [@media(min-width:480px)]:gap-10 border border-[#eee] px-4 py-2 rounded-lg cursor-pointer bg-white hover:border-[#f1c40f]">
+              <span className="text-sm [@media(min-width:992px)]:text-base">Idade</span>
+              <ChevronDown size={18} />
             </div>
           </div>
         </section>
 
-        <section className="lista_pacientes_secao">
-          <div className="card_lista_prontuarios">
-            <div className="linha_prontuario header_prontuario">
-              <span className="col_paciente">Paciente</span>
-              <span className="col_cpf">CPF</span>
-              <span className="col_idade">Idade</span>
-              <span className="col_ultimo">Último atendimento</span>
-              <span className="col_situacao">Situação</span>
-            </div>
-
-            {filtrados.length > 0 ? filtrados.map((p, i) => (
-              <div className="linha_prontuario" key={i}>
-                <span className="col_paciente">{p.nome}</span>
-                <span className="col_cpf">{p.cpf}</span>
-                <span className="col_idade">{p.idade}</span>
-                <span className="col_ultimo">{p.ultimo}</span>
-                <div className="col_situacao">
-                  <div className="btn_prontuario">Abrir Prontuário</div>
+        <section>
+          {/* ── MOBILE: cards ── */}
+          <div className="flex flex-col gap-3 [@media(min-width:992px)]:hidden">
+            {pacientes.map((paciente, index) => (
+              <div
+                key={index}
+                className="bg-white border border-[#eee] rounded-xl px-4 py-4 flex flex-col gap-3"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <span className="font-bold text-[#010817] text-sm leading-snug">{paciente.nome}</span>
                 </div>
+
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-[#555]">
+                  <div>
+                    <span className="text-xs text-[#999] block">CPF</span>
+                    {paciente.cpf}
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#999] block">Idade</span>
+                    {paciente.idade}
+                  </div>
+                  <div className="col-span-2">
+                    <span className="text-xs text-[#999] block">Último atendimento</span>
+                    {paciente.ultimoAtendimento}
+                  </div>
+                </div>
+
+                <button className="w-full bg-[#c4d600] text-black py-2 rounded-md text-sm font-bold hover:bg-[#f1c40f] transition-colors">
+                  Abrir Prontuário
+                </button>
               </div>
-            )) : (
-              <p style={{ textAlign: "center", color: "#999", padding: "2rem", fontSize: "0.9rem" }}>
-                Nenhum resultado encontrado.
-              </p>
-            )}
+            ))}
+          </div>
+
+          {/* ── DESKTOP: tabela ── */}
+          <div className="hidden [@media(min-width:992px)]:block bg-white border border-[#eee] rounded-xl overflow-hidden">
+            <div className="overflow-x-auto">
+              <div className="min-w-[480px]">
+
+                <div className="flex items-center px-6 py-4 bg-[#fafafa] border-b-2 border-[#eee]">
+                  <span className="w-[30%] font-bold text-black text-base">Paciente</span>
+                  <span className="w-[22%] font-bold text-black text-base">CPF</span>
+                  <span className="w-[10%] font-bold text-black text-base">Idade</span>
+                  <span className="w-[18%] font-bold text-black text-base">Último atendimento</span>
+                  <span className="w-[20%] font-bold text-black text-base text-right">Situação</span>
+                </div>
+
+                {pacientes.map((paciente, index) => (
+                  <div
+                    key={index}
+                    className={`flex items-center px-6 py-[15px] border-b border-[#f5f5f5] transition-colors hover:bg-[#fffdf5] ${index % 2 === 1 ? "bg-[#fcfcfc]" : "bg-white"}`}
+                  >
+                    <span className="w-[30%] font-medium text-[#010817] text-base">{paciente.nome}</span>
+                    <span className="w-[22%] text-[#555] text-base">{paciente.cpf}</span>
+                    <span className="w-[10%] text-[#555] text-base">{paciente.idade}</span>
+                    <span className="w-[18%] text-[#555] text-base">{paciente.ultimoAtendimento}</span>
+                    <span className="w-[20%] flex justify-end">
+                      <button className="bg-[#c4d600] text-black px-[18px] py-2 rounded-md text-[0.85rem] font-bold cursor-pointer whitespace-nowrap hover:bg-[#f1c40f] transition-colors">
+                        Abrir Prontuário
+                      </button>
+                    </span>
+                  </div>
+                ))}
+
+              </div>
+            </div>
           </div>
         </section>
 
       </main>
-      <Footer />
+
+      <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Vinicio from './pages/Voluntario/Vinicio/Vinicio'
+import Vinicio from './pages/Voluntario/Vinicio/Vinicio.tsx'
 import VMeusPacientes from './pages/Voluntario/Vmeuspacientes/Vmeuspacientes'
 import Vagenda from './pages/Voluntario/Vagenda/Vagenda'
 import Vatendimentos from './pages/Voluntario/Vatendimentos/Vatendimentos'

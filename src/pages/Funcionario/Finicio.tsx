@@ -2,12 +2,6 @@ import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFunciona
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 
-/*
-  BREAKPOINTS — Sprint 3
-  Mobile  : até 480px   → coluna única, px-4
-  Tablet  : 768–991px   → coluna única, px-6
-  Desktop : 992px+      → duas colunas, mx-12
-*/
 
 function Finicio() {
   return (
@@ -27,7 +21,6 @@ function Finicio() {
         "
       >
 
-        {/* ── ASIDE: Cards de contagem ── */}
         <aside
           className="
             w-full mb-6
@@ -41,7 +34,6 @@ function Finicio() {
             Olá, Funcionário do Bem!
           </h1>
 
-          {/* Card 1 */}
           <section className="mb-[25px] flex flex-col justify-between rounded-xl bg-[#f2f2f2] p-6 min-h-[160px] [@media(min-width:992px)]:min-h-[180px] [@media(min-width:992px)]:min-w-[380px]">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-3">
@@ -61,7 +53,6 @@ function Finicio() {
             </div>
           </section>
 
-          {/* Card 2 */}
           <section className="mb-[25px] flex flex-col justify-between rounded-xl bg-[#f2f2f2] p-6 min-h-[160px] [@media(min-width:992px)]:min-h-[180px] [@media(min-width:992px)]:min-w-[380px]">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-3">
@@ -81,7 +72,6 @@ function Finicio() {
             </div>
           </section>
 
-          {/* Card 3 */}
           <section className="mb-[25px] flex flex-col justify-between rounded-xl bg-[#f2f2f2] p-6 min-h-[160px] [@media(min-width:992px)]:min-h-[180px] [@media(min-width:992px)]:min-w-[380px]">
             <div className="flex items-start justify-between">
               <div className="flex-1 pr-3">
@@ -104,7 +94,6 @@ function Finicio() {
           </section>
         </aside>
 
-        {/* ── COLUNA DIREITA: Tabelas ── */}
         <div
           className="
             w-full flex flex-col gap-6
@@ -116,23 +105,16 @@ function Finicio() {
           "
         >
 
-          {/* Banner */}
           <div className="w-full rounded-lg bg-[#f0f0f0] px-5 py-[10px] text-[0.9rem] text-[var(--cinza-claro)]">
             <p>Publicar Aviso Geral para Voluntários</p>
           </div>
 
-          {/* ── Alertas de Prazo ── */}
           <section className="w-full rounded-[15px] bg-[#fdfdf5] p-4 [@media(min-width:992px)]:p-[25px]">
             <h3 className="text-[1.2rem] [@media(min-width:992px)]:text-[1.4rem] font-bold">
               Alertas de Prazo
             </h3>
             <div className="my-[10px] mb-5 w-[150px] border-b-2 border-[#333]" />
 
-            {/* 
-              Tabela sem min-w fixo em mobile/tablet.
-              Cada coluna usa w-[33%] e o texto quebra naturalmente.
-              min-w só entra no desktop onde há espaço suficiente.
-            */}
             <div className="w-full">
 
               <div className="flex py-[10px] border-b border-[#d9d9d9]">
@@ -173,7 +155,6 @@ function Finicio() {
             </div>
           </section>
 
-          {/* ── Próximas Ações Escola ── */}
           <section className="w-full rounded-[15px] bg-[#fdfdf5] p-4 [@media(min-width:992px)]:p-[25px]">
             <h3 className="text-[1.2rem] [@media(min-width:992px)]:text-[1.4rem] font-bold">
               Próximas Ações Escola
