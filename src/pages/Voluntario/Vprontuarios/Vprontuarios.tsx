@@ -75,36 +75,52 @@ export default function VProntuario() {
           </div>
         </section>
 
-        <section className="lista_pacientes_secao">
-          <div className="card_lista_prontuarios">
-            <div className="linha_prontuario header_prontuario">
-              <span className="col_paciente">Paciente</span>
-              <span className="col_cpf">CPF</span>
-              <span className="col_idade">Idade</span>
-              <span className="col_ultimo">Último atendimento</span>
-              <span className="col_situacao">Situação</span>
-            </div>
+<section className="lista_pacientes_secao">
+  <div className="card_lista_prontuarios border border-[#eee] rounded-xl bg-white overflow-hidden">
 
-            {filtrados.length > 0 ? filtrados.map((p, i) => (
-              <div className="linha_prontuario" key={i}>
-                <span className="col_paciente">{p.nome}</span>
-                <span className="col_cpf">{p.cpf}</span>
-                <span className="col_idade">{p.idade}</span>
-                <span className="col_ultimo">{p.ultimo}</span>
-                <div className="col_situacao">
-                  <div className="btn_prontuario">Abrir Prontuário</div>
-                </div>
+    <div className="overflow-x-auto">
+      <div className="min-w-[900px]">
+
+        <div className="linha_prontuario header_prontuario flex items-center px-4 md:px-6 py-4 bg-[#fafafa] border-b border-[#eee]">
+          <span className="col_paciente font-bold text-sm md:text-base">Paciente</span>
+          <span className="col_cpf font-bold text-sm md:text-base">CPF</span>
+          <span className="col_idade font-bold text-sm md:text-base">Idade</span>
+          <span className="col_ultimo font-bold text-sm md:text-base">Último atendimento</span>
+          <span className="col_situacao font-bold text-sm md:text-base text-right">Ação</span>
+        </div>
+
+        {filtrados.length > 0 ? filtrados.map((p, i) => (
+          <div
+            className="linha_prontuario flex items-center px-4 md:px-6 py-4 border-b border-[#f5f5f5] hover:bg-[#fffdf5]"
+            key={i}
+          >
+            <span className="col_paciente text-sm md:text-base">{p.nome}</span>
+            <span className="col_cpf text-sm md:text-base">{p.cpf}</span>
+            <span className="col_idade text-sm md:text-base">{p.idade}</span>
+            <span className="col_ultimo text-sm md:text-base">{p.ultimo}</span>
+
+            <div className="col_situacao flex justify-end">
+              <div className="btn_prontuario bg-[#c4d600] px-3 py-1 rounded text-xs font-bold hover:brightness-95 transition">
+                Abrir Prontuário
               </div>
-            )) : (
-              <p style={{ textAlign: "center", color: "#999", padding: "2rem", fontSize: "0.9rem" }}>
-                Nenhum resultado encontrado.
-              </p>
-            )}
+            </div>
           </div>
-        </section>
+        )) : (
+          <p style={{ textAlign: "center", color: "#999", padding: "2rem", fontSize: "0.9rem" }}>
+            Nenhum resultado encontrado.
+          </p>
+        )}
+
+      </div>
+    </div>
+
+  </div>
+</section>
 
       </main>
-      <Footer />
+       <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   );
 }
