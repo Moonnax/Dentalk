@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
@@ -24,8 +25,7 @@ function Home() {
       >
         <div className="max-w-[32rem]">
           <img
-            src="/logo.png"
-            alt="Dentalk"
+            src="/logo.png" alt="Dentalk"
             className="mb-4 block w-96 max-[480px]:w-56 min-[481px]:max-[991px]:w-64"
           />
 
