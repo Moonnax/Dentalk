@@ -1,7 +1,6 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import Card from '../../components/Card/Card'
-import './Missao.css'
 import TitlePage from '../../components/TitlePage/TitlePage'
 
 const missoes = [
@@ -24,14 +23,17 @@ const missoes = [
 
 function Missao() {
   return (
-    <div>
+    <div className="font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen bg-white">
       <Header />
-      <main className="missao-main">
-      <TitlePage
-        titulo="Missão"
-        subtitulo="Nossa missão é potencializar o impacto da Turma do Bem, garantindo que cada sorriso seja cuidado com atenção e dignidade, por meio de:"
-      />
-        <div className="missao-grid">
+
+      <main className="flex-1 min-h-[80vh] px-4 md:px-6 py-8 pb-16">
+
+        <TitlePage
+          titulo="Missão"
+          subtitulo="Nossa missão é potencializar o impacto da Turma do Bem, garantindo que cada sorriso seja cuidado com atenção e dignidade, por meio de:"
+        />
+
+        <div className="flex flex-col gap-5 max-w-[52rem] mx-auto mt-8">
           {missoes.map((m, i) => (
             <Card
               key={i}
@@ -43,8 +45,12 @@ function Missao() {
             />
           ))}
         </div>
+
       </main>
-      <Footer />
+
+      <div className="hidden [@media(min-width:992px)]:block">
+        <Footer />
+      </div>
     </div>
   )
 }

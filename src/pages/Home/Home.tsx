@@ -1,29 +1,51 @@
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import logo from '../../assets/logo.png'
-import background from '../../assets/home-background.png'
-import "./Home.css";
+import { Link } from "react-router-dom";
+
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 function Home() {
   return (
     <div
-      className="home-background"
-      style={{ backgroundImage: `url(${background})` }}
+      className="font-[Arial,Helvetica,sans-serif] text-[#010817] flex flex-col min-h-screen"
+      style={{
+        backgroundImage: "url('src/assets//home-background.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
     >
-      <Header />
-      <main className="home-main">
-        <div className="home-content">
-          <img src={logo} alt="Dentalk" className="home-logo" />
-          <p className="home-subtitle">
-            Uma solução desenvolvida por estudantes, pensada para apoiar a ONG
-            Turma do Bem a transformar vidas através da saúde bucal.
+    <Header />
+      <main
+        className="
+          flex-1 flex items-center min-h-screen
+          pl-24
+          max-[480px]:pl-0 max-[480px]:justify-center max-[480px]:text-center max-[480px]:py-12 max-[480px]:px-6
+          min-[481px]:max-[991px]:pl-0 min-[481px]:max-[991px]:justify-center min-[481px]:max-[991px]:text-center min-[481px]:max-[991px]:py-12 min-[481px]:max-[991px]:px-6
+        "
+      >
+        <div className="max-w-[32rem]">
+          <img
+            src="src/assets/logo.png"
+            alt="Dentalk"
+            className="mb-4 block w-96 max-[480px]:w-56 min-[481px]:max-[991px]:w-64"
+          />
+
+          <p className="text-[1.5625rem] text-white leading-[1.4] mb-8 max-[480px]:text-base min-[481px]:max-[991px]:text-base">
+            Uma solução desenvolvida por estudantes, pensada para apoiar a ONG Turma do Bem a transformar vidas através da saúde bucal.
           </p>
-          <a href="/sobre" className="home-button">
+
+          <Link
+            to="/sobre"
+            className="inline-block bg-[#fd8b08] text-white py-[0.8rem] px-8 rounded-[2rem] no-underline font-bold border-none hover:bg-[#b36103] hover:text-white max-[480px]:text-[0.9rem] max-[480px]:py-[0.7rem] max-[480px]:px-6"
+          >
             Saiba mais sobre
-          </a>
+          </Link>
         </div>
       </main>
-      <Footer />
+
+      <div className="hidden min-[992px]:block">
+  <Footer />
+</div>
     </div>
   );
 }
