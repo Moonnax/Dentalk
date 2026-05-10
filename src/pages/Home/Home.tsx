@@ -25,7 +25,7 @@ function Home() {
       >
         <div className="max-w-[32rem]">
           <img
-            src="https://dentalk-33pn9op2d-moonnaxs-projects.vercel.app/logo.png"
+            src="/logoDentalk.png"
           alt="logo Dentalk"
             className="mb-4 block w-96 max-[480px]:w-56 min-[481px]:max-[991px]:w-64"
           />
