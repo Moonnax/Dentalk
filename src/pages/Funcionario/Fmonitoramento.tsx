@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 
 type StatusOcorrencia = "vermelho" | "amarelo" | "";
 type TabOcorrencia = "Pendentes" | "Respondidas";
+type ViewMobile = "lista" | "chat" | "perfil";
 
 interface Mensagem {
   de: "profissional" | "funcionario";
@@ -72,7 +73,7 @@ function Bubble({ mensagem }: BubbleProps) {
   return (
     <div className={`flex gap-3 ${isPro ? "" : "justify-end"}`}>
       {isPro && <Avatar />}
-      <div className={`p-3 rounded-lg max-w-[60%] ${isPro ? "bg-[#eee]" : "bg-[#7ba4a8] text-white"}`}>
+      <div className={`p-3 rounded-lg max-w-[75%] sm:max-w-[60%] ${isPro ? "bg-[#eee]" : "bg-[#7ba4a8] text-white"}`}>
         <p className="text-sm">{mensagem.texto}</p>
         <span className={`text-xs ${isPro ? "text-gray-500" : ""}`}>{mensagem.hora}</span>
       </div>
@@ -104,8 +105,8 @@ function ModalReencaminhar({ nomeAtual, onConfirmar, onFechar }: ModalReencaminh
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl shadow-xl w-[420px] p-6 flex flex-col gap-4">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-[420px] p-6 flex flex-col gap-4">
 
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-lg">Reencaminhar ocorrência</h3>
@@ -168,7 +169,7 @@ function ModalReencaminhar({ nomeAtual, onConfirmar, onFechar }: ModalReencaminh
             disabled={!destino || !motivo}
             className="px-4 py-2 rounded-lg bg-[#c4d600] text-sm font-semibold hover:bg-[#afc000] transition disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            Confirmar reencaminhamento
+            Confirmar
           </button>
         </div>
 
@@ -257,6 +258,19 @@ const ocorrenciasIniciais: Ocorrencia[] = [
 ];
 
 
+function useWindowWidth() {
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+  return width;
+}
+
+
 export default function Fmonitoramento() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>(ocorrenciasIniciais);
   const [ativo, setAtivo] = useState<number>(0);
@@ -265,7 +279,14 @@ export default function Fmonitoramento() {
   const [ocorrenciaFinalizada, setOcorrenciaFinalizada] = useState<boolean>(false);
   const [modalAberto, setModalAberto] = useState<boolean>(false);
 
+  const [viewMobile, setViewMobile] = useState<ViewMobile>("lista");
+
   const chatRef = useRef<HTMLDivElement>(null);
+  const width = useWindowWidth();
+
+  const isMobileOrTablet = width < 992;
+  const isDesktop = width >= 992;
+
   const ocorrenciaAtual = ocorrencias.find((o) => o.id === ativo) ?? ocorrencias[0];
 
   useEffect(() => {
@@ -280,6 +301,15 @@ export default function Fmonitoramento() {
   }, [ativo]);
 
   const visiveis = ocorrencias.filter((o) => o.tab === tabAtiva);
+
+  function abrirOcorrencia(id: number) {
+    setAtivo(id);
+    if (isMobileOrTablet) setViewMobile("chat");
+  }
+
+  function voltarParaLista() {
+    setViewMobile("lista");
+  }
 
   function enviarMensagem(texto: string) {
     const msg = texto.trim();
@@ -298,6 +328,7 @@ export default function Fmonitoramento() {
     );
     setOcorrenciaFinalizada(true);
     setTabAtiva("Respondidas");
+    if (isMobileOrTablet) setViewMobile("lista");
   }
 
   function confirmarReencaminhamento(destino: string, motivo: string) {
@@ -317,7 +348,177 @@ export default function Fmonitoramento() {
     setModalAberto(false);
     setOcorrenciaFinalizada(true);
     setTabAtiva("Respondidas");
+    if (isMobileOrTablet) setViewMobile("lista");
   }
+
+  const ColLista = (
+    <section className="flex flex-col bg-white h-full overflow-hidden">
+      <div className="p-4 border-b border-[#ddd]">
+        <h2 className="mb-3 text-2xl font-semibold">Ocorrências</h2>
+        <div className="flex gap-2">
+          {(["Pendentes", "Respondidas"] as TabOcorrencia[]).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setTabAtiva(tab)}
+              className={`rounded px-3 py-1 text-sm transition ${
+                tabAtiva === tab ? "bg-[#010817] text-white" : "bg-[#eee] hover:bg-[#ddd]"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-0 overflow-y-auto flex-1">
+        {visiveis.length === 0 && (
+          <p className="text-sm text-gray-400 text-center mt-6">Nenhuma ocorrência.</p>
+        )}
+        {visiveis.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => abrirOcorrencia(item.id)}
+            className={`flex gap-3 p-4 border-b border-[#eee] cursor-pointer transition hover:bg-[#fffdf5] active:bg-[#f5f5f5] ${
+              isDesktop && ativo === item.id ? "bg-[#f0f0f0]" : ""
+            }`}
+          >
+            <Avatar />
+            <div className="flex flex-col flex-1 min-w-0">
+              <strong className="text-sm truncate">{item.nome}</strong>
+              <span className="text-sm text-gray-700 truncate">{item.titulo}</span>
+              <span className="text-xs text-gray-500 truncate">{item.previa}</span>
+            </div>
+            <BadgeStatus status={item.status} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+
+  const ColChat = (
+    <section className="flex flex-col bg-white h-full overflow-hidden relative">
+      <div className="flex items-center gap-3 border-b border-[#eee] p-3 shrink-0">
+        {isMobileOrTablet && (
+          <button
+            onClick={voltarParaLista}
+            className="text-gray-600 hover:text-gray-900 p-1 -ml-1 text-lg"
+            aria-label="Voltar"
+          >
+            ←
+          </button>
+        )}
+        <Avatar />
+        <div className="flex-1 min-w-0">
+          <strong className="block truncate">{ocorrenciaAtual.nome}</strong>
+          <p className={`text-xs ${ocorrenciaAtual.online ? "text-green-600" : "text-gray-400"}`}>
+            {ocorrenciaAtual.online ? "online agora" : "offline"}
+          </p>
+        </div>
+        {ocorrenciaFinalizada && (
+          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded whitespace-nowrap">
+            ✓ Finalizada
+          </span>
+        )}
+      </div>
+
+      <div ref={chatRef} className="flex flex-col gap-4 flex-1 overflow-y-auto p-4 pb-32 min-[992px]:pb-4">
+        {ocorrenciaAtual.mensagens.map((msg, i) => (
+          <Bubble key={i} mensagem={msg} />
+        ))}
+      </div>
+
+      <div className="fixed bottom-0 left-0 right-0 border-t border-[#ddd] bg-white z-10 min-[992px]:hidden">
+        <div className="flex gap-2 flex-wrap px-3 pt-3">
+          {respostasRapidas.map((r) => (
+            <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
+              className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
+              {r.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-2 p-3">
+          <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
+            className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
+            placeholder="Digite sua resposta..." />
+          <button onClick={() => enviarMensagem(digitando)}
+            className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
+            Enviar
+          </button>
+        </div>
+      </div>
+
+      <div className="hidden min-[992px]:block shrink-0 border-t border-[#ddd] bg-white">
+        <div className="flex gap-2 flex-wrap px-3 pt-3">
+          {respostasRapidas.map((r) => (
+            <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
+              className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
+              {r.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-2 p-3">
+          <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
+            className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
+            placeholder="Digite sua resposta..." />
+          <button onClick={() => enviarMensagem(digitando)}
+            className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
+            Enviar
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+
+  const ColPerfil = (
+    <section className="bg-white h-full flex flex-col gap-5 overflow-y-auto">
+      <div className="flex flex-col items-center text-center px-6 pt-6">
+        <Avatar size="lg" />
+        <h3 className="mt-2 font-semibold">{ocorrenciaAtual.nome}</h3>
+        <p className="text-sm">{ocorrenciaAtual.cargo}</p>
+        <p className="text-sm text-gray-500">{ocorrenciaAtual.crm}</p>
+      </div>
+
+      <div className="text-sm flex flex-col gap-1 px-6">
+        <p>📧 {ocorrenciaAtual.email}</p>
+        <p>📞 {ocorrenciaAtual.telefone}</p>
+      </div>
+
+      {ocorrenciaAtual.pacientes.length > 0 && (
+        <div className="flex flex-col gap-3 px-6">
+          <h4 className="font-semibold">Pacientes atuais</h4>
+          {ocorrenciaAtual.pacientes.map((p, i) => (
+            <div key={i} className="flex gap-3 items-center">
+              <div className="h-10 w-10 rounded-full bg-[#ddd] shrink-0" />
+              <div>
+                <p className="font-semibold text-sm">{p.nome}</p>
+                <p className="text-xs text-gray-500">{p.tratamento}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-auto flex flex-col gap-2 px-6 pb-6">
+        <button
+          onClick={finalizarOcorrencia}
+          disabled={ocorrenciaFinalizada}
+          className="bg-[#c4d600] p-3 rounded font-semibold hover:bg-[#afc000] transition disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {ocorrenciaFinalizada ? "Finalizada ✓" : "Finalizar Ocorrência"}
+        </button>
+        <button
+          onClick={() => setModalAberto(true)}
+          disabled={ocorrenciaFinalizada}
+          className="bg-[#f3f3f3] p-3 rounded border hover:bg-[#e8e8e8] transition disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Reencaminhar
+        </button>
+      </div>
+    </section>
+  );
+
 
   return (
     <div className="flex min-h-screen flex-col font-sans text-[#010817]">
@@ -331,155 +532,24 @@ export default function Fmonitoramento() {
         />
       )}
 
-      <main className="flex h-[calc(100vh-6rem)] bg-[#f4f7f6]">
+      {isDesktop && (
+        <main className="flex h-[calc(100vh-6rem)] bg-[#f4f7f6]">
+          <div className="w-[25%] border-r border-[#ddd] h-full">{ColLista}</div>
+          <div className="w-[50%] border-r border-[#ddd] h-full">{ColChat}</div>
+          <div className="w-[25%] h-full">{ColPerfil}</div>
+        </main>
+      )}
 
-        {/* ── Coluna Esquerda ── */}
-        <section className="w-[25%] bg-white p-6 border-r border-[#ddd] flex flex-col">
-          <h2 className="mb-3 text-[28px] font-semibold">Ocorrências</h2>
+      {isMobileOrTablet && (
+        <main className="flex-1 overflow-hidden" style={{ height: "calc(100vh - 6rem)" }}>
+          {viewMobile === "lista" && <div className="h-full">{ColLista}</div>}
+          {viewMobile === "chat"  && <div className="h-full">{ColChat}</div>}
+        </main>
+      )}
 
-          <div className="flex gap-2 mb-5">
-            {(["Pendentes", "Respondidas"] as TabOcorrencia[]).map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setTabAtiva(tab)}
-                className={`rounded px-3 py-1 text-sm transition ${
-                  tabAtiva === tab ? "bg-[#010817] text-white" : "bg-[#eee] hover:bg-[#ddd]"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-3 overflow-y-auto flex-1">
-            {visiveis.length === 0 && (
-              <p className="text-sm text-gray-400 text-center mt-6">Nenhuma ocorrência.</p>
-            )}
-            {visiveis.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setAtivo(item.id)}
-                className={`flex gap-3 p-3 border-b border-[#eee] cursor-pointer rounded-lg transition hover:bg-[#fffdf5] ${
-                  ativo === item.id ? "bg-[#f0f0f0]" : ""
-                }`}
-              >
-                <Avatar />
-                <div className="flex flex-col flex-1 min-w-0">
-                  <strong className="text-sm truncate">{item.nome}</strong>
-                  <span className="text-sm">{item.titulo}</span>
-                  <span className="text-xs text-gray-500 truncate">{item.previa}</span>
-                </div>
-                <BadgeStatus status={item.status} />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── Coluna Central: chat ── */}
-        <section className="w-[50%] flex flex-col bg-white border-r border-[#ddd]">
-
-          <div className="flex items-center gap-3 border-b border-[#eee] p-4 shrink-0">
-            <Avatar />
-            <div>
-              <strong>{ocorrenciaAtual.nome}</strong>
-              <p className={`text-xs ${ocorrenciaAtual.online ? "text-green-600" : "text-gray-400"}`}>
-                {ocorrenciaAtual.online ? "online agora" : "offline"}
-              </p>
-            </div>
-            {ocorrenciaFinalizada && (
-              <span className="ml-auto text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                ✓ Ocorrência finalizada
-              </span>
-            )}
-          </div>
-
-          <div ref={chatRef} className="flex flex-col gap-6 flex-1 overflow-y-auto p-6">
-            {ocorrenciaAtual.mensagens.map((msg, i) => (
-              <Bubble key={i} mensagem={msg} />
-            ))}
-
-            <div className="flex gap-2 flex-wrap mt-2">
-              {respostasRapidas.map((r) => (
-                <button
-                  key={r.label}
-                  onClick={() => enviarMensagem(r.mensagem)}
-                  title={r.mensagem}
-                  className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition"
-                >
-                  {r.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex gap-2 border-t border-[#ddd] p-3 shrink-0">
-            <input
-              value={digitando}
-              onChange={(e) => setDigitando(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
-              className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
-              placeholder="Digite sua resposta..."
-            />
-            <button
-              onClick={() => enviarMensagem(digitando)}
-              className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition"
-            >
-              Enviar
-            </button>
-          </div>
-        </section>
-
-        {/* ── Coluna Direita: perfil ── */}
-        <section className="w-[25%] bg-white p-6 flex flex-col gap-5 overflow-y-auto">
-
-          <div className="flex flex-col items-center text-center">
-            <Avatar size="lg" />
-            <h3 className="mt-2 font-semibold">{ocorrenciaAtual.nome}</h3>
-            <p className="text-sm">{ocorrenciaAtual.cargo}</p>
-            <p className="text-sm text-gray-500">{ocorrenciaAtual.crm}</p>
-          </div>
-
-          <div className="text-sm flex flex-col gap-1">
-            <p>📧 {ocorrenciaAtual.email}</p>
-            <p>📞 {ocorrenciaAtual.telefone}</p>
-          </div>
-
-          {ocorrenciaAtual.pacientes.length > 0 && (
-            <div className="flex flex-col gap-3">
-              <h4 className="font-semibold">Pacientes atuais</h4>
-              {ocorrenciaAtual.pacientes.map((p, i) => (
-                <div key={i} className="flex gap-3 items-center">
-                  <div className="h-10 w-10 rounded-full bg-[#ddd] shrink-0" />
-                  <div>
-                    <p className="font-semibold text-sm">{p.nome}</p>
-                    <p className="text-xs text-gray-500">{p.tratamento}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <div className="mt-auto flex flex-col gap-2">
-            <button
-              onClick={finalizarOcorrencia}
-              disabled={ocorrenciaFinalizada}
-              className="bg-[#c4d600] p-3 rounded font-semibold hover:bg-[#afc000] transition disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {ocorrenciaFinalizada ? "Finalizada ✓" : "Finalizar Ocorrência"}
-            </button>
-            <button
-              onClick={() => setModalAberto(true)}
-              disabled={ocorrenciaFinalizada}
-              className="bg-[#f3f3f3] p-3 rounded border hover:bg-[#e8e8e8] transition disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Reencaminhar
-            </button>
-          </div>
-
-        </section>
-      </main>
-
-      <Footer />
+      <div className="hidden min-[992px]:block">
+        <Footer />
+      </div>
     </div>
   );
 }
