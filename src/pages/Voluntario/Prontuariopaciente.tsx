@@ -118,7 +118,7 @@ export default function ProntuarioPaciente() {
           <AlertCircle size={48} className="text-[#ccc]" />
           <p className="text-[#999] text-lg">Prontuário não encontrado.</p>
           <button
-            onClick={() => navigate("/voluntario/Vprontuarios")}
+            onClick={() => navigate("/voluntario/prontuarios")}
             className="bg-[#c4d600] text-black px-5 py-2 rounded-md font-bold hover:bg-[#f1c40f] transition-colors"
           >
             Voltar à lista
