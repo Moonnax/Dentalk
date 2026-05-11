@@ -4,6 +4,7 @@ import VMeusPacientes from './pages/Voluntario/Vmeuspacientes'
 import Vagenda from './pages/Voluntario/Vagenda.tsx'
 import Vatendimentos from './pages/Voluntario/Vatendimentos.tsx'
 import VProntuario from './pages/Voluntario/Vprontuarios.tsx'
+import ProntuarioPaciente from "./pages/Voluntario/ProntuarioPaciente";
 
 import Finicio from './pages/Funcionario/Finicio.tsx'
 import Fcadastro from './pages/Funcionario/Fcadastro.tsx'
@@ -32,6 +33,7 @@ function App() {
         <Route path="/agenda" element={<Vagenda />} />
         <Route path="/atendimentos" element={<Vatendimentos />} />
         <Route path="/prontuarios" element={<VProntuario />} />
+        <Route path="/voluntario/prontuario/:slug" element={<ProntuarioPaciente />} />
         
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
