@@ -162,7 +162,7 @@ export default function Prontuario() {
                   </div>
                 </div>
                 <Link
-                  to={`/voluntario/prontuario/${paciente.slug}`}
+                  to={`/voluntario/prontuarios/${paciente.slug}`}
                   state={{ paciente }}
                   className="w-full bg-[#c4d600] text-black py-2 rounded-md text-sm font-bold hover:bg-[#f1c40f] transition-colors text-center"
                 >
@@ -207,7 +207,7 @@ export default function Prontuario() {
                     <span className="w-[18%] text-[#555] text-base">{paciente.ultimoAtendimento}</span>
                     <span className="w-[20%] flex justify-end">
                       <Link
-                        to={`/voluntario/prontuario/${paciente.slug}`}
+                        to={`/voluntario/prontuarios/${paciente.slug}`}
                         state={{ paciente }}
                         className="bg-[#c4d600] text-black px-[18px] py-2 rounded-md text-[0.85rem] font-bold cursor-pointer whitespace-nowrap hover:bg-[#f1c40f] transition-colors"
                       >
