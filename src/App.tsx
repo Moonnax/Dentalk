@@ -20,7 +20,7 @@ import QuemSomos from './pages/QuemSomos/QuemSomos'
 import IntegranteDetalhe from './pages/IntegranteDetalhe/IntegranteDetalhe'
 import Tdb from './pages/Tdb/Tdb'
 import Missao from './pages/Missao/Missao'
-import Valores from './pages/Valores/Valores'
+import Valores from './pages/Valores/Valores'.
 
 import './App.css'
 
