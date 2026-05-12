@@ -4,7 +4,7 @@ import VMeusPacientes from './pages/Voluntario/Vmeuspacientes'
 import Vagenda from './pages/Voluntario/Vagenda.tsx'
 import Vatendimentos from './pages/Voluntario/Vatendimentos.tsx'
 import VProntuario from './pages/Voluntario/Vprontuarios.tsx'
-import ProntuarioPaciente from './pages/Voluntario/teste.tsx'
+import ProntuarioPaciente from './pages/Voluntario/ProntuarioPaciente.tsx'
 
 import Finicio from './pages/Funcionario/Finicio.tsx'
 import Fcadastro from './pages/Funcionario/Fcadastro.tsx'
