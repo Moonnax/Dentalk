@@ -18,6 +18,7 @@ interface Solicitacao {
   tab: FiltroTab;
   telefone?: string;
   email?: string;
+  motivoRejeicao?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -90,6 +91,36 @@ function ModalContato({ item, onClose, onEncaminhar }: { item: Solicitacao; onCl
             <span style={{ color: "#888" }}>E-mail</span>
             <span style={{ fontWeight: 600, color: "#010817" }}>{item.email}</span>
           </div>
+          {item.tab === "Rejeitados" && item.motivoRejeicao && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+              paddingTop: 8,
+              borderTop: "1px solid #eee",
+              marginTop: 4,
+            }}
+          >
+            <span style={{ color: "#888", fontSize: 13 }}>
+              Motivo da rejeição
+            </span>
+
+            <div
+              style={{
+                background: "#fff5f5",
+                border: "1px solid #f5c0c0",
+                color: "#b85b5b",
+                borderRadius: 8,
+                padding: "10px 12px",
+                fontSize: 13,
+                fontWeight: 600,
+              }}
+            >
+              {item.motivoRejeicao}
+            </div>
+          </div>
+        )}
         </div>
 
         {/* Ações */}
@@ -256,11 +287,25 @@ export default function TriagemF() {
   };
 
   // Rejeitar
-  const handleRejeitar = (item: Solicitacao, _motivo: string) => {
-    moverTab(item.id, "Rejeitados");
-    setModalRejeitar(null);
-    setModalSucesso(`Solicitação de ${item.nome} foi rejeitada.`);
-  };
+  const handleRejeitar = (item: Solicitacao, motivo: string) => {
+  setSolicitacoes((prev) =>
+    prev.map((s) =>
+      s.id === item.id
+        ? {
+            ...s,
+            tab: "Rejeitados",
+            motivoRejeicao: motivo,
+          }
+        : s
+    )
+  );
+
+  setModalRejeitar(null);
+
+  setModalSucesso(
+    `Solicitação de ${item.nome} foi rejeitada.`
+  );
+};
 
   // Botão de ação primária varia por aba
   const getBotaoPrimario = (item: Solicitacao) => {
