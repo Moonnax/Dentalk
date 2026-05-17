@@ -16,7 +16,7 @@ type Paciente = {
   status: "Aguardando Retorno" | "Agendado";
 };
 
-// ─── Mock com status fixo ─────────────────────────────────────────────────────
+// ─── pacientes fixos ─────────────────────────────────────────────────────
 
 const PACIENTES: Paciente[] = [
   { nome: "Ana Beatriz Silva",  idade: 8,  cpf: "455.123.789-11", data: "15/03/26", status: "Agendado"           },
@@ -47,7 +47,6 @@ const BADGE: Record<string, string> = {
   "Aguardando Retorno": "bg-yellow-100 text-yellow-800",
 };
 
-// ─── Componente ───────────────────────────────────────────────────────────────
 
 export default function VMeusPacientes() {
   const [busca, setBusca]           = useState("");
