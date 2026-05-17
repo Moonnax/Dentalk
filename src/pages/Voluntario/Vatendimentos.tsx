@@ -172,7 +172,7 @@ function Vatendimentos() {
 
               {/* Horário início – fim */}
               <div>
-                <label className="text-sm font-medium">Horário:</label>
+                <label className="text-sm font-medium">Horário inicial - Horário final:</label>
                 <div className="flex items-center gap-2 mt-1">
                   <input
                     type="time"
