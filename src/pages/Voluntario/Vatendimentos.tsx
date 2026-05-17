@@ -142,7 +142,9 @@ function Vatendimentos() {
 
               {/* Paciente */}
               <div>
-                <label className="text-sm font-medium">Paciente:</label>
+                <label className="text-sm font-medium">
+                  <span className="text-red-500">*</span> Paciente:
+                </label>
                 <input
                   type="text"
                   placeholder="Nome completo"
@@ -159,7 +161,9 @@ function Vatendimentos() {
 
               {/* Data */}
               <div>
-                <label className="text-sm font-medium">Data:</label>
+                <label className="text-sm font-medium">
+                  <span className="text-red-500">*</span> Data:
+                </label>
                 <input
                   type="date"
                   className={`${field(!!errors.data)} h-9`}
@@ -172,7 +176,9 @@ function Vatendimentos() {
 
               {/* Horário início – fim */}
               <div>
-                <label className="text-sm font-medium">Horário inicial - Horário final:</label>
+                <label className="text-sm font-medium">
+                  <span className="text-red-500">*</span> Horário inicial - Horário final:
+                </label>
                 <div className="flex items-center gap-2 mt-1">
                   <input
                     type="time"
