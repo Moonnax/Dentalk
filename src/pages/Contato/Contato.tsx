@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
 import TitlePage from '../../components/TitlePage/TitlePage'
+import { enviarContato } from '../../api/PostContato'
 
 interface ContatoForm {
   nome: string
@@ -38,9 +39,9 @@ function Contato() {
     formState: { errors, isSubmitSuccessful },
   } = useForm<ContatoForm>()
 
-  const onSubmit = (data: ContatoForm) => {
-    console.log('Formulário enviado:', data)
-    reset()
+  const onSubmit = async (data: ContatoForm) => {
+    const sucesso = await enviarContato(data)
+    if (sucesso) reset()
   }
 
   const inputBase = 'w-full px-4 py-[0.7rem] border-[1.5px] border-[#ddd] rounded-lg text-[0.95rem] text-[#333] font-[inherit] outline-none transition-colors duration-200 focus:border-[#fd8b08]'

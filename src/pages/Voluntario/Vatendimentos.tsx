@@ -4,6 +4,7 @@ import { Upload, CheckCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../components/Footer/Footer";
+import { inserirAtendimento } from "../../api/PostAtendimento";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -64,21 +65,17 @@ function Vatendimentos() {
 
   const presenca = watch("pacientePresente");
 
-  const onSubmit = (data: FormValues) => {
-    setHistorico((prev) => [
-      {
-        idConsulta:       data.idConsulta,
-        paciente:         data.paciente,
-        data:             data.data,
-        horarioInicio:    data.horarioInicio,
-        horarioFim:       data.horarioFim,
-        procedimentos:    data.procedimentos,
-        pacientePresente: data.pacientePresente,
-        observacoes:      data.observacoes,
-        anexoNome:        data.anexo?.[0]?.name,
-      },
-      ...prev,
-    ]);
+  const onSubmit = async (data: FormValues) => {
+    await inserirAtendimento({
+      idConsulta:       Number(data.idConsulta),
+      pacienteNome:          data.paciente,
+      data:              data.data,
+      horarioInicial:   data.horarioInicio,
+      horarioFinal:     data.horarioFim,
+      procedimento:      data.procedimentos,
+      observacoes:       data.observacoes,
+      pacientePresente: data.pacientePresente,
+    });
     setSucesso(true);
     setArquivoNome("");
     reset();
