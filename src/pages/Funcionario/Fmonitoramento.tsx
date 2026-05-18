@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 // ── Types ──────────────────────────────────────────────────────────────────
 
 type StatusOcorrencia = "vermelho" | "amarelo" | "";
-type TabOcorrencia = "Pendentes" | "Respondidas";
+type TabOcorrencia = "Pendentes" | "Respondidas" | "Finalizadas";
 type ViewMobile = "lista" | "chat" | "perfil";
 
 interface Mensagem {
@@ -257,7 +257,6 @@ const ocorrenciasIniciais: Ocorrencia[] = [
   },
 ];
 
-
 function useWindowWidth() {
   const [width, setWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
@@ -270,15 +269,12 @@ function useWindowWidth() {
   return width;
 }
 
-
 export default function Fmonitoramento() {
   const [ocorrencias, setOcorrencias] = useState<Ocorrencia[]>(ocorrenciasIniciais);
   const [ativo, setAtivo] = useState<number>(0);
   const [tabAtiva, setTabAtiva] = useState<TabOcorrencia>("Pendentes");
   const [digitando, setDigitando] = useState<string>("");
-  const [ocorrenciaFinalizada, setOcorrenciaFinalizada] = useState<boolean>(false);
   const [modalAberto, setModalAberto] = useState<boolean>(false);
-
   const [viewMobile, setViewMobile] = useState<ViewMobile>("lista");
 
   const chatRef = useRef<HTMLDivElement>(null);
@@ -288,6 +284,7 @@ export default function Fmonitoramento() {
   const isDesktop = width >= 992;
 
   const ocorrenciaAtual = ocorrencias.find((o) => o.id === ativo) ?? ocorrencias[0];
+  const isFinalizada = ocorrenciaAtual.tab === "Finalizadas";
 
   useEffect(() => {
     if (chatRef.current) {
@@ -296,11 +293,17 @@ export default function Fmonitoramento() {
   }, [ocorrenciaAtual.mensagens]);
 
   useEffect(() => {
-    setOcorrenciaFinalizada(false);
     setModalAberto(false);
   }, [ativo]);
 
   const visiveis = ocorrencias.filter((o) => o.tab === tabAtiva);
+
+  // Contadores para os badges das tabs
+  const contadores: Record<TabOcorrencia, number> = {
+    Pendentes:   ocorrencias.filter((o) => o.tab === "Pendentes").length,
+    Respondidas: ocorrencias.filter((o) => o.tab === "Respondidas").length,
+    Finalizadas: ocorrencias.filter((o) => o.tab === "Finalizadas").length,
+  };
 
   function abrirOcorrencia(id: number) {
     setAtivo(id);
@@ -316,18 +319,31 @@ export default function Fmonitoramento() {
     if (!msg) return;
     const agora = new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
     const nova: Mensagem = { de: "funcionario", texto: msg, hora: agora };
+
     setOcorrencias((prev) =>
-      prev.map((o) => o.id === ativo ? { ...o, mensagens: [...o.mensagens, nova] } : o)
+      prev.map((o) => {
+        if (o.id !== ativo) return o;
+        // Se ainda está Pendente, move para Respondidas ao responder
+        const novaTab: TabOcorrencia = o.tab === "Pendentes" ? "Respondidas" : o.tab;
+        const novoStatus: StatusOcorrencia = o.tab === "Pendentes" ? "" : o.status;
+        return { ...o, mensagens: [...o.mensagens, nova], tab: novaTab, status: novoStatus };
+      })
     );
+
+    // Atualiza tab da lista se a ocorrência ativa era Pendente
+    const ocAtual = ocorrencias.find((o) => o.id === ativo);
+    if (ocAtual?.tab === "Pendentes") {
+      setTabAtiva("Respondidas");
+    }
+
     setDigitando("");
   }
 
   function finalizarOcorrencia() {
     setOcorrencias((prev) =>
-      prev.map((o) => o.id === ativo ? { ...o, tab: "Respondidas", status: "" } : o)
+      prev.map((o) => o.id === ativo ? { ...o, tab: "Finalizadas", status: "" } : o)
     );
-    setOcorrenciaFinalizada(true);
-    setTabAtiva("Respondidas");
+    setTabAtiva("Finalizadas");
     if (isMobileOrTablet) setViewMobile("lista");
   }
 
@@ -341,33 +357,47 @@ export default function Fmonitoramento() {
     setOcorrencias((prev) =>
       prev.map((o) =>
         o.id === ativo
-          ? { ...o, tab: "Respondidas", status: "", mensagens: [...o.mensagens, msgSistema] }
+          ? { ...o, tab: "Finalizadas", status: "", mensagens: [...o.mensagens, msgSistema] }
           : o
       )
     );
     setModalAberto(false);
-    setOcorrenciaFinalizada(true);
-    setTabAtiva("Respondidas");
+    setTabAtiva("Finalizadas");
     if (isMobileOrTablet) setViewMobile("lista");
   }
+
+  // ── Tab bar ──────────────────────────────────────────────────────────────
+
+  const TabBar = (
+    <div className="flex gap-2 flex-wrap">
+      {(["Pendentes", "Respondidas", "Finalizadas"] as TabOcorrencia[]).map((tab) => (
+        <button
+          key={tab}
+          onClick={() => setTabAtiva(tab)}
+          className={`flex items-center gap-1.5 rounded px-3 py-1 text-sm transition ${
+            tabAtiva === tab ? "bg-[#010817] text-white" : "bg-[#eee] hover:bg-[#ddd]"
+          }`}
+        >
+          {tab}
+          {contadores[tab] > 0 && (
+            <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${
+              tabAtiva === tab ? "bg-white/20 text-white" : "bg-white border border-[#ddd] text-[#010817]"
+            }`}>
+              {contadores[tab]}
+            </span>
+          )}
+        </button>
+      ))}
+    </div>
+  );
+
+  // ── Colunas ───────────────────────────────────────────────────────────────
 
   const ColLista = (
     <section className="flex flex-col bg-white h-full overflow-hidden">
       <div className="p-4 border-b border-[#ddd]">
         <h2 className="mb-3 text-2xl font-semibold">Ocorrências</h2>
-        <div className="flex gap-2">
-          {(["Pendentes", "Respondidas"] as TabOcorrencia[]).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setTabAtiva(tab)}
-              className={`rounded px-3 py-1 text-sm transition ${
-                tabAtiva === tab ? "bg-[#010817] text-white" : "bg-[#eee] hover:bg-[#ddd]"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+        {TabBar}
       </div>
 
       <div className="flex flex-col gap-0 overflow-y-auto flex-1">
@@ -414,9 +444,14 @@ export default function Fmonitoramento() {
             {ocorrenciaAtual.online ? "online agora" : "offline"}
           </p>
         </div>
-        {ocorrenciaFinalizada && (
+        {isFinalizada && (
           <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded whitespace-nowrap">
             ✓ Finalizada
+          </span>
+        )}
+        {ocorrenciaAtual.tab === "Respondidas" && (
+          <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded whitespace-nowrap">
+            Respondida
           </span>
         )}
       </div>
@@ -427,47 +462,59 @@ export default function Fmonitoramento() {
         ))}
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 border-t border-[#ddd] bg-white z-10 min-[992px]:hidden">
-        <div className="flex gap-2 flex-wrap px-3 pt-3">
-          {respostasRapidas.map((r) => (
-            <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
-              className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
-              {r.label}
-            </button>
-          ))}
-        </div>
-        <div className="flex gap-2 p-3">
-          <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
-            className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
-            placeholder="Digite sua resposta..." />
-          <button onClick={() => enviarMensagem(digitando)}
-            className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
-            Enviar
-          </button>
-        </div>
-      </div>
+      {/* Input — oculto quando finalizada */}
+      {!isFinalizada && (
+        <>
+          <div className="fixed bottom-0 left-0 right-0 border-t border-[#ddd] bg-white z-10 min-[992px]:hidden">
+            <div className="flex gap-2 flex-wrap px-3 pt-3">
+              {respostasRapidas.map((r) => (
+                <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
+                  className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-2 p-3">
+              <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
+                className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
+                placeholder="Digite sua resposta..." />
+              <button onClick={() => enviarMensagem(digitando)}
+                className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
+                Enviar
+              </button>
+            </div>
+          </div>
 
-      <div className="hidden min-[992px]:block shrink-0 border-t border-[#ddd] bg-white">
-        <div className="flex gap-2 flex-wrap px-3 pt-3">
-          {respostasRapidas.map((r) => (
-            <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
-              className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
-              {r.label}
-            </button>
-          ))}
+          <div className="hidden min-[992px]:block shrink-0 border-t border-[#ddd] bg-white">
+            <div className="flex gap-2 flex-wrap px-3 pt-3">
+              {respostasRapidas.map((r) => (
+                <button key={r.label} onClick={() => enviarMensagem(r.mensagem)} title={r.mensagem}
+                  className="bg-[#eee] px-3 py-1 rounded text-sm hover:bg-[#ddd] transition">
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <div className="flex gap-2 p-3">
+              <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
+                className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
+                placeholder="Digite sua resposta..." />
+              <button onClick={() => enviarMensagem(digitando)}
+                className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
+                Enviar
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Aviso quando finalizada */}
+      {isFinalizada && (
+        <div className="shrink-0 border-t border-[#ddd] bg-[#f9f9f9] px-4 py-3 text-center text-sm text-gray-400">
+          Esta ocorrência foi finalizada e não aceita mais respostas.
         </div>
-        <div className="flex gap-2 p-3">
-          <input value={digitando} onChange={(e) => setDigitando(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && enviarMensagem(digitando)}
-            className="flex-1 rounded-lg bg-[#f3f3f3] p-3 outline-none text-sm"
-            placeholder="Digite sua resposta..." />
-          <button onClick={() => enviarMensagem(digitando)}
-            className="bg-[#c4d600] px-4 rounded font-semibold hover:bg-[#afc000] transition text-sm">
-            Enviar
-          </button>
-        </div>
-      </div>
+      )}
     </section>
   );
 
@@ -503,14 +550,14 @@ export default function Fmonitoramento() {
       <div className="mt-auto flex flex-col gap-2 px-6 pb-6">
         <button
           onClick={finalizarOcorrencia}
-          disabled={ocorrenciaFinalizada}
+          disabled={isFinalizada}
           className="bg-[#c4d600] p-3 rounded font-semibold hover:bg-[#afc000] transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {ocorrenciaFinalizada ? "Finalizada ✓" : "Finalizar Ocorrência"}
+          {isFinalizada ? "Finalizada ✓" : "Finalizar Ocorrência"}
         </button>
         <button
           onClick={() => setModalAberto(true)}
-          disabled={ocorrenciaFinalizada}
+          disabled={isFinalizada}
           className="bg-[#f3f3f3] p-3 rounded border hover:bg-[#e8e8e8] transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Reencaminhar
@@ -519,10 +566,8 @@ export default function Fmonitoramento() {
     </section>
   );
 
-
   return (
-    
-    <div className="flex min-h-screen flex-col font-[Arial] text-[#010817]]">
+    <div className="flex min-h-screen flex-col font-[Arial] text-[#010817]">
       <HeaderFuncionario />
 
       {modalAberto && (
