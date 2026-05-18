@@ -152,8 +152,8 @@ function Finicio() {
             </div>
 
             <div className="mt-[25px] flex flex-wrap justify-end gap-[10px] [@media(min-width:992px)]:gap-[15px] text-[0.78rem] [@media(min-width:992px)]:text-[0.85rem] font-bold">
-              <Link to="#" className="text-black hover:text-gray-500">[ Contatar Funcionário ]</Link>
-              <Link to="#" className="text-black hover:text-gray-500">[ Reencaminhar paciente ]</Link>
+              <Link to="/monitoramento" className="text-black hover:text-gray-500">[ Contatar voluntário ]</Link>
+              <Link to="/triagemf" className="text-black hover:text-gray-500">[ Reencaminhar paciente ]</Link>
             </div>
           </section>
 
@@ -186,8 +186,8 @@ function Finicio() {
             </div>
 
             <div className="mt-[25px] flex flex-wrap justify-end gap-[10px] [@media(min-width:992px)]:gap-[15px] text-[0.78rem] [@media(min-width:992px)]:text-[0.85rem] font-bold">
-              <Link to="#" className="text-black hover:text-gray-500">[ Ver tudo ]</Link>
-              <Link to="#" className="text-black hover:text-gray-500">[ Nova Solicitação de ação ]</Link>
+              <Link to="/acoesescolaf" className="text-black hover:text-gray-500">[ Ver tudo ]</Link>
+              <Link to="/acoesescolaf" className="text-black hover:text-gray-500">[ Nova Solicitação de ação ]</Link>
             </div>
           </section>
 
