@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
+import { Link } from "react-router-dom";
 import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../components/Footer/Footer";
 import PacienteItem from "../../components/PacienteItem/PacienteItem";
@@ -214,9 +215,10 @@ export default function VMeusPacientes() {
                   <strong>Laudo:</strong> {p.laudo}
                 </p>
                 <div className="flex gap-2 mt-1 justify-end">
-                  <button className="bg-[#f1c40f] border-none px-4 py-2 rounded-lg font-bold cursor-pointer text-[0.85rem] hover:bg-[#d4ac0d] transition-colors">
-                    Aceitar e Agendar
+                  <Link to="/agenda"><button className="bg-[#f1c40f] border-none px-4 py-2 rounded-lg font-bold cursor-pointer text-[0.85rem] hover:bg-[#d4ac0d] transition-colors">
+                    Aceitar e agendar
                   </button>
+                  </Link>
                   <button className="bg-[#f2f2f2] border-none px-4 py-2 rounded-lg cursor-pointer text-[0.85rem] hover:bg-[#e0e0e0] transition-colors">
                     Ver mais
                   </button>

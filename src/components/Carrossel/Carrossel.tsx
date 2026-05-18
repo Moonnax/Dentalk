@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function CarrosselPacientes() {
   const listaPacientes = [
@@ -53,12 +54,11 @@ function CarrosselPacientes() {
           <p className="text-[0.9rem] text-[#444] mb-2"><strong>Antecedentes:</strong> {paciente.ant}</p>
 
           <div className="mt-auto flex justify-end gap-3">
-            <button className="bg-[#f2f2f2] border-none px-[18px] py-[10px] rounded-lg cursor-pointer text-[0.9rem] hover:bg-[#e0e0e0] transition-colors">
-              Remarcar
+            <Link to="/agenda">
+            <button className="bg-[#f1c40f] border-none px-4 py-2 rounded-lg font-bold cursor-pointer text-[0.85rem] hover:bg-[#d4ac0d] transition-colors">
+                    Aceitar e agendar
             </button>
-            <button className="bg-[#f1c40f] border-none px-[18px] py-[10px] rounded-lg font-bold cursor-pointer text-[0.9rem] hover:bg-[#d4ac0d] transition-colors">
-              Agendar
-            </button>
+            </Link>
           </div>
         </div>
       </div>
