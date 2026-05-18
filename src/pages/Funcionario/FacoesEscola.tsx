@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, X } from "lucide-react";
 import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../components/Footer/Footer";
 
@@ -10,11 +10,13 @@ export default function FacoesEscola() {
   const [filtroStatus, setFiltroStatus] = useState("");
 
   const dados = [
-    { instituicao: "Escola Estadual Anita Garibaldi", local: "São Paulo - Zona Sul", data: "15/10/2026", hora: "09:00", alunos: 95, coordenador: "Juliana Martins", contato: "(11) 91234-5678", infra: "Completa", status: "Aprovar" },
+    { instituicao: "Escola Estadual Anita Garibaldi", local: "São Paulo - Zona Sul", data: "15/10/2026", hora: "09:00", alunos: 95, coordenador: "Juliana Martins", contato: "(11) 91234-5678", infra: "Completa", status: "Pendente" },
     { instituicao: "Escola Municipal Paulo Freire", local: "Guarulhos - Centro", data: "18/10/2026", hora: "14:00", alunos: 140, coordenador: "Roberto Nunes", contato: "(11) 93456-7890", infra: "Pendente", status: "Pendente" },
     { instituicao: "Centro Educacional Horizonte", local: "Osasco - Zona Oeste", data: "15/04/2026", hora: "13:00", alunos: 180, coordenador: "Fernanda Lopes", contato: "(11) 99876-5432", infra: "Completa", status: "Confirmada" },
-    { instituicao: "Projeto Jovem Futuro", local: "São Paulo - Zona Leste", data: "20/03/2026", hora: "09:30", alunos: 110, coordenador: "Carlos Eduardo", contato: "(11) 95555-2222", infra: "Completa", status: "Concluída" },
+    { instituicao: "Projeto Jovem Futuro", local: "São Paulo - Zona Leste", data: "20/03/2026", hora: "09:30", alunos: 110, coordenador: "Carlos Eduardo", contato: "(11) 95555-2222", infra: "Completa", status: "Encerrada" },
   ];
+
+  const temFiltro = !!filtroData || !!filtroInfra || !!filtroStatus;
 
   const filtrados = dados.filter((d) => {
     const matchBusca = !busca || d.instituicao.toLowerCase().includes(busca.toLowerCase()) || d.coordenador.toLowerCase().includes(busca.toLowerCase());
@@ -26,10 +28,9 @@ export default function FacoesEscola() {
 
   const statusStyle = (status: string) => {
     switch (status) {
-      case "Aprovar": return "bg-[#c4d600] text-black";
-      case "Pendente": return "bg-[#efe2b0] text-[#8b6b00]";
+      case "Pendente":   return "bg-[#efe2b0] text-[#8b6b00]";
       case "Confirmada": return "bg-[#d9eef9] text-[#0b6b94]";
-      case "Concluída": return "bg-[#ececec] text-[#555]";
+      case "Encerrada":  return "bg-[#ececec] text-[#555]";
       default: return "bg-gray-200";
     }
   };
@@ -55,7 +56,7 @@ export default function FacoesEscola() {
               />
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap items-center gap-3">
 
               <div className="relative">
                 <select
@@ -91,13 +92,22 @@ export default function FacoesEscola() {
                   className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
                 >
                   <option value="">Situação</option>
-                  <option value="Aprovar">Aprovar</option>
                   <option value="Pendente">Pendente</option>
                   <option value="Confirmada">Confirmada</option>
-                  <option value="Concluída">Concluída</option>
+                  <option value="Encerrada">Encerrada</option>
                 </select>
                 <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               </div>
+
+              {temFiltro && (
+                <button
+                  onClick={() => { setFiltroData(""); setFiltroInfra(""); setFiltroStatus(""); }}
+                  className="flex items-center gap-2 border border-[#eee] px-4 py-2 rounded-lg text-sm text-[#999] bg-white hover:border-[#f1c40f] hover:text-[#555] transition-colors"
+                >
+                  <X size={14} />
+                  Limpar filtros
+                </button>
+              )}
 
             </div>
           </div>
@@ -105,9 +115,10 @@ export default function FacoesEscola() {
 
         <section className="mb-[25px] flex flex-wrap gap-[15px]">
           {[
-            { label: "Todas", valor: "" },
-            { label: "Concluídas", valor: "Concluída" },
-            { label: "Aprovar", valor: "Aprovar" },
+            { label: "Todas",     valor: "" },
+            { label: "Pendente",  valor: "Pendente" },
+            { label: "Confirmada", valor: "Confirmada" },
+            { label: "Encerrada", valor: "Encerrada" },
           ].map((item) => (
             <button
               key={item.label}
