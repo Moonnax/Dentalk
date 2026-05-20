@@ -3,7 +3,7 @@ const API_URL = "http://localhost:8080/atendimento";
 // ─── Type (espelha a tabela do banco) ─────────────────────────────────────────
 
 export interface Atendimento {
-  idConsulta: number;
+  idConsulta: string;
   pacienteNome: string;
   data: string;
   horarioInicial: string;
@@ -15,7 +15,7 @@ export interface Atendimento {
 
 // ─── POST ─────────────────────────────────────────────────────────────────────
 
-export async function inserirAtendimento(atendimento: Atendimento): Promise<void> {
+export async function postAtendimento(atendimento: Atendimento): Promise<void> {
   const resp = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
