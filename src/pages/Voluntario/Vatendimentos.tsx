@@ -33,7 +33,6 @@ export type AtendimentoRecord = {
   anexoNome?: string;
 };
 
-// ─── Dados iniciais ───────────────────────────────────────────────────────────
 
 
 function fmtData(iso: string) {

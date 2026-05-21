@@ -20,7 +20,6 @@ export async function getAtendimentos(): Promise<AtendimentoRecord[]> {
   }
   const data = await resp.json();
 
-  // mapeia os campos do Java (camelCase da entidade) para o formato do front
   return data.map((a: any) => ({
     idConsulta:       String(a.idConsulta),
     paciente:         a.pacienteNome,
