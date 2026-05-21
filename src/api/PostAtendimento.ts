@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/atendimento";
+const API_URL = "https://vercel-java.onrender.com/atendimento";
 
 // ─── Type (espelha a tabela do banco) ─────────────────────────────────────────
 
@@ -23,7 +23,7 @@ export async function postAtendimento(atendimento: Atendimento): Promise<void> {
   });
 
   if (resp.ok) {
-    alert("Atendimento registrado com sucesso!");
+    //alert("Atendimento registrado com sucesso!");
   } else {
     alert("Erro ao registrar atendimento. Tente novamente.");
   }

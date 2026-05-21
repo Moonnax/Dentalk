@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/contato";
+const API_URL = "https://vercel-java.onrender.com/contato";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -20,7 +20,7 @@ export async function enviarContato(contato: Contato): Promise<boolean> {
   });
 
   if (resp.ok) {
-    alert("Mensagem enviada com sucesso!");
+    //alert("Mensagem enviada com sucesso!");
     return true;
   } else {
     alert("Erro ao enviar mensagem. Tente novamente.");

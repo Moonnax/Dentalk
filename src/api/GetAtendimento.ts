@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/atendimento";
+const API_URL = "https://vercel-java.onrender.com/atendimento";
 
 export interface AtendimentoRecord {
   idConsulta: string;
