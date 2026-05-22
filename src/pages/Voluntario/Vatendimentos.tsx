@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Upload, CheckCircle, X } from "lucide-react";
+import { CheckCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../components/Footer/Footer";
@@ -43,7 +43,6 @@ function fmtData(iso: string) {
 function Vatendimentos() {
   const [historico, setHistorico]     = useState<AtendimentoRecord[]>([]);
   const [sucesso, setSucesso]         = useState(false);
-  const [arquivoNome, setArquivoNome] = useState("");
 
   useEffect(() => {
   getAtendimentos().then(setHistorico);
@@ -78,7 +77,6 @@ function Vatendimentos() {
 
   // 3️⃣ Reseta o formulário
   setSucesso(true);
-  setArquivoNome("");
   reset();
   setTimeout(() => setSucesso(false), 3500);
 };
