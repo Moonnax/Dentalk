@@ -18,7 +18,6 @@ type FormValues = {
   procedimentos: string;
   pacientePresente: "sim" | "nao";
   observacoes?: string;
-  anexo?: FileList;
 };
 
 export type AtendimentoRecord = {
@@ -30,7 +29,6 @@ export type AtendimentoRecord = {
   procedimentos: string;
   pacientePresente: "sim" | "nao";
   observacoes?: string;
-  anexoNome?: string;
 };
 
 
@@ -197,30 +195,6 @@ function Vatendimentos() {
                 )}
               </div>
 
-              {/* Anexo */}
-              <div>
-                <label className="text-sm font-medium">Anexo:</label>
-                <label
-                  htmlFor="anexo"
-                  className="h-[120px] border border-[#bbb] rounded-lg mt-1 flex flex-col items-center justify-center text-gray-500 cursor-pointer hover:border-[#f1c40f] transition-colors gap-1 px-2"
-                >
-                  <Upload size={24} />
-                  <p className="text-sm text-center break-all">
-                    {arquivoNome || "Faça o upload"}
-                  </p>
-                  <input
-                    id="anexo"
-                    type="file"
-                    accept=".pdf,.jpg,.jpeg,.png"
-                    className="hidden"
-                    {...register("anexo", {
-                      onChange: (e) =>
-                        setArquivoNome(e.target.files?.[0]?.name ?? ""),
-                    })}
-                  />
-                </label>
-              </div>
-
             </div>
 
             {/* ── Coluna direita ── */}
@@ -319,7 +293,6 @@ function Vatendimentos() {
               <div className="w-[18%] p-3">Data</div>
               <div className="w-[10%] p-3">Presença</div>
               <div className="w-[22%] p-3">Procedimentos</div>
-              <div className="w-[10%] p-3">Anexo</div>
               <div className="w-[12%] p-3 text-right">Ação</div>
             </div>
 
@@ -335,7 +308,6 @@ function Vatendimentos() {
                   <p><strong>Data:</strong> {fmtData(item.data)} {item.horarioInicio}–{item.horarioFim}</p>
                   <p><strong>Presença:</strong> {item.pacientePresente === "sim" ? "Sim" : "Não"}</p>
                   <p><strong>Procedimentos:</strong> {item.procedimentos}</p>
-                  <p><strong>Anexo:</strong> {item.anexoNome ?? "Não"}</p>
                   <Link
                     to="/voluntario/prontuarios"
                     state={{ buscaInicial: item.paciente }}
@@ -362,15 +334,6 @@ function Vatendimentos() {
                     </span>
                   </div>
                   <div className="w-[22%] text-sm">{item.procedimentos}</div>
-                  <div className="w-[10%] text-sm text-[#555]">
-                    {item.anexoNome ? (
-                      <span className="text-xs bg-gray-100 px-1.5 py-0.5 rounded truncate block max-w-[90px]">
-                        {item.anexoNome}
-                      </span>
-                    ) : (
-                      "Não"
-                    )}
-                  </div>
                   <div className="w-[12%] text-right">
                     <Link
                       to="/voluntario/prontuarios"
