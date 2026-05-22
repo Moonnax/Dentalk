@@ -1,22 +1,25 @@
-const API_URL = "https://vercel-java.onrender.com/contato";
+const API_URL = "https://vercel-java.onrender.com/cadastro";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-export interface Contato {
+export interface Usuario {
   nome: string;
+  dataNascimento: string;
+  idade: string;
+  status: string;
+  categoria: string;
+  cpf: string;
   email: string;
   telefone: string;
-  assunto: string;
-  mensagem: string;
 }
 
 // ─── POST ─────────────────────────────────────────────────────────────────────
 
-export async function enviarContato(contato: Contato): Promise<boolean> {
+export async function enviarCadastro(usuario: Usuario): Promise<boolean> {
   const resp = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(contato),
+    body: JSON.stringify(usuario),
   });
 
   if (resp.ok) {

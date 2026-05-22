@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ChevronDown, Plus, Search, X, User, ChevronRight } from "lucide-react";
 import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
 import Footer from "../../components/Footer/Footer";
+import { enviarCadastro } from "../../api/PostCadastro";
+import { getCadastros } from "../../api/GetCadastro";
 
 interface Usuario {
   nome: string;
+  dataNascimento: string;
   idade: string;
   status: string;
   categoria: string;
@@ -68,9 +71,11 @@ function DetalheModal({ usuario, onClose }: DetalheModalProps) {
   );
 }
 
+// ─── Modal de Novo Cadastro ───────────────────────────────────────────────────
+
 interface NovoCadastroModalProps {
   onClose: () => void;
-  onSalvar: (u: Usuario) => void;
+  onSalvar: () => Promise<void>; // ← só chama o callback, sem passar o usuário
 }
 
 interface CadastroForm {
@@ -108,17 +113,24 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
   const dataNasc = watch("dataNascimento");
   const idadeCalculada = dataNasc && dataNasc.length === 10 ? calcularIdade(dataNasc) : null;
 
-  const onSubmit = (data: CadastroForm) => {
+  const onSubmit = async (data: CadastroForm) => {
     const idade = calcularIdade(data.dataNascimento);
-    onSalvar({
-      nome: data.nome,
-      idade: `${idade} anos`,
-      status: data.status,
-      categoria: data.categoria,
-      cpf: data.cpf,
-      email: data.email,
-      telefone: data.telefone,
-    });
+    const novoUsuario: Usuario = {
+      nome:           data.nome,
+      dataNascimento: data.dataNascimento,
+      idade:          `${idade} anos`,
+      status:         data.status,
+      categoria:      data.categoria,
+      cpf:            data.cpf,
+      email:          data.email,
+      telefone:       data.telefone,
+    };
+
+    const ok = await enviarCadastro(novoUsuario); // 1️⃣ salva no banco
+    if (!ok) return;
+
+    await onSalvar(); // 2️⃣ recarrega a lista no CadastroF via getCadastros
+
     setNomeConfirmado(data.nome);
     setSucesso(true);
     setTimeout(() => { setSucesso(false); onClose(); }, 1800);
@@ -144,7 +156,6 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-3">
 
-            {/* Categoria e Status */}
             <div className="flex gap-3">
               <div className="flex-1 flex flex-col gap-1">
                 <label className="text-xs font-bold text-[#010817]">Categoria*</label>
@@ -166,11 +177,9 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
               </div>
             </div>
 
-            {/* Nome */}
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#010817]">Nome completo*</label>
-              <input placeholder="Ex: João Silva"
-                className={inputClass(!!errors.nome)}
+              <input placeholder="Ex: João Silva" className={inputClass(!!errors.nome)}
                 {...register("nome", {
                   required: "Nome é obrigatório",
                   minLength: { value: 3, message: "Mínimo 3 caracteres" },
@@ -179,7 +188,6 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
               {errors.nome && <span className="text-red-500 text-xs">{errors.nome.message}</span>}
             </div>
 
-            {/* Data de nascimento */}
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#010817]">Data de nascimento*</label>
               <div className="flex items-center gap-2">
@@ -202,17 +210,16 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
               {errors.dataNascimento && <span className="text-red-500 text-xs">{errors.dataNascimento.message}</span>}
             </div>
 
-            {/* CPF */}
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#010817]">CPF*</label>
               <input placeholder="000.000.000-00" className={inputClass(!!errors.cpf)}
                 {...register("cpf", {
                   required: "CPF é obrigatório",
-                  pattern: { value: /^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$/, message: "Digite um CPF válido",},})}/>
+                  pattern: { value: /^(\d{3}\.\d{3}\.\d{3}-\d{2}|\d{11})$/, message: "Digite um CPF válido" },
+                })} />
               {errors.cpf && <span className="text-red-500 text-xs">{errors.cpf.message}</span>}
             </div>
 
-            {/* E-mail */}
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#010817]">E-mail*</label>
               <input type="email" placeholder="email@exemplo.com" className={inputClass(!!errors.email)}
@@ -223,7 +230,6 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
               {errors.email && <span className="text-red-500 text-xs">{errors.email.message}</span>}
             </div>
 
-            {/* Telefone */}
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-[#010817]">Telefone*</label>
               <input placeholder="(11) 99999-9999" className={inputClass(!!errors.telefone)}
@@ -251,21 +257,27 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
   );
 }
 
-export default function CadastroF() {
-  const [busca, setBusca] = useState("");
-  const [filtroCategoria, setFiltroCategoria] = useState("");
-  const [filtroStatus, setFiltroStatus] = useState("");
-  const [filtroIdade, setFiltroIdade] = useState("");
-  const [modalDetalhe, setModalDetalhe] = useState<Usuario | null>(null);
-  const [modalNovo, setModalNovo] = useState(false);
+// ─── Componente principal ─────────────────────────────────────────────────────
 
-  const [usuarios, setUsuarios] = useState<Usuario[]>([
-    { nome: "Amanda Ribeiro Costa", idade: "24 anos", status: "Ativo", categoria: "Voluntário", cpf: "111.222.333-44", email: "amanda@email.com", telefone: "(11) 91111-1111" },
-    { nome: "Gabriel Henrique Souza", idade: "19 anos", status: "Encaminhado", categoria: "Beneficiário", cpf: "222.333.444-55", email: "gabriel@email.com", telefone: "(11) 92222-2222" },
-    { nome: "Larissa Mendes Oliveira", idade: "33 anos", status: "Atendimento", categoria: "Beneficiário", cpf: "333.444.555-66", email: "larissa@email.com", telefone: "(11) 93333-3333" },
-    { nome: "Camila Rocha Alves", idade: "41 anos", status: "Finalizado", categoria: "Beneficiário", cpf: "444.555.666-77", email: "camila@email.com", telefone: "(11) 94444-4444" },
-    { nome: "Eduardo Martins Ferreira", idade: "38 anos", status: "Ativo", categoria: "Voluntário", cpf: "555.666.777-88", email: "eduardo@email.com", telefone: "(11) 95555-5555" },
-  ]);
+export default function CadastroF() {
+  const [busca, setBusca]                     = useState("");
+  const [filtroCategoria, setFiltroCategoria] = useState("");
+  const [filtroStatus, setFiltroStatus]       = useState("");
+  const [filtroIdade, setFiltroIdade]         = useState("");
+  const [modalDetalhe, setModalDetalhe]       = useState<Usuario | null>(null);
+  const [modalNovo, setModalNovo]             = useState(false);
+  const [usuarios, setUsuarios]               = useState<Usuario[]>([]);
+
+  // 1️⃣ Carrega do banco ao abrir a página
+  useEffect(() => {
+    getCadastros().then(setUsuarios);
+  }, []);
+
+  // 2️⃣ Recarrega do banco após salvar — passado como prop ao modal
+  const handleNovoUsuario = async () => {
+    const atualizado = await getCadastros();
+    setUsuarios(atualizado);
+  };
 
   const getIdadeFaixa = (idadeStr: string) => {
     const n = parseInt(idadeStr);
@@ -278,29 +290,29 @@ export default function CadastroF() {
   const temFiltro = !!filtroStatus || !!filtroIdade;
 
   const usuariosFiltrados = usuarios.filter((u) => {
-    const matchBusca = !busca || u.nome.toLowerCase().includes(busca.toLowerCase());
+    const matchBusca     = !busca || u.nome.toLowerCase().includes(busca.toLowerCase());
     const matchCategoria = !filtroCategoria || u.categoria === filtroCategoria;
-    const matchStatus = !filtroStatus || u.status === filtroStatus;
-    const matchIdade = !filtroIdade || getIdadeFaixa(u.idade) === filtroIdade;
+    const matchStatus    = !filtroStatus || u.status === filtroStatus;
+    const matchIdade     = !filtroIdade || getIdadeFaixa(u.idade) === filtroIdade;
     return matchBusca && matchCategoria && matchStatus && matchIdade;
   });
-
-  const handleNovoUsuario = (u: Usuario) => {
-    setUsuarios((prev) => [u, ...prev]);
-  };
 
   return (
     <div className="min-h-screen flex flex-col font-[Arial] text-[#010817]">
       <HeaderFuncionario />
 
       {modalDetalhe && <DetalheModal usuario={modalDetalhe} onClose={() => setModalDetalhe(null)} />}
-      {modalNovo && <NovoCadastroModal onClose={() => setModalNovo(false)} onSalvar={handleNovoUsuario} />}
+      {modalNovo && (
+        <NovoCadastroModal
+          onClose={() => setModalNovo(false)}
+          onSalvar={handleNovoUsuario}
+        />
+      )}
 
       <main className="font-[Arial] text-[#010817] px-4 py-6 md:px-6 md:py-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-[2rem] [@media(min-width:992px)]:px-0">
 
         <section className="flex flex-col [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:justify-between gap-4 mb-[30px]">
           <div className="w-full">
-
             <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
               <Search size={18} />
               <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)}
@@ -360,8 +372,8 @@ export default function CadastroF() {
 
         <section className="mb-[25px] flex flex-wrap gap-[15px]">
           {[
-            { label: "Todos", count: usuarios.length, filtro: "" },
-            { label: "Voluntários", count: usuarios.filter(u => u.categoria === "Voluntário").length, filtro: "Voluntário" },
+            { label: "Todos",         count: usuarios.length,                                         filtro: "" },
+            { label: "Voluntários",   count: usuarios.filter(u => u.categoria === "Voluntário").length,  filtro: "Voluntário" },
             { label: "Beneficiários", count: usuarios.filter(u => u.categoria === "Beneficiário").length, filtro: "Beneficiário" },
           ].map((item) => (
             <button key={item.label} onClick={() => setFiltroCategoria(item.filtro)}

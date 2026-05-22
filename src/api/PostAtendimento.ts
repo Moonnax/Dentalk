@@ -1,9 +1,9 @@
-const API_URL = "http://localhost:8080/atendimento";
+const API_URL = "https://vercel-java.onrender.com/atendimento";
 
 // ─── Type (espelha a tabela do banco) ─────────────────────────────────────────
 
 export interface Atendimento {
-  idConsulta: number;
+  idConsulta: string;
   pacienteNome: string;
   data: string;
   horarioInicial: string;
@@ -15,7 +15,7 @@ export interface Atendimento {
 
 // ─── POST ─────────────────────────────────────────────────────────────────────
 
-export async function inserirAtendimento(atendimento: Atendimento): Promise<void> {
+export async function postAtendimento(atendimento: Atendimento): Promise<void> {
   const resp = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ export async function inserirAtendimento(atendimento: Atendimento): Promise<void
   });
 
   if (resp.ok) {
-    alert("Atendimento registrado com sucesso!");
+    //alert("Atendimento registrado com sucesso!");
   } else {
     alert("Erro ao registrar atendimento. Tente novamente.");
   }

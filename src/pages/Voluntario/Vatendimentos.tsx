@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Upload, CheckCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
 import Footer from "../../components/Footer/Footer";
+import { getAtendimentos } from "../../api/GetAtendimento";
+import { postAtendimento } from "../../api/PostAtendimento";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -31,16 +33,7 @@ export type AtendimentoRecord = {
   anexoNome?: string;
 };
 
-// ─── Dados iniciais ───────────────────────────────────────────────────────────
 
-const SEED: AtendimentoRecord[] = [
-  { idConsulta: "1021", paciente: "Ana Beatriz Silva",  data: "2026-03-12", horarioInicio: "09:00", horarioFim: "09:30", pacientePresente: "sim", procedimentos: "Limpeza e profilaxia" },
-  { idConsulta: "1022", paciente: "Lucas Oliveira",      data: "2026-03-14", horarioInicio: "10:15", horarioFim: "10:45", pacientePresente: "nao", procedimentos: "Consulta inicial" },
-  { idConsulta: "1023", paciente: "Mariana Costa",       data: "2026-03-15", horarioInicio: "13:00", horarioFim: "13:40", pacientePresente: "sim", procedimentos: "Restauração dentária",  anexoNome: "radiografia.pdf" },
-  { idConsulta: "1024", paciente: "João Pedro Santos",   data: "2026-03-18", horarioInicio: "08:30", horarioFim: "09:00", pacientePresente: "sim", procedimentos: "Avaliação ortodôntica" },
-  { idConsulta: "1025", paciente: "Beatriz Souza",       data: "2026-03-20", horarioInicio: "15:10", horarioFim: "15:40", pacientePresente: "nao", procedimentos: "Falta do paciente" },
-  { idConsulta: "1026", paciente: "Enzo Lima",           data: "2026-03-22", horarioInicio: "11:00", horarioFim: "11:30", pacientePresente: "sim", procedimentos: "Tratamento de cárie",   anexoNome: "exame.pdf" },
-];
 
 function fmtData(iso: string) {
   const [y, m, d] = iso.split("-");
@@ -50,9 +43,13 @@ function fmtData(iso: string) {
 // ─── Componente ───────────────────────────────────────────────────────────────
 
 function Vatendimentos() {
-  const [historico, setHistorico]     = useState<AtendimentoRecord[]>(SEED);
+  const [historico, setHistorico]     = useState<AtendimentoRecord[]>([]);
   const [sucesso, setSucesso]         = useState(false);
   const [arquivoNome, setArquivoNome] = useState("");
+
+  useEffect(() => {
+  getAtendimentos().then(setHistorico);
+  }, []);
 
   const {
     register,
@@ -64,26 +61,29 @@ function Vatendimentos() {
 
   const presenca = watch("pacientePresente");
 
-  const onSubmit = (data: FormValues) => {
-    setHistorico((prev) => [
-      {
-        idConsulta:       data.idConsulta,
-        paciente:         data.paciente,
-        data:             data.data,
-        horarioInicio:    data.horarioInicio,
-        horarioFim:       data.horarioFim,
-        procedimentos:    data.procedimentos,
-        pacientePresente: data.pacientePresente,
-        observacoes:      data.observacoes,
-        anexoNome:        data.anexo?.[0]?.name,
-      },
-      ...prev,
-    ]);
-    setSucesso(true);
-    setArquivoNome("");
-    reset();
-    setTimeout(() => setSucesso(false), 3500);
-  };
+  const onSubmit = async (data: FormValues) => {
+  // 1️⃣ Salva no banco
+  await postAtendimento({
+    idConsulta:       data.idConsulta,
+    pacienteNome:     data.paciente,
+    data:             data.data,
+    horarioInicial:   data.horarioInicio,
+    horarioFinal:     data.horarioFim,
+    procedimento:     data.procedimentos,
+    observacoes:      data.observacoes,
+    pacientePresente: data.pacientePresente,
+  });
+
+  // 2️⃣ Busca a lista atualizada do banco e atualiza a tela
+  const atualizado = await getAtendimentos();
+  setHistorico(atualizado);
+
+  // 3️⃣ Reseta o formulário
+  setSucesso(true);
+  setArquivoNome("");
+  reset();
+  setTimeout(() => setSucesso(false), 3500);
+};
 
   // Classe base reutilizável para inputs/textareas
   const field = (hasErr: boolean) =>
