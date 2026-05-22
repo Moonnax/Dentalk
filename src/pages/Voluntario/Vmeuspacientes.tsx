@@ -219,9 +219,11 @@ export default function VMeusPacientes() {
                     Aceitar e agendar
                   </button>
                   </Link>
-                  <button className="bg-[#f2f2f2] border-none px-4 py-2 rounded-lg cursor-pointer text-[0.85rem] hover:bg-[#e0e0e0] transition-colors">
-                    Ver mais
-                  </button>
+                  <Link to="/prontuarios">
+                    <button className="bg-[#f2f2f2] border-none px-4 py-2 rounded-lg cursor-pointer text-[0.85rem] hover:bg-[#e0e0e0] transition-colors">
+                      Ver mais
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
