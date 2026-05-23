@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { CheckCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
 import { getAtendimentos } from "../../api/GetAtendimento";
 import { postAtendimento } from "../../api/PostAtendimento";
 

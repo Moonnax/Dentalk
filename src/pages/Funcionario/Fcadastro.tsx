@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ChevronDown, Plus, Search, X, User, ChevronRight } from "lucide-react";
-import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../components/Footer/Footer";
+import HeaderFuncionario from "../../components/HeaderFuncionario";
+import Footer from "../../components/Footer";
 import { enviarCadastro } from "../../api/PostCadastro";
 import { getCadastros } from "../../api/GetCadastro";
 

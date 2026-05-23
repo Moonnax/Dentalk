@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
 
 const DIAS_MARCO = [
   "1","2","3","4*","5","6","7",

@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form'
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import ProgramaCard from '../../components/ProgramaCard/ProgramaCard'
-import TitlePage from '../../components/TitlePage/TitlePage'
-import { enviarContato } from '../../api/PostContato'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import ProgramaCard from '../components/ProgramaCard'
+import TitlePage from '../components/TitlePage'
+import { enviarContato } from '../api/PostContato'
 
 interface ContatoForm {
   nome: string

@@ -1,7 +1,7 @@
-import Header from '../../components/Header/Header'
-import Footer from '../../components/Footer/Footer'
-import Card from '../../components/Card/Card'
-import TitlePage from '../../components/TitlePage/TitlePage'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Card from '../components/Card'
+import TitlePage from '../components/TitlePage'
 
 const valores = [
   {

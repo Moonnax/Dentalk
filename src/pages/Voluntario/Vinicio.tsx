@@ -1,6 +1,6 @@
-import HeaderVoluntario from '../../components/HeaderVoluntario/HeaderVoluntario';
-import Footer from '../../components/Footer/Footer';
-import CarrosselPacientes from '../../components/Carrossel/Carrossel';
+import HeaderVoluntario from '../../components/HeaderVoluntario';
+import Footer from '../../components/Footer';
+import CarrosselPacientes from '../../components/Carrossel';
 import { TriangleAlert } from "lucide-react";
 import { Link } from "react-router-dom";
 

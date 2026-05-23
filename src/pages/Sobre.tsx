@@ -1,12 +1,12 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
-import crono1 from "../../assets/crono1.png";
-import crono2 from "../../assets/crono2.png";
-import crono3 from "../../assets/crono3.jpeg";
-import crono4 from "../../assets/crono4.jpeg";
+import crono1 from "../assets/crono1.png";
+import crono2 from "../assets/crono2.png";
+import crono3 from "../assets/crono3.jpeg";
+import crono4 from "../assets/crono4.jpeg";
 
-import TitlePage from "../../components/TitlePage/TitlePage";
+import TitlePage from "../components/TitlePage";
 
 function Sobre() {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import TitlePage from "../../components/TitlePage/TitlePage";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import TitlePage from "../components/TitlePage";
 
 const faqs = [
   {

@@ -1,5 +1,5 @@
-import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../components/Footer/Footer";
+import HeaderFuncionario from "../../components/HeaderFuncionario";
+import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 
 

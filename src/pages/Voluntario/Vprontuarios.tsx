@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
 
 type Paciente = {
   nome: string;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, Search, X, Phone, UserCheck, AlertCircle, CheckCircle } from "lucide-react";
-import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../components/Footer/Footer";
+import HeaderFuncionario from "../../components/HeaderFuncionario";
+import Footer from "../../components/Footer";
 
 // ---------------------------------------------------------------------------
 // Types
