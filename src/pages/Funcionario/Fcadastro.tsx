@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { ChevronDown, Plus, Search, X, User, ChevronRight } from "lucide-react";
+import { Plus, X, User, ChevronRight } from "lucide-react";
 import HeaderFuncionario from "../../components/HeaderFuncionario";
 import Footer from "../../components/Footer";
+import FiltrosBusca from "../../components/FiltrosBusca";
 import { enviarCadastro } from "../../api/PostCadastro";
 import { getCadastros } from "../../api/GetCadastro";
 
@@ -17,12 +18,9 @@ interface Usuario {
   telefone: string;
 }
 
-interface DetalheModalProps {
-  usuario: Usuario;
-  onClose: () => void;
-}
+// ─── Modal Detalhe ────────────────────────────────────────────────────────────
 
-function DetalheModal({ usuario, onClose }: DetalheModalProps) {
+function DetalheModal({ usuario, onClose }: { usuario: Usuario; onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center px-4" onClick={onClose}>
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6" onClick={(e) => e.stopPropagation()}>
@@ -42,26 +40,18 @@ function DetalheModal({ usuario, onClose }: DetalheModalProps) {
           </div>
         </div>
         <div className="flex flex-col gap-3 text-sm text-[#555]">
-          <div className="flex justify-between border-b border-[#f0f0f0] pb-2">
-            <span className="font-bold text-[#010817]">Idade</span>
-            <span>{usuario.idade}</span>
-          </div>
-          <div className="flex justify-between border-b border-[#f0f0f0] pb-2">
-            <span className="font-bold text-[#010817]">CPF</span>
-            <span>{usuario.cpf}</span>
-          </div>
-          <div className="flex justify-between border-b border-[#f0f0f0] pb-2">
-            <span className="font-bold text-[#010817]">E-mail</span>
-            <span>{usuario.email}</span>
-          </div>
-          <div className="flex justify-between border-b border-[#f0f0f0] pb-2">
-            <span className="font-bold text-[#010817]">Telefone</span>
-            <span>{usuario.telefone}</span>
-          </div>
-          <div className="flex justify-between">
-            <span className="font-bold text-[#010817]">Status</span>
-            <span>{usuario.status}</span>
-          </div>
+          {[
+            ["Idade",    usuario.idade],
+            ["CPF",      usuario.cpf],
+            ["E-mail",   usuario.email],
+            ["Telefone", usuario.telefone],
+            ["Status",   usuario.status],
+          ].map(([label, valor]) => (
+            <div key={label} className="flex justify-between border-b border-[#f0f0f0] pb-2 last:border-0">
+              <span className="font-bold text-[#010817]">{label}</span>
+              <span>{valor}</span>
+            </div>
+          ))}
         </div>
         <button onClick={onClose} className="mt-5 w-full bg-[#f2f2f2] hover:bg-[#e0e0e0] text-[#333] font-bold py-2 rounded-lg text-sm transition">
           Fechar
@@ -71,12 +61,7 @@ function DetalheModal({ usuario, onClose }: DetalheModalProps) {
   );
 }
 
-// ─── Modal de Novo Cadastro ───────────────────────────────────────────────────
-
-interface NovoCadastroModalProps {
-  onClose: () => void;
-  onSalvar: () => Promise<void>; // ← só chama o callback, sem passar o usuário
-}
+// ─── Modal Novo Cadastro ──────────────────────────────────────────────────────
 
 interface CadastroForm {
   nome: string;
@@ -97,40 +82,28 @@ function calcularIdade(dataNascimento: string): number {
   return idade;
 }
 
-function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
-  const [sucesso, setSucesso] = useState(false);
+function NovoCadastroModal({ onClose, onSalvar }: { onClose: () => void; onSalvar: () => Promise<void> }) {
+  const [sucesso, setSucesso]               = useState(false);
   const [nomeConfirmado, setNomeConfirmado] = useState("");
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<CadastroForm>({
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<CadastroForm>({
     defaultValues: { categoria: "Voluntário", status: "Ativo" },
   });
 
-  const dataNasc = watch("dataNascimento");
-  const idadeCalculada = dataNasc && dataNasc.length === 10 ? calcularIdade(dataNasc) : null;
+  const dataNasc        = watch("dataNascimento");
+  const idadeCalculada  = dataNasc && dataNasc.length === 10 ? calcularIdade(dataNasc) : null;
 
   const onSubmit = async (data: CadastroForm) => {
     const idade = calcularIdade(data.dataNascimento);
     const novoUsuario: Usuario = {
-      nome:           data.nome,
-      dataNascimento: data.dataNascimento,
-      idade:          `${idade} anos`,
-      status:         data.status,
-      categoria:      data.categoria,
-      cpf:            data.cpf,
-      email:          data.email,
-      telefone:       data.telefone,
+      nome: data.nome, dataNascimento: data.dataNascimento,
+      idade: `${idade} anos`, status: data.status,
+      categoria: data.categoria, cpf: data.cpf,
+      email: data.email, telefone: data.telefone,
     };
-
-    const ok = await enviarCadastro(novoUsuario); // 1️⃣ salva no banco
+    const ok = await enviarCadastro(novoUsuario);
     if (!ok) return;
-
-    await onSalvar(); // 2️⃣ recarrega a lista no CadastroF via getCadastros
-
+    await onSalvar();
     setNomeConfirmado(data.nome);
     setSucesso(true);
     setTimeout(() => { setSucesso(false); onClose(); }, 1800);
@@ -155,20 +128,17 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-3">
-
             <div className="flex gap-3">
               <div className="flex-1 flex flex-col gap-1">
                 <label className="text-xs font-bold text-[#010817]">Categoria*</label>
-                <select {...register("categoria")}
-                  className="border border-[#eee] rounded-lg px-3 py-2 text-sm outline-none text-[#010817] cursor-pointer">
+                <select {...register("categoria")} className="border border-[#eee] rounded-lg px-3 py-2 text-sm outline-none text-[#010817] cursor-pointer">
                   <option value="Voluntário">Voluntário</option>
                   <option value="Beneficiário">Beneficiário</option>
                 </select>
               </div>
               <div className="flex-1 flex flex-col gap-1">
                 <label className="text-xs font-bold text-[#010817]">Status*</label>
-                <select {...register("status")}
-                  className="border border-[#eee] rounded-lg px-3 py-2 text-sm outline-none text-[#010817] cursor-pointer">
+                <select {...register("status")} className="border border-[#eee] rounded-lg px-3 py-2 text-sm outline-none text-[#010817] cursor-pointer">
                   <option value="Ativo">Ativo</option>
                   <option value="Encaminhado">Encaminhado</option>
                   <option value="Atendimento">Atendimento</option>
@@ -195,11 +165,7 @@ function NovoCadastroModal({ onClose, onSalvar }: NovoCadastroModalProps) {
                   max={new Date().toISOString().split("T")[0]}
                   {...register("dataNascimento", {
                     required: "Data de nascimento é obrigatória",
-                    validate: (v) => {
-                      const idade = calcularIdade(v);
-                      if (idade < 0 || idade > 120) return "Data inválida";
-                      return true;
-                    },
+                    validate: (v) => { const i = calcularIdade(v); return (i >= 0 && i <= 120) || "Data inválida"; },
                   })} />
                 {idadeCalculada !== null && (
                   <span className="text-sm text-[#010817] font-bold whitespace-nowrap bg-[#f2f2f2] px-3 py-2 rounded-lg">
@@ -268,12 +234,8 @@ export default function CadastroF() {
   const [modalNovo, setModalNovo]             = useState(false);
   const [usuarios, setUsuarios]               = useState<Usuario[]>([]);
 
-  // 1️⃣ Carrega do banco ao abrir a página
-  useEffect(() => {
-    getCadastros().then(setUsuarios);
-  }, []);
+  useEffect(() => { getCadastros().then(setUsuarios); }, []);
 
-  // 2️⃣ Recarrega do banco após salvar — passado como prop ao modal
   const handleNovoUsuario = async () => {
     const atualizado = await getCadastros();
     setUsuarios(atualizado);
@@ -290,10 +252,10 @@ export default function CadastroF() {
   const temFiltro = !!filtroStatus || !!filtroIdade;
 
   const usuariosFiltrados = usuarios.filter((u) => {
-    const matchBusca     = !busca || u.nome.toLowerCase().includes(busca.toLowerCase());
+    const matchBusca     = !busca           || u.nome.toLowerCase().includes(busca.toLowerCase());
     const matchCategoria = !filtroCategoria || u.categoria === filtroCategoria;
-    const matchStatus    = !filtroStatus || u.status === filtroStatus;
-    const matchIdade     = !filtroIdade || getIdadeFaixa(u.idade) === filtroIdade;
+    const matchStatus    = !filtroStatus    || u.status    === filtroStatus;
+    const matchIdade     = !filtroIdade     || getIdadeFaixa(u.idade) === filtroIdade;
     return matchBusca && matchCategoria && matchStatus && matchIdade;
   });
 
@@ -303,86 +265,81 @@ export default function CadastroF() {
 
       {modalDetalhe && <DetalheModal usuario={modalDetalhe} onClose={() => setModalDetalhe(null)} />}
       {modalNovo && (
-        <NovoCadastroModal
-          onClose={() => setModalNovo(false)}
-          onSalvar={handleNovoUsuario}
-        />
+        <NovoCadastroModal onClose={() => setModalNovo(false)} onSalvar={handleNovoUsuario} />
       )}
 
       <main className="font-[Arial] text-[#010817] px-4 py-6 md:px-6 md:py-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-[2rem] [@media(min-width:992px)]:px-0">
 
-        <section className="flex flex-col [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:justify-between gap-4 mb-[30px]">
-          <div className="w-full">
-            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
-              <Search size={18} />
-              <input type="text" value={busca} onChange={(e) => setBusca(e.target.value)}
-                placeholder="Pesquisar cpf ou nome..."
-                className="w-full bg-transparent outline-none text-[#333] placeholder-[#999] text-sm [@media(min-width:992px)]:text-base" />
-            </div>
+        {/* FiltrosBusca + botão Novo Cadastro lado a lado no desktop */}
+        <div className="flex flex-col [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:justify-between [@media(min-width:992px)]:items-start gap-4">
+          <div className="flex-1">
+            <FiltrosBusca
+              busca={busca}
+              onBuscaChange={setBusca}
+              placeholder="Pesquisar cpf ou nome..."
 
-            <div className="flex flex-wrap gap-3 mb-[20px] items-center">
-              <div className="relative">
-                <select value={filtroCategoria} onChange={(e) => setFiltroCategoria(e.target.value)}
-                  className="appearance-none border border-[#eee] px-4 py-2 pr-10 rounded-lg cursor-pointer bg-white hover:border-[#c4d600] outline-none text-sm text-[#010817]">
-                  <option value="">Categoria</option>
-                  <option value="Voluntário">Voluntário</option>
-                  <option value="Beneficiário">Beneficiário</option>
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
+              filtrosSelect={[
+                {
+                  placeholder: "Categoria",
+                  value: filtroCategoria,
+                  onChange: setFiltroCategoria,
+                  opcoes: [
+                    { label: "Voluntário",   value: "Voluntário"   },
+                    { label: "Beneficiário", value: "Beneficiário" },
+                  ],
+                },
+                {
+                  placeholder: "Status",
+                  value: filtroStatus,
+                  onChange: setFiltroStatus,
+                  opcoes: [
+                    { label: "Ativo",        value: "Ativo"        },
+                    { label: "Encaminhado",  value: "Encaminhado"  },
+                    { label: "Atendimento",  value: "Atendimento"  },
+                    { label: "Finalizado",   value: "Finalizado"   },
+                  ],
+                },
+                {
+                  placeholder: "Idade",
+                  value: filtroIdade,
+                  onChange: setFiltroIdade,
+                  opcoes: [
+                    { label: "Até 20 anos", value: "Até 20" },
+                    { label: "21–30 anos",  value: "21-30"  },
+                    { label: "31–40 anos",  value: "31-40"  },
+                    { label: "41+ anos",    value: "41+"    },
+                  ],
+                },
+              ]}
 
-              <div className="relative">
-                <select value={filtroStatus} onChange={(e) => setFiltroStatus(e.target.value)}
-                  className="appearance-none border border-[#eee] px-4 py-2 pr-10 rounded-lg cursor-pointer bg-white hover:border-[#c4d600] outline-none text-sm text-[#010817]">
-                  <option value="">Status</option>
-                  <option value="Ativo">Ativo</option>
-                  <option value="Encaminhado">Encaminhado</option>
-                  <option value="Atendimento">Atendimento</option>
-                  <option value="Finalizado">Finalizado</option>
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
+              tabs={[
+                { label: "Todos",         contagem: usuarios.length },
+                { label: "Voluntários",   contagem: usuarios.filter((u) => u.categoria === "Voluntário").length  },
+                { label: "Beneficiários", contagem: usuarios.filter((u) => u.categoria === "Beneficiário").length },
+              ]}
+              tabAtiva={
+                filtroCategoria === ""            ? "Todos"
+                : filtroCategoria === "Voluntário" ? "Voluntários"
+                : "Beneficiários"
+              }
+              onTabChange={(tab) =>
+                setFiltroCategoria(
+                  tab === "Todos" ? "" : tab === "Voluntários" ? "Voluntário" : "Beneficiário"
+                )
+              }
 
-              <div className="relative">
-                <select value={filtroIdade} onChange={(e) => setFiltroIdade(e.target.value)}
-                  className="appearance-none border border-[#eee] px-4 py-2 pr-10 rounded-lg cursor-pointer bg-white hover:border-[#c4d600] outline-none text-sm text-[#010817]">
-                  <option value="">Idade</option>
-                  <option value="Até 20">Até 20 anos</option>
-                  <option value="21-30">21–30 anos</option>
-                  <option value="31-40">31–40 anos</option>
-                  <option value="41+">41+ anos</option>
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-
-              {temFiltro && (
-                <button onClick={() => { setFiltroStatus(""); setFiltroIdade(""); }}
-                  className="flex items-center gap-2 border border-[#eee] px-4 py-2 rounded-lg text-sm text-[#999] bg-white hover:border-[#f1c40f] hover:text-[#555] transition-colors">
-                  <X size={14} /> Limpar filtros
-                </button>
-              )}
-            </div>
+              temFiltroAtivo={temFiltro}
+              onLimparFiltros={() => { setFiltroStatus(""); setFiltroIdade(""); }}
+            />
           </div>
 
-          <button onClick={() => setModalNovo(true)}
-            className="flex items-center justify-center gap-[10px] rounded-lg bg-[var(--laranja)] px-6 text-[0.95rem] font-bold text-white hover:bg-[#e57d05] cursor-pointer h-[50px] w-full [@media(min-width:992px)]:w-auto [@media(min-width:992px)]:whitespace-nowrap [@media(min-width:992px)]:self-start">
+          <button
+            onClick={() => setModalNovo(true)}
+            className="flex items-center justify-center gap-[10px] rounded-lg bg-[var(--laranja)] px-6 text-[0.95rem] font-bold text-white hover:bg-[#e57d05] cursor-pointer h-[50px] w-full [@media(min-width:992px)]:w-auto [@media(min-width:992px)]:whitespace-nowrap [@media(min-width:992px)]:mt-0"
+          >
             <Plus size={18} /> Novo Cadastro
           </button>
-        </section>
-
-        <section className="mb-[25px] flex flex-wrap gap-[15px]">
-          {[
-            { label: "Todos",         count: usuarios.length,                                         filtro: "" },
-            { label: "Voluntários",   count: usuarios.filter(u => u.categoria === "Voluntário").length,  filtro: "Voluntário" },
-            { label: "Beneficiários", count: usuarios.filter(u => u.categoria === "Beneficiário").length, filtro: "Beneficiário" },
-          ].map((item) => (
-            <button key={item.label} onClick={() => setFiltroCategoria(item.filtro)}
-              className={`flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-medium transition hover:shadow-sm ${filtroCategoria === item.filtro ? "border-[#f1c40f] bg-white text-black shadow-sm" : "border-[#e0e0e0] bg-[#f2f2f2] text-[#333] hover:border-[#f1c40f] hover:bg-white hover:text-black"}`}>
-              {item.label}
-              <span className="rounded border border-[#ddd] px-2 py-1 text-xs font-bold text-black">{item.count}</span>
-            </button>
-          ))}
-        </section>
+        </div>
 
         <section>
           <div className="border border-[#eee] rounded-xl overflow-hidden flex flex-col">
