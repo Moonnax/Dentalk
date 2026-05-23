@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChevronDown, Search, X, Phone, UserCheck, AlertCircle, CheckCircle } from "lucide-react";
+import { ChevronDown, X, Phone, UserCheck, AlertCircle, CheckCircle } from "lucide-react";
 import HeaderFuncionario from "../../components/HeaderFuncionario";
 import Footer from "../../components/Footer";
+import FiltrosBusca from "../../components/FiltrosBusca";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -257,13 +258,6 @@ export default function TriagemF() {
     return matchTab && matchBusca && matchPrioridade && matchRegiao && matchCanal;
   });
 
-  const tabs: FiltroTab[] = [
-    "Solicitações",
-    "A encaminhar",
-    "Encaminhados",
-    "Rejeitados",
-  ];
-
   // Cidades únicas (parte antes do " - ")
   const cidadesUnicas = Array.from(
     new Set(solicitacoes.map((s) => s.regiao.split(" - ")[0].trim()))
@@ -358,98 +352,48 @@ export default function TriagemF() {
 
       <main className="font-[Arial] text-[#010817] px-4 py-6 md:px-6 md:py-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-[2rem] [@media(min-width:992px)]:px-0">
 
-        {/* Busca + Filtros */}
-        <section className="flex flex-col [@media(min-width:992px)]:flex-row [@media(min-width:992px)]:justify-between gap-4 mb-[30px]">
-          <div className="w-full">
-
-            <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
-              <Search size={18} />
-              <input
-                type="text"
-                value={busca}
-                onChange={(e) => setBusca(e.target.value)}
-                placeholder="Filtrar solicitações..."
-                className="w-full bg-transparent outline-none text-[#333] placeholder-[#999] text-sm [@media(min-width:992px)]:text-base"
-              />
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Filtro Região (por cidade) */}
-              <div className="relative">
-                <select
-                  value={filtroRegiao}
-                  onChange={(e) => setFiltroRegiao(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
-                >
-                  <option value="">Região</option>
-                  {cidadesUnicas.map((c) => (
-                    <option key={c} value={c}>{c}</option>
-                  ))}
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-
-              {/* Filtro Prioridade */}
-              <div className="relative">
-                <select
-                  value={filtroPrioridade}
-                  onChange={(e) => setFiltroPrioridade(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
-                >
-                  <option value="">Prioridade</option>
-                  {(["Alta", "Média", "Baixa"] as Prioridade[]).map((o) => (
-                    <option key={o} value={o}>{o}</option>
-                  ))}
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-
-              {/* Filtro Canal */}
-              <div className="relative">
-                <select
-                  value={filtroCanal}
-                  onChange={(e) => setFiltroCanal(e.target.value)}
-                  className="appearance-none cursor-pointer rounded-lg border border-[#eee] bg-white pl-4 pr-10 py-2 text-sm [@media(min-width:992px)]:text-base text-[#010817] outline-none hover:border-[#c4d600]"
-                >
-                  <option value="">Canal</option>
-                  {["Ação Esc.", "Instagram", "Site", "WhatsApp"].map((o) => (
-                    <option key={o} value={o}>{o}</option>
-                  ))}
-                </select>
-                <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-
-              {/* Limpar filtros — só aparece quando há filtro ativo */}
-              {temFiltro && (
-                <button
-                  onClick={() => { setFiltroPrioridade(""); setFiltroCanal(""); setFiltroRegiao(""); }}
-                  className="flex items-center gap-2 border border-[#eee] px-4 py-2 rounded-lg text-sm text-[#999] bg-white hover:border-[#f1c40f] hover:text-[#555] transition-colors"
-                >
-                  <X size={14} />
-                  Limpar filtros
-                </button>
-              )}
-            </div>
-
-          </div>
-        </section>
-
-        {/* Tabs */}
-        <section className="mb-[25px] flex flex-wrap gap-[15px]">
-          {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setTabAtiva(tab)}
-            className={`flex items-center rounded-full border px-5 py-2 text-sm font-medium transition hover:shadow-sm ${
-              tabAtiva === tab
-                ? "border-[#f1c40f] bg-white text-black shadow-sm"
-                : "border-[#e0e0e0] bg-[#f2f2f2] text-[#333] hover:border-[#f1c40f] hover:bg-white hover:text-black"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
-        </section>
+      <FiltrosBusca
+          busca={busca}
+          onBuscaChange={setBusca}
+          placeholder="Filtrar solicitações..."
+        
+          filtrosSelect={[
+            {
+              placeholder: "Região",
+              value: filtroRegiao,
+              onChange: setFiltroRegiao,
+              opcoes: cidadesUnicas.map((c) => ({ label: c, value: c })),
+            },
+            {
+              placeholder: "Prioridade",
+              value: filtroPrioridade,
+              onChange: setFiltroPrioridade,
+              opcoes: ["Alta", "Média", "Baixa"].map((p) => ({ label: p, value: p })),
+            },
+            {
+              placeholder: "Canal",
+              value: filtroCanal,
+              onChange: setFiltroCanal,
+              opcoes: ["Ação Esc.", "Instagram", "Site", "WhatsApp"].map((c) => ({ label: c, value: c })),
+            },
+          ]}
+        
+          tabs={[
+            { label: "Solicitações" },
+            { label: "A encaminhar" },
+            { label: "Encaminhados" },
+            { label: "Rejeitados" },
+          ]}
+          tabAtiva={tabAtiva}
+          onTabChange={setTabAtiva}
+        
+          temFiltroAtivo={temFiltro}
+          onLimparFiltros={() => {
+            setFiltroPrioridade("");
+            setFiltroCanal("");
+            setFiltroRegiao("");
+          }}
+        />
 
         {/* Tabela */}
         <section>
