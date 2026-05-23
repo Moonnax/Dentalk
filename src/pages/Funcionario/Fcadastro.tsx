@@ -18,7 +18,7 @@ interface Usuario {
   telefone: string;
 }
 
-// ─── Modal Detalhe ────────────────────────────────────────────────────────────
+// Modal Detalhe 
 
 function DetalheModal({ usuario, onClose }: { usuario: Usuario; onClose: () => void }) {
   return (
@@ -61,7 +61,7 @@ function DetalheModal({ usuario, onClose }: { usuario: Usuario; onClose: () => v
   );
 }
 
-// ─── Modal Novo Cadastro ──────────────────────────────────────────────────────
+// Modal Novo Cadastro 
 
 interface CadastroForm {
   nome: string;
@@ -222,8 +222,6 @@ function NovoCadastroModal({ onClose, onSalvar }: { onClose: () => void; onSalva
     </div>
   );
 }
-
-// ─── Componente principal ─────────────────────────────────────────────────────
 
 export default function CadastroF() {
   const [busca, setBusca]                     = useState("");

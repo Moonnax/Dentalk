@@ -134,7 +134,7 @@ export default function ProntuarioPaciente() {
 
       <main className="flex-1 mx-4 my-4 sm:mx-8 sm:my-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-8 max-w-[900px]">
 
-        {/* ── botão de voltar ── */}
+        {/* botão de voltar  */}
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-sm text-[#555] hover:text-[#010817] transition-colors mb-6 group"
@@ -143,7 +143,7 @@ export default function ProntuarioPaciente() {
           Voltar à lista de pacientes
         </button>
 
-        {/* ── cabeçalho do paciente ── */}
+        {/*  cabeçalho do paciente  */}
         <div className="bg-white border border-[#eee] rounded-xl px-6 py-5 mb-5 flex flex-col [@media(min-width:600px)]:flex-row [@media(min-width:600px)]:items-center gap-4">
           <div className="w-14 h-14 rounded-full bg-[#f1f5c4] flex items-center justify-center shrink-0">
             <User size={28} className="text-[#8a9a00]" />
@@ -164,7 +164,7 @@ export default function ProntuarioPaciente() {
           </div>
         </div>
 
-        {/* ── infos ── */}
+        {/* infos  */}
         <div className="grid grid-cols-1 [@media(min-width:600px)]:grid-cols-2 gap-5 mb-5">
 
           {/* alergias */}
@@ -206,7 +206,7 @@ export default function ProntuarioPaciente() {
           </div>
         </div>
 
-        {/* ── medicamentos ── */}
+        {/*  medicamentos  */}
         <div className="bg-white border border-[#eee] rounded-xl px-5 py-4 mb-5">
           <div className="flex items-center gap-2 mb-4">
             <Pill size={16} className="text-[#8a9a00]" />
@@ -215,7 +215,7 @@ export default function ProntuarioPaciente() {
 
           {dados.medicamentos.length > 0 ? (
             <div className="flex flex-col divide-y divide-[#f5f5f5]">
-              {/* Header — desktop only */}
+              {/* Header — desktop */}
               <div className="hidden [@media(min-width:600px)]:grid grid-cols-4 text-xs text-[#999] font-semibold pb-2 uppercase tracking-wide">
                 <span>Medicamento</span>
                 <span>Dose</span>
@@ -245,7 +245,7 @@ export default function ProntuarioPaciente() {
           )}
         </div>
 
-        {/* ── histórico de consultas ── */}
+        {/* histórico de consultas */}
         <div className="bg-white border border-[#eee] rounded-xl px-5 py-4">
           <div className="flex items-center gap-2 mb-4">
             <FileText size={16} className="text-[#8a9a00]" />

@@ -20,9 +20,7 @@ function Menu({ open }: MenuProps) {
 
   return (
     <>
-      {/* ══════════════════════════════════════
-          DESKTOP 992px+
-      ══════════════════════════════════════ */}
+      {/* DESKTOP 992px+ */}
       <nav className="hidden [@media(min-width:992px)]:flex items-center ml-auto mr-8 w-full">
         <ul className="flex items-center gap-1 list-none m-0 p-0">
           <li><NavLink to="/" end className={desktopLink}>Home</NavLink></li>
@@ -51,10 +49,7 @@ function Menu({ open }: MenuProps) {
         </div>
       </nav>
 
-      {/* ══════════════════════════════════════
-          MOBILE e TABLET (até 991px)
-          Drawer largura 100% em ambos
-      ══════════════════════════════════════ */}
+      {/* MOBILE e TABLET (até 991px) */}
       <nav
         className={`
           [@media(min-width:992px)]:hidden
@@ -72,7 +67,7 @@ function Menu({ open }: MenuProps) {
       >
         <ul className="flex flex-col list-none m-0 p-0">
 
-          {/* ── Botões de login ── */}
+          {/* Botões de login */}
           <li className="px-5 pt-5 pb-3">
             <Link
               to="/areaVoluntario"

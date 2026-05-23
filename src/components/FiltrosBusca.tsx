@@ -35,7 +35,6 @@ interface FiltrosBuscaProps<T extends string = string> {
 }
 
 // componente
-
 export default function FiltrosBusca<T extends string = string>({
   busca,
   onBuscaChange,

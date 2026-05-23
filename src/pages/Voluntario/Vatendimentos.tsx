@@ -6,8 +6,6 @@ import Footer from "../../components/Footer";
 import { getAtendimentos } from "../../api/GetAtendimento";
 import { postAtendimento } from "../../api/PostAtendimento";
 
-// ─── Tipos ────────────────────────────────────────────────────────────────────
-
 type FormValues = {
   idConsulta: string;
   paciente: string;
@@ -35,7 +33,7 @@ function fmtData(iso: string) {
   return `${d}/${m}/${y.slice(2)}`;
 }
 
-// ─── Modal Ver Mais ───────────────────────────────────────────────────────────
+// Modal Ver Mais 
 
 function ModalVerMais({ item, onClose }: { item: AtendimentoRecord; onClose: () => void }) {
   return (
@@ -85,8 +83,6 @@ function ModalVerMais({ item, onClose }: { item: AtendimentoRecord; onClose: () 
             </div>
           ))}
 
-          {/* Badge de presença separado para destaque */}
-          {/* Observações — só aparece se houver */}
           {item.observacoes && (
             <div className="flex flex-col gap-1 pt-3 border-t border-[#eee] mt-1">
               <span className="text-[#888] text-[13px]">Observações</span>
@@ -110,8 +106,6 @@ function ModalVerMais({ item, onClose }: { item: AtendimentoRecord; onClose: () 
     </div>
   );
 }
-
-// ─── Componente principal ─────────────────────────────────────────────────────
 
 function Vatendimentos() {
   const [historico, setHistorico]         = useState<AtendimentoRecord[]>([]);
@@ -177,7 +171,7 @@ function Vatendimentos() {
           </div>
         )}
 
-        {/* ══ FORMULÁRIO ══ */}
+        {/* FORMULÁRIO  */}
         <section>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Registrar Atendimento</h2>
           <div className="h-[1px] bg-[#ccc] mb-6" />
@@ -287,7 +281,7 @@ function Vatendimentos() {
           </form>
         </section>
 
-        {/* ══ HISTÓRICO ══ */}
+        {/* HISTÓRICO */}
         <section>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">Histórico</h2>
           <div className="h-[1px] bg-[#ccc] mb-6" />

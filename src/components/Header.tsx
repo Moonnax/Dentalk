@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="bg-[#010817] h-14 min-[992px]:h-24 flex items-center relative font-[Arial,Helvetica,sans-serif]">
 
-      {/* ── Logo ── */}
+      {/* Logo  */}
       <div className="px-4 md:px-6 [@media(min-width:992px)]:px-6">
         <Link to="/" className="text-[#fd8b08] no-underline">
           <h1 className="flex items-center gap-[0.3rem] whitespace-nowrap text-2xl [@media(min-width:992px)]:text-[1.875rem]">
@@ -17,7 +17,7 @@ function Header() {
         </Link>
       </div>
 
-      {/* ── Botão hamburger (mobile + tablet) ── */}
+      {/* Botão hamburger (mobile + tablet) */}
       <button
         onClick={() => setOpen(!open)}
         aria-label="Abrir menu"
@@ -44,14 +44,12 @@ function Header() {
         </svg>
       </button>
 
-      {/* ── Nav desktop (992px+) ── */}
+      {/* Nav desktop (992px+) */}
       <div className="hidden [@media(min-width:992px)]:flex flex-1">
         <Menu open={open} />
       </div>
 
-      {/* ── Drawer mobile/tablet (até 991px) ──
-          Posicionado abaixo do header, largura 100%, controlado pelo Menu interno
-      ── */}
+      {/* Drawer mobile/tablet (até 991px)*/}
       <div
         className={`
           [@media(min-width:992px)]:hidden

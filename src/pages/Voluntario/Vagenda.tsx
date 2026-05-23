@@ -109,7 +109,7 @@ export default function VAgenda() {
             </div>
           </section>
 
-          {/* ── ASIDE DETALHES ── */}
+          {/* ASIDE DETALHES */}
           <aside className="w-full [@media(min-width:992px)]:w-[43%] flex flex-col gap-5">
 
             {/* Card info paciente */}

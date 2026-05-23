@@ -90,7 +90,7 @@ export default function Prontuario() {
           onLimparFiltros={() => { setFiltroUltimo(""); setFiltroIdade(""); }}
         />
 
-        {/* ── Resultados ── */}
+        {/* Resultados */}
         <section>
 
           {/* MOBILE: cards */}

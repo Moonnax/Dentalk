@@ -1,7 +1,6 @@
 const API_URL = "https://vercel-java.onrender.com/atendimento";
 
-// ─── Type (espelha a tabela do banco) ─────────────────────────────────────────
-
+// Type (espelha a tabela do banco) 
 export interface Atendimento {
   idConsulta: string;
   pacienteNome: string;
@@ -13,7 +12,7 @@ export interface Atendimento {
   pacientePresente: string;
 }
 
-// ─── POST ─────────────────────────────────────────────────────────────────────
+// POST
 
 export async function postAtendimento(atendimento: Atendimento): Promise<void> {
   const resp = await fetch(API_URL, {

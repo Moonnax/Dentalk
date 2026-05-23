@@ -4,9 +4,6 @@ import HeaderFuncionario from "../../components/HeaderFuncionario";
 import Footer from "../../components/Footer";
 import FiltrosBusca from "../../components/FiltrosBusca";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
 type FiltroTab = "Solicitações" | "A encaminhar" | "Encaminhados" | "Rejeitados";
 type Prioridade = "Alta" | "Média" | "Baixa";
 
@@ -22,9 +19,6 @@ interface Solicitacao {
   motivoRejeicao?: string;
 }
 
-// ---------------------------------------------------------------------------
-// Dados iniciais
-// ---------------------------------------------------------------------------
 const dadosIniciais: Solicitacao[] = [
   { id: 1, nome: "Rafael Souza Lima", regiao: "São Paulo - ZN", prioridade: "Média", canal: "Ação Esc.", tab: "Solicitações", telefone: "(11) 91234-5678", email: "rafael.lima@email.com" },
   { id: 2, nome: "Mariana Costa Fernandes", regiao: "Rio de Janeiro - ZS", prioridade: "Baixa", canal: "Instagram", tab: "Solicitações", telefone: "(21) 98765-4321", email: "mariana.fernandes@email.com" },
@@ -33,19 +27,13 @@ const dadosIniciais: Solicitacao[] = [
   { id: 5, nome: "Felipe Rocha Martins", regiao: "Porto Alegre - Sul", prioridade: "Média", canal: "WhatsApp", tab: "Rejeitados", telefone: "(51) 98833-2211", email: "felipe.martins@email.com" },
   { id: 6, nome: "Juliana Pereira Santos", regiao: "Salvador - Centro", prioridade: "Baixa", canal: "Instagram", tab: "Solicitações", telefone: "(71) 97755-6688", email: "juliana.santos@email.com" },
 ];
-
-// ---------------------------------------------------------------------------
-// Badge de prioridade
-// ---------------------------------------------------------------------------
 const prioridadeConfig: Record<Prioridade, { bg: string; text: string; border: string }> = {
   Alta: { bg: "#fff0f0", text: "#b85b5b", border: "#f5c0c0" },
   Média: { bg: "#fffbea", text: "#856d00", border: "#f5e49a" },
   Baixa: { bg: "#f0faf4", text: "#2e7d52", border: "#b3dfc7" },
 };
 
-// ---------------------------------------------------------------------------
 // Modal de Contato
-// ---------------------------------------------------------------------------
 function ModalContato({ item, onClose, onEncaminhar }: { item: Solicitacao; onClose: () => void; onEncaminhar: () => void }) {
   return (
     <div
@@ -144,9 +132,7 @@ function ModalContato({ item, onClose, onEncaminhar }: { item: Solicitacao; onCl
   );
 }
 
-// ---------------------------------------------------------------------------
 // Modal de Rejeição
-// ---------------------------------------------------------------------------
 function ModalRejeitar({ item, onClose, onConfirmar }: { item: Solicitacao; onClose: () => void; onConfirmar: (motivo: string) => void }) {
   const [motivo, setMotivo] = useState("");
   const motivos = ["Fora da área de atendimento", "Perfil não se enquadra", "Sem disponibilidade de vagas", "Documentação incompleta", "Outro"];
@@ -204,9 +190,7 @@ function ModalRejeitar({ item, onClose, onConfirmar }: { item: Solicitacao; onCl
   );
 }
 
-// ---------------------------------------------------------------------------
 // Modal de Sucesso
-// ---------------------------------------------------------------------------
 function ModalSucesso({ mensagem, onClose }: { mensagem: string; onClose: () => void }) {
   return (
     <div
@@ -230,9 +214,7 @@ function ModalSucesso({ mensagem, onClose }: { mensagem: string; onClose: () => 
   );
 }
 
-// ---------------------------------------------------------------------------
-// Página principal
-// ---------------------------------------------------------------------------
+// principal
 export default function TriagemF() {
   const [solicitacoes, setSolicitacoes] = useState<Solicitacao[]>(dadosIniciais);
   const [busca, setBusca] = useState("");
@@ -258,12 +240,10 @@ export default function TriagemF() {
     return matchTab && matchBusca && matchPrioridade && matchRegiao && matchCanal;
   });
 
-  // Cidades únicas (parte antes do " - ")
   const cidadesUnicas = Array.from(
     new Set(solicitacoes.map((s) => s.regiao.split(" - ")[0].trim()))
   ).sort();
 
-  // Mover item para outra aba
   const moverTab = (id: number, novaTab: FiltroTab) => {
     setSolicitacoes((prev) => prev.map((s) => s.id === id ? { ...s, tab: novaTab } : s));
   };
@@ -417,7 +397,6 @@ export default function TriagemF() {
                     <span className="w-[25%] text-[#555] text-sm [@media(min-width:992px)]:text-base">{item.nome}</span>
                     <span className="w-[20%] text-[#555] text-sm [@media(min-width:992px)]:text-base">{item.regiao}</span>
 
-                    {/* Prioridade — dropdown inline */}
                     <div className="w-[15%] flex justify-start">
                       <div className="relative">
                         <select
@@ -473,7 +452,7 @@ export default function TriagemF() {
                         </button>
                       )}
 
-                      {/* Ver detalhes para Encaminhados e Rejeitados */}
+                      {/* Ver detalhes para encaminhados e rejeitados */}
                       {(item.tab === "Encaminhados" || item.tab === "Rejeitados") && (
                         <button
                           onClick={() => setModalContato(item)}
