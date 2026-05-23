@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeaderVoluntario from "../../components/HeaderVoluntario";
 import Footer from "../../components/Footer";
 import PacienteItem from "../../components/PacienteItem";
+import FiltrosBusca from "../../components/FiltrosBusca";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -40,7 +40,6 @@ const ENCAMINHADOS = [
   { nome: "Murilo Benício",  idade: "10", genero: "masculino", endereco: "Rua Vergueiro, 900 - SP",     laudo: "Tratamento de cáries múltiplas." },
 ];
 
-const FILTROS: Status[] = ["Todos", "Aguardando Retorno", "Agendado"];
 
 // Cor do badge por status
 const BADGE: Record<string, string> = {
@@ -96,51 +95,20 @@ export default function VMeusPacientes() {
             Meus Pacientes
           </h1>
 
-          {/* Busca */}
-          <div className="flex items-center gap-2 bg-[#f2f2f2] rounded-lg px-3 py-2 mb-4">
-            <Search size={18} className="text-[#999] shrink-0" />
-            <input
-              type="text"
-              value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-              placeholder="Pesquisar cpf ou nome..."
-              className="w-full bg-transparent outline-none text-[#333] placeholder-[#999] text-sm"
-            />
-            {busca && (
-              <button
-                onClick={() => setBusca("")}
-                className="text-[#bbb] hover:text-[#555] text-lg leading-none"
-              >
-                ×
-              </button>
-            )}
-          </div>
-
-          {/* Filtros com contagem */}
-          <div className="flex gap-2 flex-wrap mb-4">
-            {FILTROS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFiltroAtivo(f)}
-                className={`px-3 py-1 rounded text-sm transition flex items-center gap-1.5 ${
-                  filtroAtivo === f
-                    ? "bg-[#010817] text-white"
-                    : "bg-[#eee] text-[#010817] hover:bg-[#ddd]"
-                }`}
-              >
-                {f}
-                <span
-                  className={`text-xs font-bold px-1.5 py-0.5 rounded-full leading-none ${
-                    filtroAtivo === f
-                      ? "bg-white text-[#010817]"
-                      : "bg-[#d0d0d0] text-[#555]"
-                  }`}
-                >
-                  {contagem[f]}
-                </span>
-              </button>
-            ))}
-          </div>
+          {/* ── Filtros ── */}
+          <FiltrosBusca
+            busca={busca}
+            onBuscaChange={setBusca}
+            placeholder="Pesquisar por CPF ou nome..."
+          
+            tabs={[
+              { label: "Todos",              contagem: contagem["Todos"] },
+              { label: "Aguardando Retorno", contagem: contagem["Aguardando Retorno"] },
+              { label: "Agendado",           contagem: contagem["Agendado"] },
+            ]}
+            tabAtiva={filtroAtivo}
+            onTabChange={setFiltroAtivo}
+          />
 
           {/* Lista de pacientes */}
           <div className="w-full rounded-[15px] bg-[#fdfdf5] p-4 [@media(min-width:992px)]:p-[25px]">
