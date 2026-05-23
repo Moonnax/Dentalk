@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import HeaderFuncionario from "../../components/HeaderFuncionario";
 import Footer from "../../components/Footer";
 import FiltrosBusca from "../../components/FiltrosBusca";
