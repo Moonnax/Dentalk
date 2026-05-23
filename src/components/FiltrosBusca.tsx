@@ -1,7 +1,5 @@
 import { Search, X, ChevronDown } from "lucide-react";
 
-// ─── Tipos ────────────────────────────────────────────────────────────────────
-
 export interface OpcaoFiltro {
   label: string;
   value: string;
@@ -16,33 +14,27 @@ export interface ConfigFiltroSelect {
 
 export interface ConfigTab<T extends string = string> {
   label: T;
-  /** Contador opcional exibido ao lado do label */
   contagem?: number;
 }
 
 interface FiltrosBuscaProps<T extends string = string> {
-  /** Valor atual da busca */
   busca: string;
   onBuscaChange: (value: string) => void;
   placeholder?: string;
 
-  /** Filtros tipo <select> — passe quantos quiser (0‥n) */
   filtrosSelect?: ConfigFiltroSelect[];
 
-  /** Tabs de navegação — passe vazio ou omita para não exibir */
   tabs?: ConfigTab<T>[];
   tabAtiva?: T;
   onTabChange?: (tab: T) => void;
 
-  /** Callback chamado ao clicar em "Limpar filtros"
-   *  Se omitido, o botão não aparece mesmo com filtros ativos */
+
   onLimparFiltros?: () => void;
 
-  /** Controle externo de visibilidade do botão Limpar (true = mostra) */
   temFiltroAtivo?: boolean;
 }
 
-// ─── Componente ──────────────────────────────────────────────────────────────
+// componente
 
 export default function FiltrosBusca<T extends string = string>({
   busca,
@@ -58,7 +50,7 @@ export default function FiltrosBusca<T extends string = string>({
   return (
     <section className="flex flex-col gap-5 mb-[30px]">
 
-      {/* ── Barra de busca ── */}
+      {/* Barra de busca */}
       <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] bg-white">
         <Search size={18} className="shrink-0" />
         <input
@@ -78,7 +70,7 @@ export default function FiltrosBusca<T extends string = string>({
         )}
       </div>
 
-      {/* ── Filtros select + Limpar ── */}
+      {/* Filtros select + Limpar */}
       {filtrosSelect.length > 0 && (
         <div className="flex flex-wrap items-center gap-3">
           {filtrosSelect.map((f) => (
@@ -114,7 +106,7 @@ export default function FiltrosBusca<T extends string = string>({
         </div>
       )}
 
-      {/* ── Tabs ── */}
+      {/* Tabs */}
       {tabs.length > 0 && onTabChange && (
         <div className="flex flex-wrap gap-3">
           {tabs.map((tab) => (
@@ -132,7 +124,7 @@ export default function FiltrosBusca<T extends string = string>({
                 <span
                   className={`text-xs font-bold px-1.5 py-0.5 rounded-full leading-none ${
                     tabAtiva === tab.label
-                      ? "bg-[#010817] text-white"
+                      ? "bg-[#e1e6f0]"
                       : "bg-[#d0d0d0] text-[#555]"
                   }`}
                 >
