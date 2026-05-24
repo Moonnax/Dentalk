@@ -9,7 +9,6 @@ export interface AtendimentoRecord {
   procedimentos: string;
   pacientePresente: "sim" | "nao";
   observacoes?: string;
-  anexoNome?: string;
 }
 
 export async function getAtendimentos(): Promise<AtendimentoRecord[]> {
