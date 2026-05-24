@@ -1,4 +1,5 @@
-import { Plus, FileText, Calendar } from "lucide-react";
+import { FileText, Calendar } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface PacienteProps {
   nome: string;
@@ -8,6 +9,25 @@ interface PacienteProps {
 }
 
 function PacienteItem({ nome, idade, cpf, data }: PacienteProps) {
+  const navigate = useNavigate();
+
+  const handleAgendar = () => {
+    navigate("/agenda");
+  };
+
+  const botoes = [
+    {
+      icon: <FileText size={16} />,
+      titulo: "Prontuário",
+      onClick: () => navigate("/prontuarios"),
+    },
+    {
+      icon: <Calendar size={16} />,
+      titulo: "Agendar",
+      onClick: handleAgendar,
+    },
+  ];
+
   return (
     <div className="flex items-center justify-between py-3 px-2 border-b border-[#e8e8e8] hover:bg-[#fdfdf5] transition-colors">
       <div className="flex flex-col gap-[2px]">
@@ -20,12 +40,14 @@ function PacienteItem({ nome, idade, cpf, data }: PacienteProps) {
       </div>
 
       <div className="flex items-center gap-2 shrink-0 ml-3">
-        {[<Plus size={16} />, <FileText size={16} />, <Calendar size={16} />].map((icon, i) => (
+        {botoes.map((b) => (
           <button
-            key={i}
+            key={b.titulo}
+            title={b.titulo}
+            onClick={b.onClick}
             className="h-8 w-8 rounded-full bg-[#f2f2f2] flex items-center justify-center text-[#010817] hover:bg-[#f1c40f] transition-colors"
           >
-            {icon}
+            {b.icon}
           </button>
         ))}
       </div>

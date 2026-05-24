@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import HeaderFuncionario from "../../components/HeaderFuncionario/HeaderFuncionario";
-import Footer from "../../components/Footer/Footer";
-
-// ── Types ──────────────────────────────────────────────────────────────────
+import HeaderFuncionario from "../../components/HeaderFuncionario";
+import Footer from "../../components/Footer";
 
 type StatusOcorrencia = "vermelho" | "amarelo" | "";
 type TabOcorrencia = "Pendentes" | "Respondidas" | "Finalizadas";
@@ -39,8 +37,6 @@ interface RespostaRapida {
   label: string;
   mensagem: string;
 }
-
-// ── Sub-componentes ────────────────────────────────────────────────────────
 
 interface AvatarProps {
   size?: "sm" | "lg";
@@ -178,7 +174,7 @@ function ModalReencaminhar({ nomeAtual, onConfirmar, onFechar }: ModalReencaminh
   );
 }
 
-// ── Dados ──────────────────────────────────────────────────────────────────
+// Dados 
 
 const respostasRapidas: RespostaRapida[] = [
   {
@@ -323,14 +319,13 @@ export default function Fmonitoramento() {
     setOcorrencias((prev) =>
       prev.map((o) => {
         if (o.id !== ativo) return o;
-        // Se ainda está Pendente, move para Respondidas ao responder
+        // Se ainda está pendente, move para respondidas ao responder
         const novaTab: TabOcorrencia = o.tab === "Pendentes" ? "Respondidas" : o.tab;
         const novoStatus: StatusOcorrencia = o.tab === "Pendentes" ? "" : o.status;
         return { ...o, mensagens: [...o.mensagens, nova], tab: novaTab, status: novoStatus };
       })
     );
 
-    // Atualiza tab da lista se a ocorrência ativa era Pendente
     const ocAtual = ocorrencias.find((o) => o.id === ativo);
     if (ocAtual?.tab === "Pendentes") {
       setTabAtiva("Respondidas");
@@ -366,8 +361,6 @@ export default function Fmonitoramento() {
     if (isMobileOrTablet) setViewMobile("lista");
   }
 
-  // ── Tab bar ──────────────────────────────────────────────────────────────
-
   const TabBar = (
     <div className="flex gap-2 flex-wrap">
       {(["Pendentes", "Respondidas", "Finalizadas"] as TabOcorrencia[]).map((tab) => (
@@ -390,8 +383,6 @@ export default function Fmonitoramento() {
       ))}
     </div>
   );
-
-  // ── Colunas ───────────────────────────────────────────────────────────────
 
   const ColLista = (
     <section className="flex flex-col bg-white h-full overflow-hidden">

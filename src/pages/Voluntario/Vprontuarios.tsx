@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { ChevronDown, Search, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
+import FiltrosBusca from "../../components/FiltrosBusca";
 
 type Paciente = {
   nome: string;
@@ -13,11 +13,11 @@ type Paciente = {
 };
 
 const PACIENTES: Paciente[] = [
-  { nome: "João Silva",                cpf: "468.895.568-33", idade: "32 anos", ultimoAtendimento: "23/08/25", slug: "joao-silva" },
+  { nome: "João Silva",                cpf: "468.895.568-33", idade: "32 anos", ultimoAtendimento: "23/08/25", slug: "joao-silva"                },
   { nome: "Caroline Ferreira Pereira", cpf: "123.456.789-00", idade: "28 anos", ultimoAtendimento: "20/08/25", slug: "caroline-ferreira-pereira" },
-  { nome: "Marcos Oliveira",           cpf: "987.654.321-11", idade: "45 anos", ultimoAtendimento: "15/08/25", slug: "marcos-oliveira" },
-  { nome: "Ana Beatriz Santos",        cpf: "456.123.789-55", idade: "19 anos", ultimoAtendimento: "10/08/25", slug: "ana-beatriz-santos" },
-  { nome: "Roberto Cavalcante",        cpf: "333.222.111-99", idade: "50 anos", ultimoAtendimento: "05/08/25", slug: "roberto-cavalcante" },
+  { nome: "Marcos Oliveira",           cpf: "987.654.321-11", idade: "45 anos", ultimoAtendimento: "15/08/25", slug: "marcos-oliveira"            },
+  { nome: "Ana Beatriz Santos",        cpf: "456.123.789-55", idade: "19 anos", ultimoAtendimento: "10/08/25", slug: "ana-beatriz-santos"         },
+  { nome: "Roberto Cavalcante",        cpf: "333.222.111-99", idade: "50 anos", ultimoAtendimento: "05/08/25", slug: "roberto-cavalcante"         },
 ];
 
 function getIdadeFaixa(idadeStr: string): string {
@@ -28,7 +28,6 @@ function getIdadeFaixa(idadeStr: string): string {
   return "41+";
 }
 
-// Normaliza string removendo acentos — "joao" encontra "João"
 function norm(str: string): string {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
@@ -48,13 +47,13 @@ export default function Prontuario() {
   const datas = [...new Set(PACIENTES.map((p) => p.ultimoAtendimento))].sort().reverse();
 
   const filtrados = PACIENTES.filter((p) => {
-    const matchBusca  = !busca || norm(p.nome).includes(norm(busca)) || p.cpf.includes(busca);
+    const matchBusca  = !busca        || norm(p.nome).includes(norm(busca)) || p.cpf.includes(busca);
     const matchUltimo = !filtroUltimo || p.ultimoAtendimento === filtroUltimo;
     const matchIdade  = !filtroIdade  || getIdadeFaixa(p.idade) === filtroIdade;
     return matchBusca && matchUltimo && matchIdade;
   });
 
-  const temFiltro = filtroUltimo || filtroIdade;
+  const temFiltro = !!(filtroUltimo || filtroIdade);
 
   return (
     <div className="font-[Arial] text-[#010817] flex flex-col min-h-screen">
@@ -62,84 +61,36 @@ export default function Prontuario() {
 
       <main className="flex-1 mx-4 my-4 sm:mx-8 sm:my-6 [@media(min-width:992px)]:mx-12 [@media(min-width:992px)]:my-8">
 
-        {/* ── Busca + filtros ── */}
-        <section className="mb-[30px]">
+        <FiltrosBusca
+          busca={busca}
+          onBuscaChange={setBusca}
+          placeholder="Pesquisar cpf ou nome..."
 
-          {/* Barra de busca */}
-          <div className="flex items-center gap-[15px] border border-[#eee] px-5 py-3 rounded-lg text-[#999] w-full [@media(min-width:992px)]:max-w-[600px] mb-5 bg-white">
-            <Search size={18} className="shrink-0" />
-            <input
-              type="text"
-              value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-              placeholder="Pesquisar cpf ou nome..."
-              className="flex-1 bg-transparent outline-none text-[#333] placeholder-[#999] text-sm [@media(min-width:992px)]:text-base"
-            />
-            {busca && (
-              <button onClick={() => setBusca("")} className="text-[#bbb] hover:text-[#555] transition-colors">
-                <X size={15} />
-              </button>
-            )}
-          </div>
+          filtrosSelect={[
+            {
+              placeholder: "Último Atendimento",
+              value: filtroUltimo,
+              onChange: setFiltroUltimo,
+              opcoes: datas.map((d) => ({ label: d, value: d })),
+            },
+            {
+              placeholder: "Idade",
+              value: filtroIdade,
+              onChange: setFiltroIdade,
+              opcoes: [
+                { label: "Até 20 anos", value: "Até 20" },
+                { label: "21–30 anos",  value: "21-30"  },
+                { label: "31–40 anos",  value: "31-40"  },
+                { label: "41+ anos",    value: "41+"    },
+              ],
+            },
+          ]}
 
-          {/* Filtros */}
-          <div className="flex flex-wrap gap-3">
+          temFiltroAtivo={temFiltro}
+          onLimparFiltros={() => { setFiltroUltimo(""); setFiltroIdade(""); }}
+        />
 
-            {/*
-              FILTRO ÚLTIMO ATENDIMENTO
-              O <select> cobre todo o div com position absolute + opacity 0
-              para que clicar em qualquer lugar (inclusive na setinha) abra o menu nativo.
-            */}
-            <div className={`relative flex items-center gap-6 [@media(min-width:480px)]:gap-10 border px-4 py-2 rounded-lg bg-white transition-colors ${filtroUltimo ? "border-[#f1c40f] bg-[#fffdf0]" : "border-[#eee] hover:border-[#f1c40f]"}`}>
-              <span className="text-sm [@media(min-width:992px)]:text-base text-[#010817] select-none pointer-events-none">
-                {filtroUltimo || "Último Atendimento"}
-              </span>
-              <ChevronDown size={18} className="shrink-0 pointer-events-none" />
-              {/* Select invisível cobre tudo — qualquer clique no div abre o dropdown nativo */}
-              <select
-                value={filtroUltimo}
-                onChange={(e) => setFiltroUltimo(e.target.value)}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              >
-                <option value="">Último Atendimento</option>
-                {datas.map((d) => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* FILTRO IDADE — mesma técnica */}
-            <div className={`relative flex items-center gap-6 [@media(min-width:480px)]:gap-10 border px-4 py-2 rounded-lg bg-white transition-colors ${filtroIdade ? "border-[#f1c40f] bg-[#fffdf0]" : "border-[#eee] hover:border-[#f1c40f]"}`}>
-              <span className="text-sm [@media(min-width:992px)]:text-base text-[#010817] select-none pointer-events-none">
-                {filtroIdade ? `${filtroIdade} anos` : "Idade"}
-              </span>
-              <ChevronDown size={18} className="shrink-0 pointer-events-none" />
-              <select
-                value={filtroIdade}
-                onChange={(e) => setFiltroIdade(e.target.value)}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-              >
-                <option value="">Idade</option>
-                <option value="Até 20">Até 20 anos</option>
-                <option value="21-30">21–30 anos</option>
-                <option value="31-40">31–40 anos</option>
-                <option value="41+">41+ anos</option>
-              </select>
-            </div>
-
-            {/* Limpar filtros */}
-            {temFiltro && (
-              <button
-                onClick={() => { setFiltroUltimo(""); setFiltroIdade(""); }}
-                className="flex items-center gap-2 border border-[#eee] px-4 py-2 rounded-lg text-sm text-[#999] bg-white hover:border-[#f1c40f] hover:text-[#555] transition-colors"
-              >
-                <X size={14} /> Limpar filtros
-              </button>
-            )}
-          </div>
-        </section>
-
-        {/* ── Resultados ── */}
+        {/* Resultados */}
         <section>
 
           {/* MOBILE: cards */}
@@ -170,7 +121,6 @@ export default function Prontuario() {
                 </Link>
               </div>
             )) : (
-              /* Estado vazio mobile — mantém visual de card com os títulos */
               <div className="bg-white border border-[#eee] rounded-xl px-4 py-4 flex flex-col gap-3">
                 <span className="font-bold text-[#ccc] text-sm">Nenhum resultado encontrado</span>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm text-[#ddd]">
@@ -186,8 +136,6 @@ export default function Prontuario() {
           <div className="hidden [@media(min-width:992px)]:block bg-white border border-[#eee] rounded-xl overflow-hidden">
             <div className="overflow-x-auto">
               <div className="min-w-[480px]">
-
-                {/* Header sempre visível */}
                 <div className="flex items-center px-6 py-4 bg-[#fafafa] border-b-2 border-[#eee]">
                   <span className="w-[30%] font-bold text-black text-base">Paciente</span>
                   <span className="w-[22%] font-bold text-black text-base">CPF</span>
@@ -216,7 +164,6 @@ export default function Prontuario() {
                     </span>
                   </div>
                 )) : (
-                  /* Estado vazio desktop — dentro da tabela, alinhado às colunas */
                   <div className="flex items-center px-6 py-8">
                     <span className="w-[30%] text-[#ccc] font-semibold text-base">Nenhum resultado encontrado</span>
                     <span className="w-[22%] text-[#ddd] text-base">—</span>
@@ -225,7 +172,6 @@ export default function Prontuario() {
                     <span className="w-[20%]" />
                   </div>
                 )}
-
               </div>
             </div>
           </div>

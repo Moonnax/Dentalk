@@ -11,8 +11,7 @@ export interface Usuario {
   telefone: string;
 }
 
-// ─── Helper: calcula idade a partir do dataNascimento ─────────────────────────
-
+// calcula idade a partir do dataNascimento
 function calcularIdade(dataNascimento: string): string {
   if (!dataNascimento) return "";
   const [ano, mes, dia] = dataNascimento.split("-").map(Number);
@@ -23,7 +22,7 @@ function calcularIdade(dataNascimento: string): string {
   return `${idade} anos`;
 }
 
-// ─── GET ──────────────────────────────────────────────────────────────────────
+// GET
 
 export async function getCadastros(): Promise<Usuario[]> {
   const resp = await fetch(API_URL);

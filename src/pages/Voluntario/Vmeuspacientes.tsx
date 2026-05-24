@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
-import PacienteItem from "../../components/PacienteItem/PacienteItem";
-
-// ─── Tipos ────────────────────────────────────────────────────────────────────
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
+import PacienteItem from "../../components/PacienteItem";
+import FiltrosBusca from "../../components/FiltrosBusca";
 
 type Status = "Todos" | "Aguardando Retorno" | "Agendado";
 
@@ -17,7 +15,7 @@ type Paciente = {
   status: "Aguardando Retorno" | "Agendado";
 };
 
-// ─── pacientes fixos ─────────────────────────────────────────────────────
+// pacientes fixos
 
 const PACIENTES: Paciente[] = [
   { nome: "Ana Beatriz Silva",  idade: 8,  cpf: "455.123.789-11", data: "15/03/26", status: "Agendado"           },
@@ -40,9 +38,6 @@ const ENCAMINHADOS = [
   { nome: "Murilo Benício",  idade: "10", genero: "masculino", endereco: "Rua Vergueiro, 900 - SP",     laudo: "Tratamento de cáries múltiplas." },
 ];
 
-const FILTROS: Status[] = ["Todos", "Aguardando Retorno", "Agendado"];
-
-// Cor do badge por status
 const BADGE: Record<string, string> = {
   "Agendado":           "bg-[#c4d600] text-black",
   "Aguardando Retorno": "bg-yellow-100 text-yellow-800",
@@ -53,7 +48,7 @@ export default function VMeusPacientes() {
   const [busca, setBusca]           = useState("");
   const [filtroAtivo, setFiltroAtivo] = useState<Status>("Todos");
 
-  // normaliza acentos para busca sem acento funcionar
+  // busca sem acento funcionar
   const norm = (s: string) =>
     s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
@@ -63,7 +58,6 @@ export default function VMeusPacientes() {
     return matchBusca && matchStatus;
   });
 
-  // Contadores para cada filtro
   const contagem: Record<Status, number> = {
     "Todos":              PACIENTES.length,
     "Agendado":           PACIENTES.filter((p) => p.status === "Agendado").length,
@@ -85,7 +79,7 @@ export default function VMeusPacientes() {
         [@media(min-width:992px)]:px-0
       ">
 
-        {/* ── Seção principal: Meus Pacientes ── */}
+        {/* Seção principal: Meus Pacientes */}
         <section className="
           w-full mb-6
           [@media(min-width:992px)]:flex-1
@@ -96,51 +90,20 @@ export default function VMeusPacientes() {
             Meus Pacientes
           </h1>
 
-          {/* Busca */}
-          <div className="flex items-center gap-2 bg-[#f2f2f2] rounded-lg px-3 py-2 mb-4">
-            <Search size={18} className="text-[#999] shrink-0" />
-            <input
-              type="text"
-              value={busca}
-              onChange={(e) => setBusca(e.target.value)}
-              placeholder="Pesquisar cpf ou nome..."
-              className="w-full bg-transparent outline-none text-[#333] placeholder-[#999] text-sm"
-            />
-            {busca && (
-              <button
-                onClick={() => setBusca("")}
-                className="text-[#bbb] hover:text-[#555] text-lg leading-none"
-              >
-                ×
-              </button>
-            )}
-          </div>
-
-          {/* Filtros com contagem */}
-          <div className="flex gap-2 flex-wrap mb-4">
-            {FILTROS.map((f) => (
-              <button
-                key={f}
-                onClick={() => setFiltroAtivo(f)}
-                className={`px-3 py-1 rounded text-sm transition flex items-center gap-1.5 ${
-                  filtroAtivo === f
-                    ? "bg-[#010817] text-white"
-                    : "bg-[#eee] text-[#010817] hover:bg-[#ddd]"
-                }`}
-              >
-                {f}
-                <span
-                  className={`text-xs font-bold px-1.5 py-0.5 rounded-full leading-none ${
-                    filtroAtivo === f
-                      ? "bg-white text-[#010817]"
-                      : "bg-[#d0d0d0] text-[#555]"
-                  }`}
-                >
-                  {contagem[f]}
-                </span>
-              </button>
-            ))}
-          </div>
+          {/* Filtros */}
+          <FiltrosBusca
+            busca={busca}
+            onBuscaChange={setBusca}
+            placeholder="Pesquisar por CPF ou nome..."
+          
+            tabs={[
+              { label: "Todos",              contagem: contagem["Todos"] },
+              { label: "Aguardando Retorno", contagem: contagem["Aguardando Retorno"] },
+              { label: "Agendado",           contagem: contagem["Agendado"] },
+            ]}
+            tabAtiva={filtroAtivo}
+            onTabChange={setFiltroAtivo}
+          />
 
           {/* Lista de pacientes */}
           <div className="w-full rounded-[15px] bg-[#fdfdf5] p-4 [@media(min-width:992px)]:p-[25px]">
@@ -157,7 +120,6 @@ export default function VMeusPacientes() {
             {filtrados.length > 0 ? (
               filtrados.map((p, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  {/* PacienteItem original sem alteração */}
                   <div className="flex-1">
                     <PacienteItem
                       nome={p.nome}
@@ -165,9 +127,7 @@ export default function VMeusPacientes() {
                       cpf={p.cpf}
                       data={p.data}
                     />
-                  </div>
-                  {/* Badge de status ao lado direito */}
-                  <span
+                  </div>                  <span
                     className={`shrink-0 text-[0.7rem] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${BADGE[p.status]}`}
                   >
                     {p.status}
@@ -183,7 +143,7 @@ export default function VMeusPacientes() {
           </div>
         </section>
 
-        {/* ── Aside: Encaminhados ── */}
+        {/* Encaminhados */}
         <aside className="
           w-full flex flex-col gap-4
           [@media(min-width:992px)]:w-[400px]
@@ -219,9 +179,11 @@ export default function VMeusPacientes() {
                     Aceitar e agendar
                   </button>
                   </Link>
-                  <button className="bg-[#f2f2f2] border-none px-4 py-2 rounded-lg cursor-pointer text-[0.85rem] hover:bg-[#e0e0e0] transition-colors">
-                    Ver mais
-                  </button>
+                  <Link to="/prontuarios">
+                    <button className="bg-[#f2f2f2] border-none px-4 py-2 rounded-lg cursor-pointer text-[0.85rem] hover:bg-[#e0e0e0] transition-colors">
+                      Ver mais
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

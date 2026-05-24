@@ -1,7 +1,5 @@
 const API_URL = "https://vercel-java.onrender.com/contato";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
 export interface Contato {
   nome: string;
   email: string;
@@ -10,7 +8,7 @@ export interface Contato {
   mensagem: string;
 }
 
-// ─── POST ─────────────────────────────────────────────────────────────────────
+// POST
 
 export async function enviarContato(contato: Contato): Promise<boolean> {
   const resp = await fetch(API_URL, {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import HeaderVoluntario from "../../components/HeaderVoluntario/HeaderVoluntario";
-import Footer from "../../components/Footer/Footer";
+import HeaderVoluntario from "../../components/HeaderVoluntario";
+import Footer from "../../components/Footer";
 
 const DIAS_MARCO = [
   "1","2","3","4*","5","6","7",
@@ -109,7 +109,7 @@ export default function VAgenda() {
             </div>
           </section>
 
-          {/* ── ASIDE DETALHES ── */}
+          {/* ASIDE DETALHES */}
           <aside className="w-full [@media(min-width:992px)]:w-[43%] flex flex-col gap-5">
 
             {/* Card info paciente */}
