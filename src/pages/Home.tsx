@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import { ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -36,9 +36,10 @@ function Home() {
 
           <Link
             to="/sobre"
-            className="inline-block bg-[#fd8b08] text-white py-[0.8rem] px-8 rounded-[2rem] no-underline font-bold border-none hover:bg-[#b36103] hover:text-white max-[480px]:text-[0.9rem] max-[480px]:py-[0.7rem] max-[480px]:px-6"
+            className="inline-flex items-center gap-2 bg-[#fd8b08] text-white py-[0.8rem] px-8 rounded-[2rem] no-underline font-bold border-none hover:bg-[#b36103] hover:text-white max-[480px]:text-[0.9rem] max-[480px]:py-[0.7rem] max-[480px]:px-6"
           >
             Saiba mais sobre
+            <ArrowRight size={18} />
           </Link>
         </div>
       </main>
