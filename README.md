@@ -173,7 +173,7 @@ A aplicação estará disponível em `http://localhost:5173`
 | Recurso | Link |
 |---|---|
 | 📂 Repositório GitHub | [github.com/Moonnax/Dentalk](https://github.com/Moonnax/Dentalk/tree/sprint-3-react) |
-| 🎥 Vídeo no YouTube | *(em breve)* |
+| 🎥 Vídeo no YouTube | [https://youtu.be/7ytNrczFcTE](https://youtu.be/7ytNrczFcTE) |
 | ☁️ Deploy na Vercel | [https://dentalk-khaki.vercel.app](https://dentalk-khaki.vercel.app) |
 
 ---
